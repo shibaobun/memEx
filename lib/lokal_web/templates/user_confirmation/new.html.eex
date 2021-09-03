@@ -1,15 +1,24 @@
-<h1>Resend confirmation instructions</h1>
+<div class="flex flex-col justify-center items-center space-y-4">
+  <h1 class="title text-primary-500 text-xl">
+    Resend confirmation instructions
+  </h1>
 
-<%= form_for :user, Routes.user_confirmation_path(@conn, :create), fn f -> %>
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
+  <%= form_for :user, Routes.user_confirmation_path(@conn, :create),
+    [class: "flex flex-col justify-center items-center space-y-4"], fn f -> %>
+    <div class="grid grid-cols-3 justify-center items-center text-center space-x-4">
+      <%= label f, :email, class: "title text-lg text-primary-500" %>
+      <%= email_input f, :email, required: true, class: "input input-primary col-span-2" %>
+    </div>
 
-  <div>
-    <%= submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %>
-</p>
+    <%= submit "Resend confirmation instructions", class: "btn btn-primary" %>
+    
+    <hr class="hr">
+    
+    <div class="flex flex-row justify-center items-center space-x-4">
+      <%= link "Register", to: Routes.user_registration_path(@conn, :new),
+        class: "btn btn-primary" %>
+      <%= link "Log in", to: Routes.user_session_path(@conn, :new),
+        class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
