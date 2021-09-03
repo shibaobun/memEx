@@ -2,20 +2,20 @@ defmodule LokalWeb.PageLive do
   use LokalWeb, :live_view
 
   @impl true
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+  def mount(_params, session, socket) do
+    {:ok, socket |> assign_defaults(session) |> assign(query: "", results: %{})}
   end
 
   @impl true
   def handle_event("suggest", %{"q" => query}, socket) do
-    {:noreply, assign(socket, results: search(query), query: query)}
+    {:noreply, socket |> assign(results: search(query), query: query)}
   end
 
   @impl true
   def handle_event("search", %{"q" => query}, socket) do
     case search(query) do
       %{^query => vsn} ->
-        {:noreply, redirect(socket, external: "https://hexdocs.pm/#{query}/#{vsn}")}
+        {:noreply, socket |> redirect(external: "https://hexdocs.pm/#{query}/#{vsn}")}
 
       _ ->
         {:noreply,

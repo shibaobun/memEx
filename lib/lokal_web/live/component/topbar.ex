@@ -41,7 +41,7 @@ defmodule LokalWeb.Live.Component.Topbar do
             </form>
 
             <%# user settings %>
-            <%= if assigns |> Map.has_key?(:current_user) do %>
+            <%= if @current_user do %>
               <li>
                 <%= @current_user.email %></li>
               <li>

@@ -1,5 +1,5 @@
 <main role="main" class="container min-w-full min-h-full">
-  <%= live_component LokalWeb.Live.Component.Topbar %>
+  <%= live_component LokalWeb.Live.Component.Topbar, current_user: assigns[:current_user] %>
 
   <%= @inner_content %>
 </main>
