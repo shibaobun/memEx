@@ -1,12 +1,8 @@
-use Mix.Config
+import Config
 
 # Configure your database
 config :lokal, Lokal.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "lokal_dev",
-  hostname: "localhost",
-  show_sensitive_data_on_connection_error: true,
+  url: "ecto://postgres:postgres@localhost/lokal_dev",
   pool_size: 10
 
 # For development, we disable any cache and enable

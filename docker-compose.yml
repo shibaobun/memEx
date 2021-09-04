@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  lokal:
+    build:
+      context: .
+    container_name: lokal
+    environment:
+      DATABASE_URL: "ecto://postgres:postgres@lokal-db/lokal"
+      # generate a random base64 string 64 characters long, preferably not from a website
+      SECRET_KEY_BASE: "change-me-to-something-random-this-is-really-important-change-it"
+    ports:
+      # do not expose this publically!
+      # always host from behind a reverse proxy, with a properly configured certificate
+      - "4000:4000"
+    restart: always
+    depends_on:
+      - lokal-db
+
+  lokal-db:
+    image: postgres:13
+    container_name: lokal-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: lokal
+    restart: always
+    volumes:
+      - ./data:/var/lib/postgresql/data

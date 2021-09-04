@@ -9,6 +9,7 @@ defmodule Lokal.Application do
     children = [
       # Start the Ecto repository
       Lokal.Repo,
+      Lokal.Repo.Migrator,
       # Start the Telemetry supervisor
       LokalWeb.Telemetry,
       # Start the PubSub system

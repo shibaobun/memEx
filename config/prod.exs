@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
@@ -10,8 +10,13 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :lokal, LokalWeb.Endpoint,
-  url: [host: "example.com", port: 80],
+  url: [host: "localhost"],
+  http: [port: 4000],
   cache_static_manifest: "priv/static/cache_manifest.json"
+  
+config :lokal, Lokal.Repo,
+  url: "ecto://postgres:postgres@localhost/lokal",
+  pool_size: 10
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -23,7 +28,7 @@ config :logger, level: :info
 #
 #     config :lokal, LokalWeb.Endpoint,
 #       ...
-#       url: [host: "example.com", port: 443],
+#       url: [host: "localhost", port: 443],
 #       https: [
 #         port: 443,
 #         cipher_suite: :strong,
@@ -49,7 +54,3 @@ config :logger, level: :info
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
-
-# Finally import the config/prod.secret.exs which loads secrets
-# and configuration from environment variables.
-import_config "prod.secret.exs"
