@@ -13,7 +13,7 @@ config :lokal, LokalWeb.Endpoint,
   url: [host: "localhost"],
   http: [port: 4000],
   cache_static_manifest: "priv/static/cache_manifest.json"
-  
+
 config :lokal, Lokal.Repo,
   url: "ecto://postgres:postgres@localhost/lokal",
   pool_size: 10
@@ -27,14 +27,14 @@ config :logger, level: :info
 # to the previous section and set your `:url` port to 443:
 #
 #     config :lokal, LokalWeb.Endpoint,
-#       ...
-#       url: [host: "localhost", port: 443],
+#       ...,
+#       url: [host: "example.com", port: 443],
 #       https: [
+#         ...,
 #         port: 443,
 #         cipher_suite: :strong,
 #         keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
-#         certfile: System.get_env("SOME_APP_SSL_CERT_PATH"),
-#         transport_options: [socket_opts: [:inet6]]
+#         certfile: System.get_env("SOME_APP_SSL_CERT_PATH")
 #       ]
 #
 # The `cipher_suite` is set to `:strong` to support only the

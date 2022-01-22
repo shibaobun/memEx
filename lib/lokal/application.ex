@@ -5,19 +5,21 @@ defmodule Lokal.Application do
 
   use Application
 
+  @impl true
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
       Lokal.Repo,
-      Lokal.Repo.Migrator,
       # Start the Telemetry supervisor
       LokalWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Lokal.PubSub},
       # Start the Endpoint (http/https)
-      LokalWeb.Endpoint
+      LokalWeb.Endpoint,
       # Start a worker by calling: Lokal.Worker.start_link(arg)
       # {Lokal.Worker, arg}
+      # Automatically migrate on start
+      Lokal.Repo.Migrator
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -28,6 +30,7 @@ defmodule Lokal.Application do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
+  @impl true
   def config_change(changed, _new, removed) do
     LokalWeb.Endpoint.config_change(changed, removed)
     :ok

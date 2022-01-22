@@ -29,7 +29,7 @@ defmodule LokalWeb.LiveHelpers do
       Accounts.get_user_by_session_token(user_token)
     end)
   end
-  
+
   def assign_defaults(socket, _session) do
     socket
   end

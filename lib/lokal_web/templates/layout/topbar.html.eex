@@ -1,15 +1,16 @@
 <nav role="navigation">
   <div class="flex flex-row justify-between items-center space-x-4">
-    <%= link to: Routes.page_path(LokalWeb.Endpoint, :index) do %>
+    <%= link to: Routes.live_path(LokalWeb.Endpoint, PageLive) do %>
       <h1 class="leading-5 text-xl text-white hover:underline">Lokal</h1>
     <% end %>
-  
+
     <ul class="flex flex-row flex-wrap justify-center items-center
       space-x-4 text-lg text-white">
       <%# user settings %>
       <%= if assigns |> Map.has_key?(:current_user) && @current_user do %>
         <li>
-          <%= @current_user.email %></li>
+          <%= @current_user.email %>
+        </li>
         <li>
           <%= link "Settings", class: "hover:underline",
             to: Routes.user_settings_path(LokalWeb.Endpoint, :edit) %>

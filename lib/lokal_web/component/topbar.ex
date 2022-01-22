@@ -1,32 +1,32 @@
-defmodule LokalWeb.Live.Component.Topbar do
-  use LokalWeb, :live_component
-  
-  alias LokalWeb.{PageLive}
-  
-  def mount(socket) do
-    {:ok, socket |> assign(results: [], title_content: nil)}
-  end
-  
-  def update(assigns, socket) do
-    {:ok, socket |> assign(assigns)}
-  end
+defmodule LokalWeb.Component.Topbar do
+  @moduledoc """
+  Phoenix.Component for rendering an interactive topbar
+  Assign
+  """
 
-  def render(assigns) do
-    ~L"""
+  use LokalWeb, :component
+  alias LokalWeb.{PageLive}
+
+  def topbar(assigns) do
+    assigns =
+      %{results: [], title_content: nil, current_user: nil, flash: nil}
+      |> Map.merge(assigns)
+
+    ~H"""
     <header class="mb-8 px-8 py-4 w-full bg-primary-400">
       <nav role="navigation">
         <div class="flex flex-row justify-between items-center space-x-4">
           <div class="flex flex-row justify-start items-center space-x-2">
-            <%= link to: Routes.page_path(LokalWeb.Endpoint, :index) do %>
+            <%= link to: Routes.live_path(LokalWeb.Endpoint, PageLive) do %>
               <h1 class="leading-5 text-xl text-white hover:underline">Lokal</h1>
             <% end %>
-            
+
             <%= if @title_content do %>
               <span>|</span>
-              <%= @title_content %>
+              <%= render_slot(@title_content) %>
             <% end %>
           </div>
-        
+
           <ul class="flex flex-row flex-wrap justify-center items-center
             text-lg space-x-4 text-lg text-white">
             <%# search %>
@@ -35,15 +35,14 @@ defmodule LokalWeb.Live.Component.Topbar do
                 placeholder="Search" list="results" autocomplete="off"/>
               <datalist id="results">
                 <%= for {app, _vsn} <- @results do %>
-                  <option value="<%= app %>"><%= app %></option>
+                  <option value={app}>"><%= app %></option>
                 <% end %>
               </datalist>
             </form>
 
             <%# user settings %>
             <%= if @current_user do %>
-              <li>
-                <%= @current_user.email %></li>
+              <li><%= @current_user.email %></li>
               <li>
                 <%= link "Settings", class: "hover:underline",
                   to: Routes.user_settings_path(LokalWeb.Endpoint, :edit) %>
@@ -73,14 +72,14 @@ defmodule LokalWeb.Live.Component.Topbar do
         </div>
       </nav>
 
-      <%= if live_flash(@flash, :info) do %>
+      <%= if @flash && @flash |> Map.has_key?(:info) do %>
         <p class="alert alert-info" role="alert"
           phx-click="lv:clear-flash" phx-value-key="info">
           <%= live_flash(@flash, :info) %>
         </p>
       <% end %>
 
-      <%= if live_flash(@flash, :error) do %>
+      <%= if @flash && @flash |> Map.has_key?(:error) do %>
         <p class="alert alert-danger" role="alert"
           phx-click="lv:clear-flash" phx-value-key="error">
           <%= live_flash(@flash, :error) %>

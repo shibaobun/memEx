@@ -1,0 +1,19 @@
+<main class="container">
+  <LokalWeb.Component.Topbar.topbar
+    current_user={assigns[:current_user]}>
+  </LokalWeb.Component.Topbar.topbar>
+
+  <%= if @flash && @flash |> Map.has_key?(:info) do %>
+    <p class="alert alert-info" role="alert"
+      phx-click="lv:clear-flash"
+      phx-value-key="info"><%= live_flash(@flash, :info) %></p>
+      <% end %>
+
+  <%= if @flash && @flash |> Map.has_key?(:error) do %>
+    <p class="alert alert-danger" role="alert"
+      phx-click="lv:clear-flash"
+      phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+  <% end %>
+
+  <%= @inner_content %>
+</main>

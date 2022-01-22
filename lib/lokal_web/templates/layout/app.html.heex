@@ -1,19 +1,19 @@
-<main role="main" class="container min-h-full min-w-full">
+<main class="container min-h-full min-w-full">
   <header class="mb-4 px-8 py-4 w-full bg-primary-400">
     <%= render "topbar.html", assigns %>
-  
+
     <%= if get_flash(@conn, :info) do %>
       <p class="alert alert-info" role="alert">
         <%= get_flash(@conn, :info) %>
       </p>
     <% end %>
-    
+
     <%= if get_flash(@conn, :error) do %>
       <p class="alert alert-danger" role="alert">
         <%= get_flash(@conn, :error) %>
       </p>
     <% end %>
   </header>
-  
+
   <%= @inner_content %>
 </main>

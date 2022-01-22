@@ -13,7 +13,7 @@ defmodule LokalWeb.ModalComponent do
 
       <div class="phx-modal-content">
         <%= live_patch raw("&times;"), to: @return_to, class: "phx-modal-close" %>
-        <%= live_component @socket, @component, @opts %>
+        <%= live_component @component, @opts %>
       </div>
     </div>
     """
