@@ -49,3 +49,7 @@ In `prod` mode (or in the Docker container), Lokal will listen for these environ
 - `SECRET_KEY_BASE`: Secret key base used to sign cookies. Must be generated
   with `mix phx.gen.secret` and set for server to start.
 
+---
+
+[![Build
+Status](https://drone.bubbletea.dev/api/badges/shibao/lokal/status.svg?ref=refs/heads/dev)](https://drone.bubbletea.dev/shibao/lokal)
