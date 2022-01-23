@@ -1,7 +1,11 @@
 defmodule LokalWeb.LiveHelpers do
+  @moduledoc """
+  Contains resuable methods for all liveviews
+  """
+
   import Phoenix.LiveView.Helpers
   import Phoenix.LiveView, only: [assign_new: 3]
-  alias Lokal.{Accounts}
+  alias Lokal.Accounts
 
   @doc """
   Renders a component inside the `LokalWeb.ModalComponent` component.

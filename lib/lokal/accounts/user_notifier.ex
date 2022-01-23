@@ -1,4 +1,8 @@
 defmodule Lokal.Accounts.UserNotifier do
+  @moduledoc """
+  Contains templates and messages for user messages
+  """
+
   # For simplicity, this module simply logs messages to the terminal.
   # You should replace it by a proper email or notification tool, such as:
   #

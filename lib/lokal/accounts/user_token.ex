@@ -1,4 +1,8 @@
 defmodule Lokal.Accounts.UserToken do
+  @moduledoc """
+  Schema for a user's session token
+  """
+
   use Ecto.Schema
   import Ecto.Query
 

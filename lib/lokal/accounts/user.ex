@@ -1,4 +1,8 @@
 defmodule Lokal.Accounts.User do
+  @moduledoc """
+  Schema for a registered user
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

@@ -1,4 +1,8 @@
 defmodule LokalWeb.ModalComponent do
+  @moduledoc """
+  Component that provides a floating modal
+  """
+
   use LokalWeb, :live_component
 
   @impl true

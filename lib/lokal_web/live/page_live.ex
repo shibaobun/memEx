@@ -1,4 +1,8 @@
 defmodule LokalWeb.PageLive do
+  @moduledoc """
+  Liveview for the main home page
+  """
+
   use LokalWeb, :live_view
 
   @impl true

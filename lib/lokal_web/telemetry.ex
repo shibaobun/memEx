@@ -1,4 +1,8 @@
 defmodule LokalWeb.Telemetry do
+  @moduledoc """
+  Telemetry genserver
+  """
+
   use Supervisor
   import Telemetry.Metrics
 

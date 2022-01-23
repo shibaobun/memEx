@@ -1,4 +1,8 @@
 defmodule Lokal.Release do
+  @moduledoc """
+  Contains mix tasks that can used in generated releases
+  """
+
   @app :lokal
 
   def rollback(repo, version) do

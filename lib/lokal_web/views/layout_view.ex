@@ -1,6 +1,6 @@
 defmodule LokalWeb.LayoutView do
   use LokalWeb, :view
-  alias LokalWeb.{PageLive}
+  alias LokalWeb.PageLive
 
   # Phoenix LiveDashboard is available only in development by default,
   # so we instruct Elixir to not warn if the dashboard route is missing.

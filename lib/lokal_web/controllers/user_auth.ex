@@ -1,4 +1,8 @@
 defmodule LokalWeb.UserAuth do
+  @moduledoc """
+  Module for any user authentication functions
+  """
+
   import Plug.Conn
   import Phoenix.Controller
 

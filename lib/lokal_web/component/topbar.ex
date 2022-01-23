@@ -5,7 +5,7 @@ defmodule LokalWeb.Component.Topbar do
   """
 
   use LokalWeb, :component
-  alias LokalWeb.{PageLive}
+  alias LokalWeb.PageLive
 
   def topbar(assigns) do
     assigns =

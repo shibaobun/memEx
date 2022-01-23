@@ -5,7 +5,7 @@ defmodule Lokal.Accounts do
 
   import Ecto.Query, warn: false
   alias Lokal.Repo
-  alias Lokal.Accounts.{User, UserToken, UserNotifier}
+  alias Lokal.Accounts.{User, UserNotifier, UserToken}
 
   ## Database getters
 
