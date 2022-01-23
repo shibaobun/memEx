@@ -7,28 +7,28 @@ module.exports = {
     '../lib/**/*.eex',
     './js/**/*.js'
   ],
-  darkMode: "media",
+  darkMode: 'media',
   theme: {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      
+
       primary: colors.indigo,
-      
+
       black: colors.black,
       white: colors.white,
       gray: colors.trueGray,
       indigo: colors.indigo,
       red: colors.rose,
-      yellow: colors.amber,
+      yellow: colors.amber
     },
-    extend: {},
+    extend: {}
   },
   variants: {
     extend: {
       backgroundColor: ['active'],
-      borderColor: ['active'],
-    },
+      borderColor: ['active']
+    }
   },
-  plugins: [],
+  plugins: []
 }
