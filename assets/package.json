@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "deploy": "NODE_ENV=production webpack --mode production",
-    "watch": "webpack --mode development --watch --watch-options-stdin"
+    "watch": "webpack --mode development --watch --watch-options-stdin",
+    "format": "standard --fix",
+    "test": "standard"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
@@ -32,6 +34,7 @@
     "postcss-loader": "^6.1.1",
     "postcss-preset-env": "^6.7.0",
     "sass-loader": "^12.1.0",
+    "standard": "^16.0.4",
     "style-loader": "^3.2.1",
     "tailwindcss": "^2.2.7",
     "terser-webpack-plugin": "^5.1.3",
