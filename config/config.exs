@@ -22,6 +22,11 @@ config :lokal, LokalWeb.Endpoint,
 
 config :lokal, Lokal.Application, automigrate: false
 
+config :lokal, :generators,
+  migration: true,
+  binary_id: true,
+  sample_binary_id: "11111111-1111-1111-1111-111111111111"
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
