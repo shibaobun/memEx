@@ -18,6 +18,8 @@ config :lokal, Lokal.Repo,
   url: "ecto://postgres:postgres@localhost/lokal",
   pool_size: 10
 
+config :lokal, Lokal.Application, automigrate: true
+
 # Do not print debug messages in production
 config :logger, level: :info
 

@@ -15,12 +15,16 @@ defmodule Lokal.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Lokal.PubSub},
       # Start the Endpoint (http/https)
-      LokalWeb.Endpoint,
+      LokalWeb.Endpoint
       # Start a worker by calling: Lokal.Worker.start_link(arg)
       # {Lokal.Worker, arg}
-      # Automatically migrate on start
-      Lokal.Repo.Migrator
     ]
+
+    # Automatically migrate on start in prod
+    children =
+      if Application.get_env(:lokal, Lokal.Application, automigrate: false)[:automigrate],
+        do: children ++ [Lokal.Repo.Migrator],
+        else: children
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

@@ -20,6 +20,8 @@ config :lokal, LokalWeb.Endpoint,
   pubsub_server: Lokal.PubSub,
   live_view: [signing_salt: "zOLgd3lr"]
 
+config :lokal, Lokal.Application, automigrate: false
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
