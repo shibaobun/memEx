@@ -26,9 +26,15 @@ import { Socket } from 'phoenix'
 import { LiveSocket } from 'phoenix_live_view'
 import topbar from '../vendor/topbar'
 import MaintainAttrs from './maintain_attrs'
+import Alpine from 'alpinejs'
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
 const liveSocket = new LiveSocket('/live', Socket, {
+  dom: {
+    onBeforeElUpdated (from, to) {
+      if (from._x_dataStack) { window.Alpine.clone(from, to) }
+    }
+  },
   params: { _csrf_token: csrfToken },
   hooks: { MaintainAttrs }
 })
@@ -46,3 +52,7 @@ liveSocket.connect()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
+
+// alpine.js
+window.Alpine = Alpine
+Alpine.start()

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "alpinejs": "^3.9.0",
     "install": "^0.13.0",
     "npm": "^7.22.0",
     "phoenix": "file:../deps/phoenix",
