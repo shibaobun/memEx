@@ -19,6 +19,16 @@ steps:
   - npm install --prefix assets
   - mix test
 
+- name: build and publish
+  image: plugins/docker
+  settings:
+    repo: shibaobun/lokal
+    tags: latest
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+
 services:
 - name: database
   image: postgres:13
