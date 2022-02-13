@@ -26,7 +26,7 @@ COPY lib lib
 COPY priv priv
 COPY assets assets
 RUN npm run --prefix ./assets deploy
-RUN mix phx.digest
+RUN mix do phx.digest, gettext.extract
 
 # compile and build release
 # uncomment COPY if rel/ exists
