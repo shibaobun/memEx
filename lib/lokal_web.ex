@@ -91,13 +91,11 @@ defmodule LokalWeb do
 
       # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
       import Phoenix.LiveView.Helpers
-      import LokalWeb.LiveHelpers
 
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import LokalWeb.ErrorHelpers
-      import LokalWeb.Gettext
+      import LokalWeb.{ErrorHelpers, Gettext, LiveHelpers, ViewHelpers}
       alias LokalWeb.Router.Helpers, as: Routes
     end
   end
