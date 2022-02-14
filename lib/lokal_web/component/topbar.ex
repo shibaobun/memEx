@@ -1,4 +1,4 @@
-defmodule LokalWeb.Component.Topbar do
+defmodule LokalWeb.Components.Topbar do
   @moduledoc """
   Phoenix.Component for rendering an interactive topbar
   Assign
