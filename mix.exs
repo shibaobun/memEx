@@ -11,7 +11,18 @@ defmodule Lokal.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
-      dialyzer: [plt_add_apps: [:ex_unit]]
+      dialyzer: [plt_add_apps: [:ex_unit]],
+      # ExDoc
+      name: "Lokal",
+      source_url: "https://gitea.bubbletea.dev/shibao/lokal",
+      homepage_url: "https://gitea.bubbletea.dev/shibao/lokal",
+      docs: [
+        # The main page in the docs
+        main: "README.md",
+        # logo: "path/to/logo.png",
+        extras: ["README.md"]
+      ],
+      authors: ["shibao"]
     ]
   end
 
