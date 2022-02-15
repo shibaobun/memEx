@@ -5,7 +5,7 @@
 
   <%= form_for @changeset, Routes.user_registration_path(@conn, :create),
     [class: "flex flex-col justify-center items-center space-y-4"], fn f -> %>
-    <%= if @changeset.action do %>
+    <%= if @changeset.action && not(@changeset.valid?) do %>
       <div class="alert alert-danger">
         <p>Oops, something went wrong! Please check the errors below.</p>
       </div>
@@ -24,7 +24,7 @@
     <%= error_tag f, :password %>
 
     <%= submit "Register", class: "btn btn-primary" %>
-    
+
     <hr class="hr">
 
     <div class="flex flex-row justify-center items-center space-x-4">
