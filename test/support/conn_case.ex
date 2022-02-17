@@ -17,6 +17,7 @@ defmodule LokalWeb.ConnCase do
 
   use ExUnit.CaseTemplate
   alias Ecto.Adapters.SQL.Sandbox
+  alias Lokal.{Accounts, Repo}
 
   using do
     quote do
@@ -48,6 +49,9 @@ defmodule LokalWeb.ConnCase do
   """
   def register_and_log_in_user(%{conn: conn}) do
     user = Lokal.AccountsFixtures.user_fixture()
+
+    {:ok, %{user: user}} = user |> Accounts.confirm_user_multi() |> Repo.transaction()
+
     %{conn: log_in_user(conn, user), user: user}
   end
 
