@@ -2,40 +2,40 @@
   <h1 class="title text-primary-500 text-xl">
     Log in
   </h1>
-
-  <%= form_for @conn, Routes.user_session_path(@conn, :create), [as: :user,
-    class: "flex flex-col justify-center items-center space-y-4"], fn f -> %>
+  <%= form_for @conn,
+           Routes.user_session_path(@conn, :create),
+           [as: :user, class: "flex flex-col justify-center items-center space-y-4"],
+           fn f -> %>
     <%= if @error_message do %>
       <div class="alert alert-danger">
-        <p><%= @error_message %></p>
+        <p>
+          <%= @error_message %>
+        </p>
       </div>
     <% end %>
-
     <div class="grid grid-cols-3 justify-center items-center text-center space-x-4">
-      <%= label f, :email, class: "title text-lg text-primary-500" %>
-      <%= email_input f, :email, required: true, class: "input input-primary col-span-2" %>
+      <%= label(f, :email, class: "title text-lg text-primary-500") %>
+      <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
     </div>
-
     <div class="grid grid-cols-3 justify-center items-center text-center space-x-4">
-      <%= label f, :password, class: "title text-lg text-primary-500" %>
-      <%= password_input f, :password, required: true, class: "input input-primary col-span-2" %>
+      <%= label(f, :password, class: "title text-lg text-primary-500") %>
+      <%= password_input(f, :password, required: true, class: "input input-primary col-span-2") %>
     </div>
-
     <div class="flex flex-row justify-center items-center text-center space-x-4">
-      <%= label f, :remember_me, "Keep me logged in for 60 days",
-        class: "title text-lg text-primary-500" %>
-      <%= checkbox f, :remember_me, class: "checkbox" %>
+      <%= label(f, :remember_me, "Keep me logged in for 60 days", class: "title text-lg text-primary-500") %>
+      <%= checkbox(f, :remember_me, class: "checkbox") %>
     </div>
-
-    <%= submit "Log in", class: "btn btn-primary" %>
-    
+    <%= submit("Log in", class: "btn btn-primary") %>
     <hr class="hr">
-    
-    <div class="flex flex-row justify-center items-center space-x-4">
-      <%= link "Register", to: Routes.user_registration_path(@conn, :new),
-        class: "btn btn-primary" %>
-      <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new),
-        class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
+      <div class="flex flex-row justify-center items-center space-x-4">
+        <%= link("Register",
+          to: Routes.user_registration_path(@conn, :new),
+          class: "btn btn-primary"
+        ) %>
+        <%= link("Forgot your password?",
+          to: Routes.user_reset_password_path(@conn, :new),
+          class: "btn btn-primary"
+        ) %>
+      </div>
+    <% end %>
+  </div>
