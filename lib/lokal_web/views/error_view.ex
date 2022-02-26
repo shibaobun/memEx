@@ -1,16 +1,16 @@
 defmodule LokalWeb.ErrorView do
   use LokalWeb, :view
+  import LokalWeb.Components.Topbar
+  alias LokalWeb.{Endpoint, PageLive}
 
-  # If you want to customize a particular status code
-  # for a certain format, you may uncomment below.
-  # def render("500.html", _assigns) do
-  #   "Internal Server Error"
-  # end
+  def template_not_found(error_path, _assigns) do
+    error_string =
+      case error_path do
+        "404.html" -> dgettext("errors", "Not found")
+        "401.html" -> dgettext("errors", "Unauthorized")
+        _ -> dgettext("errors", "Internal Server Error")
+      end
 
-  # By default, Phoenix returns the status message from
-  # the template name. For example, "404.html" becomes
-  # "Not Found".
-  def template_not_found(template, _assigns) do
-    Phoenix.Controller.status_message_from_template(template)
+    render("error.html", %{error_string: error_string})
   end
 end
