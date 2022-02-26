@@ -2,16 +2,24 @@ kind: pipeline
 type: docker
 name: lokal
 
-cache:
-  mount:
-    - _build
-    - deps
-
 steps:
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - _build
+      - deps
+      - assets/node_modules/
+
 - name: test
   image: bitwalker/alpine-elixir-phoenix:1.13
   environment:
     TEST_DATABASE_URL: ecto://postgres:postgres@database/lokal_test
+    HOST: testing.example.tld
   commands:
   - mix local.rebar --force
   - mix local.hex --force
@@ -19,15 +27,44 @@ steps:
   - npm install --prefix assets
   - mix test
 
-- name: build and publish
+- name: build and publish stable
   image: plugins/docker
   settings:
     repo: shibaobun/lokal
-    tags: latest
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
+    tags: latest
+  when:
+    branch:
+    - stable
+
+- name: build and publish tagged version
+  image: plugins/docker
+  settings:
+    repo: shibaobun/lokal
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags:
+      - ${DRONE_TAG}
+  when:
+    event:
+    - tag
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - _build
+      - deps
+      - assets/node_modules/
 
 services:
 - name: database
@@ -36,3 +73,11 @@ services:
     POSTGRES_USER: postgres
     POSTGRES_PASSWORD: postgres
     POSTGRES_DB: postgres
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/drone-cache
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock
