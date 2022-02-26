@@ -16,14 +16,16 @@ defmodule LokalWeb.ConnCase do
   """
 
   use ExUnit.CaseTemplate
+  import Lokal.Fixtures
+  alias Lokal.{Accounts, Accounts.User, Repo}
   alias Ecto.Adapters.SQL.Sandbox
-  alias Lokal.{Accounts, Repo}
 
   using do
     quote do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
+      import Lokal.Fixtures
       import LokalWeb.ConnCase
 
       alias LokalWeb.Router.Helpers, as: Routes
@@ -47,12 +49,17 @@ defmodule LokalWeb.ConnCase do
   It stores an updated connection and a registered user in the
   test context.
   """
+  @spec register_and_log_in_user(%{conn: Plug.Conn.t()}) ::
+          %{conn: Plug.Conn.t(), current_user: User.t()}
   def register_and_log_in_user(%{conn: conn}) do
-    user = Lokal.AccountsFixtures.user_fixture()
+    current_user = user_fixture() |> confirm_user()
+    %{conn: log_in_user(conn, current_user), current_user: current_user}
+  end
 
+  @spec confirm_user(User.t()) :: User.t()
+  def confirm_user(user) do
     {:ok, %{user: user}} = user |> Accounts.confirm_user_multi() |> Repo.transaction()
-
-    %{conn: log_in_user(conn, user), user: user}
+    user
   end
 
   @doc """

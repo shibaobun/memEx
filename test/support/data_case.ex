@@ -25,6 +25,7 @@ defmodule Lokal.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Lokal.DataCase
+      import Lokal.Fixtures
     end
   end
 
