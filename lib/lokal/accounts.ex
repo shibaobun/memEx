@@ -7,6 +7,7 @@ defmodule Lokal.Accounts do
   alias Lokal.{Mailer, Repo}
   alias Lokal.Accounts.{User, UserToken}
   alias Ecto.{Changeset, Multi}
+  alias Oban.Job
 
   ## Database getters
 
