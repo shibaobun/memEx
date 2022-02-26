@@ -1,10 +1,13 @@
 defmodule Lokal.Accounts.User do
   @moduledoc """
-  Schema for a registered user
+  A Lokal user
   """
 
   use Ecto.Schema
   import Ecto.Changeset
+  import LokalWeb.Gettext
+  alias Ecto.{Changeset, UUID}
+  alias Lokal.{Accounts.User, Invites.Invite}
 
   @derive {Inspect, except: [:password]}
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -14,9 +17,26 @@ defmodule Lokal.Accounts.User do
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
+    field :role, Ecto.Enum, values: [:admin, :user], default: :user
+
+    has_many :invites, Invite, on_delete: :delete_all
 
     timestamps()
   end
+
+  @type t :: %User{
+          id: id(),
+          email: String.t(),
+          password: String.t(),
+          hashed_password: String.t(),
+          confirmed_at: NaiveDateTime.t(),
+          role: atom(),
+          invites: [Invite.t()],
+          inserted_at: NaiveDateTime.t(),
+          updated_at: NaiveDateTime.t()
+        }
+  @type new_user :: %User{}
+  @type id :: UUID.t()
 
   @doc """
   A user changeset for registration.
@@ -35,22 +55,39 @@ defmodule Lokal.Accounts.User do
       validations on a LiveView form), this option can be set to `false`.
       Defaults to `true`.
   """
+  @spec registration_changeset(t() | new_user(), attrs :: map()) :: Changeset.t(t() | new_user())
+  @spec registration_changeset(t() | new_user(), attrs :: map(), opts :: keyword()) ::
+          Changeset.t(t() | new_user())
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :password, :role])
     |> validate_email()
     |> validate_password(opts)
   end
 
+  @doc """
+  A user changeset for role.
+
+  """
+  @spec role_changeset(t(), role :: atom()) :: Changeset.t(t())
+  def role_changeset(user, role) do
+    user |> cast(%{"role" => role}, [:role])
+  end
+
+  @spec validate_email(Changeset.t(t() | new_user())) :: Changeset.t(t() | new_user())
   defp validate_email(changeset) do
     changeset
     |> validate_required([:email])
-    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "must have the @ sign and no spaces")
+    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/,
+      message: dgettext("errors", "must have the @ sign and no spaces")
+    )
     |> validate_length(:email, max: 160)
     |> unsafe_validate_unique(:email, Lokal.Repo)
     |> unique_constraint(:email)
   end
 
+  @spec validate_password(Changeset.t(t() | new_user()), opts :: keyword()) ::
+          Changeset.t(t() | new_user())
   defp validate_password(changeset, opts) do
     changeset
     |> validate_required([:password])
@@ -61,6 +98,8 @@ defmodule Lokal.Accounts.User do
     |> maybe_hash_password(opts)
   end
 
+  @spec maybe_hash_password(Changeset.t(t() | new_user()), opts :: keyword()) ::
+          Changeset.t(t() | new_user())
   defp maybe_hash_password(changeset, opts) do
     hash_password? = Keyword.get(opts, :hash_password, true)
     password = get_change(changeset, :password)
@@ -79,13 +118,14 @@ defmodule Lokal.Accounts.User do
 
   It requires the email to change otherwise an error is added.
   """
+  @spec email_changeset(t(), attrs :: map()) :: Changeset.t(t())
   def email_changeset(user, attrs) do
     user
     |> cast(attrs, [:email])
     |> validate_email()
     |> case do
       %{changes: %{email: _}} = changeset -> changeset
-      %{} = changeset -> add_error(changeset, :email, "did not change")
+      %{} = changeset -> add_error(changeset, :email, dgettext("errors", "did not change"))
     end
   end
 
@@ -101,19 +141,22 @@ defmodule Lokal.Accounts.User do
       validations on a LiveView form), this option can be set to `false`.
       Defaults to `true`.
   """
+  @spec password_changeset(t(), attrs :: map()) :: Changeset.t(t())
+  @spec password_changeset(t(), attrs :: map(), opts :: keyword()) :: Changeset.t(t())
   def password_changeset(user, attrs, opts \\ []) do
     user
     |> cast(attrs, [:password])
-    |> validate_confirmation(:password, message: "does not match password")
+    |> validate_confirmation(:password, message: dgettext("errors", "does not match password"))
     |> validate_password(opts)
   end
 
   @doc """
   Confirms the account by setting `confirmed_at`.
   """
-  def confirm_changeset(user) do
+  @spec confirm_changeset(t() | Changeset.t(t())) :: Changeset.t(t())
+  def confirm_changeset(user_or_changeset) do
     now = NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second)
-    change(user, confirmed_at: now)
+    user_or_changeset |> change(confirmed_at: now)
   end
 
   @doc """
@@ -122,7 +165,8 @@ defmodule Lokal.Accounts.User do
   If there is no user or the user doesn't have a password, we call
   `Bcrypt.no_user_verify/0` to avoid timing attacks.
   """
-  def valid_password?(%Lokal.Accounts.User{hashed_password: hashed_password}, password)
+  @spec valid_password?(t(), String.t()) :: boolean()
+  def valid_password?(%User{hashed_password: hashed_password}, password)
       when is_binary(hashed_password) and byte_size(password) > 0 do
     Bcrypt.verify_pass(password, hashed_password)
   end
@@ -135,11 +179,10 @@ defmodule Lokal.Accounts.User do
   @doc """
   Validates the current password otherwise adds an error to the changeset.
   """
+  @spec validate_current_password(Changeset.t(t()), String.t()) :: Changeset.t(t())
   def validate_current_password(changeset, password) do
-    if valid_password?(changeset.data, password) do
-      changeset
-    else
-      add_error(changeset, :current_password, "is not valid")
-    end
+    if valid_password?(changeset.data, password),
+      do: changeset,
+      else: changeset |> add_error(:current_password, dgettext("errors", "is not valid"))
   end
 end
