@@ -37,12 +37,6 @@ defmodule LokalWeb.UserRegistrationControllerTest do
              }
 
       assert redirected_to(conn) =~ "/"
-
-      # Now do a logged in request and assert on the menu
-      conn = get(conn, "/")
-      response = html_response(conn, 200)
-      # user's email is recorded as admin
-      assert response =~ email
     end
 
     test "render errors for invalid data", %{conn: conn} do

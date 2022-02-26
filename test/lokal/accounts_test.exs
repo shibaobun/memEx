@@ -4,9 +4,9 @@ defmodule Lokal.AccountsTest do
   """
 
   use Lokal.DataCase
+  alias Ecto.Changeset
   alias Lokal.Accounts
   alias Lokal.Accounts.{User, UserToken}
-  alias Ecto.Changeset
 
   @moduletag :accounts_test
 

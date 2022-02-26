@@ -4,8 +4,8 @@ defmodule LokalWeb.InviteLive.FormComponent do
   """
 
   use LokalWeb, :live_component
-  alias Lokal.{Accounts.User, Invites, Invites.Invite}
   alias Ecto.Changeset
+  alias Lokal.{Accounts.User, Invites, Invites.Invite}
   alias Phoenix.LiveView.Socket
 
   @impl true
