@@ -1,26 +1,35 @@
-<div class="flex flex-col justify-center items-center space-y-4">
-  <h1 class="title text-primary-500 text-xl">
-    Forgot your password?
+<div class="mx-auto mb-8 max-w-2xl flex flex-col justify-center items-center space-y-4">
+  <h1 class="title text-primary-600 text-xl">
+    <%= dgettext("actions", "Forgot your password?") %>
   </h1>
+
   <%= form_for :user,
            Routes.user_reset_password_path(@conn, :create),
-           [class: "flex flex-col justify-center items-center space-y-4"],
+           [
+             class:
+               "flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
+           ],
            fn f -> %>
-    <div class="grid grid-cols-3 justify-center items-center text-center space-x-4">
-      <%= label(f, :email, class: "title text-lg text-primary-500") %>
-      <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
-    </div>
-    <%= submit("Send instructions to reset password", class: "btn btn-primary") %>
-    <hr class="hr">
-      <div class="flex flex-row justify-center items-center space-x-4">
-        <%= link("Register",
-          to: Routes.user_registration_path(@conn, :new),
-          class: "btn btn-primary"
-        ) %>
-        <%= link("Log in",
-          to: Routes.user_session_path(@conn, :new),
-          class: "btn btn-primary"
-        ) %>
-      </div>
+    <%= label(f, :email, class: "title text-lg text-primary-600") %>
+    <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
+
+    <%= submit(dgettext("actions", "Send instructions to reset password"),
+      class: "mx-auto btn btn-primary col-span-3"
+    ) %>
+  <% end %>
+
+  <hr class="hr" />
+
+  <div class="flex flex-row justify-center items-center space-x-4">
+    <%= if Accounts.allow_registration?() do %>
+      <%= link(dgettext("actions", "Register"),
+        to: Routes.user_registration_path(@conn, :new),
+        class: "btn btn-primary"
+      ) %>
     <% end %>
+    <%= link(dgettext("actions", "Log in"),
+      to: Routes.user_session_path(@conn, :new),
+      class: "btn btn-primary"
+    ) %>
   </div>
+</div>

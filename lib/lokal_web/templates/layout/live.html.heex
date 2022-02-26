@@ -1,17 +1,54 @@
-<main class="m-0 p-0 w-full h-full">
+<main class="mb-8 min-w-full">
   <header>
-    <.topbar current_user={assigns[:current_user]}>
-    </.topbar>
-    <%= if @flash && @flash |> Map.has_key?(:info) do %>
-      <p class="alert alert-info" role="alert" phx-click="lv:clear-flash" phx-value-key="info">
-        <%= live_flash(@flash, :info) %>
-      </p>
-    <% end %>
-    <%= if @flash && @flash |> Map.has_key?(:error) do %>
-      <p class="alert alert-danger" role="alert" phx-click="lv:clear-flash" phx-value-key="error">
-        <%= live_flash(@flash, :error) %>
-      </p>
-    <% end %>
+    <.topbar current_user={assigns[:current_user]}></.topbar>
+
+    <div class="mx-8 my-2 flex flex-col space-y-4 text-center">
+      <%= if @flash && @flash |> Map.has_key?("info") do %>
+        <p class="alert alert-info" role="alert" phx-click="lv:clear-flash" phx-value-key="info">
+          <%= live_flash(@flash, "info") %>
+        </p>
+      <% end %>
+
+      <%= if @flash && @flash |> Map.has_key?("error") do %>
+        <p
+          class="alert alert-danger"
+          role="alert"
+          phx-click="lv:clear-flash"
+          phx-value-key="error"
+        >
+          <%= live_flash(@flash, "error") %>
+        </p>
+      <% end %>
+    </div>
   </header>
-  <%= @inner_content %>
+
+  <div class="mx-4 sm:mx-8 md:mx-16">
+    <%= @inner_content %>
+  </div>
 </main>
+
+<div
+  id="loading"
+  class="fixed opacity-0 top-0 left-0 w-screen h-screen bg-white z-50
+  flex flex-col justify-center items-center space-y-4
+  transition-opacity ease-in-out duration-500"
+>
+  <h1 class="title text-2xl title-primary-500">
+    <%= gettext("Loading...") %>
+  </h1>
+
+  <i class="fas fa-3x fa-spin fa-cog"></i>
+</div>
+
+<div
+  id="disconnect"
+  class="fixed opacity-0 top-0 left-0 w-screen h-screen bg-white z-50
+  flex flex-col justify-center items-center space-y-4
+  transition-opacity ease-in-out duration-500"
+>
+  <h1 class="title text-2xl title-primary-500">
+    <%= gettext("Reconnecting...") %>
+  </h1>
+
+  <i class="fas fa-3x fa-fade fa-satellite-dish"></i>
+</div>

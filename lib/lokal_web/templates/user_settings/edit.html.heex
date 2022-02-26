@@ -1,82 +1,114 @@
-<div class="flex flex-col justify-center items-center space-y-4">
-  <h1 class="title text-primary-500 text-xl">
-    Settings
+<div class="mx-auto mb-8 max-w-2xl flex flex-col justify-center items-center space-y-4">
+  <h1 class="pb-4 title text-primary-600 text-xl">
+    <%= gettext("Settings") %>
   </h1>
-  <h3 class="title text-primary-500 text-lg">
-    Change email
-  </h3>
+
+  <hr class="hr" />
+
   <%= form_for @email_changeset,
            Routes.user_settings_path(@conn, :update),
-           [class: "flex flex-col justify-center items-center space-y-4"],
+           [
+             class:
+               "flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
+           ],
            fn f -> %>
-    <%= if @email_changeset.action do %>
-      <div class="alert alert-danger">
-        <p>Oops, something went wrong! Please check the errors below.</p>
+    <h3 class="title text-primary-600 text-lg col-span-3">
+      <%= dgettext("actions", "Change email") %>
+    </h3>
+
+    <%= if @email_changeset.action && not @email_changeset.valid? do %>
+      <div class="alert alert-danger col-span-3">
+        <p>
+          <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
+        </p>
       </div>
     <% end %>
+
     <%= hidden_input(f, :action, name: "action", value: "update_email") %>
-    <div class="grid grid-cols-3 justify-center items-center text-center space-x-4">
-      <%= label(f, :email, class: "title text-lg text-primary-500") %>
-      <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
-    </div>
-    <%= error_tag(f, :email) %>
-    <div class="grid grid-cols-3 justify-center items-center text-center space-x-4">
-      <%= label(f, :current_password,
-        for: "current_password_for_email",
-        class: "title text-lg text-primary-500"
-      ) %>
-      <%= password_input(f, :current_password,
-        required: true,
-        name: "current_password",
-        id: "current_password_for_email",
-        class: "input input-primary col-span-2"
-      ) %>
-    </div>
-    <%= error_tag(f, :current_password) %>
-    <%= submit("Change email", class: "btn btn-primary") %>
+
+    <%= label(f, :email, class: "title text-lg text-primary-600") %>
+    <%= email_input(f, :email, required: true, class: "mx-2 my-1 input input-primary col-span-2") %>
+    <%= error_tag(f, :email, "col-span-3") %>
+
+    <%= label(f, :current_password, gettext("Current password"),
+      for: "current_password_for_email",
+      class: "mx-2 my-1 title text-lg text-primary-600"
+    ) %>
+    <%= password_input(f, :current_password,
+      required: true,
+      name: "current_password",
+      id: "current_password_for_email",
+      class: "mx-2 my-1 input input-primary col-span-2"
+    ) %>
+    <%= error_tag(f, :current_password, "col-span-3") %>
+
+    <%= submit(dgettext("actions", "Change email"),
+      class: "mx-auto btn btn-primary col-span-3"
+    ) %>
   <% end %>
-  <h3 class="title text-primary-500 text-lg">
-    Change password
-  </h3>
+
+  <hr class="hr" />
+
   <%= form_for @password_changeset,
            Routes.user_settings_path(@conn, :update),
-           [class: "flex flex-col justify-center items-center space-y-4"],
+           [
+             class:
+               "flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
+           ],
            fn f -> %>
-    <%= if @password_changeset.action do %>
-      <div class="alert alert-danger">
-        <p>Oops, something went wrong! Please check the errors below.</p>
+    <h3 class="title text-primary-600 text-lg col-span-3">
+      <%= dgettext("actions", "Change password") %>
+    </h3>
+
+    <%= if @password_changeset.action && not @password_changeset.valid? do %>
+      <div class="alert alert-danger col-span-3">
+        <p>
+          <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
+        </p>
       </div>
     <% end %>
+
     <%= hidden_input(f, :action, name: "action", value: "update_password") %>
-    <div class="grid grid-cols-3 justify-center items-center text-center space-x-4">
-      <%= label(f, :password, "New password", class: "title text-lg text-primary-500") %>
-      <%= password_input(f, :password,
-        required: true,
-        class: "input input-primary col-span-2"
-      ) %>
-    </div>
-    <%= error_tag(f, :password) %>
-    <div class="grid grid-cols-3 justify-center items-center text-center space-x-4">
-      <%= label(f, :password_confirmation, "Confirm new password", class: "title text-lg text-primary-500") %>
-      <%= password_input(f, :password_confirmation,
-        required: true,
-        class: "input input-primary col-span-2"
-      ) %>
-    </div>
-    <%= error_tag(f, :password_confirmation) %>
-    <div class="grid grid-cols-3 justify-center items-center text-center space-x-4">
-      <%= label(f, :current_password,
-        for: "current_password_for_password",
-        class: "title text-lg text-primary-500"
-      ) %>
-      <%= password_input(f, :current_password,
-        required: true,
-        name: "current_password",
-        id: "current_password_for_password",
-        class: "input input-primary col-span-2"
-      ) %>
-    </div>
-    <%= error_tag(f, :current_password) %>
-    <%= submit("Change password", class: "btn btn-primary") %>
+
+    <%= label(f, :password, gettext("New password"), class: "title text-lg text-primary-600") %>
+    <%= password_input(f, :password,
+      required: true,
+      class: "mx-2 my-1 input input-primary col-span-2"
+    ) %>
+    <%= error_tag(f, :password, "col-span-3") %>
+
+    <%= label(f, :password_confirmation, gettext("Confirm new password"),
+      class: "title text-lg text-primary-600"
+    ) %>
+    <%= password_input(f, :password_confirmation,
+      required: true,
+      class: "mx-2 my-1 input input-primary col-span-2"
+    ) %>
+    <%= error_tag(f, :password_confirmation, "col-span-3") %>
+
+    <%= label(f, :current_password, gettext("Current password"),
+      for: "current_password_for_password",
+      class: "title text-lg text-primary-600"
+    ) %>
+    <%= password_input(f, :current_password,
+      required: true,
+      name: "current_password",
+      id: "current_password_for_password",
+      class: "mx-2 my-1 input input-primary col-span-2"
+    ) %>
+    <%= error_tag(f, :current_password, "col-span-3") %>
+
+    <%= submit(dgettext("actions", "Change password"),
+      class: "mx-auto btn btn-primary col-span-3"
+    ) %>
   <% end %>
+
+  <hr class="hr" />
+
+  <%= link(dgettext("actions", "Delete User"),
+    to: Routes.user_settings_path(@conn, :delete, @current_user),
+    method: :delete,
+    class: "btn btn-alert",
+    data: [confirm: dgettext("prompts", "Are you sure you want to delete your account?")]
+  ) %>
 </div>
