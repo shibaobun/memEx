@@ -69,3 +69,60 @@ msgstr ""
 #: lib/lokal_web/controllers/user_settings_controller.ex:78
 msgid "Your account has been deleted"
 msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/form_component.ex:59
+msgid "%{name} created successfully"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.ex:55
+#: lib/lokal_web/live/invite_live/index.ex:135
+msgid "%{name} deleted succesfully"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.ex:111
+msgid "%{name} disabled succesfully"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.ex:89
+msgid "%{name} enabled succesfully"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.ex:69
+msgid "%{name} updated succesfully"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/form_component.ex:41
+msgid "%{name} updated successfully"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:101
+#: lib/lokal_web/live/invite_live/index.html.heex:130
+msgid "Are you sure you want to delete %{email}? This action is permanent!"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:48
+msgid "Are you sure you want to delete the invite for %{name}?"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:73
+msgid "Are you sure you want to make %{name} unlimited?"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.ex:123
+msgid "Copied to clipboard"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/form_component.html.heex:30
+msgid "Saving..."
+msgstr ""

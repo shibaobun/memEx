@@ -4,8 +4,8 @@ defmodule Lokal.InvitesTest do
   """
 
   use Lokal.DataCase
-  alias Lokal.{Invites, Invites.Invite}
   alias Ecto.Changeset
+  alias Lokal.{Invites, Invites.Invite}
 
   @moduletag :invites_test
 

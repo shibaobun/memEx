@@ -72,3 +72,23 @@ msgstr ""
 #: lib/lokal_web/templates/user_reset_password/new.html.heex:16
 msgid "Send instructions to reset password"
 msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:32
+msgid "Copy to clipboard"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:16
+msgid "Create Invite"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:11
+msgid "Invite someone new!"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/form_component.html.heex:28
+msgid "Save"
+msgstr ""

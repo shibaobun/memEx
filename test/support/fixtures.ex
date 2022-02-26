@@ -8,8 +8,8 @@ defmodule Lokal.Fixtures do
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
   def valid_user_password, do: "hello world!"
 
-  @spec user_fixture() :: Accounts.User.t()
-  @spec user_fixture(attrs :: map()) :: Accounts.User.t()
+  @spec user_fixture() :: User.t()
+  @spec user_fixture(attrs :: map()) :: User.t()
   def user_fixture(attrs \\ %{}) do
     attrs
     |> Enum.into(%{
@@ -20,8 +20,8 @@ defmodule Lokal.Fixtures do
     |> unwrap_ok_tuple()
   end
 
-  @spec admin_fixture() :: Accounts.User.t()
-  @spec admin_fixture(attrs :: map()) :: Accounts.User.t()
+  @spec admin_fixture() :: User.t()
+  @spec admin_fixture(attrs :: map()) :: User.t()
   def admin_fixture(attrs \\ %{}) do
     attrs
     |> Enum.into(%{

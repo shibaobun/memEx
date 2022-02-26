@@ -17,8 +17,8 @@ defmodule LokalWeb.ConnCase do
 
   use ExUnit.CaseTemplate
   import Lokal.Fixtures
-  alias Lokal.{Accounts, Accounts.User, Repo}
   alias Ecto.Adapters.SQL.Sandbox
+  alias Lokal.{Accounts, Accounts.User, Repo}
 
   using do
     quote do

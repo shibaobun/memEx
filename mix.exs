@@ -12,6 +12,7 @@ defmodule Lokal.MixProject do
       aliases: aliases(),
       deps: deps(),
       dialyzer: [plt_add_apps: [:ex_unit]],
+      consolidate_protocols: Mix.env() not in [:dev, :test],
       # ExDoc
       name: "Lokal",
       source_url: "https://gitea.bubbletea.dev/shibao/lokal",

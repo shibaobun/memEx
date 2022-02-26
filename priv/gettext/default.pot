@@ -38,6 +38,8 @@ msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/components/topbar.ex:58
+#: lib/lokal_web/live/invite_live/index.ex:43
+#: lib/lokal_web/live/invite_live/index.html.heex:3
 msgid "Invites"
 msgstr ""
 
@@ -100,4 +102,54 @@ msgstr ""
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/live/page_live.ex:13
 msgid "Home"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:89
+msgid "Admins"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:58
+msgid "Disable"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.ex:35
+msgid "Edit Invite"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:62
+msgid "Enable"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/form_component.html.heex:20
+msgid "Name"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.ex:39
+msgid "New Invite"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:8
+msgid "No invites 😔"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:78
+msgid "Set Unlimited"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.html.heex:118
+msgid "Users"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/form_component.html.heex:24
+msgid "Uses left"
 msgstr ""
