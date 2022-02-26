@@ -7,7 +7,12 @@ defmodule LokalWeb.PageLive do
 
   @impl true
   def mount(_params, session, socket) do
-    {:ok, socket |> assign_defaults(session) |> assign(query: "", results: %{})}
+    socket =
+      socket
+      |> assign_defaults(session)
+      |> assign(page_title: gettext("Home"), query: "", results: %{})
+
+    {:ok, socket}
   end
 
   @impl true
