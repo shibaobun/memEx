@@ -1,4 +1,4 @@
-FROM elixir:1.12.2-alpine AS build
+FROM elixir:1.13-alpine AS build
 
 # install build dependencies
 RUN apk add --no-cache build-base npm git python3
@@ -34,7 +34,7 @@ RUN mix do phx.digest, gettext.extract
 RUN mix do compile, release
 
 # prepare release image
-FROM alpine:3.9 AS app
+FROM alpine:latest AS app
 
 RUN apk upgrade --no-cache && \
     apk add --no-cache bash openssl libgcc libstdc++ ncurses-libs
@@ -45,8 +45,9 @@ RUN chown nobody:nobody /app
 
 USER nobody:nobody
 
-COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/lokal /app
-COPY --from=build /app/priv/ /app/priv
+COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/lokal ./
+COPY --from=build --chown=nobody:nobody /app/priv /app/priv
+RUN chmod +x /app/priv/random.sh
 
 ENV HOME=/app
 
