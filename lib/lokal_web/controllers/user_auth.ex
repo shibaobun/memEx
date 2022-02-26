@@ -1,12 +1,13 @@
 defmodule LokalWeb.UserAuth do
   @moduledoc """
-  Module for any user authentication functions
+  Functions for user session and authentication
   """
 
   import Plug.Conn
   import Phoenix.Controller
   import LokalWeb.Gettext
   alias Lokal.{Accounts, Accounts.User}
+  alias LokalWeb.PageLive
   alias LokalWeb.Router.Helpers, as: Routes
 
   # Make the remember me cookie valid for 60 days.
@@ -32,6 +33,7 @@ defmodule LokalWeb.UserAuth do
 
   def log_in_user(conn, %User{confirmed_at: nil}, _params) do
     conn
+    |> fetch_flash()
     |> put_flash(
       :error,
       dgettext("errors", "You must confirm your account and log in to access this page.")
@@ -53,6 +55,11 @@ defmodule LokalWeb.UserAuth do
     |> redirect(to: user_return_to || signed_in_path(conn))
   end
 
+  @spec maybe_write_remember_me_cookie(
+          Plug.Conn.t(),
+          String.t() | any(),
+          %{required(String.t()) => String.t()} | any()
+        ) :: Plug.Conn.t()
   defp maybe_write_remember_me_cookie(conn, token, %{"remember_me" => "true"}) do
     put_resp_cookie(conn, @remember_me_cookie, token, @remember_me_options)
   end
@@ -149,9 +156,27 @@ defmodule LokalWeb.UserAuth do
       conn
     else
       conn
-      |> put_flash(:error, "You must confirm your account and log in to access this page.")
+      |> put_flash(
+        :error,
+        dgettext("errors", "You must confirm your account and log in to access this page.")
+      )
       |> maybe_store_return_to()
       |> redirect(to: Routes.user_session_path(conn, :new))
+      |> halt()
+    end
+  end
+
+  @doc """
+  Used for routes that require the user to be an admin.
+  """
+  def require_role(conn, role: role_atom) do
+    if conn.assigns[:current_user] && conn.assigns.current_user.role == role_atom do
+      conn
+    else
+      conn
+      |> put_flash(:error, dgettext("errors", "You are not authorized to view this page."))
+      |> maybe_store_return_to()
+      |> redirect(to: Routes.live_path(conn, PageLive))
       |> halt()
     end
   end

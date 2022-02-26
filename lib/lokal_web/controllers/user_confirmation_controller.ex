@@ -1,10 +1,11 @@
 defmodule LokalWeb.UserConfirmationController do
   use LokalWeb, :controller
 
+  import LokalWeb.Gettext
   alias Lokal.Accounts
 
   def new(conn, _params) do
-    render(conn, "new.html")
+    render(conn, "new.html", page_title: gettext("Confirm your account"))
   end
 
   def create(conn, %{"user" => %{"email" => email}}) do
@@ -19,8 +20,11 @@ defmodule LokalWeb.UserConfirmationController do
     conn
     |> put_flash(
       :info,
-      "If your email is in our system and it has not been confirmed yet, " <>
-        "you will receive an email with instructions shortly."
+      dgettext(
+        "prompts",
+        "If your email is in our system and it has not been confirmed yet, " <>
+          "you will receive an email with instructions shortly."
+      )
     )
     |> redirect(to: "/")
   end
@@ -29,9 +33,9 @@ defmodule LokalWeb.UserConfirmationController do
   # leaked token giving the user access to the account.
   def confirm(conn, %{"token" => token}) do
     case Accounts.confirm_user(token) do
-      {:ok, _} ->
+      {:ok, %{email: email}} ->
         conn
-        |> put_flash(:info, "User confirmed successfully.")
+        |> put_flash(:info, dgettext("prompts", "%{email} confirmed successfully.", email: email))
         |> redirect(to: "/")
 
       :error ->
@@ -45,7 +49,10 @@ defmodule LokalWeb.UserConfirmationController do
 
           %{} ->
             conn
-            |> put_flash(:error, "User confirmation link is invalid or it has expired.")
+            |> put_flash(
+              :error,
+              dgettext("errors", "User confirmation link is invalid or it has expired.")
+            )
             |> redirect(to: "/")
         end
     end

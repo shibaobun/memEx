@@ -6,7 +6,7 @@ defmodule LokalWeb.UserResetPasswordController do
   plug :get_user_by_reset_password_token when action in [:edit, :update]
 
   def new(conn, _params) do
-    render(conn, "new.html")
+    render(conn, "new.html", page_title: gettext("Forgot your password?"))
   end
 
   def create(conn, %{"user" => %{"email" => email}}) do
@@ -21,13 +21,20 @@ defmodule LokalWeb.UserResetPasswordController do
     conn
     |> put_flash(
       :info,
-      "If your email is in our system, you will receive instructions to reset your password shortly."
+      dgettext(
+        "prompts",
+        "If your email is in our system, you will receive instructions to " <>
+          "reset your password shortly."
+      )
     )
     |> redirect(to: "/")
   end
 
   def edit(conn, _params) do
-    render(conn, "edit.html", changeset: Accounts.change_user_password(conn.assigns.user))
+    render(conn, "edit.html",
+      changeset: Accounts.change_user_password(conn.assigns.user),
+      page_title: gettext("Reset your password")
+    )
   end
 
   # Do not log in the user after reset password to avoid a
@@ -36,7 +43,7 @@ defmodule LokalWeb.UserResetPasswordController do
     case Accounts.reset_user_password(conn.assigns.user, user_params) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "Password reset successfully.")
+        |> put_flash(:info, dgettext("prompts", "Password reset successfully."))
         |> redirect(to: Routes.user_session_path(conn, :new))
 
       {:error, changeset} ->
@@ -51,7 +58,10 @@ defmodule LokalWeb.UserResetPasswordController do
       conn |> assign(:user, user) |> assign(:token, token)
     else
       conn
-      |> put_flash(:error, "Reset password link is invalid or it has expired.")
+      |> put_flash(
+        :error,
+        dgettext("errors", "Reset password link is invalid or it has expired.")
+      )
       |> redirect(to: "/")
       |> halt()
     end
