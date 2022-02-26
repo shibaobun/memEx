@@ -1,9 +1,14 @@
 defmodule Lokal.AccountsTest do
-  use Lokal.DataCase
+  @moduledoc """
+  This tests the accounts module
+  """
 
+  use Lokal.DataCase
   alias Lokal.Accounts
-  import Lokal.AccountsFixtures
   alias Lokal.Accounts.{User, UserToken}
+  alias Ecto.Changeset
+
+  @moduletag :accounts_test
 
   describe "get_user_by_email/1" do
     test "does not return the user if the email does not exist" do
@@ -58,7 +63,8 @@ defmodule Lokal.AccountsTest do
     end
 
     test "validates email and password when given" do
-      {:error, changeset} = Accounts.register_user(%{email: "not valid", password: "not valid"})
+      {:error, changeset} =
+        Accounts.register_user(%{"email" => "not valid", "password" => "not valid"})
 
       assert %{
                email: ["must have the @ sign and no spaces"],
@@ -68,24 +74,27 @@ defmodule Lokal.AccountsTest do
 
     test "validates maximum values for email and password for security" do
       too_long = String.duplicate("db", 100)
-      {:error, changeset} = Accounts.register_user(%{email: too_long, password: too_long})
+      {:error, changeset} = Accounts.register_user(%{"email" => too_long, "password" => too_long})
       assert "should be at most 160 character(s)" in errors_on(changeset).email
       assert "should be at most 80 character(s)" in errors_on(changeset).password
     end
 
     test "validates email uniqueness" do
       %{email: email} = user_fixture()
-      {:error, changeset} = Accounts.register_user(%{email: email})
+      {:error, changeset} = Accounts.register_user(%{"email" => email})
       assert "has already been taken" in errors_on(changeset).email
 
       # Now try with the upper cased email too, to check that email case is ignored.
-      {:error, changeset} = Accounts.register_user(%{email: String.upcase(email)})
+      {:error, changeset} = Accounts.register_user(%{"email" => String.upcase(email)})
       assert "has already been taken" in errors_on(changeset).email
     end
 
     test "registers users with a hashed password" do
       email = unique_user_email()
-      {:ok, user} = Accounts.register_user(%{email: email, password: valid_user_password()})
+
+      {:ok, user} =
+        Accounts.register_user(%{"email" => email, "password" => valid_user_password()})
+
       assert user.email == email
       assert is_binary(user.hashed_password)
       assert is_nil(user.confirmed_at)
@@ -95,7 +104,7 @@ defmodule Lokal.AccountsTest do
 
   describe "change_user_registration/2" do
     test "returns a changeset" do
-      assert %Ecto.Changeset{} = changeset = Accounts.change_user_registration(%User{})
+      assert %Changeset{} = changeset = Accounts.change_user_registration(%User{})
       assert changeset.required == [:password, :email]
     end
 
@@ -115,7 +124,7 @@ defmodule Lokal.AccountsTest do
 
   describe "change_user_email/2" do
     test "returns a user changeset" do
-      assert %Ecto.Changeset{} = changeset = Accounts.change_user_email(%User{})
+      assert %Changeset{} = changeset = Accounts.change_user_email(%User{})
       assert changeset.required == [:email]
     end
   end
@@ -132,7 +141,7 @@ defmodule Lokal.AccountsTest do
 
     test "validates email", %{user: user} do
       {:error, changeset} =
-        Accounts.apply_user_email(user, valid_user_password(), %{email: "not valid"})
+        Accounts.apply_user_email(user, valid_user_password(), %{"email" => "not valid"})
 
       assert %{email: ["must have the @ sign and no spaces"]} = errors_on(changeset)
     end
@@ -141,7 +150,7 @@ defmodule Lokal.AccountsTest do
       too_long = String.duplicate("db", 100)
 
       {:error, changeset} =
-        Accounts.apply_user_email(user, valid_user_password(), %{email: too_long})
+        Accounts.apply_user_email(user, valid_user_password(), %{"email" => too_long})
 
       assert "should be at most 160 character(s)" in errors_on(changeset).email
     end
@@ -150,21 +159,21 @@ defmodule Lokal.AccountsTest do
       %{email: email} = user_fixture()
 
       {:error, changeset} =
-        Accounts.apply_user_email(user, valid_user_password(), %{email: email})
+        Accounts.apply_user_email(user, valid_user_password(), %{"email" => email})
 
       assert "has already been taken" in errors_on(changeset).email
     end
 
     test "validates current password", %{user: user} do
       {:error, changeset} =
-        Accounts.apply_user_email(user, "invalid", %{email: unique_user_email()})
+        Accounts.apply_user_email(user, "invalid", %{"email" => unique_user_email()})
 
       assert %{current_password: ["is not valid"]} = errors_on(changeset)
     end
 
     test "applies the email without persisting it", %{user: user} do
       email = unique_user_email()
-      {:ok, user} = Accounts.apply_user_email(user, valid_user_password(), %{email: email})
+      {:ok, user} = Accounts.apply_user_email(user, valid_user_password(), %{"email" => email})
       assert user.email == email
       assert Accounts.get_user!(user.id).email != email
     end
@@ -234,7 +243,7 @@ defmodule Lokal.AccountsTest do
 
   describe "change_user_password/2" do
     test "returns a user changeset" do
-      assert %Ecto.Changeset{} = changeset = Accounts.change_user_password(%User{})
+      assert %Changeset{} = changeset = Accounts.change_user_password(%User{})
       assert changeset.required == [:password]
     end
 
@@ -258,8 +267,8 @@ defmodule Lokal.AccountsTest do
     test "validates password", %{user: user} do
       {:error, changeset} =
         Accounts.update_user_password(user, valid_user_password(), %{
-          password: "not valid",
-          password_confirmation: "another"
+          "password" => "not valid",
+          "password_confirmation" => "another"
         })
 
       assert %{
@@ -272,14 +281,14 @@ defmodule Lokal.AccountsTest do
       too_long = String.duplicate("db", 100)
 
       {:error, changeset} =
-        Accounts.update_user_password(user, valid_user_password(), %{password: too_long})
+        Accounts.update_user_password(user, valid_user_password(), %{"password" => too_long})
 
       assert "should be at most 80 character(s)" in errors_on(changeset).password
     end
 
     test "validates current password", %{user: user} do
       {:error, changeset} =
-        Accounts.update_user_password(user, "invalid", %{password: valid_user_password()})
+        Accounts.update_user_password(user, "invalid", %{"password" => valid_user_password()})
 
       assert %{current_password: ["is not valid"]} = errors_on(changeset)
     end
@@ -287,7 +296,7 @@ defmodule Lokal.AccountsTest do
     test "updates the password", %{user: user} do
       {:ok, user} =
         Accounts.update_user_password(user, valid_user_password(), %{
-          password: "new valid password"
+          "password" => "new valid password"
         })
 
       assert is_nil(user.password)
@@ -299,7 +308,7 @@ defmodule Lokal.AccountsTest do
 
       {:ok, _} =
         Accounts.update_user_password(user, valid_user_password(), %{
-          password: "new valid password"
+          "password" => "new valid password"
         })
 
       refute Repo.get_by(UserToken, user_id: user.id)
@@ -467,8 +476,8 @@ defmodule Lokal.AccountsTest do
     test "validates password", %{user: user} do
       {:error, changeset} =
         Accounts.reset_user_password(user, %{
-          password: "not valid",
-          password_confirmation: "another"
+          "password" => "not valid",
+          "password_confirmation" => "another"
         })
 
       assert %{
@@ -479,19 +488,21 @@ defmodule Lokal.AccountsTest do
 
     test "validates maximum values for password for security", %{user: user} do
       too_long = String.duplicate("db", 100)
-      {:error, changeset} = Accounts.reset_user_password(user, %{password: too_long})
+      {:error, changeset} = Accounts.reset_user_password(user, %{"password" => too_long})
       assert "should be at most 80 character(s)" in errors_on(changeset).password
     end
 
     test "updates the password", %{user: user} do
-      {:ok, updated_user} = Accounts.reset_user_password(user, %{password: "new valid password"})
+      {:ok, updated_user} =
+        Accounts.reset_user_password(user, %{"password" => "new valid password"})
+
       assert is_nil(updated_user.password)
       assert Accounts.get_user_by_email_and_password(user.email, "new valid password")
     end
 
     test "deletes all tokens for the given user", %{user: user} do
       _ = Accounts.generate_user_session_token(user)
-      {:ok, _} = Accounts.reset_user_password(user, %{password: "new valid password"})
+      {:ok, _} = Accounts.reset_user_password(user, %{"password" => "new valid password"})
       refute Repo.get_by(UserToken, user_id: user.id)
     end
   end

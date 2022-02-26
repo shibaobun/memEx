@@ -1,9 +1,13 @@
 defmodule LokalWeb.UserResetPasswordControllerTest do
-  use LokalWeb.ConnCase, async: true
+  @moduledoc """
+  Tests the user reset password controller
+  """
 
-  alias Lokal.Accounts
-  alias Lokal.Repo
-  import Lokal.AccountsFixtures
+  use LokalWeb.ConnCase, async: true
+  import LokalWeb.Gettext
+  alias Lokal.{Accounts, Repo}
+
+  @moduletag :user_reset_password_controller_test
 
   setup do
     %{user: user_fixture()}
@@ -13,7 +17,7 @@ defmodule LokalWeb.UserResetPasswordControllerTest do
     test "renders the reset password page", %{conn: conn} do
       conn = get(conn, Routes.user_reset_password_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ "Forgot your password?"
+      assert response =~ dgettext("actions", "Forgot your password?")
     end
   end
 
@@ -26,7 +30,13 @@ defmodule LokalWeb.UserResetPasswordControllerTest do
         })
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) =~ "If your email is in our system"
+
+      assert get_flash(conn, :info) =~
+               dgettext(
+                 "prompts",
+                 "If your email is in our system, you will receive instructions to reset your password shortly."
+               )
+
       assert Repo.get_by!(Accounts.UserToken, user_id: user.id).context == "reset_password"
     end
 
@@ -37,7 +47,13 @@ defmodule LokalWeb.UserResetPasswordControllerTest do
         })
 
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :info) =~ "If your email is in our system"
+
+      assert get_flash(conn, :info) =~
+               dgettext(
+                 "prompts",
+                 "If your email is in our system, you will receive instructions to reset your password shortly."
+               )
+
       assert Repo.all(Accounts.UserToken) == []
     end
   end
@@ -54,13 +70,15 @@ defmodule LokalWeb.UserResetPasswordControllerTest do
 
     test "renders reset password", %{conn: conn, token: token} do
       conn = get(conn, Routes.user_reset_password_path(conn, :edit, token))
-      assert html_response(conn, 200) =~ "Reset password"
+      assert html_response(conn, 200) =~ dgettext("actions", "Reset password")
     end
 
     test "does not render reset password with invalid token", %{conn: conn} do
       conn = get(conn, Routes.user_reset_password_path(conn, :edit, "oops"))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :error) =~ "Reset password link is invalid or it has expired"
+
+      assert get_flash(conn, :error) =~
+               dgettext("errors", "Reset password link is invalid or it has expired")
     end
   end
 
@@ -85,7 +103,7 @@ defmodule LokalWeb.UserResetPasswordControllerTest do
 
       assert redirected_to(conn) == Routes.user_session_path(conn, :new)
       refute get_session(conn, :user_token)
-      assert get_flash(conn, :info) =~ "Password reset successfully"
+      assert get_flash(conn, :info) =~ dgettext("prompts", "Password reset successfully")
       assert Accounts.get_user_by_email_and_password(user.email, "new valid password")
     end
 
@@ -99,15 +117,17 @@ defmodule LokalWeb.UserResetPasswordControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ "Reset password"
-      assert response =~ "should be at least 12 character(s)"
-      assert response =~ "does not match password"
+      assert response =~ gettext("Reset password")
+      assert response =~ dgettext("errors", "should be at least 12 character(s)")
+      assert response =~ dgettext("errors", "does not match password")
     end
 
     test "does not reset password with invalid token", %{conn: conn} do
       conn = put(conn, Routes.user_reset_password_path(conn, :update, "oops"))
       assert redirected_to(conn) == "/"
-      assert get_flash(conn, :error) =~ "Reset password link is invalid or it has expired"
+
+      assert get_flash(conn, :error) =~
+               dgettext("errors", "Reset password link is invalid or it has expired")
     end
   end
 end
