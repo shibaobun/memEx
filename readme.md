@@ -14,40 +14,42 @@ shopping today!
 
 # Installation
 
-1. Clone the repo
-2. Run `mix setup`
-3. Run `mix phx.server` to start the development server
+1. Install [Docker Compose](https://docs.docker.com/compose/install/) or alternatively [Docker Desktop](https://docs.docker.com/desktop/) on your machine.
+1. Copy the example [docker-compose.yml](https://gitea.bubbletea.dev/shibao/lokal/src/branch/stable/docker-compose.yml). into your local machine where you want.
+   Bind mounts are created in the same directory by default.
+1. Set the configuration variables in `docker-compose.yml`. You'll need to run
+   `docker run -it shibaobun/lokal /app/priv/random.sh` to generate a new
+   secret key base.
+1. Use `docker-compose up` or `docker-compose up -d` to start the container!
+
+The first created user will be created as an admin.
 
 # Configuration
 
-For development, I recommend setting environment variables with
-[direnv](https://direnv.net).
+You can use the following environment variables to configure Lokal in
+[docker-compose.yml](https://gitea.bubbletea.dev/shibao/lokal/src/branch/stable/docker-compose.yml).
 
-## `MIX_ENV=dev`
-
-In `dev` mode, Lokal will listen for these environment variables on compile.
-
-- `HOST`: External url to generate links with. Set these especially if you're
-  behind a reverse proxy. Defaults to `localhost`.
-- `PORT`: External port for urls. Defaults to `443`.
-- `DATABASE_URL`: Controls the database url to connect to. Defaults to
-  `ecto://postgres:postgres@localhost/lokal_dev`.
-
-## `MIX_ENV=prod`
-
-In `prod` mode (or in the Docker container), Lokal will listen for these environment variables at runtime.
-
-- `HOST`: External url to generate links with. Set these especially if you're
-  behind a reverse proxy. Defaults to `localhost`.
-- `PORT`: Internal port to bind to. Defaults to `4000` and attempts to bind to
-  `0.0.0.0`. Must be reverse proxied!
+- `HOST`: External url to generate links with. Must be set with your hosted
+  domain name! I.e. `lokal.mywebsite.tld`
+- `PORT`: Internal port to bind to. Defaults to `4000`. Must be reverse proxied!
 - `DATABASE_URL`: Controls the database url to connect to. Defaults to
   `ecto://postgres:postgres@lokal-db/lokal`.
-- `ECTO_IPV6`: Controls if Ecto should use ipv6 to connect to PostgreSQL.
+- `ECTO_IPV6`: If set to `true`, Ecto should use ipv6 to connect to PostgreSQL.
   Defaults to `false`.
 - `POOL_SIZE`: Controls the pool size to use with PostgreSQL. Defaults to `10`.
 - `SECRET_KEY_BASE`: Secret key base used to sign cookies. Must be generated
-  with `mix phx.gen.secret` and set for server to start.
+  with `docker run -it shibaobun/lokal mix phx.gen.secret` and set for server to start.
+- `REGISTRATION`: Controls if user sign-up should be invite only or set to
+  public. Set to `public` to enable public registration. Defaults to `invite`.
+- `LOCALE`: Sets a custom locale. Defaults to `en_US`.
+- `SMTP_HOST`: The url for your SMTP email provider. Must be set
+- `SMTP_PORT`: The port for your SMTP relay. Defaults to `587`.
+- `SMTP_USERNAME`: The username for your SMTP relay. Must be set!
+- `SMTP_PASSWORD`: The password for your SMTP relay. Must be set!
+- `SMTP_SSL`: Set to `true` to enable SSL for emails. Defaults to `false`.
+- `EMAIL_FROM`: Sets the sender email in sent emails. Defaults to
+  `no-reply@HOST` where `HOST` was previously defined.
+- `EMAIL_NAME`: Sets the sender name in sent emails. Defaults to "Lokal".
 
 ---
 

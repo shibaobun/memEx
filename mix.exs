@@ -60,6 +60,7 @@ defmodule Lokal.MixProject do
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:swoosh, "~> 1.6"},
       {:gen_smtp, "~> 1.0"},
+      {:phoenix_swoosh, "~> 1.0"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
