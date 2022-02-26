@@ -7,9 +7,26 @@ services:
     container_name: lokal
     restart: always
     environment:
-      - DATABASE_URL="ecto://postgres:postgres@lokal-db/lokal"
-      # generate a random base64 string 64 characters long, preferably not from a website
-      - SECRET_KEY_BASE="change-me-to-something-random-this-is-really-important-change-it"
+      # HOST must be set!
+      # - HOST=your.domain.com
+      - DATABASE_URL=ecto://postgres:postgres@lokal-db/lokal
+      # Use `docker run -it shibaobun/lokal /app/priv/random.sh` to generate a secret key base
+      # - SECRET_KEY_BASE=change-me-this-is-really-important-seriously-change-it
+      # uncomment to enable public sign ups, not recommended
+      # - REGISTRATION=public
+      # SMTP host must be set!
+      # - SMTP_HOST=smtp.mailserver.tld
+      # optional, default is 587
+      # - SMTP_PORT=587
+      # SMTP username/passwords must be set!
+      # - SMTP_USERNAME=username
+      # - SMTP_PASSWORD=password
+      # optional, default is false
+      # - SMTP_SSL=false
+      # optional, default is format below
+      # - EMAIL_FROM=no-reply@lokal.example.tld
+      # optional, default is "Lokal"
+      # - EMAIL_NAME=Lokal
     expose:
       - "4000"
     depends_on:
@@ -18,10 +35,10 @@ services:
   lokal-db:
     image: postgres:13
     container_name: lokal-db
-    restart: always
     environment:
       - POSTGRES_USER="postgres"
       - POSTGRES_PASSWORD="postgres"
       - POSTGRES_DB="lokal"
+    restart: always
     volumes:
       - ./data:/var/lib/postgresql/data
