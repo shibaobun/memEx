@@ -1,15 +1,15 @@
 @layer components {
   .input {
-    @apply rounded-lg px-4 py-2 border;
+    @apply rounded-lg px-4 py-2 border focus:outline-none;
     @apply shadow-sm focus:shadow-lg;
     @apply transition-all duration-300 ease-in-out;
   }
-  
+
   .input-primary {
     @apply border-primary-500 hover:border-primary-600 active:border-primary-600;
     @apply text-black;
   }
-  
+
   .checkbox {
     -ms-transform: scale(1.5);
     -moz-transform: scale(1.5);
@@ -17,25 +17,41 @@
     -o-transform: scale(1.5);
     transform: scale(1.5);
     padding: 10px;
+    margin: 1em auto;
   }
-  
+
   .title {
     @apply leading-5 tracking-wide;
   }
-  
+
   .btn {
     @apply focus:outline-none px-4 py-2 rounded-lg;
     @apply shadow-sm focus:shadow-lg;
     @apply transition-all duration-300 ease-in-out;
   }
-  
+
   .btn-primary {
     @apply bg-primary-500 focus:bg-primary-600 active:bg-primary-600;
-    @apply bg-primary-500 focus:bg-primary-600 active:bg-primary-600;
+    @apply border-primary-500 focus:border-primary-600 active:border-primary-600;
     @apply text-white;
   }
-  
+
+  .btn-alert {
+    @apply bg-red-600 focus:bg-red-700 active:bg-red-800;
+    @apply border-red-600 focus:border-red-700 active:border-red-800;
+    @apply text-white;
+  }
+
   .hr {
-    @apply border border-primary-500 w-full max-w-2xl;
+    @apply border border-primary-300 w-full max-w-2xl;
+  }
+
+  .hr-light {
+    @apply border border-white w-full max-w-2xl;
+  }
+
+  .link {
+    @apply hover:underline;
+    @apply transition-colors duration-500 ease-in-out;
   }
 }

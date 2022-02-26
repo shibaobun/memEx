@@ -10,6 +10,30 @@ $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
 
 @import "components";
 
+/* fix firefox scrollbars */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgba(161, 161, 170, var(--tw-bg-opacity)) white;
+}
+
+.fa-fade {
+  animation: pulse 1s ease-in-out 0s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { scale: 0.95; opacity: 0.5; }
+  100% { scale: 1.0; opacity: 1; }
+}
+
+.phx-connected > #disconnect, #loading {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.phx-loading:not(.phx-error) > #loading, .phx-error > #disconnect {
+  opacity: 0.95 !important;
+}
+
 /* Alerts and form errors used by phx.new */
 .alert {
   padding: 15px;
