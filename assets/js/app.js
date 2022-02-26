@@ -39,6 +39,10 @@ const liveSocket = new LiveSocket('/live', Socket, {
   hooks: { MaintainAttrs }
 })
 
+// alpine.js
+window.Alpine = Alpine
+Alpine.start()
+
 // Show progress bar on live navigation and form submits
 topbar.config({ barColors: { 0: '#29d' }, shadowColor: 'rgba(0, 0, 0, .3)' })
 window.addEventListener('phx:page-loading-start', info => topbar.show())
@@ -53,6 +57,12 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
-// alpine.js
-window.Alpine = Alpine
-Alpine.start()
+// Copy to clipboard
+window.addEventListener('lokal:clipcopy', (event) => {
+  if ('clipboard' in navigator) {
+    const text = event.target.textContent
+    navigator.clipboard.writeText(text)
+  } else {
+    window.alert('Sorry, your browser does not support clipboard copy.')
+  }
+})
