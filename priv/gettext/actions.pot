@@ -1,0 +1,74 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_settings/edit.html.heex:16
+#: lib/lokal_web/templates/user_settings/edit.html.heex:45
+msgid "Change email"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_settings/edit.html.heex:60
+#: lib/lokal_web/templates/user_settings/edit.html.heex:101
+msgid "Change password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_settings/edit.html.heex:108
+msgid "Delete User"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_registration/new.html.heex:43
+#: lib/lokal_web/templates/user_reset_password/new.html.heex:3
+#: lib/lokal_web/templates/user_session/new.html.heex:45
+msgid "Forgot your password?"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/components/topbar.ex:95
+#: lib/lokal_web/templates/user_confirmation/new.html.heex:30
+#: lib/lokal_web/templates/user_registration/new.html.heex:39
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:48
+#: lib/lokal_web/templates/user_reset_password/new.html.heex:30
+#: lib/lokal_web/templates/user_session/new.html.heex:3
+#: lib/lokal_web/templates/user_session/new.html.heex:33
+msgid "Log in"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/components/topbar.ex:88
+#: lib/lokal_web/templates/user_confirmation/new.html.heex:25
+#: lib/lokal_web/templates/user_registration/new.html.heex:3
+#: lib/lokal_web/templates/user_registration/new.html.heex:33
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:43
+#: lib/lokal_web/templates/user_reset_password/new.html.heex:25
+#: lib/lokal_web/templates/user_session/new.html.heex:40
+msgid "Register"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_confirmation/new.html.heex:3
+#: lib/lokal_web/templates/user_confirmation/new.html.heex:16
+msgid "Resend confirmation instructions"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:3
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:34
+msgid "Reset password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_reset_password/new.html.heex:16
+msgid "Send instructions to reset password"
+msgstr ""

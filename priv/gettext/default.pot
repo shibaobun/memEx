@@ -1,0 +1,103 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_settings/edit.html.heex:80
+msgid "Confirm new password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_confirmation_controller.ex:8
+msgid "Confirm your account"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_settings/edit.html.heex:33
+#: lib/lokal_web/templates/user_settings/edit.html.heex:89
+msgid "Current password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_reset_password_controller.ex:9
+msgid "Forgot your password?"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/components/invite_card.ex:27
+msgid "Invite Disabled"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/components/topbar.ex:58
+msgid "Invites"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_session/new.html.heex:28
+msgid "Keep me logged in for 60 days"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/layout/live.html.heex:37
+msgid "Loading..."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_session_controller.ex:8
+msgid "Log in"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_settings/edit.html.heex:73
+msgid "New password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/layout/live.html.heex:50
+msgid "Reconnecting..."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_registration_controller.ex:35
+msgid "Register"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_reset_password_controller.ex:36
+msgid "Reset your password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_settings_controller.ex:10
+#: lib/lokal_web/templates/user_settings/edit.html.heex:3
+msgid "Settings"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/page_live.html.leex:7
+msgid "Shop from your community"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/components/invite_card.ex:22
+msgid "Uses Left:"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/page_live.html.leex:3
+msgid "Welcome to Lokal"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/page_live.ex:13
+msgid "Home"
+msgstr ""

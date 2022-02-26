@@ -1,0 +1,96 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal/accounts/email.ex:30
+msgid "Confirm your %{name} account"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/confirm_email.html.eex:3
+#: lib/lokal_web/templates/email/confirm_email.txt.eex:2
+#: lib/lokal_web/templates/email/reset_password.html.eex:3
+#: lib/lokal_web/templates/email/reset_password.txt.eex:2
+#: lib/lokal_web/templates/email/update_email.html.eex:3
+#: lib/lokal_web/templates/email/update_email.txt.eex:2
+msgid "Hi %{email},"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/confirm_email.html.eex:22
+msgid "If you didn't create an account at %{name}, please ignore this."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/confirm_email.txt.eex:10
+msgid "If you didn't create an account at %{url}, please ignore this."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/reset_password.html.eex:16
+#: lib/lokal_web/templates/email/update_email.html.eex:16
+msgid "If you didn't request this change from %{name}, please ignore this."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/reset_password.txt.eex:8
+#: lib/lokal_web/templates/email/update_email.txt.eex:8
+msgid "If you didn't request this change from %{url}, please ignore this."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal/accounts/email.ex:37
+msgid "Reset your %{name} password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/layout/email.txt.eex:9
+msgid "This email was sent from %{name} at %{url}, the self-hosted firearm tracker website."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/layout/email.html.heex:17
+msgid "This email was sent from %{name}, the self-hosted firearm tracker website."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal/accounts/email.ex:44
+msgid "Update your %{name} email"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/confirm_email.html.eex:9
+msgid "Welcome to %{name}!"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/confirm_email.txt.eex:4
+msgid "Welcome to %{name}%!"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/update_email.html.eex:8
+#: lib/lokal_web/templates/email/update_email.txt.eex:4
+msgid "You can change your email by visiting the URL below:"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/confirm_email.html.eex:14
+#: lib/lokal_web/templates/email/confirm_email.txt.eex:6
+msgid "You can confirm your account by visiting the URL below:"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/email/reset_password.html.eex:8
+#: lib/lokal_web/templates/email/reset_password.txt.eex:4
+msgid "You can reset your password by visiting the URL below:"
+msgstr ""
