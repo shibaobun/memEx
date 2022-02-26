@@ -57,6 +57,7 @@ defmodule Lokal.MixProject do
       {:phoenix_live_dashboard, "~> 0.6"},
       {:oban, "~> 2.10"},
       # {:esbuild, "~> 0.3", runtime: Mix.env() == :dev},
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:swoosh, "~> 1.6"},
       {:gen_smtp, "~> 1.0"},
       {:telemetry_metrics, "~> 0.6"},
@@ -82,7 +83,7 @@ defmodule Lokal.MixProject do
       setup: ["deps.get", "compile", "ecto.setup", "cmd npm install --prefix assets"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      format: ["cmd npm run format --prefix assets", "format"],
+      format: ["cmd npm run format --prefix assets", "format", "gettext.extract"],
       test: [
         "cmd npm run test --prefix assets",
         "dialyzer",
