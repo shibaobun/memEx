@@ -1,0 +1,33 @@
+<div>
+  <h2 class="mb-8 text-center title text-xl text-primary-600">
+    <%= @title %>
+  </h2>
+  <.form
+    let={f}
+    for={@changeset}
+    id="invite-form"
+    class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save"
+  >
+    <%= if @changeset.action && not @changeset.valid? do %>
+      <div class="invalid-feedback col-span-3 text-center">
+        <%= changeset_errors(@changeset) %>
+      </div>
+    <% end %>
+
+    <%= label(f, :name, gettext("Name"), class: "title text-lg text-primary-600") %>
+    <%= text_input(f, :name, class: "input input-primary col-span-2") %>
+    <%= error_tag(f, :name, "col-span-3") %>
+
+    <%= label(f, :uses_left, gettext("Uses left"), class: "title text-lg text-primary-600") %>
+    <%= number_input(f, :uses_left, min: 0, class: "input input-primary col-span-2") %>
+    <%= error_tag(f, :uses_left, "col-span-3") %>
+
+    <%= submit(dgettext("actions", "Save"),
+      class: "mx-auto btn btn-primary col-span-3",
+      phx_disable_with: dgettext("prompts", "Saving...")
+    ) %>
+  </.form>
+</div>

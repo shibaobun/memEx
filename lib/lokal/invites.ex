@@ -4,8 +4,8 @@ defmodule Lokal.Invites do
   """
 
   import Ecto.Query, warn: false
-  alias Lokal.{Accounts.User, Invites.Invite, Repo}
   alias Ecto.Changeset
+  alias Lokal.{Accounts.User, Invites.Invite, Repo}
 
   @invite_token_length 20
 
