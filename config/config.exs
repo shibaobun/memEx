@@ -18,7 +18,8 @@ config :lokal, LokalWeb.Endpoint,
   secret_key_base: "KH59P0iZixX5gP/u+zkxxG8vAAj6vgt0YqnwEB5JP5K+E567SsqkCz69uWShjE7I",
   render_errors: [view: LokalWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Lokal.PubSub,
-  live_view: [signing_salt: "zOLgd3lr"]
+  live_view: [signing_salt: "zOLgd3lr"],
+  registration: System.get_env("REGISTRATION") || "invite"
 
 config :lokal, Lokal.Application, automigrate: false
 
@@ -38,6 +39,15 @@ config :lokal, Lokal.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
+
+# Gettext
+config :gettext, :default_locale, "en_US"
+
+# Configure Oban
+config :lokal, Oban,
+  repo: Lokal.Repo,
+  plugins: [Oban.Plugins.Pruner],
+  queues: [default: 10, mailers: 20]
 
 # Configure esbuild (the version is required)
 # config :esbuild,
