@@ -1,0 +1,52 @@
+<div class="w-full overflow-x-auto border border-gray-600 rounded-lg shadow-lg bg-black">
+  <table class="min-w-full table-auto text-center bg-white">
+    <thead class="border-b border-primary-600">
+      <tr>
+        <%= for %{key: key, label: label} = column <- @columns do %>
+          <%= if column |> Map.get(:sortable, true) do %>
+            <th class={"p-2 #{column[:class]}"}>
+              <span
+                class="cursor-pointer"
+                phx-click="sort_by"
+                phx-value-sort-key={key}
+                phx-target={@myself}
+              >
+                <span class="underline"><%= label %></span>
+                <%= if @last_sort_key == key do %>
+                  <%= case @sort_mode do %>
+                    <% :asc -> %>
+                      <i class="fas fa-sm fa-chevron-down"></i>
+                    <% :desc -> %>
+                      <i class="fas fa-sm fa-chevron-up"></i>
+                  <% end %>
+                <% else %>
+                  <i class="fas fa-sm fa-chevron-up opacity-0"></i>
+                <% end %>
+              </span>
+            </th>
+          <% else %>
+            <th class={"p-2 #{column[:class]}"}>
+              <%= label %>
+            </th>
+          <% end %>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for values <- @rows do %>
+        <tr>
+          <%= for %{key: key} = value <- @columns do %>
+            <td class={"p-2 #{value[:class]}"}>
+              <%= case values |> Map.get(key) do %>
+                <% {_custom_sort_value, value} -> %>
+                  <%= value %>
+                <% value -> %>
+                  <%= value %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
