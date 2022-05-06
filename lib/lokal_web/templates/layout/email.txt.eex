@@ -7,6 +7,5 @@
 =====================
 
 <%= dgettext("emails",
-  "This email was sent from %{name} at %{url}, the self-hosted firearm tracker website.",
-  name: "Lokal",
-  url: Routes.live_url(Endpoint, PageLive)) %>
+  "This email was sent from Lokal at %{url}, the self-hosted firearm tracker website.",
+  url: Routes.live_url(Endpoint, HomeLive)) %>

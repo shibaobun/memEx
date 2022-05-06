@@ -3,14 +3,13 @@
     <%= dgettext("actions", "Log in") %>
   </h1>
 
-  <%= form_for @conn,
-           Routes.user_session_path(@conn, :create),
-           [
-             as: :user,
-             class:
-               "flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
-           ],
-           fn f -> %>
+  <.form
+    let={f}
+    for={@conn}
+    action={Routes.user_session_path(@conn, :create)}
+    as="user"
+    class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
+  >
     <%= if @error_message do %>
       <div class="alert alert-danger col-span-3">
         <p>
@@ -31,7 +30,7 @@
     <%= checkbox(f, :remember_me, class: "checkbox col-span-2") %>
 
     <%= submit(dgettext("actions", "Log in"), class: "mx-auto btn btn-primary col-span-3") %>
-  <% end %>
+  </.form>
 
   <hr class="hr" />
 

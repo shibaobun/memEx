@@ -2,7 +2,7 @@ defmodule LokalWeb.UserSettingsController do
   use LokalWeb, :controller
   import LokalWeb.Gettext
   alias Lokal.Accounts
-  alias LokalWeb.{PageLive, UserAuth}
+  alias LokalWeb.{HomeLive, UserAuth}
 
   plug :assign_email_and_password_changesets
 
@@ -93,7 +93,7 @@ defmodule LokalWeb.UserSettingsController do
 
       conn
       |> put_flash(:error, dgettext("prompts", "Your account has been deleted"))
-      |> redirect(to: Routes.live_path(conn, PageLive))
+      |> redirect(to: Routes.live_path(conn, HomeLive))
     else
       conn
       |> put_flash(:error, dgettext("errors", "Unable to delete user"))

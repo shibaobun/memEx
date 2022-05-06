@@ -3,7 +3,7 @@ defmodule LokalWeb.UserRegistrationController do
   import LokalWeb.Gettext
   alias Lokal.{Accounts, Invites}
   alias Lokal.Accounts.User
-  alias LokalWeb.{Endpoint, PageLive}
+  alias LokalWeb.{Endpoint, HomeLive}
 
   def new(conn, %{"invite" => invite_token}) do
     invite = Invites.get_invite_by_token(invite_token)
@@ -13,7 +13,7 @@ defmodule LokalWeb.UserRegistrationController do
     else
       conn
       |> put_flash(:error, dgettext("errors", "Sorry, this invite was not found or expired"))
-      |> redirect(to: Routes.live_path(Endpoint, PageLive))
+      |> redirect(to: Routes.live_path(Endpoint, HomeLive))
     end
   end
 
@@ -23,7 +23,7 @@ defmodule LokalWeb.UserRegistrationController do
     else
       conn
       |> put_flash(:error, dgettext("errors", "Sorry, public registration is disabled"))
-      |> redirect(to: Routes.live_path(Endpoint, PageLive))
+      |> redirect(to: Routes.live_path(Endpoint, HomeLive))
     end
   end
 
@@ -44,7 +44,7 @@ defmodule LokalWeb.UserRegistrationController do
     else
       conn
       |> put_flash(:error, dgettext("errors", "Sorry, this invite was not found or expired"))
-      |> redirect(to: Routes.live_path(Endpoint, PageLive))
+      |> redirect(to: Routes.live_path(Endpoint, HomeLive))
     end
   end
 
@@ -54,7 +54,7 @@ defmodule LokalWeb.UserRegistrationController do
     else
       conn
       |> put_flash(:error, dgettext("errors", "Sorry, public registration is disabled"))
-      |> redirect(to: Routes.live_path(Endpoint, PageLive))
+      |> redirect(to: Routes.live_path(Endpoint, HomeLive))
     end
   end
 

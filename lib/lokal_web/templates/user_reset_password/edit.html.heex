@@ -3,13 +3,12 @@
     <%= dgettext("actions", "Reset password") %>
   </h1>
 
-  <%= form_for @changeset,
-           Routes.user_reset_password_path(@conn, :update, @token),
-           [
-             class:
-               "flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
-           ],
-           fn f -> %>
+  <.form
+    let={f}
+    for={@changeset}
+    action={Routes.user_reset_password_path(@conn, :update, @token)}
+    class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
+  >
     <%= if @changeset.action && not @changeset.valid? do %>
       <div class="alert alert-danger col-span-3">
         <p>
@@ -34,7 +33,7 @@
     <%= submit(dgettext("actions", "Reset password"),
       class: "mx-auto btn btn-primary col-span-3"
     ) %>
-  <% end %>
+  </.form>
 
   <hr class="hr" />
 

@@ -1,4 +1,4 @@
-defmodule LokalWeb.PageLiveTest do
+defmodule LokalWeb.HomeLiveTest do
   use LokalWeb.ConnCase
 
   import Phoenix.LiveViewTest

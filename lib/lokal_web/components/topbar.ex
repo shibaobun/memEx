@@ -6,7 +6,7 @@ defmodule LokalWeb.Components.Topbar do
   use LokalWeb, :component
 
   alias Lokal.Accounts
-  alias LokalWeb.{Endpoint, PageLive}
+  alias LokalWeb.{Endpoint, HomeLive}
 
   def topbar(assigns) do
     assigns =
@@ -17,7 +17,7 @@ defmodule LokalWeb.Components.Topbar do
       <div class="flex flex-col sm:flex-row justify-between items-center">
         <div class="mb-4 sm:mb-0 sm:mr-8 flex flex-row justify-start items-center space-x-2">
           <%= live_redirect("Lokal",
-            to: Routes.live_path(Endpoint, PageLive),
+            to: Routes.live_path(Endpoint, HomeLive),
             class: "mx-2 my-1 leading-5 text-xl text-white hover:underline"
           ) %>
 

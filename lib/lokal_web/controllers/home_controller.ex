@@ -1,4 +1,8 @@
-defmodule LokalWeb.PageController do
+defmodule LokalWeb.HomeController do
+  @moduledoc """
+  Controller for home page
+  """
+
   use LokalWeb, :controller
 
   def index(conn, _params) do
