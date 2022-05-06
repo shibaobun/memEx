@@ -77,7 +77,7 @@ msgid "Are you sure you want to delete %{email}? This action is permanent!"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/invite_live/index.ex:129
+#: lib/lokal_web/live/invite_live/index.ex:127
 msgid "Copied to clipboard"
 msgstr ""
 
@@ -102,22 +102,22 @@ msgid "%{invite_name} created successfully"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/invite_live/index.ex:55
+#: lib/lokal_web/live/invite_live/index.ex:53
 msgid "%{invite_name} deleted succesfully"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/invite_live/index.ex:116
+#: lib/lokal_web/live/invite_live/index.ex:114
 msgid "%{invite_name} disabled succesfully"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/invite_live/index.ex:92
+#: lib/lokal_web/live/invite_live/index.ex:90
 msgid "%{invite_name} enabled succesfully"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/invite_live/index.ex:70
+#: lib/lokal_web/live/invite_live/index.ex:68
 msgid "%{invite_name} updated succesfully"
 msgstr ""
 
@@ -127,7 +127,7 @@ msgid "%{invite_name} updated successfully"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/invite_live/index.ex:141
+#: lib/lokal_web/live/invite_live/index.ex:139
 msgid "%{user_email} deleted succesfully"
 msgstr ""
 

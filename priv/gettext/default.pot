@@ -38,7 +38,7 @@ msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/components/topbar.ex:56
-#: lib/lokal_web/live/invite_live/index.ex:43
+#: lib/lokal_web/live/invite_live/index.ex:41
 #: lib/lokal_web/live/invite_live/index.html.heex:3
 msgid "Invites"
 msgstr ""
@@ -100,7 +100,7 @@ msgid "Welcome to Lokal"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/home_live.ex:13
+#: lib/lokal_web/live/home_live.ex:10
 msgid "Home"
 msgstr ""
 
@@ -115,7 +115,7 @@ msgid "Disable"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/invite_live/index.ex:35
+#: lib/lokal_web/live/invite_live/index.ex:33
 msgid "Edit Invite"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgid "Name"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/invite_live/index.ex:39
+#: lib/lokal_web/live/invite_live/index.ex:37
 msgid "New Invite"
 msgstr ""
 
@@ -155,6 +155,7 @@ msgid "Uses left"
 msgstr ""
 
 #, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_registration/new.html.heex:36
 #: lib/lokal_web/templates/user_settings/edit.html.heex:126
 msgid "English"
 msgstr ""
@@ -162,4 +163,9 @@ msgstr ""
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/components/user_card.ex:30
 msgid "User registered on"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_registration/new.html.heex:32
+msgid "Language"
 msgstr ""
