@@ -1,4 +1,4 @@
-defmodule LokalWeb.PageLive do
+defmodule LokalWeb.HomeLive do
   @moduledoc """
   Liveview for the main home page
   """

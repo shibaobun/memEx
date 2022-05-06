@@ -7,7 +7,7 @@ defmodule LokalWeb.UserAuth do
   import Phoenix.Controller
   import LokalWeb.Gettext
   alias Lokal.{Accounts, Accounts.User}
-  alias LokalWeb.PageLive
+  alias LokalWeb.HomeLive
   alias LokalWeb.Router.Helpers, as: Routes
 
   # Make the remember me cookie valid for 60 days.
@@ -176,7 +176,7 @@ defmodule LokalWeb.UserAuth do
       conn
       |> put_flash(:error, dgettext("errors", "You are not authorized to view this page."))
       |> maybe_store_return_to()
-      |> redirect(to: Routes.live_path(conn, PageLive))
+      |> redirect(to: Routes.live_path(conn, HomeLive))
       |> halt()
     end
   end

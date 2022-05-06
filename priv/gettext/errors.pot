@@ -124,8 +124,8 @@ msgid "Not found"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/user_registration/new.html.heex:16
-#: lib/lokal_web/templates/user_reset_password/edit.html.heex:16
+#: lib/lokal_web/templates/user_registration/new.html.heex:15
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:15
 #: lib/lokal_web/templates/user_settings/edit.html.heex:21
 #: lib/lokal_web/templates/user_settings/edit.html.heex:64
 #: lib/lokal_web/templates/user_settings/edit.html.heex:119

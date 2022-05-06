@@ -38,7 +38,9 @@ defmodule LokalWeb.InviteLive.FormComponent do
     socket =
       case invite |> Invites.update_invite(invite_params, current_user) do
         {:ok, %{name: invite_name}} ->
-          prompt = dgettext("prompts", "%{name} updated successfully", name: invite_name)
+          prompt =
+            dgettext("prompts", "%{invite_name} updated successfully", invite_name: invite_name)
+
           socket |> put_flash(:info, prompt) |> push_redirect(to: return_to)
 
         {:error, %Changeset{} = changeset} ->
@@ -56,7 +58,9 @@ defmodule LokalWeb.InviteLive.FormComponent do
     socket =
       case current_user |> Invites.create_invite(invite_params) do
         {:ok, %{name: invite_name}} ->
-          prompt = dgettext("prompts", "%{name} created successfully", name: invite_name)
+          prompt =
+            dgettext("prompts", "%{invite_name} created successfully", invite_name: invite_name)
+
           socket |> put_flash(:info, prompt) |> push_redirect(to: return_to)
 
         {:error, %Changeset{} = changeset} ->

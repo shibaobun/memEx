@@ -44,7 +44,7 @@ msgid "Invites"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/user_session/new.html.heex:28
+#: lib/lokal_web/templates/user_session/new.html.heex:27
 msgid "Keep me logged in for 60 days"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgid "Settings"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/page_live.html.leex:7
+#: lib/lokal_web/live/home_live.html.heex:7
 msgid "Shop from your community"
 msgstr ""
 
@@ -95,12 +95,12 @@ msgid "Uses Left:"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/page_live.html.leex:3
+#: lib/lokal_web/live/home_live.html.heex:3
 msgid "Welcome to Lokal"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/page_live.ex:13
+#: lib/lokal_web/live/home_live.ex:13
 msgid "Home"
 msgstr ""
 
@@ -157,4 +157,9 @@ msgstr ""
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/user_settings/edit.html.heex:126
 msgid "English"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/components/user_card.ex:30
+msgid "User registered on"
 msgstr ""

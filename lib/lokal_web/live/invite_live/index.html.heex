@@ -45,8 +45,8 @@
              phx_value_id: invite.id,
              data: [
                confirm:
-                 dgettext("prompts", "Are you sure you want to delete the invite for %{name}?",
-                   name: invite.name
+                 dgettext("prompts", "Are you sure you want to delete the invite for %{invite_name}?",
+                   invite_name: invite.name
                  ),
                qa: "delete-#{invite.id}"
              ] do %>
@@ -70,8 +70,8 @@
             phx-click="set_unlimited"
             phx-value-id={invite.id}
             data-confirm={
-              dgettext("prompts", "Are you sure you want to make %{name} unlimited?",
-                name: invite.name
+              dgettext("prompts", "Are you sure you want to make %{invite_name} unlimited?",
+                invite_name: invite.name
               )
             }
           >

@@ -35,7 +35,7 @@ defmodule LokalWeb.Router do
   scope "/", LokalWeb do
     pipe_through :browser
 
-    live "/", PageLive
+    live "/", HomeLive
   end
 
   ## Authentication routes

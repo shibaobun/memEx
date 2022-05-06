@@ -1,7 +1,7 @@
 defmodule LokalWeb.ErrorView do
   use LokalWeb, :view
   import LokalWeb.Components.Topbar
-  alias LokalWeb.{Endpoint, PageLive}
+  alias LokalWeb.{Endpoint, HomeLive}
 
   def template_not_found(error_path, _assigns) do
     error_string =

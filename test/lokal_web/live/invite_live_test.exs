@@ -46,7 +46,8 @@ defmodule LokalWeb.InviteLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.invite_index_path(conn, :index))
 
-      assert html =~ dgettext("prompts", "%{name} created successfully", name: "some name")
+      assert html =~
+               dgettext("prompts", "%{invite_name} created successfully", invite_name: "some name")
 
       assert html =~ "some name"
     end
@@ -70,7 +71,9 @@ defmodule LokalWeb.InviteLiveTest do
         |> follow_redirect(conn, Routes.invite_index_path(conn, :index))
 
       assert html =~
-               dgettext("prompts", "%{name} updated successfully", name: "some updated name")
+               dgettext("prompts", "%{invite_name} updated successfully",
+                 invite_name: "some updated name"
+               )
 
       assert html =~ "some updated name"
     end

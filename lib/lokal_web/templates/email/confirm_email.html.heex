@@ -3,23 +3,21 @@
     <%= dgettext("emails", "Hi %{email},", email: @user.email) %>
   </span>
 
-  <br/>
+  <br />
 
   <span style="margin-bottom: 1em; font-size: 1.25em;">
-    <%= dgettext("emails", "Welcome to %{name}!", name: "Lokal") %>
+    <%= dgettext("emails", "Welcome to Lokal") %>
   </span>
 
-  <br/>
+  <br />
 
   <%= dgettext("emails", "You can confirm your account by visiting the URL below:") %>
 
-  <br/>
+  <br />
 
-  <a style="margin: 1em; color: rgb(31, 31, 31);" href="<%= @url %>"><%= @url %></a>
+  <a style="margin: 1em; color: rgb(31, 31, 31);" href={@url}><%= @url %></a>
 
-  <br/>
+  <br />
 
-  <%= dgettext("emails",
-    "If you didn't create an account at %{name}, please ignore this.",
-    name: "Lokal") %>
+  <%= dgettext("emails", "If you didn't create an account at Lokal, please ignore this.") %>
 </div>
