@@ -28,7 +28,7 @@ msgid "Delete User"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/user_registration/new.html.heex:42
+#: lib/lokal_web/templates/user_registration/new.html.heex:51
 #: lib/lokal_web/templates/user_reset_password/new.html.heex:3
 #: lib/lokal_web/templates/user_session/new.html.heex:44
 msgid "Forgot your password?"
@@ -37,7 +37,7 @@ msgstr ""
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/components/topbar.ex:93
 #: lib/lokal_web/templates/user_confirmation/new.html.heex:29
-#: lib/lokal_web/templates/user_registration/new.html.heex:38
+#: lib/lokal_web/templates/user_registration/new.html.heex:47
 #: lib/lokal_web/templates/user_reset_password/edit.html.heex:47
 #: lib/lokal_web/templates/user_reset_password/new.html.heex:29
 #: lib/lokal_web/templates/user_session/new.html.heex:3
@@ -49,7 +49,7 @@ msgstr ""
 #: lib/lokal_web/components/topbar.ex:86
 #: lib/lokal_web/templates/user_confirmation/new.html.heex:24
 #: lib/lokal_web/templates/user_registration/new.html.heex:3
-#: lib/lokal_web/templates/user_registration/new.html.heex:32
+#: lib/lokal_web/templates/user_registration/new.html.heex:41
 #: lib/lokal_web/templates/user_reset_password/edit.html.heex:42
 #: lib/lokal_web/templates/user_reset_password/new.html.heex:24
 #: lib/lokal_web/templates/user_session/new.html.heex:39

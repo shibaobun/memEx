@@ -196,6 +196,6 @@ msgid "must have the @ sign and no spaces"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/live/invite_live/index.ex:20
+#: lib/lokal_web/live/invite_live/index.ex:18
 msgid "You are not authorized to view this page"
 msgstr ""
