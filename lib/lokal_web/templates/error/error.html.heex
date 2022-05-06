@@ -8,7 +8,8 @@
       <%= dgettext("errors", "Error") %>| Lokal
     </title>
     <link rel="stylesheet" href="/css/app.css" />
-    <script defer type="text/javascript" src="/js/app.js"></script>
+    <script defer type="text/javascript" src="/js/app.js">
+    </script>
   </head>
   <body class="pb-8 m-0 p-0 w-full h-full">
     <header>
@@ -16,9 +17,7 @@
     </header>
 
     <div class="pb-8 w-full flex flex-col justify-center items-center text-center">
-      <div
-        class="p-8 sm:p-16 w-full flex flex-col justify-center items-center space-y-4 max-w-3xl"
-      >
+      <div class="p-8 sm:p-16 w-full flex flex-col justify-center items-center space-y-4 max-w-3xl">
         <h1 class="title text-primary-600 text-3xl">
           <%= @error_string %>
         </h1>
