@@ -18,12 +18,18 @@ defmodule LokalWeb.Components.UserCard do
       </h1>
 
       <h3 class="px-4 py-2 rounded-lg title text-lg">
-        <%= if @user.confirmed_at |> is_nil() do %>
-          Email unconfirmed
-        <% else %>
-          <p>User was confirmed at</p>
-          <%= @user.confirmed_at |> display_datetime() %>
-        <% end %>
+        <p>
+          <%= if @user.confirmed_at |> is_nil() do %>
+            Email unconfirmed
+          <% else %>
+            User was confirmed at <%= @user.confirmed_at |> display_datetime() %>
+          <% end %>
+        </p>
+
+        <p>
+          <%= gettext("User registered on") %>
+          <%= @user.inserted_at |> display_datetime() %>
+        </p>
       </h3>
 
       <%= if @inner_block do %>
