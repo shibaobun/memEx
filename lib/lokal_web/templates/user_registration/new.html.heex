@@ -30,6 +30,15 @@
     <%= password_input(f, :password, required: true, class: "input input-primary col-span-2") %>
     <%= error_tag(f, :password, "col-span-3") %>
 
+    <%= label(f, :locale, gettext("Language"), class: "title text-lg text-primary-600") %>
+    <%= select(
+      f,
+      :locale,
+      [{gettext("English"), "en_US"}],
+      class: "input input-primary col-span-2"
+    ) %>
+    <%= error_tag(f, :locale) %>
+
     <%= submit(dgettext("actions", "Register"), class: "mx-auto btn btn-primary col-span-3") %>
   <% end %>
 

@@ -16,12 +16,12 @@ msgid "%{email} confirmed successfully."
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/controllers/user_settings_controller.ex:28
+#: lib/lokal_web/controllers/user_settings_controller.ex:29
 msgid "A link to confirm your email change has been sent to the new address."
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/user_settings/edit.html.heex:112
+#: lib/lokal_web/templates/user_settings/edit.html.heex:145
 msgid "Are you sure you want to delete your account?"
 msgstr ""
 
@@ -31,7 +31,7 @@ msgid "Are you sure you want to log out?"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/controllers/user_settings_controller.ex:60
+#: lib/lokal_web/controllers/user_settings_controller.ex:77
 msgid "Email changed successfully."
 msgstr ""
 
@@ -56,7 +56,7 @@ msgid "Password reset successfully."
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/controllers/user_settings_controller.ex:47
+#: lib/lokal_web/controllers/user_settings_controller.ex:49
 msgid "Password updated successfully."
 msgstr ""
 
@@ -66,7 +66,7 @@ msgid "Please check your email to verify your account"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/controllers/user_settings_controller.ex:78
+#: lib/lokal_web/controllers/user_settings_controller.ex:95
 msgid "Your account has been deleted"
 msgstr ""
 
@@ -125,4 +125,14 @@ msgstr ""
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/form_component.html.heex:30
 msgid "Saving..."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_settings/edit.html.heex:135
+msgid "Are you sure you want to change your language?"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_settings_controller.ex:65
+msgid "Language updated successfully."
 msgstr ""

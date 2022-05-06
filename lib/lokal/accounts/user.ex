@@ -18,6 +18,7 @@ defmodule Lokal.Accounts.User do
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
     field :role, Ecto.Enum, values: [:admin, :user], default: :user
+    field :locale, :string
 
     has_many :invites, Invite, on_delete: :delete_all
 
@@ -32,6 +33,7 @@ defmodule Lokal.Accounts.User do
           confirmed_at: NaiveDateTime.t(),
           role: atom(),
           invites: [Invite.t()],
+          locale: String.t() | nil,
           inserted_at: NaiveDateTime.t(),
           updated_at: NaiveDateTime.t()
         }
@@ -60,7 +62,7 @@ defmodule Lokal.Accounts.User do
           Changeset.t(t() | new_user())
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password, :role])
+    |> cast(attrs, [:email, :password, :role, :locale])
     |> validate_email()
     |> validate_password(opts)
   end
@@ -184,5 +186,15 @@ defmodule Lokal.Accounts.User do
     if valid_password?(changeset.data, password),
       do: changeset,
       else: changeset |> add_error(:current_password, dgettext("errors", "is not valid"))
+  end
+
+  @doc """
+  A changeset for changing the user's locale
+  """
+  @spec locale_changeset(t() | Changeset.t(t()), locale :: String.t() | nil) :: Changeset.t(t())
+  def locale_changeset(user_or_changeset, locale) do
+    user_or_changeset
+    |> cast(%{"locale" => locale}, [:locale])
+    |> validate_required(:locale)
   end
 end

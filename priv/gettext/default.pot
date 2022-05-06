@@ -21,7 +21,7 @@ msgid "Confirm your account"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/user_settings/edit.html.heex:33
+#: lib/lokal_web/templates/user_settings/edit.html.heex:34
 #: lib/lokal_web/templates/user_settings/edit.html.heex:89
 msgid "Current password"
 msgstr ""
@@ -80,7 +80,7 @@ msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_settings_controller.ex:10
-#: lib/lokal_web/templates/user_settings/edit.html.heex:3
+#: lib/lokal_web/templates/user_settings/edit.html.heex:5
 msgid "Settings"
 msgstr ""
 
@@ -152,4 +152,9 @@ msgstr ""
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/form_component.html.heex:24
 msgid "Uses left"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_settings/edit.html.heex:128
+msgid "English"
 msgstr ""

@@ -96,7 +96,7 @@ In `dev` mode, Lokal will listen for these environment variables at runtime.
   Defaults to `false`.
 - `POOL_SIZE`: Controls the pool size to use with PostgreSQL. Defaults to `10`.
 - `REGISTRATION`: Controls if user sign-up should be invite only or set to public. Set to `public` to enable public registration. Defaults to `invite`.
-- `LOCALE`: Sets a custom locale. Defaults to `en_US`.
+- `LOCALE`: Sets a custom default locale. Defaults to `en_US`.
 
 ## `MIX_ENV=test`
 

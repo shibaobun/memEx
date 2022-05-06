@@ -10,9 +10,7 @@ defmodule LokalWeb.InviteLive.Index do
   alias Phoenix.LiveView.JS
 
   @impl true
-  def mount(_params, session, socket) do
-    %{assigns: %{current_user: current_user}} = socket = socket |> assign_defaults(session)
-
+  def mount(_params, _session, %{assigns: %{current_user: current_user}} = socket) do
     socket =
       if current_user |> Map.get(:role) == :admin do
         socket |> display_invites()

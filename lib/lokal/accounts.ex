@@ -270,6 +270,35 @@ defmodule Lokal.Accounts do
   end
 
   @doc """
+  Returns an `%Changeset{}` for changing the user locale.
+
+  ## Examples
+
+      iex> change_user_locale(user)
+      %Changeset{data: %User{}}
+
+  """
+  @spec change_user_locale(User.t()) :: Changeset.t(User.t())
+  def change_user_locale(%{locale: locale} = user), do: User.locale_changeset(user, locale)
+
+  @doc """
+  Updates the user locale.
+
+  ## Examples
+
+      iex> update_user_locale(user, "valid locale")
+      {:ok, %User{}}
+
+      iex> update_user_password(user, "invalid locale")
+      {:error, %Changeset{}}
+
+  """
+  @spec update_user_locale(User.t(), locale :: String.t()) ::
+          {:ok, User.t()} | {:error, Changeset.t(User.t())}
+  def update_user_locale(user, locale),
+    do: user |> User.locale_changeset(locale) |> Repo.update()
+
+  @doc """
   Deletes a user. must be performed by an admin or the same user!
 
   ## Examples
