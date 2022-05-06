@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/user_settings/edit.html.heex:80
+#: lib/lokal_web/templates/user_settings/edit.html.heex:78
 msgid "Confirm new password"
 msgstr ""
 
@@ -21,8 +21,8 @@ msgid "Confirm your account"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/user_settings/edit.html.heex:34
-#: lib/lokal_web/templates/user_settings/edit.html.heex:89
+#: lib/lokal_web/templates/user_settings/edit.html.heex:32
+#: lib/lokal_web/templates/user_settings/edit.html.heex:87
 msgid "Current password"
 msgstr ""
 
@@ -32,12 +32,12 @@ msgid "Forgot your password?"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/components/invite_card.ex:27
+#: lib/lokal_web/components/invite_card.ex:25
 msgid "Invite Disabled"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/components/topbar.ex:58
+#: lib/lokal_web/components/topbar.ex:56
 #: lib/lokal_web/live/invite_live/index.ex:43
 #: lib/lokal_web/live/invite_live/index.html.heex:3
 msgid "Invites"
@@ -59,7 +59,7 @@ msgid "Log in"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/user_settings/edit.html.heex:73
+#: lib/lokal_web/templates/user_settings/edit.html.heex:71
 msgid "New password"
 msgstr ""
 
@@ -80,7 +80,7 @@ msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_settings_controller.ex:10
-#: lib/lokal_web/templates/user_settings/edit.html.heex:5
+#: lib/lokal_web/templates/user_settings/edit.html.heex:3
 msgid "Settings"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgid "Shop from your community"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/components/invite_card.ex:22
+#: lib/lokal_web/components/invite_card.ex:20
 msgid "Uses Left:"
 msgstr ""
 
@@ -155,6 +155,6 @@ msgid "Uses left"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/user_settings/edit.html.heex:128
+#: lib/lokal_web/templates/user_settings/edit.html.heex:126
 msgid "English"
 msgstr ""

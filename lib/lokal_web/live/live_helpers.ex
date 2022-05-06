@@ -63,9 +63,7 @@ defmodule LokalWeb.LiveHelpers do
           <i class="fa-fw fa-lg fas fa-times"></i>
         <% end %>
 
-        <div
-          class="overflow-x-hidden overflow-y-auto w-full p-8 flex flex-col space-y-4 justify-start items-center"
-        >
+        <div class="overflow-x-hidden overflow-y-auto w-full p-8 flex flex-col space-y-4 justify-start items-center">
           <%= render_slot(@inner_block) %>
         </div>
       </div>

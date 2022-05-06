@@ -58,7 +58,7 @@ msgid "This email was sent from %{name} at %{url}, the self-hosted firearm track
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal_web/templates/layout/email.html.heex:17
+#: lib/lokal_web/templates/layout/email.html.heex:13
 msgid "This email was sent from %{name}, the self-hosted firearm tracker website."
 msgstr ""
 

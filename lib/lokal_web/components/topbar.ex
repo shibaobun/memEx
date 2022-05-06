@@ -31,10 +31,8 @@ defmodule LokalWeb.Components.Topbar do
 
         <hr class="mb-2 sm:hidden hr-light" />
 
-        <ul
-          class="flex flex-row flex-wrap justify-center items-center
-          text-lg text-white text-ellipsis"
-        >
+        <ul class="flex flex-row flex-wrap justify-center items-center
+          text-lg text-white text-ellipsis">
           <%= if @current_user do %>
             <form phx-change="suggest" phx-submit="search">
               <input
