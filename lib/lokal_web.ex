@@ -47,6 +47,7 @@ defmodule LokalWeb do
       use Phoenix.LiveView,
         layout: {LokalWeb.LayoutView, "live.html"}
 
+      on_mount LokalWeb.InitAssigns
       unquote(view_helpers())
     end
   end

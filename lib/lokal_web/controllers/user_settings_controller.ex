@@ -10,10 +10,11 @@ defmodule LokalWeb.UserSettingsController do
     render(conn, "edit.html", page_title: gettext("Settings"))
   end
 
-  def update(conn, %{"action" => "update_email"} = params) do
-    %{"current_password" => password, "user" => user_params} = params
-    user = conn.assigns.current_user
-
+  def update(%{assigns: %{current_user: user}} = conn, %{
+        "action" => "update_email",
+        "current_password" => password,
+        "user" => user_params
+      }) do
     case Accounts.apply_user_email(user, password, user_params) do
       {:ok, applied_user} ->
         Accounts.deliver_update_email_instructions(
@@ -33,14 +34,15 @@ defmodule LokalWeb.UserSettingsController do
         |> redirect(to: Routes.user_settings_path(conn, :edit))
 
       {:error, changeset} ->
-        render(conn, "edit.html", email_changeset: changeset)
+        conn |> render("edit.html", email_changeset: changeset)
     end
   end
 
-  def update(conn, %{"action" => "update_password"} = params) do
-    %{"current_password" => password, "user" => user_params} = params
-    user = conn.assigns.current_user
-
+  def update(%{assigns: %{current_user: user}} = conn, %{
+        "action" => "update_password",
+        "current_password" => password,
+        "user" => user_params
+      }) do
     case Accounts.update_user_password(user, password, user_params) do
       {:ok, user} ->
         conn
@@ -49,12 +51,27 @@ defmodule LokalWeb.UserSettingsController do
         |> UserAuth.log_in_user(user)
 
       {:error, changeset} ->
-        render(conn, "edit.html", password_changeset: changeset)
+        conn |> render("edit.html", password_changeset: changeset)
     end
   end
 
-  def confirm_email(conn, %{"token" => token}) do
-    case Accounts.update_user_email(conn.assigns.current_user, token) do
+  def update(
+        %{assigns: %{current_user: user}} = conn,
+        %{"action" => "update_locale", "user" => %{"locale" => locale}}
+      ) do
+    case Accounts.update_user_locale(user, locale) do
+      {:ok, _user} ->
+        conn
+        |> put_flash(:info, dgettext("prompts", "Language updated successfully."))
+        |> redirect(to: Routes.user_settings_path(conn, :edit))
+
+      {:error, changeset} ->
+        conn |> render("edit.html", locale_changeset: changeset)
+    end
+  end
+
+  def confirm_email(%{assigns: %{current_user: user}} = conn, %{"token" => token}) do
+    case Accounts.update_user_email(user, token) do
       :ok ->
         conn
         |> put_flash(:info, dgettext("prompts", "Email changed successfully."))
@@ -84,11 +101,10 @@ defmodule LokalWeb.UserSettingsController do
     end
   end
 
-  defp assign_email_and_password_changesets(conn, _opts) do
-    user = conn.assigns.current_user
-
+  defp assign_email_and_password_changesets(%{assigns: %{current_user: user}} = conn, _opts) do
     conn
     |> assign(:email_changeset, Accounts.change_user_email(user))
     |> assign(:password_changeset, Accounts.change_user_password(user))
+    |> assign(:locale_changeset, Accounts.change_user_locale(user))
   end
 end

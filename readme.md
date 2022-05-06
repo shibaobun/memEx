@@ -41,7 +41,7 @@ You can use the following environment variables to configure Lokal in
   with `docker run -it shibaobun/lokal mix phx.gen.secret` and set for server to start.
 - `REGISTRATION`: Controls if user sign-up should be invite only or set to
   public. Set to `public` to enable public registration. Defaults to `invite`.
-- `LOCALE`: Sets a custom locale. Defaults to `en_US`.
+- `LOCALE`: Sets a custom default locale. Defaults to `en_US`.
 - `SMTP_HOST`: The url for your SMTP email provider. Must be set
 - `SMTP_PORT`: The port for your SMTP relay. Defaults to `587`.
 - `SMTP_USERNAME`: The username for your SMTP relay. Must be set!

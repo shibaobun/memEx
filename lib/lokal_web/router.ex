@@ -11,6 +11,17 @@ defmodule LokalWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
+    plug :put_user_locale, default: Application.get_env(:gettext, :default_locale, "en_US")
+  end
+
+  defp put_user_locale(%{assigns: %{current_user: %{locale: locale}}} = conn, default: default) do
+    Gettext.put_locale(locale || default)
+    conn |> put_session(:locale, locale || default)
+  end
+
+  defp put_user_locale(conn, default: default) do
+    Gettext.put_locale(default)
+    conn |> put_session(:locale, default)
   end
 
   pipeline :require_admin do
