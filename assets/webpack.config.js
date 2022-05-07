@@ -44,19 +44,14 @@ module.exports = (env, options) => {
         },
         {
           test: /\.(woff(2)?|ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]?[hash]',
-            outputPath: '../fonts'
-          }
+          type: 'asset/resource',
+          generator: { filename: 'fonts/[name][ext]' }
         }
       ]
     },
     plugins: [
       new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-      new CopyWebpackPlugin({
-        patterns: [{ from: 'static/', to: '../' }]
-      })
+      new CopyWebpackPlugin({ patterns: [{ from: 'static/', to: '../' }] })
     ]
   }
 }

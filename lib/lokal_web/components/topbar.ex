@@ -55,14 +55,14 @@ defmodule LokalWeb.Components.Topbar do
               <li class="mx-2 my-1">
                 <%= live_redirect(gettext("Invites"),
                   to: Routes.invite_index_path(Endpoint, :index),
-                  class: "text-primary-600 text-white hover:underline"
+                  class: "text-white text-white hover:underline"
                 ) %>
               </li>
             <% end %>
             <li class="mx-2 my-1">
               <%= live_redirect(@current_user.email,
                 to: Routes.user_settings_path(Endpoint, :edit),
-                class: "text-primary-600 text-white hover:underline truncate"
+                class: "text-white text-white hover:underline truncate"
               ) %>
             </li>
             <li class="mx-2 my-1">
@@ -75,8 +75,8 @@ defmodule LokalWeb.Components.Topbar do
             <%= if @current_user.role == :admin and function_exported?(Routes, :live_dashboard_path, 2) do %>
               <li class="mx-2 my-1">
                 <%= live_redirect to: Routes.live_dashboard_path(Endpoint, :home),
-                  class: "text-primary-600 text-white hover:underline" do %>
-                  <i class="fas fa-tachometer-alt"></i>
+                  class: "text-white text-white hover:underline" do %>
+                  <i class="fas fa-gauge"></i>
                 <% end %>
               </li>
             <% end %>
@@ -85,14 +85,14 @@ defmodule LokalWeb.Components.Topbar do
               <li class="mx-2 my-1">
                 <%= live_redirect(dgettext("actions", "Register"),
                   to: Routes.user_registration_path(Endpoint, :new),
-                  class: "text-primary-600 text-white hover:underline truncate"
+                  class: "text-white text-white hover:underline truncate"
                 ) %>
               </li>
             <% end %>
             <li class="mx-2 my-1">
               <%= live_redirect(dgettext("actions", "Log in"),
                 to: Routes.user_session_path(Endpoint, :new),
-                class: "text-primary-600 text-white hover:underline truncate"
+                class: "text-white text-white hover:underline truncate"
               ) %>
             </li>
           <% end %>
