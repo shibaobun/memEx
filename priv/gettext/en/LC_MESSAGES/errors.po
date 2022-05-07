@@ -49,24 +49,14 @@ msgstr ""
 msgid "are still associated with this entry"
 msgstr ""
 
-## From Ecto.Changeset.validate_length/3
-msgid "should have %{count} item(s)"
-msgid_plural "should have %{count} item(s)"
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "should be %{count} character(s)"
 msgid_plural "should be %{count} character(s)"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "should be %{count} byte(s)"
-msgid_plural "should be %{count} byte(s)"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "should have at least %{count} item(s)"
-msgid_plural "should have at least %{count} item(s)"
+## From Ecto.Changeset.validate_length/3
+msgid "should have %{count} item(s)"
+msgid_plural "should have %{count} item(s)"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -75,13 +65,8 @@ msgid_plural "should be at least %{count} character(s)"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "should be at least %{count} byte(s)"
-msgid_plural "should be at least %{count} byte(s)"
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "should have at most %{count} item(s)"
-msgid_plural "should have at most %{count} item(s)"
+msgid "should have at least %{count} item(s)"
+msgid_plural "should have at least %{count} item(s)"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -90,8 +75,8 @@ msgid_plural "should be at most %{count} character(s)"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "should be at most %{count} byte(s)"
-msgid_plural "should be at most %{count} byte(s)"
+msgid "should have at most %{count} item(s)"
+msgid_plural "should have at most %{count} item(s)"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -109,4 +94,111 @@ msgid "must be greater than or equal to %{number}"
 msgstr ""
 
 msgid "must be equal to %{number}"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_settings_controller.ex:84
+msgid "Email change link is invalid or it has expired."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/error/error.html.heex:8
+msgid "Error"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/error/error.html.heex:28
+msgid "Go back home"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/views/error_view.ex:11
+msgid "Internal Server Error"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_session_controller.ex:17
+msgid "Invalid email or password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/views/error_view.ex:9
+msgid "Not found"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/templates/user_registration/new.html.heex:15
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:15
+#: lib/lokal_web/templates/user_settings/edit.html.heex:21
+#: lib/lokal_web/templates/user_settings/edit.html.heex:64
+#: lib/lokal_web/templates/user_settings/edit.html.heex:119
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_reset_password_controller.ex:63
+msgid "Reset password link is invalid or it has expired."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_registration_controller.ex:25
+#: lib/lokal_web/controllers/user_registration_controller.ex:56
+msgid "Sorry, public registration is disabled"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_registration_controller.ex:15
+#: lib/lokal_web/controllers/user_registration_controller.ex:46
+msgid "Sorry, this invite was not found or expired"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_settings_controller.ex:99
+msgid "Unable to delete user"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/views/error_view.ex:10
+msgid "Unauthorized"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_confirmation_controller.ex:54
+msgid "User confirmation link is invalid or it has expired."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_auth.ex:177
+msgid "You are not authorized to view this page."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/controllers/user_auth.ex:39
+#: lib/lokal_web/controllers/user_auth.ex:161
+msgid "You must confirm your account and log in to access this page."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal/accounts/user.ex:130
+msgid "did not change"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal/accounts/user.ex:151
+msgid "does not match password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal/accounts/user.ex:188
+msgid "is not valid"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal/accounts/user.ex:84
+msgid "must have the @ sign and no spaces"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/lokal_web/live/invite_live/index.ex:18
+msgid "You are not authorized to view this page"
 msgstr ""
