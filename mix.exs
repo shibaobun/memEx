@@ -85,12 +85,18 @@ defmodule Lokal.MixProject do
       setup: ["deps.get", "compile", "ecto.setup", "cmd npm install --prefix assets"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      format: ["cmd npm run format --prefix assets", "format", "gettext.extract"],
+      format: [
+        "cmd npm run format --prefix assets",
+        "format",
+        "gettext.extract --merge",
+        "gettext.merge --no-fuzzy priv/gettext"
+      ],
       test: [
         "cmd npm run test --prefix assets",
         "dialyzer",
         "credo --strict",
         "format --check-formatted",
+        "gettext.extract --check-up-to-date",
         "ecto.drop --quiet",
         "ecto.create --quiet",
         "ecto.migrate --quiet",
