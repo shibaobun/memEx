@@ -50,43 +50,43 @@ msgid "You can reset your password by visiting the URL below:"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal/accounts/email.ex:30
-msgid "Confirm your Lokal account"
+#: lib/memex/accounts/email.ex:30
+msgid "Confirm your Memex account"
 msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/email/confirm_email.html.heex:22
-msgid "If you didn't create an account at Lokal, please ignore this."
+msgid "If you didn't create an account at Memex, please ignore this."
 msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/email/reset_password.html.heex:16
 #: lib/lokal_web/templates/email/update_email.html.heex:16
-msgid "If you didn't request this change from Lokal, please ignore this."
+msgid "If you didn't request this change from Memex, please ignore this."
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal/accounts/email.ex:37
-msgid "Reset your Lokal password"
+#: lib/memex/accounts/email.ex:37
+msgid "Reset your Memex password"
 msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/layout/email.txt.eex:9
-msgid "This email was sent from Lokal at %{url}, the self-hosted firearm tracker website."
+msgid "This email was sent from Memex at %{url}, the self-hosted firearm tracker website."
 msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/layout/email.html.heex:13
-msgid "This email was sent from Lokal, the self-hosted firearm tracker website."
+msgid "This email was sent from Memex, the self-hosted firearm tracker website."
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal/accounts/email.ex:44
-msgid "Update your Lokal email"
+#: lib/memex/accounts/email.ex:44
+msgid "Update your Memex email"
 msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/email/confirm_email.html.heex:9
 #: lib/lokal_web/templates/email/confirm_email.txt.eex:4
-msgid "Welcome to Lokal"
+msgid "Welcome to Memex"
 msgstr ""

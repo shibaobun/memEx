@@ -58,7 +58,7 @@ liveSocket.connect()
 window.liveSocket = liveSocket
 
 // Copy to clipboard
-window.addEventListener('lokal:clipcopy', (event) => {
+window.addEventListener('memex:clipcopy', (event) => {
   if ('clipboard' in navigator) {
     const text = event.target.textContent
     navigator.clipboard.writeText(text)

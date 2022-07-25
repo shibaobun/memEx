@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: lokal
+name: memex
 
 steps:
 - name: restore-cache
@@ -18,7 +18,7 @@ steps:
 - name: test
   image: bitwalker/alpine-elixir-phoenix:1.13
   environment:
-    TEST_DATABASE_URL: ecto://postgres:postgres@database/lokal_test
+    TEST_DATABASE_URL: ecto://postgres:postgres@database/memex_test
     HOST: testing.example.tld
   commands:
   - mix local.rebar --force
@@ -30,7 +30,7 @@ steps:
 - name: build and publish stable
   image: plugins/docker
   settings:
-    repo: shibaobun/lokal
+    repo: shibaobun/memex
     username:
       from_secret: docker_username
     password:
@@ -43,7 +43,7 @@ steps:
 - name: build and publish tagged version
   image: plugins/docker
   settings:
-    repo: shibaobun/lokal
+    repo: shibaobun/memex
     username:
       from_secret: docker_username
     password:

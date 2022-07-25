@@ -1,4 +1,4 @@
-defmodule Lokal.Repo.Migrations.AddLocaleSetting do
+defmodule Memex.Repo.Migrations.AddLocaleSetting do
   use Ecto.Migration
 
   def change do

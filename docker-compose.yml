@@ -1,16 +1,16 @@
 version: '3'
 
 services:
-  lokal:
+  memex:
     build:
       context: .
-    container_name: lokal
+    container_name: memex
     restart: always
     environment:
       # HOST must be set!
       # - HOST=your.domain.com
-      - DATABASE_URL=ecto://postgres:postgres@lokal-db/lokal
-      # Use `docker run -it shibaobun/lokal /app/priv/random.sh` to generate a secret key base
+      - DATABASE_URL=ecto://postgres:postgres@memex-db/memex
+      # Use `docker run -it shibaobun/memex /app/priv/random.sh` to generate a secret key base
       # - SECRET_KEY_BASE=change-me-this-is-really-important-seriously-change-it
       # uncomment to enable public sign ups, not recommended
       # - REGISTRATION=public
@@ -24,21 +24,21 @@ services:
       # optional, default is false
       # - SMTP_SSL=false
       # optional, default is format below
-      # - EMAIL_FROM=no-reply@lokal.example.tld
-      # optional, default is "Lokal"
-      # - EMAIL_NAME=Lokal
+      # - EMAIL_FROM=no-reply@memex.example.tld
+      # optional, default is "Memex"
+      # - EMAIL_NAME=Memex
     expose:
       - "4000"
     depends_on:
-      - lokal-db
+      - memex-db
 
-  lokal-db:
+  memex-db:
     image: postgres:13
-    container_name: lokal-db
+    container_name: memex-db
     environment:
       - POSTGRES_USER="postgres"
       - POSTGRES_PASSWORD="postgres"
-      - POSTGRES_DB="lokal"
+      - POSTGRES_DB="memex"
     restart: always
     volumes:
       - ./data:/var/lib/postgresql/data

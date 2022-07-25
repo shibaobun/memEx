@@ -1,0 +1,156 @@
+<div class="w-full flex flex-col space-y-8 justify-center items-center">
+  <h1 class="title text-2xl title-primary-500">
+    <%= gettext("Invites") %>
+  </h1>
+
+  <%= if @invites |> Enum.empty?() do %>
+    <h1 class="title text-xl text-primary-600">
+      <%= gettext("No invites 😔") %>
+    </h1>
+
+    <%= live_patch(dgettext("actions", "Invite someone new!"),
+      to: Routes.invite_index_path(Endpoint, :new),
+      class: "btn btn-primary"
+    ) %>
+  <% else %>
+    <%= live_patch(dgettext("actions", "Create Invite"),
+      to: Routes.invite_index_path(Endpoint, :new),
+      class: "btn btn-primary"
+    ) %>
+  <% end %>
+
+  <div class="w-full flex flex-row flex-wrap justify-center items-center">
+    <%= for invite <- @invites do %>
+      <.invite_card invite={invite}>
+        <:code_actions>
+          <form phx-submit="copy_to_clipboard">
+            <button
+              type="submit"
+              class="mx-2 my-1 btn btn-primary"
+              phx-click={JS.dispatch("memex:clipcopy", to: "#code-#{invite.id}")}
+            >
+              <%= dgettext("actions", "Copy to clipboard") %>
+            </button>
+          </form>
+        </:code_actions>
+        <%= live_patch to: Routes.invite_index_path(Endpoint, :edit, invite),
+                   class: "text-primary-600 link",
+                   data: [qa: "edit-#{invite.id}"] do %>
+          <i class="fa-fw fa-lg fas fa-edit"></i>
+        <% end %>
+
+        <%= link to: "#",
+             class: "text-primary-600 link",
+             phx_click: "delete_invite",
+             phx_value_id: invite.id,
+             data: [
+               confirm:
+                 dgettext("prompts", "Are you sure you want to delete the invite for %{invite_name}?",
+                   invite_name: invite.name
+                 ),
+               qa: "delete-#{invite.id}"
+             ] do %>
+          <i class="fa-fw fa-lg fas fa-trash"></i>
+        <% end %>
+
+        <%= if invite.disabled_at |> is_nil() do %>
+          <a href="#" class="btn btn-primary" phx-click="disable_invite" phx-value-id={invite.id}>
+            <%= gettext("Disable") %>
+          </a>
+        <% else %>
+          <a href="#" class="btn btn-primary" phx-click="enable_invite" phx-value-id={invite.id}>
+            <%= gettext("Enable") %>
+          </a>
+        <% end %>
+
+        <%= if invite.disabled_at |> is_nil() and not (invite.uses_left |> is_nil()) do %>
+          <a
+            href="#"
+            class="btn btn-primary"
+            phx-click="set_unlimited"
+            phx-value-id={invite.id}
+            data-confirm={
+              dgettext("prompts", "Are you sure you want to make %{invite_name} unlimited?",
+                invite_name: invite.name
+              )
+            }
+          >
+            <%= gettext("Set Unlimited") %>
+          </a>
+        <% end %>
+      </.invite_card>
+    <% end %>
+  </div>
+
+  <%= unless @admins |> Enum.empty?() do %>
+    <hr class="hr" />
+
+    <h1 class="title text-2xl text-primary-600">
+      <%= gettext("Admins") %>
+    </h1>
+
+    <div class="w-full flex flex-row flex-wrap justify-center items-center">
+      <%= for admin <- @admins do %>
+        <.user_card user={admin}>
+          <%= link to: "#",
+               class: "text-primary-600 link",
+               phx_click: "delete_user",
+               phx_value_id: admin.id,
+               data: [
+                 confirm:
+                   dgettext(
+                     "prompts",
+                     "Are you sure you want to delete %{email}? This action is permanent!",
+                     email: admin.email
+                   )
+               ] do %>
+            <i class="fa-fw fa-lg fas fa-trash"></i>
+          <% end %>
+        </.user_card>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= unless @users |> Enum.empty?() do %>
+    <hr class="hr" />
+
+    <h1 class="title text-2xl text-primary-600">
+      <%= gettext("Users") %>
+    </h1>
+
+    <div class="w-full flex flex-row flex-wrap justify-center items-center">
+      <%= for user <- @users do %>
+        <.user_card user={user}>
+          <%= link to: "#",
+               class: "text-primary-600 link",
+               phx_click: "delete_user",
+               phx_value_id: user.id,
+               data: [
+                 confirm:
+                   dgettext(
+                     "prompts",
+                     "Are you sure you want to delete %{email}? This action is permanent!",
+                     email: user.email
+                   )
+               ] do %>
+            <i class="fa-fw fa-lg fas fa-trash"></i>
+          <% end %>
+        </.user_card>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.invite_index_path(Endpoint, :index)}>
+    <.live_component
+      module={MemexWeb.InviteLive.FormComponent}
+      id={@invite.id || :new}
+      title={@page_title}
+      action={@live_action}
+      invite={@invite}
+      return_to={Routes.invite_index_path(Endpoint, :index)}
+      current_user={@current_user}
+    />
+  </.modal>
+<% end %>

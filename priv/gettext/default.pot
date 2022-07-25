@@ -96,7 +96,7 @@ msgstr ""
 
 #, elixir-autogen, elixir-format
 #: lib/lokal_web/live/home_live.html.heex:3
-msgid "Welcome to Lokal"
+msgid "Welcome to Memex"
 msgstr ""
 
 #, elixir-autogen, elixir-format

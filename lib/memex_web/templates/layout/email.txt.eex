@@ -1,0 +1,11 @@
+<%= @email.subject %>
+
+====================
+
+<%= @inner_content %>
+
+=====================
+
+<%= dgettext("emails",
+  "This email was sent from Memex at %{url}, the self-hosted firearm tracker website.",
+  url: Routes.live_url(Endpoint, HomeLive)) %>

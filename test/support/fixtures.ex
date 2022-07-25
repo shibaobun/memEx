@@ -1,9 +1,9 @@
-defmodule Lokal.Fixtures do
+defmodule Memex.Fixtures do
   @moduledoc """
   This module defines test helpers for creating entities
   """
 
-  alias Lokal.{Accounts, Accounts.User, Email}
+  alias Memex.{Accounts, Accounts.User, Email}
 
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
   def valid_user_password, do: "hello world!"

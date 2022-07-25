@@ -179,22 +179,22 @@ msgid "You must confirm your account and log in to access this page."
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal/accounts/user.ex:130
+#: lib/memex/accounts/user.ex:130
 msgid "did not change"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal/accounts/user.ex:151
+#: lib/memex/accounts/user.ex:151
 msgid "does not match password"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal/accounts/user.ex:188
+#: lib/memex/accounts/user.ex:188
 msgid "is not valid"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/lokal/accounts/user.ex:84
+#: lib/memex/accounts/user.ex:84
 msgid "must have the @ sign and no spaces"
 msgstr ""
 

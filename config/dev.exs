@@ -1,7 +1,7 @@
 import Config
 
 # Configure your database
-config :lokal, Lokal.Repo,
+config :memex, Memex.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -11,7 +11,7 @@ config :lokal, Lokal.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with esbuild to bundle .js and .css sources.
-config :lokal, LokalWeb.Endpoint,
+config :memex, MemexWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
@@ -54,13 +54,13 @@ config :lokal, LokalWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :lokal, LokalWeb.Endpoint,
+config :memex, MemexWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/lokal_web/(live|views)/.*(ex)$",
-      ~r"lib/lokal_web/templates/.*(eex)$"
+      ~r"lib/memex_web/(live|views)/.*(ex)$",
+      ~r"lib/memex_web/templates/.*(eex)$"
     ]
   ]
 
