@@ -1,0 +1,45 @@
+<h1>Listing Contexts</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.context_index_path(@socket, :index)}>
+    <.live_component
+      module={MemexWeb.ContextLive.FormComponent}
+      id={@context.id || :new}
+      title={@page_title}
+      action={@live_action}
+      context={@context}
+      return_to={Routes.context_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Tag</th>
+      <th>Visibility</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="contexts">
+    <%= for context <- @contexts do %>
+      <tr id={"context-#{context.id}"}>
+        <td><%= context.title %></td>
+        <td><%= context.content %></td>
+        <td><%= context.tag %></td>
+        <td><%= context.visibility %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.context_show_path(@socket, :show, context) %></span>
+          <span><%= live_patch "Edit", to: Routes.context_index_path(@socket, :edit, context) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: context.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Context", to: Routes.context_index_path(@socket, :new) %></span>

@@ -1,0 +1,41 @@
+<h1>Show Context</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.context_show_path(@socket, :show, @context)}>
+    <.live_component
+      module={MemexWeb.ContextLive.FormComponent}
+      id={@context.id}
+      title={@page_title}
+      action={@live_action}
+      context={@context}
+      return_to={Routes.context_show_path(@socket, :show, @context)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @context.title %>
+  </li>
+
+  <li>
+    <strong>Content:</strong>
+    <%= @context.content %>
+  </li>
+
+  <li>
+    <strong>Tag:</strong>
+    <%= @context.tag %>
+  </li>
+
+  <li>
+    <strong>Visibility:</strong>
+    <%= @context.visibility %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.context_show_path(@socket, :edit, @context), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.context_index_path(@socket, :index) %></span>
