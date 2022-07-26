@@ -18,13 +18,13 @@
 
     <div class="pb-8 w-full flex flex-col justify-center items-center text-center">
       <div class="p-8 sm:p-16 w-full flex flex-col justify-center items-center space-y-4 max-w-3xl">
-        <h1 class="title text-primary-600 text-3xl">
+        <h1 class="title text-primary-400 text-3xl">
           <%= @error_string %>
         </h1>
 
         <hr class="w-full hr" />
 
-        <a href={Routes.live_path(Endpoint, HomeLive)} class="link title text-primary-600 text-lg">
+        <a href={Routes.live_path(Endpoint, HomeLive)} class="link title text-primary-400 text-lg">
           <%= dgettext("errors", "Go back home") %>
         </a>
       </div>

@@ -1,5 +1,5 @@
 <div class="mx-auto mb-8 max-w-2xl flex flex-col justify-center items-center space-y-4">
-  <h1 class="title text-primary-600 text-xl">
+  <h1 class="title text-primary-400 text-xl">
     <%= dgettext("actions", "Register") %>
   </h1>
 
@@ -21,15 +21,15 @@
       <%= hidden_input(f, :invite_token, value: @invite.token) %>
     <% end %>
 
-    <%= label(f, :email, class: "title text-lg text-primary-600") %>
+    <%= label(f, :email, class: "title text-lg text-primary-400") %>
     <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
     <%= error_tag(f, :email, "col-span-3") %>
 
-    <%= label(f, :password, class: "title text-lg text-primary-600") %>
+    <%= label(f, :password, class: "title text-lg text-primary-400") %>
     <%= password_input(f, :password, required: true, class: "input input-primary col-span-2") %>
     <%= error_tag(f, :password, "col-span-3") %>
 
-    <%= label(f, :locale, gettext("Language"), class: "title text-lg text-primary-600") %>
+    <%= label(f, :locale, gettext("Language"), class: "title text-lg text-primary-400") %>
     <%= select(
       f,
       :locale,

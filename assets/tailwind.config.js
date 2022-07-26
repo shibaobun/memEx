@@ -9,13 +9,16 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      primary: colors.black,
+      primary: colors.zinc,
       black: colors.black,
       white: colors.white,
       gray: colors.neutral,
       indigo: colors.indigo,
       red: colors.rose,
       yellow: colors.amber
+    },
+    fontFamily: {
+      'sans': ['Nunito Sans', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont']
     },
     extend: {
       spacing: {

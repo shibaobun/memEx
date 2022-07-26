@@ -1,9 +1,77 @@
 <div class="flex flex-col justify-center items-center text-center space-y-4">
-  <h1 class="title text-primary-500 text-2xl">
+  <h1 class="title text-primary-400 text-2xl">
     <%= gettext("memex") %>
   </h1>
 
-  <p class="title  text-primary-500 text-lg">
-    <%= gettext("filling this out later") %>
-  </p>
+  <hr class="hr" />
+
+  <ul class="flex flex-col space-y-4 text-center">
+    <li class="flex flex-col justify-center items-center
+      space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("Notes:") %>
+      </b>
+      <p>
+        <%= gettext("Document notes about individual items or concepts") %>
+      </p>
+    </li>
+
+    <li class="flex flex-col justify-center items-center
+      space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("Contexts:") %>
+      </b>
+      <p>
+        <%= gettext("Provide context around a single topic and hotlink to your notes") %>
+      </p>
+    </li>
+
+    <li class="flex flex-col justify-center items-center
+      space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("Pipelines:") %>
+      </b>
+      <p>
+        <%= gettext("Document your processes, attaching contexts to each step") %>
+      </p>
+    </li>
+  </ul>
+
+  <hr class="hr" />
+
+  <ul class="flex flex-col space-y-4 text-center">
+    <h2 class="title text-primary-400 text-lg">
+      <%= gettext("Features") %>
+    </h2>
+
+    <li class="flex flex-col justify-center items-center
+      space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("Multi-user:") %>
+      </b>
+      <p>
+        <%= gettext("Built with sharing and collaboration in mind") %>
+      </p>
+    </li>
+
+    <li class="flex flex-col justify-center items-center
+      space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("Privacy:") %>
+      </b>
+      <p>
+        <%= gettext("Privacy controls on a per-note, context or pipeline basis") %>
+      </p>
+    </li>
+
+    <li class="flex flex-col justify-center items-center
+      space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("Convenient:") %>
+      </b>
+      <p>
+        <%= gettext("Accessible from any internet-capable device") %>
+      </p>
+    </li>
+  </ul>
 </div>

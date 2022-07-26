@@ -13,12 +13,12 @@ defmodule MemexWeb.Components.Topbar do
       %{results: [], title_content: nil, flash: nil, current_user: nil} |> Map.merge(assigns)
 
     ~H"""
-    <nav role="navigation" class="mb-8 px-8 py-4 w-full bg-primary-400">
+    <nav role="navigation" class="mb-8 px-8 py-4 w-full bg-primary-900 text-primary-400">
       <div class="flex flex-col sm:flex-row justify-between items-center">
         <div class="mb-4 sm:mb-0 sm:mr-8 flex flex-row justify-start items-center space-x-2">
-          <%= live_redirect("Memex",
+          <%= live_redirect("memex",
             to: Routes.live_path(Endpoint, HomeLive),
-            class: "mx-2 my-1 leading-5 text-xl text-white hover:underline"
+            class: "mx-2 my-1 leading-5 text-xl text-primary-400 hover:underline"
           ) %>
 
           <%= if @title_content do %>
@@ -32,8 +32,29 @@ defmodule MemexWeb.Components.Topbar do
         <hr class="mb-2 sm:hidden hr-light" />
 
         <ul class="flex flex-row flex-wrap justify-center items-center
-          text-lg text-white text-ellipsis">
+          text-lg text-primary-400 text-ellipsis">
           <%= if @current_user do %>
+            <li class="mx-2 my-1">
+              <%= live_redirect(gettext("Pipelines"),
+                to: Routes.pipeline_index_path(Endpoint, :index),
+                class: "text-primary-400 text-primary-400 hover:underline truncate"
+              ) %>
+            </li>
+
+            <li class="mx-2 my-1">
+              <%= live_redirect(gettext("Contexts"),
+                to: Routes.context_index_path(Endpoint, :index),
+                class: "text-primary-400 text-primary-400 hover:underline truncate"
+              ) %>
+            </li>
+
+            <li class="mx-2 my-1">
+              <%= live_redirect(gettext("Notes"),
+                to: Routes.note_index_path(Endpoint, :index),
+                class: "text-primary-400 text-primary-400 hover:underline truncate"
+              ) %>
+            </li>
+
             <form phx-change="suggest" phx-submit="search">
               <input
                 type="text"
@@ -51,20 +72,23 @@ defmodule MemexWeb.Components.Topbar do
                 <% end %>
               </datalist>
             </form>
+
             <%= if @current_user.role == :admin do %>
               <li class="mx-2 my-1">
                 <%= live_redirect(gettext("Invites"),
                   to: Routes.invite_index_path(Endpoint, :index),
-                  class: "text-white text-white hover:underline"
+                  class: "text-primary-400 text-primary-400 hover:underline"
                 ) %>
               </li>
             <% end %>
+
             <li class="mx-2 my-1">
               <%= live_redirect(@current_user.email,
                 to: Routes.user_settings_path(Endpoint, :edit),
-                class: "text-white text-white hover:underline truncate"
+                class: "text-primary-400 text-primary-400 hover:underline truncate"
               ) %>
             </li>
+
             <li class="mx-2 my-1">
               <%= link to: Routes.user_session_path(Endpoint, :delete),
                    method: :delete,
@@ -72,10 +96,11 @@ defmodule MemexWeb.Components.Topbar do
                 <i class="fas fa-sign-out-alt"></i>
               <% end %>
             </li>
+
             <%= if @current_user.role == :admin and function_exported?(Routes, :live_dashboard_path, 2) do %>
               <li class="mx-2 my-1">
                 <%= live_redirect to: Routes.live_dashboard_path(Endpoint, :home),
-                  class: "text-white text-white hover:underline" do %>
+                  class: "text-primary-400 text-primary-400 hover:underline" do %>
                   <i class="fas fa-gauge"></i>
                 <% end %>
               </li>
@@ -85,14 +110,15 @@ defmodule MemexWeb.Components.Topbar do
               <li class="mx-2 my-1">
                 <%= live_redirect(dgettext("actions", "Register"),
                   to: Routes.user_registration_path(Endpoint, :new),
-                  class: "text-white text-white hover:underline truncate"
+                  class: "text-primary-400 text-primary-400 hover:underline truncate"
                 ) %>
               </li>
             <% end %>
+
             <li class="mx-2 my-1">
               <%= live_redirect(dgettext("actions", "Log in"),
                 to: Routes.user_session_path(Endpoint, :new),
-                class: "text-white text-white hover:underline truncate"
+                class: "text-primary-400 text-primary-400 hover:underline truncate"
               ) %>
             </li>
           <% end %>

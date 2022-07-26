@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= csrf_meta_tag() %>
-    <%= if(assigns |> Map.has_key?(:page_title), do: @page_title, else: "Memex")
-    |> live_title_tag(suffix: " | Memex") %>
+    <%= if(assigns |> Map.has_key?(:page_title), do: @page_title, else: "memex")
+    |> live_title_tag(suffix: " | memex") %>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/css/app.css")} />
     <script
       defer
@@ -17,7 +17,7 @@
     </script>
   </head>
 
-  <body class="m-0 p-0 w-full h-full">
+  <body class="m-0 p-0 w-full h-full bg-primary-800 text-primary-400 subpixel-antialiased">
     <%= @inner_content %>
   </body>
 </html>

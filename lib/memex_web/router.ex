@@ -93,12 +93,16 @@ defmodule MemexWeb.Router do
     scope "/", MemexWeb do
       pipe_through [:browser, :require_authenticated_user, :require_admin]
 
-      live_dashboard "/dashboard", metrics: MemexWeb.Telemetry, ecto_repos: [Memex.Repo]
-
       live "/invites", InviteLive.Index, :index
       live "/invites/new", InviteLive.Index, :new
       live "/invites/:id/edit", InviteLive.Index, :edit
     end
+  end
+
+  scope "/", MemexWeb do
+    pipe_through [:browser, :require_authenticated_user, :require_admin]
+
+    live_dashboard "/dashboard", metrics: MemexWeb.Telemetry, ecto_repos: [Memex.Repo]
   end
 
   scope "/", MemexWeb do

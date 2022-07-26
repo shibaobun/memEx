@@ -4,7 +4,7 @@
   </h1>
 
   <%= if @invites |> Enum.empty?() do %>
-    <h1 class="title text-xl text-primary-600">
+    <h1 class="title text-xl text-primary-400">
       <%= gettext("No invites 😔") %>
     </h1>
 
@@ -34,13 +34,13 @@
           </form>
         </:code_actions>
         <%= live_patch to: Routes.invite_index_path(Endpoint, :edit, invite),
-                   class: "text-primary-600 link",
+                   class: "text-primary-400 link",
                    data: [qa: "edit-#{invite.id}"] do %>
           <i class="fa-fw fa-lg fas fa-edit"></i>
         <% end %>
 
         <%= link to: "#",
-             class: "text-primary-600 link",
+             class: "text-primary-400 link",
              phx_click: "delete_invite",
              phx_value_id: invite.id,
              data: [
@@ -85,7 +85,7 @@
   <%= unless @admins |> Enum.empty?() do %>
     <hr class="hr" />
 
-    <h1 class="title text-2xl text-primary-600">
+    <h1 class="title text-2xl text-primary-400">
       <%= gettext("Admins") %>
     </h1>
 
@@ -93,7 +93,7 @@
       <%= for admin <- @admins do %>
         <.user_card user={admin}>
           <%= link to: "#",
-               class: "text-primary-600 link",
+               class: "text-primary-400 link",
                phx_click: "delete_user",
                phx_value_id: admin.id,
                data: [
@@ -114,7 +114,7 @@
   <%= unless @users |> Enum.empty?() do %>
     <hr class="hr" />
 
-    <h1 class="title text-2xl text-primary-600">
+    <h1 class="title text-2xl text-primary-400">
       <%= gettext("Users") %>
     </h1>
 
@@ -122,7 +122,7 @@
       <%= for user <- @users do %>
         <.user_card user={user}>
           <%= link to: "#",
-               class: "text-primary-600 link",
+               class: "text-primary-400 link",
                phx_click: "delete_user",
                phx_value_id: user.id,
                data: [
