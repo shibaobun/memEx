@@ -5,7 +5,12 @@ defmodule MemexWeb.ContextLiveTest do
   import Memex.ContextsFixtures
 
   @create_attrs %{content: "some content", tag: [], title: "some title", visibility: :public}
-  @update_attrs %{content: "some updated content", tag: [], title: "some updated title", visibility: :private}
+  @update_attrs %{
+    content: "some updated content",
+    tag: [],
+    title: "some updated title",
+    visibility: :private
+  }
   @invalid_attrs %{content: nil, tag: [], title: nil, visibility: nil}
 
   defp create_context(_) do

@@ -35,7 +35,12 @@ defmodule Memex.StepsTest do
 
     test "update_step/2 with valid data updates the step" do
       step = step_fixture()
-      update_attrs = %{description: "some updated description", position: 43, title: "some updated title"}
+
+      update_attrs = %{
+        description: "some updated description",
+        position: 43,
+        title: "some updated title"
+      }
 
       assert {:ok, %Step{} = step} = Steps.update_step(step, update_attrs)
       assert step.description == "some updated description"

@@ -33,13 +33,22 @@
         <td><%= note.visibility %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.note_show_path(@socket, :show, note) %></span>
-          <span><%= live_patch "Edit", to: Routes.note_index_path(@socket, :edit, note) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: note.id, data: [confirm: "Are you sure?"] %></span>
+          <span>
+            <%= live_redirect("Show", to: Routes.note_show_path(@socket, :show, note)) %>
+          </span>
+          <span><%= live_patch("Edit", to: Routes.note_index_path(@socket, :edit, note)) %></span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: note.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<span><%= live_patch "New Note", to: Routes.note_index_path(@socket, :new) %></span>
+<span><%= live_patch("New Note", to: Routes.note_index_path(@socket, :new)) %></span>

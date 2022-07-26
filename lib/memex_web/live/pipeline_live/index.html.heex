@@ -31,13 +31,24 @@
         <td><%= pipeline.visibility %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.pipeline_show_path(@socket, :show, pipeline) %></span>
-          <span><%= live_patch "Edit", to: Routes.pipeline_index_path(@socket, :edit, pipeline) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: pipeline.id, data: [confirm: "Are you sure?"] %></span>
+          <span>
+            <%= live_redirect("Show", to: Routes.pipeline_show_path(@socket, :show, pipeline)) %>
+          </span>
+          <span>
+            <%= live_patch("Edit", to: Routes.pipeline_index_path(@socket, :edit, pipeline)) %>
+          </span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: pipeline.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<span><%= live_patch "New Pipeline", to: Routes.pipeline_index_path(@socket, :new) %></span>
+<span><%= live_patch("New Pipeline", to: Routes.pipeline_index_path(@socket, :new)) %></span>

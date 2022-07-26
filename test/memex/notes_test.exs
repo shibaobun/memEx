@@ -36,7 +36,13 @@ defmodule Memex.NotesTest do
 
     test "update_note/2 with valid data updates the note" do
       note = note_fixture()
-      update_attrs = %{content: "some updated content", tag: [], title: "some updated title", visibility: :private}
+
+      update_attrs = %{
+        content: "some updated content",
+        tag: [],
+        title: "some updated title",
+        visibility: :private
+      }
 
       assert {:ok, %Note{} = note} = Notes.update_note(note, update_attrs)
       assert note.content == "some updated content"

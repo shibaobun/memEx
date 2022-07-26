@@ -1,0 +1,92 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex/accounts/email.ex:30
+msgid "Confirm your Memex account"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/email/confirm_email.html.heex:3
+#: lib/memex_web/templates/email/confirm_email.txt.eex:2
+#: lib/memex_web/templates/email/reset_password.html.heex:3
+#: lib/memex_web/templates/email/reset_password.txt.eex:2
+#: lib/memex_web/templates/email/update_email.html.heex:3
+#: lib/memex_web/templates/email/update_email.txt.eex:2
+msgid "Hi %{email},"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/email/confirm_email.txt.eex:10
+msgid "If you didn't create an account at %{url}, please ignore this."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/email/confirm_email.html.heex:22
+msgid "If you didn't create an account at Memex, please ignore this."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/email/reset_password.txt.eex:8
+#: lib/memex_web/templates/email/update_email.txt.eex:8
+msgid "If you didn't request this change from %{url}, please ignore this."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/email/reset_password.html.heex:16
+#: lib/memex_web/templates/email/update_email.html.heex:16
+msgid "If you didn't request this change from Memex, please ignore this."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex/accounts/email.ex:37
+msgid "Reset your Memex password"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/layout/email.txt.eex:9
+msgid "This email was sent from Memex at %{url}, the self-hosted firearm tracker website."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/layout/email.html.heex:13
+msgid "This email was sent from Memex, the self-hosted firearm tracker website."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex/accounts/email.ex:44
+msgid "Update your Memex email"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/email/confirm_email.html.heex:9
+#: lib/memex_web/templates/email/confirm_email.txt.eex:4
+msgid "Welcome to Memex"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/email/update_email.html.heex:8
+#: lib/memex_web/templates/email/update_email.txt.eex:4
+msgid "You can change your email by visiting the URL below:"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/email/confirm_email.html.heex:14
+#: lib/memex_web/templates/email/confirm_email.txt.eex:6
+msgid "You can confirm your account by visiting the URL below:"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/templates/email/reset_password.html.heex:8
+#: lib/memex_web/templates/email/reset_password.txt.eex:4
+msgid "You can reset your password by visiting the URL below:"
+msgstr ""

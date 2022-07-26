@@ -18,7 +18,7 @@ module.exports = {
       yellow: colors.amber
     },
     fontFamily: {
-      'sans': ['Nunito Sans', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont']
+      sans: ['Nunito Sans', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont']
     },
     extend: {
       spacing: {

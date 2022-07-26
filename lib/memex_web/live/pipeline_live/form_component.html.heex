@@ -7,22 +7,24 @@
     id="pipeline-form"
     phx-target={@myself}
     phx-change="validate"
-    phx-submit="save">
-  
-    <%= label f, :title %>
-    <%= text_input f, :title %>
-    <%= error_tag f, :title %>
-  
-    <%= label f, :description %>
-    <%= textarea f, :description %>
-    <%= error_tag f, :description %>
-  
-    <%= label f, :visibility %>
-    <%= select f, :visibility, Ecto.Enum.values(Memex.Pipelines.Pipeline, :visibility), prompt: "Choose a value" %>
-    <%= error_tag f, :visibility %>
-  
+    phx-submit="save"
+  >
+    <%= label(f, :title) %>
+    <%= text_input(f, :title) %>
+    <%= error_tag(f, :title) %>
+
+    <%= label(f, :description) %>
+    <%= textarea(f, :description) %>
+    <%= error_tag(f, :description) %>
+
+    <%= label(f, :visibility) %>
+    <%= select(f, :visibility, Ecto.Enum.values(Memex.Pipelines.Pipeline, :visibility),
+      prompt: "Choose a value"
+    ) %>
+    <%= error_tag(f, :visibility) %>
+
     <div>
-      <%= submit "Save", phx_disable_with: "Saving..." %>
+      <%= submit("Save", phx_disable_with: "Saving...") %>
     </div>
   </.form>
 </div>

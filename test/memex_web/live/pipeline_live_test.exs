@@ -5,7 +5,11 @@ defmodule MemexWeb.PipelineLiveTest do
   import Memex.PipelinesFixtures
 
   @create_attrs %{description: "some description", title: "some title", visibility: :public}
-  @update_attrs %{description: "some updated description", title: "some updated title", visibility: :private}
+  @update_attrs %{
+    description: "some updated description",
+    title: "some updated title",
+    visibility: :private
+  }
   @invalid_attrs %{description: nil, title: nil, visibility: nil}
 
   defp create_pipeline(_) do

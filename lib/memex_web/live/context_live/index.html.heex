@@ -33,13 +33,24 @@
         <td><%= context.visibility %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.context_show_path(@socket, :show, context) %></span>
-          <span><%= live_patch "Edit", to: Routes.context_index_path(@socket, :edit, context) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: context.id, data: [confirm: "Are you sure?"] %></span>
+          <span>
+            <%= live_redirect("Show", to: Routes.context_show_path(@socket, :show, context)) %>
+          </span>
+          <span>
+            <%= live_patch("Edit", to: Routes.context_index_path(@socket, :edit, context)) %>
+          </span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: context.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<span><%= live_patch "New Context", to: Routes.context_index_path(@socket, :new) %></span>
+<span><%= live_patch("New Context", to: Routes.context_index_path(@socket, :new)) %></span>

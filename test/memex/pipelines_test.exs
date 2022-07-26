@@ -35,7 +35,12 @@ defmodule Memex.PipelinesTest do
 
     test "update_pipeline/2 with valid data updates the pipeline" do
       pipeline = pipeline_fixture()
-      update_attrs = %{description: "some updated description", title: "some updated title", visibility: :private}
+
+      update_attrs = %{
+        description: "some updated description",
+        title: "some updated title",
+        visibility: :private
+      }
 
       assert {:ok, %Pipeline{} = pipeline} = Pipelines.update_pipeline(pipeline, update_attrs)
       assert pipeline.description == "some updated description"

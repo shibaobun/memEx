@@ -36,7 +36,13 @@ defmodule Memex.ContextsTest do
 
     test "update_context/2 with valid data updates the context" do
       context = context_fixture()
-      update_attrs = %{content: "some updated content", tag: [], title: "some updated title", visibility: :private}
+
+      update_attrs = %{
+        content: "some updated content",
+        tag: [],
+        title: "some updated title",
+        visibility: :private
+      }
 
       assert {:ok, %Context{} = context} = Contexts.update_context(context, update_attrs)
       assert context.content == "some updated content"

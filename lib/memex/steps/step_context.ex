@@ -5,7 +5,6 @@ defmodule Memex.Steps.StepContext do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "step_contexts" do
-
     field :step_id, :binary_id
     field :context_id, :binary_id
 

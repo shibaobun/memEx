@@ -5,7 +5,6 @@ defmodule Memex.Contexts.ContextNote do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "context_notes" do
-
     field :context_id, :binary_id
     field :note_id, :binary_id
 
