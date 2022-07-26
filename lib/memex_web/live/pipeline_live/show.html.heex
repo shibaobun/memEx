@@ -1,0 +1,36 @@
+<h1>Show Pipeline</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline)}>
+    <.live_component
+      module={MemexWeb.PipelineLive.FormComponent}
+      id={@pipeline.id}
+      title={@page_title}
+      action={@live_action}
+      pipeline={@pipeline}
+      return_to={Routes.pipeline_show_path(@socket, :show, @pipeline)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @pipeline.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @pipeline.description %>
+  </li>
+
+  <li>
+    <strong>Visibility:</strong>
+    <%= @pipeline.visibility %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.pipeline_show_path(@socket, :edit, @pipeline), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.pipeline_index_path(@socket, :index) %></span>

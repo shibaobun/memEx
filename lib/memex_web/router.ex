@@ -63,6 +63,8 @@ defmodule MemexWeb.Router do
       live "/contexts", ContextLive.Index, :index
       live "/contexts/:id", ContextLive.Show, :show
 
+      live "/pipelines", PipelineLive.Index, :index
+      live "/pipelines/:id", PipelineLive.Show, :show
     end
 
     scope "/", MemexWeb do
@@ -75,6 +77,10 @@ defmodule MemexWeb.Router do
       live "/contexts/new", ContextLive.Index, :new
       live "/contexts/:id/edit", ContextLive.Index, :edit
       live "/contexts/:id/show/edit", ContextLive.Show, :edit
+
+      live "/pipelines/new", PipelineLive.Index, :new
+      live "/pipelines/:id/edit", PipelineLive.Index, :edit
+      live "/pipelines/:id/show/edit", PipelineLive.Show, :edit
 
       get "/users/settings", UserSettingsController, :edit
       put "/users/settings", UserSettingsController, :update

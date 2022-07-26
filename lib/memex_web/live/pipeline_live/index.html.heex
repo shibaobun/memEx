@@ -1,0 +1,43 @@
+<h1>Listing Pipelines</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.pipeline_index_path(@socket, :index)}>
+    <.live_component
+      module={MemexWeb.PipelineLive.FormComponent}
+      id={@pipeline.id || :new}
+      title={@page_title}
+      action={@live_action}
+      pipeline={@pipeline}
+      return_to={Routes.pipeline_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Visibility</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="pipelines">
+    <%= for pipeline <- @pipelines do %>
+      <tr id={"pipeline-#{pipeline.id}"}>
+        <td><%= pipeline.title %></td>
+        <td><%= pipeline.description %></td>
+        <td><%= pipeline.visibility %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.pipeline_show_path(@socket, :show, pipeline) %></span>
+          <span><%= live_patch "Edit", to: Routes.pipeline_index_path(@socket, :edit, pipeline) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: pipeline.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Pipeline", to: Routes.pipeline_index_path(@socket, :new) %></span>
