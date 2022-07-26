@@ -53,23 +53,38 @@ defmodule MemexWeb.Router do
     put "/users/reset_password/:token", UserResetPasswordController, :update
   end
 
-  scope "/", MemexWeb do
-    pipe_through [:browser, :require_authenticated_user]
+  live_session :default do
+    scope "/", MemexWeb do
+      pipe_through [:browser]
 
-    get "/users/settings", UserSettingsController, :edit
-    put "/users/settings", UserSettingsController, :update
-    delete "/users/settings/:id", UserSettingsController, :delete
-    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+      live "/notes", NoteLive.Index, :index
+      live "/notes/:id", NoteLive.Show, :show
+    end
+
+    scope "/", MemexWeb do
+      pipe_through [:browser, :require_authenticated_user]
+
+      live "/notes/new", NoteLive.Index, :new
+      live "/notes/:id/edit", NoteLive.Index, :edit
+      live "/notes/:id/show/edit", NoteLive.Show, :edit
+
+      get "/users/settings", UserSettingsController, :edit
+      put "/users/settings", UserSettingsController, :update
+      delete "/users/settings/:id", UserSettingsController, :delete
+      get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+    end
   end
 
-  scope "/", MemexWeb do
-    pipe_through [:browser, :require_authenticated_user, :require_admin]
+  live_session :admin do
+    scope "/", MemexWeb do
+      pipe_through [:browser, :require_authenticated_user, :require_admin]
 
-    live_dashboard "/dashboard", metrics: MemexWeb.Telemetry, ecto_repos: [Memex.Repo]
+      live_dashboard "/dashboard", metrics: MemexWeb.Telemetry, ecto_repos: [Memex.Repo]
 
-    live "/invites", InviteLive.Index, :index
-    live "/invites/new", InviteLive.Index, :new
-    live "/invites/:id/edit", InviteLive.Index, :edit
+      live "/invites", InviteLive.Index, :index
+      live "/invites/new", InviteLive.Index, :new
+      live "/invites/:id/edit", InviteLive.Index, :edit
+    end
   end
 
   scope "/", MemexWeb do
