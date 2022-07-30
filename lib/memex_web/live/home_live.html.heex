@@ -74,4 +74,45 @@
       </p>
     </li>
   </ul>
+
+  <hr class="hr" />
+
+  <ul class="flex flex-col space-y-4 text-center">
+    <h2 class="title text-primary-400 text-lg">
+      <%= gettext("Instance Information") %>
+    </h2>
+
+    <li class="flex flex-col justify-center space-x-2">
+      <b>
+        <%= gettext("Admins:") %>
+      </b>
+      <p>
+        <%= if @admins |> Enum.empty?() do %>
+          <%= link(dgettext("prompts", "Register to setup %{name}", name: "Cannery"),
+            class: "hover:underline",
+            to: Routes.user_registration_path(CanneryWeb.Endpoint, :new)
+          ) %>
+        <% else %>
+          <div class="flex flex-wrap justify-center space-x-2">
+            <%= for admin <- @admins do %>
+              <a class="hover:underline" href={"mailto:#{admin.email}"}>
+                <%= admin.email %>
+              </a>
+            <% end %>
+          </div>
+        <% end %>
+      </p>
+    </li>
+
+    <li class="flex flex-row justify-center space-x-2">
+      <b>Registration:</b>
+      <p>
+        <%= Application.get_env(:cannery, CanneryWeb.Endpoint)[:registration]
+        |> case do
+          "public" -> gettext("Public Signups")
+          _ -> gettext("Invite Only")
+        end %>
+      </p>
+    </li>
+  </ul>
 </div>

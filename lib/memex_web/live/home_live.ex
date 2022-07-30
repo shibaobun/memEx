@@ -4,10 +4,12 @@ defmodule MemexWeb.HomeLive do
   """
 
   use MemexWeb, :live_view
+  alias Memex.Accounts
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(page_title: gettext("Home"), query: "", results: %{})}
+    admins = Accounts.list_users_by_role(:admin)
+    {:ok, socket |> assign(page_title: gettext("Home"), query: "", results: %{}, admins: admins)}
   end
 
   @impl true
