@@ -1,16 +1,17 @@
 # Memex
 
-Memex is a local business aggregation site helping you to shop locally by
-providing a one-stop-shop for your local community. Set your profile and start
-shopping today!
+memex is an easy way to digitize the structured processes of your life.
+
+- Notes: Document notes about individual items or concepts
+- Contexts: Provide context around a single topic and hotlink to individual
+  concepts in your notes
+- Pipelines: Document your processes, attaching contexts to each step.
 
 # Features
 
-- User Registration/Sign in via `phx_gen_auth`
-- `Dockerfile` and example `docker-compose.yml`
-- Automatic migrations in `MIX_ENV=prod` or Docker image
-- JS linting with [standard.js](https://standardjs.com), HEEx linting with
-  [heex_formatter](https://github.com/feliperenan/heex_formatter)
+- Multi-user: Built with sharing and collaboration in mind
+- Privacy: Privacy controls on a per-note, context or pipeline basis
+- Convenient: Accessible from any internet-capable device
 
 # Installation
 
