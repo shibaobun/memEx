@@ -31,7 +31,7 @@ defmodule MemexWeb.LiveHelpers do
       id: "modal-bg",
       class:
         "fade-in fixed z-10 left-0 top-0
-         w-full h-full overflow-hidden
+         w-screen h-screen overflow-hidden
          p-8 flex flex-col justify-center items-center cursor-auto",
       style: "background-color: rgba(0,0,0,0.4);",
       phx_remove: hide_modal()
@@ -42,16 +42,15 @@ defmodule MemexWeb.LiveHelpers do
     <div
       id="modal"
       class="fixed z-10 left-0 top-0 pointer-events-none
-        w-full h-full overflow-hidden
+        w-screen h-screen overflow-hidden
         p-4 sm:p-8 flex flex-col justify-center items-center"
     >
       <div
         id="modal-content"
-        class="fade-in-scale w-full max-w-3xl relative
+        class="fade-in-scale max-w-3xl max-h-3xl relative w-full
         pointer-events-auto overflow-hidden
-        px-8 py-4 sm:py-8 flex flex-col justify-center items-center
-        flex flex-col justify-start items-center
-        bg-white border-2 rounded-lg"
+        px-8 py-4 sm:py-8 flex flex-col justify-start items-stretch
+        bg-primary-800 text-primary-400 border-primary-900 border-2 rounded-lg"
       >
         <%= live_patch to: @return_to,
                    id: "close",
@@ -63,7 +62,7 @@ defmodule MemexWeb.LiveHelpers do
           <i class="fa-fw fa-lg fas fa-times"></i>
         <% end %>
 
-        <div class="overflow-x-hidden overflow-y-auto w-full p-8 flex flex-col space-y-4 justify-start items-center">
+        <div class="overflow-x-hidden overflow-y-visible p-8 flex flex-col space-y-4 justify-start items-stretch">
           <%= render_slot(@inner_block) %>
         </div>
       </div>
