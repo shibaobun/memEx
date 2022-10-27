@@ -55,19 +55,6 @@ defmodule MemexWeb.Router do
 
   live_session :default do
     scope "/", MemexWeb do
-      pipe_through [:browser]
-
-      live "/notes", NoteLive.Index, :index
-      live "/notes/:id", NoteLive.Show, :show
-
-      live "/contexts", ContextLive.Index, :index
-      live "/contexts/:id", ContextLive.Show, :show
-
-      live "/pipelines", PipelineLive.Index, :index
-      live "/pipelines/:id", PipelineLive.Show, :show
-    end
-
-    scope "/", MemexWeb do
       pipe_through [:browser, :require_authenticated_user]
 
       live "/notes/new", NoteLive.Index, :new
@@ -86,6 +73,19 @@ defmodule MemexWeb.Router do
       put "/users/settings", UserSettingsController, :update
       delete "/users/settings/:id", UserSettingsController, :delete
       get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+    end
+
+    scope "/", MemexWeb do
+      pipe_through [:browser]
+
+      live "/notes", NoteLive.Index, :index
+      live "/notes/:id", NoteLive.Show, :show
+
+      live "/contexts", ContextLive.Index, :index
+      live "/contexts/:id", ContextLive.Show, :show
+
+      live "/pipelines", PipelineLive.Index, :index
+      live "/pipelines/:id", PipelineLive.Show, :show
     end
   end
 
