@@ -35,8 +35,8 @@ defmodule MemexWeb.Components.Topbar do
           text-lg text-primary-400 text-ellipsis">
           <%= if @current_user do %>
             <li class="mx-2 my-1">
-              <%= live_redirect(gettext("Pipelines"),
-                to: Routes.pipeline_index_path(Endpoint, :index),
+              <%= live_redirect(gettext("Notes"),
+                to: Routes.note_index_path(Endpoint, :index),
                 class: "text-primary-400 text-primary-400 hover:underline truncate"
               ) %>
             </li>
@@ -49,29 +49,13 @@ defmodule MemexWeb.Components.Topbar do
             </li>
 
             <li class="mx-2 my-1">
-              <%= live_redirect(gettext("Notes"),
-                to: Routes.note_index_path(Endpoint, :index),
+              <%= live_redirect(gettext("Pipelines"),
+                to: Routes.pipeline_index_path(Endpoint, :index),
                 class: "text-primary-400 text-primary-400 hover:underline truncate"
               ) %>
             </li>
 
-            <form phx-change="suggest" phx-submit="search">
-              <input
-                type="text"
-                name="q"
-                class="input input-primary"
-                placeholder="Search"
-                list="results"
-                autocomplete="off"
-              />
-              <datalist id="results">
-                <%= for {app, _vsn} <- @results do %>
-                  <option value={app}>
-                    "> <%= app %>
-                  </option>
-                <% end %>
-              </datalist>
-            </form>
+            <li class="mx-2 my-1 border-left border border-primary-400">​</li>
 
             <%= if @current_user.role == :admin do %>
               <li class="mx-2 my-1">

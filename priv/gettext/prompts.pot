@@ -140,3 +140,8 @@ msgstr ""
 #: lib/memex_web/controllers/user_settings_controller.ex:95
 msgid "Your account has been deleted"
 msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/home_live.html.heex:91
+msgid "Register to setup %{name}"
+msgstr ""

@@ -36,7 +36,7 @@ msgid "Confirm your account"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/memex_web/components/topbar.ex:45
+#: lib/memex_web/components/topbar.ex:63
 msgid "Contexts"
 msgstr ""
 
@@ -98,7 +98,7 @@ msgid "Forgot your password?"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/memex_web/live/home_live.ex:10
+#: lib/memex_web/live/home_live.ex:12
 msgid "Home"
 msgstr ""
 
@@ -160,7 +160,7 @@ msgid "No invites 😔"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/memex_web/components/topbar.ex:52
+#: lib/memex_web/components/topbar.ex:70
 msgid "Notes"
 msgstr ""
 
@@ -170,7 +170,7 @@ msgid "Notes:"
 msgstr ""
 
 #, elixir-autogen, elixir-format
-#: lib/memex_web/components/topbar.ex:38
+#: lib/memex_web/components/topbar.ex:56
 msgid "Pipelines"
 msgstr ""
 
@@ -243,4 +243,64 @@ msgstr ""
 #, elixir-autogen, elixir-format
 #: lib/memex_web/live/home_live.html.heex:3
 msgid "memex"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/home_live.html.heex:87
+msgid "Admins:"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/note_live/form_component.html.heex:20
+msgid "Content"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/home_live.html.heex:134
+msgid "Get involved!"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/home_live.html.heex:151
+msgid "Help translate"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/home_live.html.heex:82
+msgid "Instance Information"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/home_live.html.heex:113
+msgid "Invite Only"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/home_live.html.heex:112
+msgid "Public Signups"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/home_live.html.heex:160
+msgid "Report bugs or request features"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/note_live/form_component.html.heex:35
+msgid "Save"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/note_live/form_component.html.heex:36
+msgid "Saving..."
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/note_live/form_component.html.heex:13
+msgid "Title"
+msgstr ""
+
+#, elixir-autogen, elixir-format
+#: lib/memex_web/live/home_live.html.heex:142
+msgid "View the source code"
 msgstr ""

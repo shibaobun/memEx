@@ -32,5 +32,5 @@
 
 <span>
   <%= live_patch("Edit", to: Routes.pipeline_show_path(@socket, :edit, @pipeline), class: "button") %>
-</span> |
-<span><%= live_redirect("Back", to: Routes.pipeline_index_path(@socket, :index)) %></span>
+</span>
+| <span><%= live_redirect("Back", to: Routes.pipeline_index_path(@socket, :index)) %></span>
