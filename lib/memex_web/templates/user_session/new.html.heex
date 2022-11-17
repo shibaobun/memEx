@@ -4,7 +4,7 @@
   </h1>
 
   <.form
-    let={f}
+    :let={f}
     for={@conn}
     action={Routes.user_session_path(@conn, :create)}
     as="user"
@@ -36,14 +36,12 @@
 
   <div class="flex flex-row justify-center items-center space-x-4">
     <%= if Accounts.allow_registration?() do %>
-      <%= link(dgettext("actions", "Register"),
-        to: Routes.user_registration_path(@conn, :new),
-        class: "btn btn-primary"
-      ) %>
+      <.link href={Routes.user_registration_path(@conn, :new)} class="btn btn-primary">
+        <%= dgettext("actions", "Register") %>
+      </.link>
     <% end %>
-    <%= link(dgettext("actions", "Forgot your password?"),
-      to: Routes.user_reset_password_path(@conn, :new),
-      class: "btn btn-primary"
-    ) %>
+    <.link href={Routes.user_reset_password_path(@conn, :new)} class="btn btn-primary">
+      <%= dgettext("actions", "Forgot your password?") %>
+    </.link>
   </div>
 </div>

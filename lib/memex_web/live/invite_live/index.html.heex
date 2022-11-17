@@ -8,15 +8,13 @@
       <%= gettext("No invites 😔") %>
     </h1>
 
-    <%= live_patch(dgettext("actions", "Invite someone new!"),
-      to: Routes.invite_index_path(Endpoint, :new),
-      class: "btn btn-primary"
-    ) %>
+    <.link patch={Routes.invite_index_path(Endpoint, :new)} class="btn btn-primary">
+      <%= dgettext("actions", "Invite someone new!") %>
+    </.link>
   <% else %>
-    <%= live_patch(dgettext("actions", "Create Invite"),
-      to: Routes.invite_index_path(Endpoint, :new),
-      class: "btn btn-primary"
-    ) %>
+    <.link patch={Routes.invite_index_path(Endpoint, :new)} class="btn btn-primary">
+      <%= dgettext("actions", "Create Invite") %>
+    </.link>
   <% end %>
 
   <div class="w-full flex flex-row flex-wrap justify-center items-center">
@@ -33,25 +31,28 @@
             </button>
           </form>
         </:code_actions>
-        <%= live_patch to: Routes.invite_index_path(Endpoint, :edit, invite),
-                   class: "text-primary-400 link",
-                   data: [qa: "edit-#{invite.id}"] do %>
+        <.link
+          patch={Routes.invite_index_path(Endpoint, :edit, invite)}
+          class="text-primary-400 link"
+          data-qa={"edit-#{invite.id}"}
+        >
           <i class="fa-fw fa-lg fas fa-edit"></i>
-        <% end %>
+        </.link>
 
-        <%= link to: "#",
-             class: "text-primary-400 link",
-             phx_click: "delete_invite",
-             phx_value_id: invite.id,
-             data: [
-               confirm:
-                 dgettext("prompts", "Are you sure you want to delete the invite for %{invite_name}?",
-                   invite_name: invite.name
-                 ),
-               qa: "delete-#{invite.id}"
-             ] do %>
+        <.link
+          href="#"
+          class="text-primary-400 link"
+          phx-click="delete_invite"
+          phx-value-id={invite.id}
+          data-confirm={
+            dgettext("prompts", "Are you sure you want to delete the invite for %{invite_name}?",
+              invite_name: invite.name
+            )
+          }
+          data-qa={"delete-#{invite.id}"}
+        >
           <i class="fa-fw fa-lg fas fa-trash"></i>
-        <% end %>
+        </.link>
 
         <%= if invite.disabled_at |> is_nil() do %>
           <a href="#" class="btn btn-primary" phx-click="disable_invite" phx-value-id={invite.id}>
@@ -92,20 +93,21 @@
     <div class="w-full flex flex-row flex-wrap justify-center items-center">
       <%= for admin <- @admins do %>
         <.user_card user={admin}>
-          <%= link to: "#",
-               class: "text-primary-400 link",
-               phx_click: "delete_user",
-               phx_value_id: admin.id,
-               data: [
-                 confirm:
-                   dgettext(
-                     "prompts",
-                     "Are you sure you want to delete %{email}? This action is permanent!",
-                     email: admin.email
-                   )
-               ] do %>
+          <.link
+            href="#"
+            class="text-primary-400 link"
+            phx-click="delete_user"
+            phx-value-id={admin.id}
+            data-confirm={
+              dgettext(
+                "prompts",
+                "Are you sure you want to delete %{email}? This action is permanent!",
+                email: admin.email
+              )
+            }
+          >
             <i class="fa-fw fa-lg fas fa-trash"></i>
-          <% end %>
+          </.link>
         </.user_card>
       <% end %>
     </div>
@@ -121,20 +123,21 @@
     <div class="w-full flex flex-row flex-wrap justify-center items-center">
       <%= for user <- @users do %>
         <.user_card user={user}>
-          <%= link to: "#",
-               class: "text-primary-400 link",
-               phx_click: "delete_user",
-               phx_value_id: user.id,
-               data: [
-                 confirm:
-                   dgettext(
-                     "prompts",
-                     "Are you sure you want to delete %{email}? This action is permanent!",
-                     email: user.email
-                   )
-               ] do %>
+          <.link
+            href="#"
+            class="text-primary-400 link"
+            phx-click="delete_user"
+            phx-value-id={user.id}
+            data-confirm={
+              dgettext(
+                "prompts",
+                "Are you sure you want to delete %{email}? This action is permanent!",
+                email: user.email
+              )
+            }
+          >
             <i class="fa-fw fa-lg fas fa-trash"></i>
-          <% end %>
+          </.link>
         </.user_card>
       <% end %>
     </div>

@@ -32,18 +32,24 @@
 
         <td>
           <span>
-            <%= live_redirect("Show", to: Routes.pipeline_show_path(@socket, :show, pipeline)) %>
+            <.link navigate={Routes.pipeline_show_path(@socket, :show, pipeline)}>
+              <%= dgettext("actions", "Show") %>
+            </.link>
           </span>
           <span>
-            <%= live_patch("Edit", to: Routes.pipeline_index_path(@socket, :edit, pipeline)) %>
+            <.link patch={Routes.pipeline_index_path(@socket, :edit, pipeline)}>
+              <%= dgettext("actions", "Edit") %>
+            </.link>
           </span>
           <span>
-            <%= link("Delete",
-              to: "#",
-              phx_click: "delete",
-              phx_value_id: pipeline.id,
-              data: [confirm: "Are you sure?"]
-            ) %>
+            <.link
+              href="#"
+              phx-click="delete"
+              phx-value-id={pipeline.id}
+              data-confirm={dgettext("prompts", "Are you sure?")}
+            >
+              <%= dgettext("actions", "Delete") %>
+            </.link>
           </span>
         </td>
       </tr>
@@ -51,4 +57,8 @@
   </tbody>
 </table>
 
-<span><%= live_patch("New Pipeline", to: Routes.pipeline_index_path(@socket, :new)) %></span>
+<span>
+  <.link patch={Routes.pipeline_index_path(@socket, :new)}>
+    <%= dgettext("actions", "New Pipeline") %>
+  </.link>
+</span>

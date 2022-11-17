@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= csrf_meta_tag() %>
-    <%= if(assigns |> Map.has_key?(:page_title), do: @page_title, else: "memex")
-    |> live_title_tag(suffix: " | memex") %>
+    <.live_title suffix={" | #{gettext("memex")}"}>
+      <%= assigns[:page_title] || gettext("memex") %>
+    </.live_title>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/css/app.css")} />
     <script
       defer

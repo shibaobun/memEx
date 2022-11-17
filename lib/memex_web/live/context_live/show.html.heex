@@ -36,6 +36,13 @@
 </ul>
 
 <span>
-  <%= live_patch("Edit", to: Routes.context_show_path(@socket, :edit, @context), class: "button") %>
+  <.link patch={Routes.context_show_path(@socket, :edit, @context)} class="button">
+    <%= dgettext("actions", "Edit") %>
+  </.link>
 </span>
-| <span><%= live_redirect("Back", to: Routes.context_index_path(@socket, :index)) %></span>
+|
+<span>
+  <.link navigate={Routes.context_index_path(@socket, :index)}>
+    <%= dgettext("actions", "Back") %>
+  </.link>
+</span>

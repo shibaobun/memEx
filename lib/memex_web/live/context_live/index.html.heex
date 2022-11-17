@@ -34,18 +34,24 @@
 
         <td>
           <span>
-            <%= live_redirect("Show", to: Routes.context_show_path(@socket, :show, context)) %>
+            <.link navigate={Routes.context_show_path(@socket, :show, context)}>
+              <%= dgettext("actions", "Show") %>
+            </.link>
           </span>
           <span>
-            <%= live_patch("Edit", to: Routes.context_index_path(@socket, :edit, context)) %>
+            <.link patch={Routes.context_index_path(@socket, :edit, context)}>
+              <%= dgettext("actions", "Edit") %>
+            </.link>
           </span>
           <span>
-            <%= link("Delete",
-              to: "#",
-              phx_click: "delete",
-              phx_value_id: context.id,
-              data: [confirm: "Are you sure?"]
-            ) %>
+            <.link
+              href="#"
+              phx-click="delete"
+              phx-value-id={context.id}
+              data-confirm={dgettext("prompts", "Are you sure?")}
+            >
+              <%= dgettext("actions", "Delete") %>
+            </.link>
           </span>
         </td>
       </tr>
@@ -53,4 +59,8 @@
   </tbody>
 </table>
 
-<span><%= live_patch("New Context", to: Routes.context_index_path(@socket, :new)) %></span>
+<span>
+  <.link patch={Routes.context_index_path(@socket, :new)}>
+    <%= dgettext("actions", "New Context") %>
+  </.link>
+</span>

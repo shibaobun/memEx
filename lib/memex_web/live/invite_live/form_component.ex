@@ -41,7 +41,7 @@ defmodule MemexWeb.InviteLive.FormComponent do
           prompt =
             dgettext("prompts", "%{invite_name} updated successfully", invite_name: invite_name)
 
-          socket |> put_flash(:info, prompt) |> push_redirect(to: return_to)
+          socket |> put_flash(:info, prompt) |> push_navigate(to: return_to)
 
         {:error, %Changeset{} = changeset} ->
           socket |> assign(:changeset, changeset)
@@ -61,7 +61,7 @@ defmodule MemexWeb.InviteLive.FormComponent do
           prompt =
             dgettext("prompts", "%{invite_name} created successfully", invite_name: invite_name)
 
-          socket |> put_flash(:info, prompt) |> push_redirect(to: return_to)
+          socket |> put_flash(:info, prompt) |> push_navigate(to: return_to)
 
         {:error, %Changeset{} = changeset} ->
           socket |> assign(changeset: changeset)

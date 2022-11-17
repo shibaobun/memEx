@@ -4,7 +4,7 @@
   </h1>
 
   <.form
-    let={f}
+    :let={f}
     for={@changeset}
     action={Routes.user_registration_path(@conn, :create)}
     class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
@@ -44,13 +44,11 @@
   <hr class="hr" />
 
   <div class="flex flex-row justify-center items-center space-x-4">
-    <%= link(dgettext("actions", "Log in"),
-      to: Routes.user_session_path(@conn, :new),
-      class: "btn btn-primary"
-    ) %>
-    <%= link(dgettext("actions", "Forgot your password?"),
-      to: Routes.user_reset_password_path(@conn, :new),
-      class: "btn btn-primary"
-    ) %>
+    <.link href={Routes.user_session_path(@conn, :new)} class="btn btn-primary">
+      <%= dgettext("actions", "Log in") %>
+    </.link>
+    <.link href={Routes.user_reset_password_path(@conn, :new)} class="btn btn-primary">
+      <%= dgettext("actions", "Forgot your password?") %>
+    </.link>
   </div>
 </div>

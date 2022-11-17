@@ -5,15 +5,15 @@ defmodule Memex.MixProject do
     [
       app: :memex,
       version: "0.1.0",
-      elixir: "~> 1.12",
+      elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:gettext] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
       dialyzer: [plt_add_apps: [:ex_unit]],
       consolidate_protocols: Mix.env() not in [:dev, :test],
-      preferred_cli_env: [test: :test],
+      preferred_cli_env: [test: :test, "test.all": :test],
       # ExDoc
       name: "memex",
       source_url: "https://gitea.bubbletea.dev/shibao/memex",
@@ -54,9 +54,9 @@ defmodule Memex.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.17.5"},
+      {:phoenix_live_view, "~> 0.18.3"},
       {:floki, ">= 0.30.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.6"},
+      {:phoenix_live_dashboard, "~> 0.7.0"},
       {:oban, "~> 2.10"},
       # {:esbuild, "~> 0.3", runtime: Mix.env() == :dev},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
@@ -85,13 +85,13 @@ defmodule Memex.MixProject do
       setup: ["deps.get", "compile", "ecto.setup", "cmd npm install --prefix assets"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      format: [
+      "format.all": [
         "cmd npm run format --prefix assets",
         "format",
         "gettext.extract --merge",
         "gettext.merge --no-fuzzy priv/gettext"
       ],
-      test: [
+      "test.all": [
         "cmd npm run test --prefix assets",
         "dialyzer",
         "credo --strict",

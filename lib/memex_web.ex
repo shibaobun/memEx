@@ -45,7 +45,7 @@ defmodule MemexWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {MemexWeb.LayoutView, "live.html"}
+        layout: {MemexWeb.LayoutView, :live}
 
       on_mount MemexWeb.InitAssigns
       unquote(view_helpers())
@@ -91,7 +91,7 @@ defmodule MemexWeb do
       use Phoenix.HTML
 
       # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
-      import Phoenix.LiveView.Helpers
+      import Phoenix.Component
       import MemexWeb.LiveHelpers
 
       # Import basic rendering functionality (render, render_layout, etc)
