@@ -1,4 +1,4 @@
-<div class="w-full overflow-x-auto border border-gray-600 rounded-lg shadow-lg bg-black">
+<div id={@id} class="w-full overflow-x-auto border border-gray-600 rounded-lg shadow-lg bg-black">
   <table class="min-w-full table-auto text-center bg-white">
     <thead class="border-b border-primary-600">
       <tr>
@@ -6,7 +6,7 @@
           <%= if column |> Map.get(:sortable, true) do %>
             <th class={"p-2 #{column[:class]}"}>
               <span
-                class="cursor-pointer"
+                class="cursor-pointer flex justify-center items-center space-x-2"
                 phx-click="sort_by"
                 phx-value-sort-key={key}
                 phx-target={@myself}
@@ -33,8 +33,8 @@
       </tr>
     </thead>
     <tbody>
-      <%= for values <- @rows do %>
-        <tr>
+      <%= for {values, i} <- @rows |> Enum.with_index() do %>
+        <tr class={if i |> Integer.is_even(), do: @row_class, else: @alternate_row_class}>
           <%= for %{key: key} = value <- @columns do %>
             <td class={"p-2 #{value[:class]}"}>
               <%= case values |> Map.get(key) do %>
