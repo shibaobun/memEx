@@ -1,6 +1,6 @@
-<div id={@id} class="w-full overflow-x-auto border border-gray-600 rounded-lg shadow-lg bg-black">
-  <table class="min-w-full table-auto text-center bg-white">
-    <thead class="border-b border-primary-600">
+<div id={@id} class="w-full overflow-x-auto rounded-lg shadow-lg bg-primary-900">
+  <table class="min-w-full table-auto text-center bg-primary-900">
+    <thead class="border-b border-primary-800">
       <tr>
         <%= for %{key: key, label: label} = column <- @columns do %>
           <%= if column |> Map.get(:sortable, true) do %>
@@ -11,16 +11,16 @@
                 phx-value-sort-key={key}
                 phx-target={@myself}
               >
-                <span class="underline"><%= label %></span>
+                <span><%= label %></span>
                 <%= if @last_sort_key == key do %>
                   <%= case @sort_mode do %>
                     <% :asc -> %>
-                      <i class="fas fa-sm fa-chevron-down"></i>
+                      <i class="w-0 float-right fas fa-sm fa-chevron-down"></i>
                     <% :desc -> %>
-                      <i class="fas fa-sm fa-chevron-up"></i>
+                      <i class="w-0 float-right fas fa-sm fa-chevron-up"></i>
                   <% end %>
                 <% else %>
-                  <i class="fas fa-sm fa-chevron-up opacity-0"></i>
+                  <i class="w-0 float-right fas fa-sm fa-chevron-up opacity-0"></i>
                 <% end %>
               </span>
             </th>

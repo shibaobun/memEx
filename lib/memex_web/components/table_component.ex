@@ -71,8 +71,8 @@ defmodule MemexWeb.Components.TableComponent do
         last_sort_key: initial_key,
         sort_mode: initial_sort_mode
       )
-      |> assign_new(:row_class, fn -> "bg-white" end)
-      |> assign_new(:alternate_row_class, fn -> "bg-gray-200" end)
+      |> assign_new(:row_class, fn -> "bg-primary-900" end)
+      |> assign_new(:alternate_row_class, fn -> "bg-primary-900" end)
 
     {:ok, socket}
   end

@@ -7,7 +7,7 @@
 
   .input-primary {
     @apply bg-primary-900;
-    @apply border-primary-600 hover:border-primary-500 active:border-primary-400;
+    @apply border-primary-900 hover:border-primary-800 active:border-primary-700;
     @apply text-primary-400;
   }
 
@@ -34,7 +34,7 @@
 
   .btn-primary {
     @apply bg-primary-900 focus:bg-primary-900 active:bg-primary-800;
-    @apply border-primary-600 hover:border-primary-500 active:border-primary-400;
+    @apply border-primary-900 hover:border-primary-800 active:border-primary-700;
     @apply text-primary-400;
   }
 
@@ -59,7 +59,6 @@
 
   .alert {
     @apply bg-primary-900;
-    @apply border-primary-600 hover:border-primary-500 active:border-primary-400;
     @apply text-primary-400;
     padding: 15px;
     margin-bottom: 20px;
