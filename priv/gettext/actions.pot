@@ -10,95 +10,141 @@
 msgid ""
 msgstr ""
 
+#: lib/memex_web/live/context_live/show.html.heex:46
+#: lib/memex_web/live/note_live/show.html.heex:23
+#: lib/memex_web/live/pipeline_live/show.html.heex:41
 #, elixir-autogen, elixir-format
-#: lib/memex_web/templates/user_settings/edit.html.heex:113
-msgid "Change Language"
+msgid "Back"
 msgstr ""
 
+#: lib/memex_web/live/invite_live/index.html.heex:30
 #, elixir-autogen, elixir-format
-#: lib/memex_web/templates/user_settings/edit.html.heex:15
-#: lib/memex_web/templates/user_settings/edit.html.heex:44
-msgid "Change email"
-msgstr ""
-
-#, elixir-autogen, elixir-format
-#: lib/memex_web/templates/user_settings/edit.html.heex:131
-msgid "Change language"
-msgstr ""
-
-#, elixir-autogen, elixir-format
-#: lib/memex_web/templates/user_settings/edit.html.heex:58
-#: lib/memex_web/templates/user_settings/edit.html.heex:99
-msgid "Change password"
-msgstr ""
-
-#, elixir-autogen, elixir-format
-#: lib/memex_web/live/invite_live/index.html.heex:32
 msgid "Copy to clipboard"
 msgstr ""
 
-#, elixir-autogen, elixir-format
-#: lib/memex_web/live/invite_live/index.html.heex:16
-msgid "Create Invite"
-msgstr ""
-
-#, elixir-autogen, elixir-format
-#: lib/memex_web/templates/user_settings/edit.html.heex:139
-msgid "Delete User"
-msgstr ""
-
-#, elixir-autogen, elixir-format
 #: lib/memex_web/templates/user_registration/new.html.heex:51
 #: lib/memex_web/templates/user_reset_password/new.html.heex:3
 #: lib/memex_web/templates/user_session/new.html.heex:44
+#, elixir-autogen, elixir-format
 msgid "Forgot your password?"
 msgstr ""
 
+#: lib/memex_web/templates/user_confirmation/new.html.heex:3
+#: lib/memex_web/templates/user_confirmation/new.html.heex:15
 #, elixir-autogen, elixir-format
-#: lib/memex_web/live/invite_live/index.html.heex:11
-msgid "Invite someone new!"
+msgid "Resend confirmation instructions"
 msgstr ""
 
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:3
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:33
 #, elixir-autogen, elixir-format
-#: lib/memex_web/components/topbar.ex:119
+msgid "Reset password"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.html.heex:28
+#, elixir-autogen, elixir-format
+msgid "Save"
+msgstr ""
+
+#: lib/memex_web/templates/user_reset_password/new.html.heex:15
+#, elixir-autogen, elixir-format
+msgid "Send instructions to reset password"
+msgstr ""
+
+#: lib/memex_web/templates/user_settings/edit.html.heex:15
+#: lib/memex_web/templates/user_settings/edit.html.heex:44
+#, elixir-autogen, elixir-format
+msgid "change email"
+msgstr ""
+
+#: lib/memex_web/templates/user_settings/edit.html.heex:113
+#: lib/memex_web/templates/user_settings/edit.html.heex:131
+#, elixir-autogen, elixir-format
+msgid "change language"
+msgstr ""
+
+#: lib/memex_web/templates/user_settings/edit.html.heex:58
+#: lib/memex_web/templates/user_settings/edit.html.heex:99
+#, elixir-autogen, elixir-format
+msgid "change password"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.html.heex:16
+#, elixir-autogen, elixir-format
+msgid "create invite"
+msgstr ""
+
+#: lib/memex_web/live/context_live/index.html.heex:53
+#: lib/memex_web/live/note_live/index.html.heex:32
+#: lib/memex_web/live/pipeline_live/index.html.heex:51
+#, elixir-autogen, elixir-format
+msgid "delete"
+msgstr ""
+
+#: lib/memex_web/templates/user_settings/edit.html.heex:145
+#, elixir-autogen, elixir-format
+msgid "delete user"
+msgstr ""
+
+#: lib/memex_web/live/context_live/index.html.heex:43
+#: lib/memex_web/live/context_live/show.html.heex:40
+#: lib/memex_web/live/note_live/index.html.heex:23
+#: lib/memex_web/live/note_live/show.html.heex:27
+#: lib/memex_web/live/pipeline_live/index.html.heex:41
+#: lib/memex_web/live/pipeline_live/show.html.heex:35
+#, elixir-autogen, elixir-format
+msgid "edit"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.html.heex:12
+#, elixir-autogen, elixir-format
+msgid "invite someone new!"
+msgstr ""
+
+#: lib/memex_web/components/topbar.ex:125
 #: lib/memex_web/templates/user_confirmation/new.html.heex:29
-#: lib/memex_web/templates/user_registration/new.html.heex:47
+#: lib/memex_web/templates/user_registration/new.html.heex:48
 #: lib/memex_web/templates/user_reset_password/edit.html.heex:47
 #: lib/memex_web/templates/user_reset_password/new.html.heex:29
 #: lib/memex_web/templates/user_session/new.html.heex:3
 #: lib/memex_web/templates/user_session/new.html.heex:32
-msgid "Log in"
+#, elixir-autogen, elixir-format
+msgid "log in"
 msgstr ""
 
+#: lib/memex_web/live/context_live/index.html.heex:64
 #, elixir-autogen, elixir-format
-#: lib/memex_web/components/topbar.ex:111
-#: lib/memex_web/templates/user_confirmation/new.html.heex:24
+msgid "new context"
+msgstr ""
+
+#: lib/memex_web/live/note_live/index.html.heex:41
+#, elixir-autogen, elixir-format
+msgid "new note"
+msgstr ""
+
+#: lib/memex_web/live/pipeline_live/index.html.heex:62
+#, elixir-autogen, elixir-format
+msgid "new pipeline"
+msgstr ""
+
+#: lib/memex_web/components/topbar.ex:115
+#: lib/memex_web/templates/user_confirmation/new.html.heex:25
 #: lib/memex_web/templates/user_registration/new.html.heex:3
 #: lib/memex_web/templates/user_registration/new.html.heex:41
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:42
-#: lib/memex_web/templates/user_reset_password/new.html.heex:24
-#: lib/memex_web/templates/user_session/new.html.heex:39
-msgid "Register"
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:43
+#: lib/memex_web/templates/user_reset_password/new.html.heex:25
+#: lib/memex_web/templates/user_session/new.html.heex:40
+#, elixir-autogen, elixir-format
+msgid "register"
 msgstr ""
 
+#: lib/memex_web/live/note_live/form_component.html.heex:42
 #, elixir-autogen, elixir-format
-#: lib/memex_web/templates/user_confirmation/new.html.heex:3
-#: lib/memex_web/templates/user_confirmation/new.html.heex:15
-msgid "Resend confirmation instructions"
+msgid "save"
 msgstr ""
 
+#: lib/memex_web/live/context_live/index.html.heex:38
+#: lib/memex_web/live/pipeline_live/index.html.heex:36
 #, elixir-autogen, elixir-format
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:3
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:33
-msgid "Reset password"
-msgstr ""
-
-#, elixir-autogen, elixir-format
-#: lib/memex_web/live/invite_live/form_component.html.heex:28
-msgid "Save"
-msgstr ""
-
-#, elixir-autogen, elixir-format
-#: lib/memex_web/templates/user_reset_password/new.html.heex:15
-msgid "Send instructions to reset password"
+msgid "show"
 msgstr ""

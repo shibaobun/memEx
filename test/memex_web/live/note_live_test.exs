@@ -4,22 +4,31 @@ defmodule MemexWeb.NoteLiveTest do
   import Phoenix.LiveViewTest
   import Memex.NotesFixtures
 
-  @create_attrs %{content: "some content", tag: [], title: "some title", visibility: :public}
-  @update_attrs %{
-    content: "some updated content",
-    tag: [],
-    title: "some updated title",
-    visibility: :private
+  @create_attrs %{
+    "content" => "some content",
+    "tags_string" => "tag1",
+    "title" => "some title",
+    "visibility" => :public
   }
-  @invalid_attrs %{content: nil, tag: [], title: nil, visibility: nil}
+  @update_attrs %{
+    "content" => "some updated content",
+    "tags_string" => "tag1,tag2",
+    "title" => "some updated title",
+    "visibility" => :private
+  }
+  @invalid_attrs %{
+    "content" => nil,
+    "tags_string" => "",
+    "title" => nil,
+    "visibility" => nil
+  }
 
-  defp create_note(_) do
-    note = note_fixture()
-    %{note: note}
+  defp create_note(%{user: user}) do
+    [note: note_fixture(user)]
   end
 
   describe "Index" do
-    setup [:create_note]
+    setup [:register_and_log_in_user, :create_note]
 
     test "lists all notes", %{conn: conn, note: note} do
       {:ok, _index_live, html} = live(conn, Routes.note_index_path(conn, :index))
@@ -53,7 +62,7 @@ defmodule MemexWeb.NoteLiveTest do
     test "updates note in listing", %{conn: conn, note: note} do
       {:ok, index_live, _html} = live(conn, Routes.note_index_path(conn, :index))
 
-      assert index_live |> element("#note-#{note.id} a", "Edit") |> render_click() =~
+      assert index_live |> element("[data-qa=\"note-edit-#{note.id}\"]") |> render_click() =~
                "edit"
 
       assert_patch(index_live, Routes.note_index_path(conn, :edit, note))
@@ -75,7 +84,7 @@ defmodule MemexWeb.NoteLiveTest do
     test "deletes note in listing", %{conn: conn, note: note} do
       {:ok, index_live, _html} = live(conn, Routes.note_index_path(conn, :index))
 
-      assert index_live |> element("#note-#{note.id} a", "Delete") |> render_click()
+      assert index_live |> element("[data-qa=\"delete-note-#{note.id}\"]") |> render_click()
       refute has_element?(index_live, "#note-#{note.id}")
     end
   end

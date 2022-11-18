@@ -4,8 +4,8 @@ defmodule MemexWeb.NoteLive.FormComponent do
   alias Memex.Notes
 
   @impl true
-  def update(%{note: note} = assigns, socket) do
-    changeset = Notes.change_note(note)
+  def update(%{note: note, current_user: current_user} = assigns, socket) do
+    changeset = Notes.change_note(note, current_user)
 
     {:ok,
      socket
@@ -14,39 +14,51 @@ defmodule MemexWeb.NoteLive.FormComponent do
   end
 
   @impl true
-  def handle_event("validate", %{"note" => note_params}, socket) do
+  def handle_event(
+        "validate",
+        %{"note" => note_params},
+        %{assigns: %{note: note, current_user: current_user}} = socket
+      ) do
     changeset =
-      socket.assigns.note
-      |> Notes.change_note(note_params)
+      note
+      |> Notes.change_note(note_params, current_user)
       |> Map.put(:action, :validate)
 
     {:noreply, assign(socket, :changeset, changeset)}
   end
 
-  def handle_event("save", %{"note" => note_params}, socket) do
-    save_note(socket, socket.assigns.action, note_params)
+  def handle_event("save", %{"note" => note_params}, %{assigns: %{action: action}} = socket) do
+    save_note(socket, action, note_params)
   end
 
-  defp save_note(socket, :edit, note_params) do
-    case Notes.update_note(socket.assigns.note, note_params) do
-      {:ok, _note} ->
+  defp save_note(
+         %{assigns: %{note: note, return_to: return_to, current_user: current_user}} = socket,
+         :edit,
+         note_params
+       ) do
+    case Notes.update_note(note, note_params, current_user) do
+      {:ok, %{title: title}} ->
         {:noreply,
          socket
          |> put_flash(:info, gettext("%{title} saved", title: title))
-         |> push_navigate(to: socket.assigns.return_to)}
+         |> push_navigate(to: return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}
     end
   end
 
-  defp save_note(socket, :new, note_params) do
-    case Notes.create_note(note_params) do
-      {:ok, _note} ->
+  defp save_note(
+         %{assigns: %{return_to: return_to, current_user: current_user}} = socket,
+         :new,
+         note_params
+       ) do
+    case Notes.create_note(note_params, current_user) do
+      {:ok, %{title: title}} ->
         {:noreply,
          socket
          |> put_flash(:info, gettext("%{title} created", title: title))
-         |> push_navigate(to: socket.assigns.return_to)}
+         |> push_navigate(to: return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, changeset: changeset)}

@@ -1,10 +1,41 @@
-<h1>Show Note</h1>
+<div class="mx-auto flex flex-col justify-center items-stretch space-y-4 max-w-3xl">
+  <h1 class="text-xl">
+    <%= @note.title %>
+  </h1>
+
+  <p><%= if @note.tags, do: @note.tags |> Enum.join(", ") %></p>
+
+  <textarea
+    id="show-note-content"
+    class="input input-primary h-128 min-h-128"
+    phx-hook="MaintainAttrs"
+    phx-update="ignore"
+    readonly
+    phx-no-format
+  ><%= @note.content %></textarea>
+
+  <p class="self-end">
+    <%= gettext("Visibility: %{visibility}", visibility: @note.visibility) %>
+  </p>
+
+  <div class="self-end flex space-x-4">
+    <.link class="btn btn-primary" patch={Routes.note_index_path(@socket, :index)}>
+      <%= dgettext("actions", "Back") %>
+    </.link>
+    <%= if @current_user do %>
+      <.link class="btn btn-primary" patch={Routes.note_show_path(@socket, :edit, @note)}>
+        <%= dgettext("actions", "edit") %>
+      </.link>
+    <% end %>
+  </div>
+</div>
 
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.note_show_path(@socket, :show, @note)}>
     <.live_component
       module={MemexWeb.NoteLive.FormComponent}
       id={@note.id}
+      current_user={@current_user}
       title={@page_title}
       action={@live_action}
       note={@note}
@@ -12,37 +43,3 @@
     />
   </.modal>
 <% end %>
-
-<ul>
-  <li>
-    <strong>Title:</strong>
-    <%= @note.title %>
-  </li>
-
-  <li>
-    <strong>Content:</strong>
-    <%= @note.content %>
-  </li>
-
-  <li>
-    <strong>Tag:</strong>
-    <%= @note.tag %>
-  </li>
-
-  <li>
-    <strong>Visibility:</strong>
-    <%= @note.visibility %>
-  </li>
-</ul>
-
-<span>
-  <.link patch={Routes.note_show_path(@socket, :edit, @note)} class="button">
-    <%= dgettext("actions", "Edit") %>
-  </.link>
-</span>
-|
-<span>
-  <.link patch={Routes.note_index_path(@socket, :index)}>
-    <%= dgettext("actions", "Back") %>
-  </.link>
-</span>

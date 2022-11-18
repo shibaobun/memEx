@@ -4,21 +4,40 @@ defmodule Memex.Notes do
   """
 
   import Ecto.Query, warn: false
-  alias Memex.Repo
-
-  alias Memex.Notes.Note
+  alias Ecto.Changeset
+  alias Memex.{Accounts.User, Notes.Note, Repo}
 
   @doc """
   Returns the list of notes.
 
   ## Examples
 
-      iex> list_notes()
+      iex> list_notes(%User{id: 123})
       [%Note{}, ...]
 
+      iex> list_notes("my note", %User{id: 123})
+      [%Note{title: "my note"}, ...]
+
   """
-  def list_notes do
-    Repo.all(Note)
+  @spec list_notes(User.t()) :: [Note.t()]
+  def list_notes(%{id: user_id}) do
+    Repo.all(from n in Note, where: n.user_id == ^user_id, order_by: n.title)
+  end
+
+  @doc """
+  Returns the list of public notes for viewing
+
+  ## Examples
+
+      iex> list_public_notes()
+      [%Note{}, ...]
+
+      iex> list_public_notes("my note")
+      [%Note{title: "my note"}, ...]
+  """
+  @spec list_public_notes() :: [Note.t()]
+  def list_public_notes do
+    Repo.all(from n in Note, where: n.visibility == :public, order_by: n.title)
   end
 
   @doc """
@@ -28,31 +47,46 @@ defmodule Memex.Notes do
 
   ## Examples
 
-      iex> get_note!(123)
+      iex> get_note!(123, %User{id: 123})
       %Note{}
 
-      iex> get_note!(456)
+      iex> get_note!(456, %User{id: 123})
       ** (Ecto.NoResultsError)
 
   """
-  def get_note!(id), do: Repo.get!(Note, id)
+  @spec get_note!(Note.id(), User.t()) :: Note.t()
+  def get_note!(id, %{id: user_id}) do
+    Repo.one!(
+      from n in Note,
+        where: n.id == ^id,
+        where: n.user_id == ^user_id or n.visibility in [:public, :unlisted]
+    )
+  end
+
+  def get_note!(id, _invalid_user) do
+    Repo.one!(
+      from n in Note,
+        where: n.id == ^id,
+        where: n.visibility in [:public, :unlisted]
+    )
+  end
 
   @doc """
   Creates a note.
 
   ## Examples
 
-      iex> create_note(%{field: value})
+      iex> create_note(%{field: value}, %User{id: 123})
       {:ok, %Note{}}
 
-      iex> create_note(%{field: bad_value})
+      iex> create_note(%{field: bad_value}, %User{id: 123})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_note(attrs \\ %{}) do
-    %Note{}
-    |> Note.changeset(attrs)
-    |> Repo.insert()
+  @spec create_note(User.t()) :: {:ok, Note.t()} | {:error, Note.changeset()}
+  @spec create_note(attrs :: map(), User.t()) :: {:ok, Note.t()} | {:error, Note.changeset()}
+  def create_note(attrs \\ %{}, user) do
+    Note.create_changeset(attrs, user) |> Repo.insert()
   end
 
   @doc """
@@ -60,16 +94,18 @@ defmodule Memex.Notes do
 
   ## Examples
 
-      iex> update_note(note, %{field: new_value})
+      iex> update_note(note, %{field: new_value}, %User{id: 123})
       {:ok, %Note{}}
 
-      iex> update_note(note, %{field: bad_value})
+      iex> update_note(note, %{field: bad_value}, %User{id: 123})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_note(%Note{} = note, attrs) do
+  @spec update_note(Note.t(), attrs :: map(), User.t()) ::
+          {:ok, Note.t()} | {:error, Note.changeset()}
+  def update_note(%Note{} = note, attrs, user) do
     note
-    |> Note.changeset(attrs)
+    |> Note.update_changeset(attrs, user)
     |> Repo.update()
   end
 
@@ -78,15 +114,23 @@ defmodule Memex.Notes do
 
   ## Examples
 
-      iex> delete_note(note)
+      iex> delete_note(%Note{user_id: 123}, %User{id: 123})
       {:ok, %Note{}}
 
-      iex> delete_note(note)
+      iex> delete_note(%Note{}, %User{role: :admin})
+      {:ok, %Note{}}
+
+      iex> delete_note(%Note{}, %User{id: 123})
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_note(%Note{} = note) do
-    Repo.delete(note)
+  @spec delete_note(Note.t(), User.t()) :: {:ok, Note.t()} | {:error, Note.changeset()}
+  def delete_note(%Note{user_id: user_id} = note, %{id: user_id}) do
+    note |> Repo.delete()
+  end
+
+  def delete_note(%Note{} = note, %{role: :admin}) do
+    note |> Repo.delete()
   end
 
   @doc """
@@ -94,11 +138,30 @@ defmodule Memex.Notes do
 
   ## Examples
 
-      iex> change_note(note)
+      iex> change_note(note, %User{id: 123})
+      %Ecto.Changeset{data: %Note{}}
+
+      iex> change_note(note, %{title: "new title"}, %User{id: 123})
       %Ecto.Changeset{data: %Note{}}
 
   """
-  def change_note(%Note{} = note, attrs \\ %{}) do
-    Note.changeset(note, attrs)
+  @spec change_note(Note.t(), User.t()) :: Note.changeset()
+  @spec change_note(Note.t(), attrs :: map(), User.t()) :: Note.changeset()
+  def change_note(%Note{} = note, attrs \\ %{}, user) do
+    note |> Note.update_changeset(attrs, user)
+  end
+
+  @doc """
+  Gets a canonical string representation of the `:tags` field for a Note
+  """
+  @spec get_tags_string(Note.t() | Note.changeset() | [String.t()] | nil) :: String.t()
+  def get_tags_string(nil), do: ""
+  def get_tags_string(tags) when tags |> is_list(), do: tags |> Enum.join(",")
+  def get_tags_string(%Note{tags: tags}), do: tags |> get_tags_string()
+
+  def get_tags_string(%Changeset{} = changeset) do
+    changeset
+    |> Changeset.get_field(:tags)
+    |> get_tags_string()
   end
 end

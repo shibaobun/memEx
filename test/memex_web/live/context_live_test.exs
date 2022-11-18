@@ -4,14 +4,24 @@ defmodule MemexWeb.ContextLiveTest do
   import Phoenix.LiveViewTest
   import Memex.ContextsFixtures
 
-  @create_attrs %{content: "some content", tag: [], title: "some title", visibility: :public}
-  @update_attrs %{
-    content: "some updated content",
-    tag: [],
-    title: "some updated title",
-    visibility: :private
+  @create_attrs %{
+    "content" => "some content",
+    "tags_string" => "tag1",
+    "title" => "some title",
+    "visibility" => :public
   }
-  @invalid_attrs %{content: nil, tag: [], title: nil, visibility: nil}
+  @update_attrs %{
+    "content" => "some updated content",
+    "tags_string" => "tag1,tag2",
+    "title" => "some updated title",
+    "visibility" => :private
+  }
+  @invalid_attrs %{
+    "content" => nil,
+    "tags_string" => "",
+    "title" => nil,
+    "visibility" => nil
+  }
 
   defp create_context(_) do
     context = context_fixture()

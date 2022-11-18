@@ -1,10 +1,54 @@
-<h1>Listing Notes</h1>
+<div class="mx-auto flex flex-col justify-center items-start space-y-4 max-w-3xl">
+  <h1 class="text-xl">
+    <%= gettext("notes") %>
+  </h1>
+
+  <%= if @notes |> Enum.empty?() do %>
+    <h1 class="self-center text-primary-500">
+      <%= gettext("no notes found") %>
+    </h1>
+  <% else %>
+    <.live_component
+      module={MemexWeb.Components.NotesTableComponent}
+      id="notes-index-table"
+      current_user={@current_user}
+      notes={@notes}
+    >
+      <:actions :let={note}>
+        <%= if @current_user do %>
+          <.link
+            patch={Routes.note_index_path(@socket, :edit, note)}
+            data-qa={"note-edit-#{note.id}"}
+          >
+            <%= dgettext("actions", "edit") %>
+          </.link>
+          <.link
+            href="#"
+            phx-click="delete"
+            phx-value-id={note.id}
+            data-confirm={dgettext("prompts", "are you sure?")}
+            data-qa={"delete-note-#{note.id}"}
+          >
+            <%= dgettext("actions", "delete") %>
+          </.link>
+        <% end %>
+      </:actions>
+    </.live_component>
+  <% end %>
+
+  <%= if @current_user do %>
+    <.link patch={Routes.note_index_path(@socket, :new)} class="self-end btn btn-primary">
+      <%= dgettext("actions", "new note") %>
+    </.link>
+  <% end %>
+</div>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.note_index_path(@socket, :index)}>
     <.live_component
       module={MemexWeb.NoteLive.FormComponent}
       id={@note.id || :new}
+      current_user={@current_user}
       title={@page_title}
       action={@live_action}
       note={@note}
@@ -12,55 +56,3 @@
     />
   </.modal>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Tag</th>
-      <th>Visibility</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="notes">
-    <%= for note <- @notes do %>
-      <tr id={"note-#{note.id}"}>
-        <td><%= note.title %></td>
-        <td><%= note.content %></td>
-        <td><%= note.tag %></td>
-        <td><%= note.visibility %></td>
-
-        <td>
-          <span>
-            <.link navigate={Routes.note_show_path(@socket, :show, note)}>
-              <%= dgettext("actions", "Show") %>
-            </.link>
-          </span>
-          <span>
-            <.link patch={Routes.note_index_path(@socket, :edit, note)}>
-              <%= dgettext("actions", "Edit") %>
-            </.link>
-          </span>
-          <span>
-            <.link
-              href="#"
-              phx-click="delete"
-              phx-value-id={note.id}
-              data-confirm={dgettext("prompts", "Are you sure?")}
-            >
-              <%= dgettext("actions", "Delete") %>
-            </.link>
-          </span>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<span>
-  <.link patch={Routes.note_index_path(@socket, :new)}>
-    <%= dgettext("actions", "New Note") %>
-  </.link>
-</span>

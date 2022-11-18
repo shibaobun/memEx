@@ -9,11 +9,15 @@ defmodule MemexWeb.NoteLive.Show do
   end
 
   @impl true
-  def handle_params(%{"id" => id}, _, socket) do
+  def handle_params(
+        %{"id" => id},
+        _,
+        %{assigns: %{live_action: live_action, current_user: current_user}} = socket
+      ) do
     {:noreply,
      socket
-     |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:note, Notes.get_note!(id))}
+     |> assign(:page_title, page_title(live_action))
+     |> assign(:note, Notes.get_note!(id, current_user))}
   end
 
   defp page_title(:show), do: "show note"

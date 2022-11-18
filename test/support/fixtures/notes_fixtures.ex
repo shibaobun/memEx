@@ -3,20 +3,23 @@ defmodule Memex.NotesFixtures do
   This module defines test helpers for creating
   entities via the `Memex.Notes` context.
   """
+  alias Memex.{Accounts.User, Notes, Notes.Note}
 
   @doc """
   Generate a note.
   """
-  def note_fixture(attrs \\ %{}) do
+  @spec note_fixture(User.t()) :: Note.t()
+  @spec note_fixture(attrs :: map(), User.t()) :: Note.t()
+  def note_fixture(attrs \\ %{}, user) do
     {:ok, note} =
       attrs
       |> Enum.into(%{
         content: "some content",
         tag: [],
         title: "some title",
-        visibility: :public
+        visibility: :private
       })
-      |> Memex.Notes.create_note()
+      |> Notes.create_note(user)
 
     note
   end
