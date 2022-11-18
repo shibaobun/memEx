@@ -16,9 +16,9 @@ defmodule MemexWeb.InviteLiveTest do
   describe "Index" do
     setup [:register_and_log_in_user]
 
-    setup %{current_user: current_user} do
-      {:ok, invite} = Invites.create_invite(current_user, @create_attrs)
-      %{invite: invite, current_user: current_user}
+    setup %{user: user} do
+      {:ok, invite} = Invites.create_invite(user, @create_attrs)
+      %{invite: invite, user: user}
     end
 
     test "lists all invites", %{conn: conn, invite: invite} do

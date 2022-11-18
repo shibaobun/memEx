@@ -50,10 +50,10 @@ defmodule MemexWeb.ConnCase do
   test context.
   """
   @spec register_and_log_in_user(%{conn: Plug.Conn.t()}) ::
-          %{conn: Plug.Conn.t(), current_user: User.t()}
+          %{conn: Plug.Conn.t(), user: User.t()}
   def register_and_log_in_user(%{conn: conn}) do
-    current_user = user_fixture() |> confirm_user()
-    %{conn: log_in_user(conn, current_user), current_user: current_user}
+    user = user_fixture() |> confirm_user()
+    %{conn: log_in_user(conn, user), user: user}
   end
 
   @spec confirm_user(User.t()) :: User.t()
