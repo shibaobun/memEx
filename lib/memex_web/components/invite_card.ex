@@ -18,11 +18,11 @@ defmodule MemexWeb.Components.InviteCard do
       <%= if @invite.disabled_at |> is_nil() do %>
         <h2 class="title text-md">
           <%= gettext("Uses Left:") %>
-          <%= @invite.uses_left || "Unlimited" %>
+          <%= @invite.uses_left || gettext("unlimited") %>
         </h2>
       <% else %>
         <h2 class="title text-md">
-          <%= gettext("Invite Disabled") %>
+          <%= gettext("invite disabled") %>
         </h2>
       <% end %>
 

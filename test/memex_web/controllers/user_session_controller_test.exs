@@ -16,7 +16,7 @@ defmodule MemexWeb.UserSessionControllerTest do
     test "renders log in page", %{conn: conn} do
       conn = get(conn, Routes.user_session_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ dgettext("actions", "Log in")
+      assert response =~ dgettext("actions", "log in")
     end
 
     test "redirects if already logged in", %{conn: conn, current_user: current_user} do
@@ -39,7 +39,7 @@ defmodule MemexWeb.UserSessionControllerTest do
       conn = get(conn, "/")
       response = html_response(conn, 200)
       assert response =~ current_user.email
-      assert response =~ dgettext("prompts", "Are you sure you want to log out?")
+      assert response =~ dgettext("prompts", "are you sure you want to log out?")
     end
 
     test "logs the user in with remember me", %{conn: conn, current_user: current_user} do
@@ -78,7 +78,7 @@ defmodule MemexWeb.UserSessionControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ dgettext("actions", "Log in")
+      assert response =~ dgettext("actions", "log in")
       assert response =~ dgettext("errors", "Invalid email or password")
     end
   end

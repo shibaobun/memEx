@@ -32,7 +32,7 @@ defmodule MemexWeb.PipelineLive.FormComponent do
       {:ok, _pipeline} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Pipeline updated successfully")
+         |> put_flash(:info, "pipeline updated successfully")
          |> push_navigate(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -45,7 +45,7 @@ defmodule MemexWeb.PipelineLive.FormComponent do
       {:ok, _pipeline} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Pipeline created successfully")
+         |> put_flash(:info, "pipeline created successfully")
          |> push_navigate(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->

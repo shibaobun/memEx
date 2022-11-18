@@ -16,6 +16,6 @@ defmodule MemexWeb.ContextLive.Show do
      |> assign(:context, Contexts.get_context!(id))}
   end
 
-  defp page_title(:show), do: "Show Context"
-  defp page_title(:edit), do: "Edit Context"
+  defp page_title(:show), do: "show context"
+  defp page_title(:edit), do: "edit context"
 end

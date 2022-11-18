@@ -16,19 +16,19 @@ defmodule MemexWeb.ContextLive.Index do
 
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
-    |> assign(:page_title, "Edit Context")
+    |> assign(:page_title, "edit context")
     |> assign(:context, Contexts.get_context!(id))
   end
 
   defp apply_action(socket, :new, _params) do
     socket
-    |> assign(:page_title, "New Context")
+    |> assign(:page_title, "new context")
     |> assign(:context, %Context{})
   end
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Contexts")
+    |> assign(:page_title, "listing contexts")
     |> assign(:context, nil)
   end
 

@@ -41,7 +41,7 @@ defmodule MemexWeb.Components.Topbar do
                 navigate={Routes.note_index_path(Endpoint, :index)}
                 class="text-primary-400 text-primary-400 hover:underline truncate"
               >
-                <%= gettext("Notes") %>
+                <%= gettext("notes") %>
               </.link>
             </li>
 
@@ -50,7 +50,7 @@ defmodule MemexWeb.Components.Topbar do
                 navigate={Routes.context_index_path(Endpoint, :index)}
                 class="text-primary-400 text-primary-400 hover:underline truncate"
               >
-                <%= gettext("Contexts") %>
+                <%= gettext("contexts") %>
               </.link>
             </li>
 
@@ -59,11 +59,11 @@ defmodule MemexWeb.Components.Topbar do
                 navigate={Routes.pipeline_index_path(Endpoint, :index)}
                 class="text-primary-400 text-primary-400 hover:underline truncate"
               >
-                <%= gettext("Pipelines") %>
+                <%= gettext("pipelines") %>
               </.link>
             </li>
 
-            <li class="mx-2 my-1 border-left border border-primary-400">​</li>
+            <li class="mx-2 my-1 border-left border border-primary-700">​</li>
 
             <%= if @current_user.role == :admin do %>
               <li class="mx-2 my-1">
@@ -71,7 +71,7 @@ defmodule MemexWeb.Components.Topbar do
                   navigate={Routes.invite_index_path(Endpoint, :index)}
                   class="text-primary-400 text-primary-400 hover:underline"
                 >
-                  <%= gettext("Invites") %>
+                  <%= gettext("invites") %>
                 </.link>
               </li>
             <% end %>
@@ -89,7 +89,7 @@ defmodule MemexWeb.Components.Topbar do
               <.link
                 href={Routes.user_session_path(Endpoint, :delete)}
                 method="delete"
-                data-confirm={dgettext("prompts", "Are you sure you want to log out?")}
+                data-confirm={dgettext("prompts", "are you sure you want to log out?")}
               >
                 <i class="fas fa-sign-out-alt"></i>
               </.link>
@@ -112,7 +112,7 @@ defmodule MemexWeb.Components.Topbar do
                   navigate={Routes.user_registration_path(Endpoint, :new)}
                   class="text-primary-400 text-primary-400 hover:underline truncate"
                 >
-                  <%= dgettext("actions", "Register") %>
+                  <%= dgettext("actions", "register") %>
                 </.link>
               </li>
             <% end %>
@@ -122,7 +122,7 @@ defmodule MemexWeb.Components.Topbar do
                 navigate={Routes.user_session_path(Endpoint, :new)}
                 class="text-primary-400 text-primary-400 hover:underline truncate"
               >
-                <%= dgettext("actions", "Log in") %>
+                <%= dgettext("actions", "log in") %>
               </.link>
             </li>
           <% end %>

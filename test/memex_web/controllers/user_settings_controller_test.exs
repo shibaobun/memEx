@@ -59,7 +59,7 @@ defmodule MemexWeb.UserSettingsControllerTest do
         })
 
       response = html_response(old_password_conn, 200)
-      assert response =~ gettext("Settings")
+      assert response =~ gettext("settings")
       assert response =~ dgettext("errors", "should be at least 12 character(s)")
       assert response =~ dgettext("errors", "does not match password")
       assert response =~ dgettext("errors", "is not valid")
@@ -98,7 +98,7 @@ defmodule MemexWeb.UserSettingsControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ gettext("Settings")
+      assert response =~ gettext("settings")
       assert response =~ dgettext("errors", "must have the @ sign and no spaces")
       assert response =~ dgettext("errors", "is not valid")
     end

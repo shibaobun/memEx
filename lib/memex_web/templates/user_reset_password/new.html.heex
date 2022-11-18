@@ -22,11 +22,11 @@
   <div class="flex flex-row justify-center items-center space-x-4">
     <%= if Accounts.allow_registration?() do %>
       <.link href={Routes.user_registration_path(@conn, :new)} class="btn btn-primary">
-        <%= dgettext("actions", "Register") %>
+        <%= dgettext("actions", "register") %>
       </.link>
     <% end %>
     <.link href={Routes.user_session_path(@conn, :new)} class="btn btn-primary">
-      <%= dgettext("actions", "Log in") %>
+      <%= dgettext("actions", "log in") %>
     </.link>
   </div>
 </div>

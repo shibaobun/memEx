@@ -16,6 +16,6 @@ defmodule MemexWeb.NoteLive.Show do
      |> assign(:note, Notes.get_note!(id))}
   end
 
-  defp page_title(:show), do: "Show Note"
-  defp page_title(:edit), do: "Edit Note"
+  defp page_title(:show), do: "show note"
+  defp page_title(:edit), do: "edit note"
 end

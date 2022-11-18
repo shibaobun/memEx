@@ -16,6 +16,6 @@ defmodule MemexWeb.PipelineLive.Show do
      |> assign(:pipeline, Pipelines.get_pipeline!(id))}
   end
 
-  defp page_title(:show), do: "Show Pipeline"
-  defp page_title(:edit), do: "Edit Pipeline"
+  defp page_title(:show), do: "show pipeline"
+  defp page_title(:edit), do: "edit pipeline"
 end

@@ -1,6 +1,6 @@
 <div class="mx-auto mb-8 max-w-2xl flex flex-col justify-center items-center space-y-4">
   <h1 class="title text-primary-400 text-xl">
-    <%= dgettext("actions", "Register") %>
+    <%= dgettext("actions", "register") %>
   </h1>
 
   <.form
@@ -38,14 +38,14 @@
     ) %>
     <%= error_tag(f, :locale) %>
 
-    <%= submit(dgettext("actions", "Register"), class: "mx-auto btn btn-primary col-span-3") %>
+    <%= submit(dgettext("actions", "register"), class: "mx-auto btn btn-primary col-span-3") %>
   </.form>
 
   <hr class="hr" />
 
   <div class="flex flex-row justify-center items-center space-x-4">
     <.link href={Routes.user_session_path(@conn, :new)} class="btn btn-primary">
-      <%= dgettext("actions", "Log in") %>
+      <%= dgettext("actions", "log in") %>
     </.link>
     <.link href={Routes.user_reset_password_path(@conn, :new)} class="btn btn-primary">
       <%= dgettext("actions", "Forgot your password?") %>

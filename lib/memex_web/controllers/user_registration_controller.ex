@@ -32,7 +32,7 @@ defmodule MemexWeb.UserRegistrationController do
     render(conn, "new.html",
       changeset: Accounts.change_user_registration(%User{}),
       invite: invite,
-      page_title: gettext("Register")
+      page_title: gettext("register")
     )
   end
 

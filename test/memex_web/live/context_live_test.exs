@@ -24,15 +24,15 @@ defmodule MemexWeb.ContextLiveTest do
     test "lists all contexts", %{conn: conn, context: context} do
       {:ok, _index_live, html} = live(conn, Routes.context_index_path(conn, :index))
 
-      assert html =~ "Listing Contexts"
+      assert html =~ "listing contexts"
       assert html =~ context.content
     end
 
     test "saves new context", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
 
-      assert index_live |> element("a", "New Context") |> render_click() =~
-               "New Context"
+      assert index_live |> element("a", "new context") |> render_click() =~
+               "new context"
 
       assert_patch(index_live, Routes.context_index_path(conn, :new))
 
@@ -46,15 +46,15 @@ defmodule MemexWeb.ContextLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.context_index_path(conn, :index))
 
-      assert html =~ "Context created successfully"
+      assert html =~ "context created successfully"
       assert html =~ "some content"
     end
 
     test "updates context in listing", %{conn: conn, context: context} do
       {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
 
-      assert index_live |> element("#context-#{context.id} a", "Edit") |> render_click() =~
-               "Edit Context"
+      assert index_live |> element("#context-#{context.id} a", "edit") |> render_click() =~
+               "edit context"
 
       assert_patch(index_live, Routes.context_index_path(conn, :edit, context))
 
@@ -68,33 +68,33 @@ defmodule MemexWeb.ContextLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.context_index_path(conn, :index))
 
-      assert html =~ "Context updated successfully"
+      assert html =~ "context updated successfully"
       assert html =~ "some updated content"
     end
 
     test "deletes context in listing", %{conn: conn, context: context} do
       {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
 
-      assert index_live |> element("#context-#{context.id} a", "Delete") |> render_click()
+      assert index_live |> element("#context-#{context.id} a", "delete") |> render_click()
       refute has_element?(index_live, "#context-#{context.id}")
     end
   end
 
-  describe "Show" do
+  describe "show" do
     setup [:create_context]
 
     test "displays context", %{conn: conn, context: context} do
       {:ok, _show_live, html} = live(conn, Routes.context_show_path(conn, :show, context))
 
-      assert html =~ "Show Context"
+      assert html =~ "show context"
       assert html =~ context.content
     end
 
     test "updates context within modal", %{conn: conn, context: context} do
       {:ok, show_live, _html} = live(conn, Routes.context_show_path(conn, :show, context))
 
-      assert show_live |> element("a", "Edit") |> render_click() =~
-               "Edit Context"
+      assert show_live |> element("a", "edit") |> render_click() =~
+               "edit context"
 
       assert_patch(show_live, Routes.context_show_path(conn, :edit, context))
 
@@ -108,7 +108,7 @@ defmodule MemexWeb.ContextLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.context_show_path(conn, :show, context))
 
-      assert html =~ "Context updated successfully"
+      assert html =~ "context updated successfully"
       assert html =~ "some updated content"
     end
   end

@@ -23,15 +23,15 @@ defmodule MemexWeb.PipelineLiveTest do
     test "lists all pipelines", %{conn: conn, pipeline: pipeline} do
       {:ok, _index_live, html} = live(conn, Routes.pipeline_index_path(conn, :index))
 
-      assert html =~ "Listing Pipelines"
+      assert html =~ "listing pipelines"
       assert html =~ pipeline.description
     end
 
     test "saves new pipeline", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.pipeline_index_path(conn, :index))
 
-      assert index_live |> element("a", "New Pipeline") |> render_click() =~
-               "New Pipeline"
+      assert index_live |> element("a", "new pipeline") |> render_click() =~
+               "new pipeline"
 
       assert_patch(index_live, Routes.pipeline_index_path(conn, :new))
 
@@ -45,15 +45,15 @@ defmodule MemexWeb.PipelineLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.pipeline_index_path(conn, :index))
 
-      assert html =~ "Pipeline created successfully"
+      assert html =~ "pipeline created successfully"
       assert html =~ "some description"
     end
 
     test "updates pipeline in listing", %{conn: conn, pipeline: pipeline} do
       {:ok, index_live, _html} = live(conn, Routes.pipeline_index_path(conn, :index))
 
-      assert index_live |> element("#pipeline-#{pipeline.id} a", "Edit") |> render_click() =~
-               "Edit Pipeline"
+      assert index_live |> element("#pipeline-#{pipeline.id} a", "edit") |> render_click() =~
+               "edit pipeline"
 
       assert_patch(index_live, Routes.pipeline_index_path(conn, :edit, pipeline))
 
@@ -67,33 +67,33 @@ defmodule MemexWeb.PipelineLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.pipeline_index_path(conn, :index))
 
-      assert html =~ "Pipeline updated successfully"
+      assert html =~ "pipeline updated successfully"
       assert html =~ "some updated description"
     end
 
     test "deletes pipeline in listing", %{conn: conn, pipeline: pipeline} do
       {:ok, index_live, _html} = live(conn, Routes.pipeline_index_path(conn, :index))
 
-      assert index_live |> element("#pipeline-#{pipeline.id} a", "Delete") |> render_click()
+      assert index_live |> element("#pipeline-#{pipeline.id} a", "delete") |> render_click()
       refute has_element?(index_live, "#pipeline-#{pipeline.id}")
     end
   end
 
-  describe "Show" do
+  describe "show" do
     setup [:create_pipeline]
 
     test "displays pipeline", %{conn: conn, pipeline: pipeline} do
       {:ok, _show_live, html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline))
 
-      assert html =~ "Show Pipeline"
+      assert html =~ "show pipeline"
       assert html =~ pipeline.description
     end
 
     test "updates pipeline within modal", %{conn: conn, pipeline: pipeline} do
       {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline))
 
-      assert show_live |> element("a", "Edit") |> render_click() =~
-               "Edit Pipeline"
+      assert show_live |> element("a", "edit") |> render_click() =~
+               "edit pipeline"
 
       assert_patch(show_live, Routes.pipeline_show_path(conn, :edit, pipeline))
 
@@ -107,7 +107,7 @@ defmodule MemexWeb.PipelineLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.pipeline_show_path(conn, :show, pipeline))
 
-      assert html =~ "Pipeline updated successfully"
+      assert html =~ "pipeline updated successfully"
       assert html =~ "some updated description"
     end
   end

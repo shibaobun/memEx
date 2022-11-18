@@ -32,7 +32,7 @@ defmodule MemexWeb.ContextLive.FormComponent do
       {:ok, _context} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Context updated successfully")
+         |> put_flash(:info, "context updated successfully")
          |> push_navigate(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -45,7 +45,7 @@ defmodule MemexWeb.ContextLive.FormComponent do
       {:ok, _context} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Context created successfully")
+         |> put_flash(:info, "context created successfully")
          |> push_navigate(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->

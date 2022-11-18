@@ -5,7 +5,7 @@ defmodule MemexWeb.UserSessionController do
   alias MemexWeb.UserAuth
 
   def new(conn, _params) do
-    render(conn, "new.html", error_message: nil, page_title: gettext("Log in"))
+    render(conn, "new.html", error_message: nil, page_title: gettext("log in"))
   end
 
   def create(conn, %{"user" => user_params}) do

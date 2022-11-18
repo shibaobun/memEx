@@ -16,19 +16,19 @@ defmodule MemexWeb.NoteLive.Index do
 
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
-    |> assign(:page_title, "Edit Note")
+    |> assign(page_title: gettext("edit %{title}", title: title))
     |> assign(:note, Notes.get_note!(id))
   end
 
   defp apply_action(socket, :new, _params) do
     socket
-    |> assign(:page_title, "New Note")
+    |> assign(page_title: "new note")
     |> assign(:note, %Note{})
   end
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Notes")
+    |> assign(page_title: "notes")
     |> assign(:note, nil)
   end
 
@@ -37,8 +37,7 @@ defmodule MemexWeb.NoteLive.Index do
     note = Notes.get_note!(id)
     {:ok, _} = Notes.delete_note(note)
 
-    {:noreply, assign(socket, :notes, list_notes())}
-  end
+      |> put_flash(:info, gettext("%{title} deleted", title: title))
 
   defp list_notes do
     Notes.list_notes()

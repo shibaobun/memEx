@@ -1,4 +1,4 @@
-<h1>Listing Contexts</h1>
+<h1>listing contexts</h1>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.context_index_path(@socket, :index)}>
@@ -35,12 +35,12 @@
         <td>
           <span>
             <.link navigate={Routes.context_show_path(@socket, :show, context)}>
-              <%= dgettext("actions", "Show") %>
+              <%= dgettext("actions", "show") %>
             </.link>
           </span>
           <span>
             <.link patch={Routes.context_index_path(@socket, :edit, context)}>
-              <%= dgettext("actions", "Edit") %>
+              <%= dgettext("actions", "edit") %>
             </.link>
           </span>
           <span>
@@ -48,9 +48,9 @@
               href="#"
               phx-click="delete"
               phx-value-id={context.id}
-              data-confirm={dgettext("prompts", "Are you sure?")}
+              data-confirm={dgettext("prompts", "are you sure?")}
             >
-              <%= dgettext("actions", "Delete") %>
+              <%= dgettext("actions", "delete") %>
             </.link>
           </span>
         </td>
@@ -61,6 +61,6 @@
 
 <span>
   <.link patch={Routes.context_index_path(@socket, :new)}>
-    <%= dgettext("actions", "New Context") %>
+    <%= dgettext("actions", "new context") %>
   </.link>
 </span>

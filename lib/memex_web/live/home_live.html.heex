@@ -9,30 +9,30 @@
     <li class="flex flex-col justify-center items-center
       space-y-2">
       <b class="whitespace-nowrap">
-        <%= gettext("Notes:") %>
+        <%= gettext("notes:") %>
       </b>
       <p>
-        <%= gettext("Document notes about individual items or concepts") %>
+        <%= gettext("document notes about individual items or concepts") %>
       </p>
     </li>
 
     <li class="flex flex-col justify-center items-center
       space-y-2">
       <b class="whitespace-nowrap">
-        <%= gettext("Contexts:") %>
+        <%= gettext("contexts:") %>
       </b>
       <p>
-        <%= gettext("Provide context around a single topic and hotlink to your notes") %>
+        <%= gettext("provide context around a single topic and hotlink to your notes") %>
       </p>
     </li>
 
     <li class="flex flex-col justify-center items-center
       space-y-2">
       <b class="whitespace-nowrap">
-        <%= gettext("Pipelines:") %>
+        <%= gettext("pipelines:") %>
       </b>
       <p>
-        <%= gettext("Document your processes, attaching contexts to each step") %>
+        <%= gettext("document your processes, attaching contexts to each step") %>
       </p>
     </li>
   </ul>
@@ -41,36 +41,36 @@
 
   <ul class="flex flex-col space-y-4 text-center">
     <h2 class="title text-primary-400 text-lg">
-      <%= gettext("Features") %>
+      <%= gettext("features") %>
     </h2>
 
     <li class="flex flex-col justify-center items-center
       space-y-2">
       <b class="whitespace-nowrap">
-        <%= gettext("Multi-user:") %>
+        <%= gettext("multi-user:") %>
       </b>
       <p>
-        <%= gettext("Built with sharing and collaboration in mind") %>
+        <%= gettext("built with sharing and collaboration in mind") %>
       </p>
     </li>
 
     <li class="flex flex-col justify-center items-center
       space-y-2">
       <b class="whitespace-nowrap">
-        <%= gettext("Privacy:") %>
+        <%= gettext("privacy:") %>
       </b>
       <p>
-        <%= gettext("Privacy controls on a per-note, context or pipeline basis") %>
+        <%= gettext("privacy controls on a per-note, context or pipeline basis") %>
       </p>
     </li>
 
     <li class="flex flex-col justify-center items-center
       space-y-2">
       <b class="whitespace-nowrap">
-        <%= gettext("Convenient:") %>
+        <%= gettext("convenient:") %>
       </b>
       <p>
-        <%= gettext("Accessible from any internet-capable device") %>
+        <%= gettext("accessible from any internet-capable device") %>
       </p>
     </li>
   </ul>
@@ -79,12 +79,12 @@
 
   <ul class="flex flex-col space-y-4 text-center">
     <h2 class="title text-primary-400 text-lg">
-      <%= gettext("Instance Information") %>
+      <%= gettext("instance information") %>
     </h2>
 
     <li class="flex flex-col justify-center space-x-2">
       <b>
-        <%= gettext("Admins:") %>
+        <%= gettext("admins:") %>
       </b>
       <p>
         <%= if @admins |> Enum.empty?() do %>
@@ -92,7 +92,7 @@
             href={Routes.user_registration_path(MemexWeb.Endpoint, :new)}
             class="hover:underline"
           >
-            <%= dgettext("prompts", "Register to setup %{name}", name: "memex") %>
+            <%= dgettext("prompts", "register to setup %{name}", name: "memex") %>
           </.link>
         <% else %>
           <div class="flex flex-wrap justify-center space-x-2">
@@ -107,18 +107,18 @@
     </li>
 
     <li class="flex flex-row justify-center space-x-2">
-      <b>Registration:</b>
+      <b><%= gettext("registration:") %></b>
       <p>
         <%= Application.get_env(:memex, MemexWeb.Endpoint)[:registration]
         |> case do
-          "public" -> gettext("Public Signups")
-          _ -> gettext("Invite Only")
+          "public" -> gettext("public signups")
+          _ -> gettext("invite only")
         end %>
       </p>
     </li>
 
     <li class="flex flex-row justify-center items-center space-x-2">
-      <b>Version:</b>
+      <b><%= gettext("version:") %></b>
       <.link
         href="https://gitea.bubbletea.dev/shibao/memex/src/branch/stable/CHANGELOG.md"
         class="flex flex-row justify-center items-center space-x-2 hover:underline"
@@ -135,7 +135,7 @@
 
   <ul class="flex flex-col space-y-2 text-center justify-center">
     <h2 class="title text-primary-400 text-lg">
-      <%= gettext("Get involved!") %>
+      <%= gettext("get involved!") %>
     </h2>
 
     <li class="flex flex-col justify-center space-x-2">
@@ -145,7 +145,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <p><%= gettext("View the source code") %></p>
+        <p><%= gettext("view the source code") %></p>
         <i class="fas fa-md fa-code"></i>
       </.link>
     </li>
@@ -156,7 +156,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <p><%= gettext("Help translate") %></p>
+        <p><%= gettext("help translate") %></p>
         <i class="fas fa-md fa-language"></i>
       </.link>
     </li>
@@ -167,7 +167,7 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <p><%= gettext("Report bugs or request features") %></p>
+        <p><%= gettext("report bugs or request features") %></p>
         <i class="fas fa-md fa-spider"></i>
       </.link>
     </li>

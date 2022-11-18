@@ -30,15 +30,15 @@ defmodule MemexWeb.InviteLive.Index do
 
   defp apply_action(%{assigns: %{current_user: current_user}} = socket, :edit, %{"id" => id}) do
     socket
-    |> assign(page_title: gettext("Edit Invite"), invite: Invites.get_invite!(id, current_user))
+    |> assign(page_title: gettext("edit invite"), invite: Invites.get_invite!(id, current_user))
   end
 
   defp apply_action(socket, :new, _params) do
-    socket |> assign(page_title: gettext("New Invite"), invite: %Invite{})
+    socket |> assign(page_title: gettext("new invite"), invite: %Invite{})
   end
 
   defp apply_action(socket, :index, _params) do
-    socket |> assign(page_title: gettext("Invites"), invite: nil)
+    socket |> assign(page_title: gettext("invites"), invite: nil)
   end
 
   @impl true

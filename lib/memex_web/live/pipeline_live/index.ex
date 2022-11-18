@@ -16,19 +16,19 @@ defmodule MemexWeb.PipelineLive.Index do
 
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
-    |> assign(:page_title, "Edit Pipeline")
+    |> assign(:page_title, "edit pipeline")
     |> assign(:pipeline, Pipelines.get_pipeline!(id))
   end
 
   defp apply_action(socket, :new, _params) do
     socket
-    |> assign(:page_title, "New Pipeline")
+    |> assign(:page_title, "new Pipeline")
     |> assign(:pipeline, %Pipeline{})
   end
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Pipelines")
+    |> assign(:page_title, "listing pipelines")
     |> assign(:pipeline, nil)
   end
 

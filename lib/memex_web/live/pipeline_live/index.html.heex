@@ -1,4 +1,4 @@
-<h1>Listing Pipelines</h1>
+<h1>listing pipelines</h1>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.pipeline_index_path(@socket, :index)}>
@@ -33,12 +33,12 @@
         <td>
           <span>
             <.link navigate={Routes.pipeline_show_path(@socket, :show, pipeline)}>
-              <%= dgettext("actions", "Show") %>
+              <%= dgettext("actions", "show") %>
             </.link>
           </span>
           <span>
             <.link patch={Routes.pipeline_index_path(@socket, :edit, pipeline)}>
-              <%= dgettext("actions", "Edit") %>
+              <%= dgettext("actions", "edit") %>
             </.link>
           </span>
           <span>
@@ -46,9 +46,9 @@
               href="#"
               phx-click="delete"
               phx-value-id={pipeline.id}
-              data-confirm={dgettext("prompts", "Are you sure?")}
+              data-confirm={dgettext("prompts", "are you sure?")}
             >
-              <%= dgettext("actions", "Delete") %>
+              <%= dgettext("actions", "delete") %>
             </.link>
           </span>
         </td>
@@ -59,6 +59,6 @@
 
 <span>
   <.link patch={Routes.pipeline_index_path(@socket, :new)}>
-    <%= dgettext("actions", "New Pipeline") %>
+    <%= dgettext("actions", "new pipeline") %>
   </.link>
 </span>

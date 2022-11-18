@@ -24,15 +24,15 @@ defmodule MemexWeb.NoteLiveTest do
     test "lists all notes", %{conn: conn, note: note} do
       {:ok, _index_live, html} = live(conn, Routes.note_index_path(conn, :index))
 
-      assert html =~ "Listing Notes"
+      assert html =~ "notes"
       assert html =~ note.content
     end
 
     test "saves new note", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.note_index_path(conn, :index))
 
-      assert index_live |> element("a", "New Note") |> render_click() =~
-               "New Note"
+      assert index_live |> element("a", "new note") |> render_click() =~
+               "new note"
 
       assert_patch(index_live, Routes.note_index_path(conn, :new))
 
@@ -46,7 +46,7 @@ defmodule MemexWeb.NoteLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.note_index_path(conn, :index))
 
-      assert html =~ "Note created successfully"
+      assert html =~ "#{@create_attrs |> Map.get("title")} created"
       assert html =~ "some content"
     end
 
@@ -54,7 +54,7 @@ defmodule MemexWeb.NoteLiveTest do
       {:ok, index_live, _html} = live(conn, Routes.note_index_path(conn, :index))
 
       assert index_live |> element("#note-#{note.id} a", "Edit") |> render_click() =~
-               "Edit Note"
+               "edit"
 
       assert_patch(index_live, Routes.note_index_path(conn, :edit, note))
 
@@ -68,7 +68,7 @@ defmodule MemexWeb.NoteLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.note_index_path(conn, :index))
 
-      assert html =~ "Note updated successfully"
+      assert html =~ "#{@update_attrs |> Map.get("title")} saved"
       assert html =~ "some updated content"
     end
 
@@ -80,21 +80,20 @@ defmodule MemexWeb.NoteLiveTest do
     end
   end
 
-  describe "Show" do
-    setup [:create_note]
+  describe "show" do
+    setup [:register_and_log_in_user, :create_note]
 
     test "displays note", %{conn: conn, note: note} do
       {:ok, _show_live, html} = live(conn, Routes.note_show_path(conn, :show, note))
 
-      assert html =~ "Show Note"
+      assert html =~ "show note"
       assert html =~ note.content
     end
 
     test "updates note within modal", %{conn: conn, note: note} do
       {:ok, show_live, _html} = live(conn, Routes.note_show_path(conn, :show, note))
 
-      assert show_live |> element("a", "Edit") |> render_click() =~
-               "Edit Note"
+      assert show_live |> element("a", "edit") |> render_click() =~ "edit"
 
       assert_patch(show_live, Routes.note_show_path(conn, :edit, note))
 
@@ -108,7 +107,7 @@ defmodule MemexWeb.NoteLiveTest do
         |> render_submit()
         |> follow_redirect(conn, Routes.note_show_path(conn, :show, note))
 
-      assert html =~ "Note updated successfully"
+      assert html =~ "#{@update_attrs |> Map.get("title")} saved"
       assert html =~ "some updated content"
     end
   end

@@ -24,15 +24,15 @@ defmodule MemexWeb.InviteLiveTest do
     test "lists all invites", %{conn: conn, invite: invite} do
       {:ok, _index_live, html} = live(conn, Routes.invite_index_path(conn, :index))
 
-      assert html =~ gettext("Invites")
+      assert html =~ gettext("invites")
       assert html =~ invite.name
     end
 
     test "saves new invite", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.invite_index_path(conn, :index))
 
-      assert index_live |> element("a", dgettext("actions", "Create Invite")) |> render_click() =~
-               gettext("New Invite")
+      assert index_live |> element("a", dgettext("actions", "create invite")) |> render_click() =~
+               gettext("new invite")
 
       assert_patch(index_live, Routes.invite_index_path(conn, :new))
 
@@ -56,7 +56,7 @@ defmodule MemexWeb.InviteLiveTest do
       {:ok, index_live, _html} = live(conn, Routes.invite_index_path(conn, :index))
 
       assert index_live |> element("[data-qa=\"edit-#{invite.id}\"]") |> render_click() =~
-               gettext("Edit Invite")
+               gettext("edit invite")
 
       assert_patch(index_live, Routes.invite_index_path(conn, :edit, invite))
 

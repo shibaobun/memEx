@@ -1,4 +1,4 @@
-<h1>Show Pipeline</h1>
+<h1>show pipeline</h1>
 
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline)}>
@@ -32,7 +32,7 @@
 
 <span>
   <.link patch={Routes.pipeline_show_path(@socket, :edit, @pipeline)} class="button">
-    <%= dgettext("actions", "Edit") %>
+    <%= dgettext("actions", "edit") %>
   </.link>
 </span>
 |

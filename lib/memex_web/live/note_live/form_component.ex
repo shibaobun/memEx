@@ -32,7 +32,7 @@ defmodule MemexWeb.NoteLive.FormComponent do
       {:ok, _note} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Note updated successfully")
+         |> put_flash(:info, gettext("%{title} saved", title: title))
          |> push_navigate(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -45,7 +45,7 @@ defmodule MemexWeb.NoteLive.FormComponent do
       {:ok, _note} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Note created successfully")
+         |> put_flash(:info, gettext("%{title} created", title: title))
          |> push_navigate(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->

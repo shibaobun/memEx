@@ -1,19 +1,19 @@
 <div class="w-full flex flex-col space-y-8 justify-center items-center">
   <h1 class="title text-2xl title-primary-500">
-    <%= gettext("Invites") %>
+    <%= gettext("invites") %>
   </h1>
 
   <%= if @invites |> Enum.empty?() do %>
     <h1 class="title text-xl text-primary-400">
-      <%= gettext("No invites 😔") %>
+      <%= gettext("no invites 😔") %>
     </h1>
 
     <.link patch={Routes.invite_index_path(Endpoint, :new)} class="btn btn-primary">
-      <%= dgettext("actions", "Invite someone new!") %>
+      <%= dgettext("actions", "invite someone new!") %>
     </.link>
   <% else %>
     <.link patch={Routes.invite_index_path(Endpoint, :new)} class="btn btn-primary">
-      <%= dgettext("actions", "Create Invite") %>
+      <%= dgettext("actions", "create invite") %>
     </.link>
   <% end %>
 
@@ -45,7 +45,7 @@
           phx-click="delete_invite"
           phx-value-id={invite.id}
           data-confirm={
-            dgettext("prompts", "Are you sure you want to delete the invite for %{invite_name}?",
+            dgettext("prompts", "are you sure you want to delete the invite for %{invite_name}?",
               invite_name: invite.name
             )
           }
@@ -56,11 +56,11 @@
 
         <%= if invite.disabled_at |> is_nil() do %>
           <a href="#" class="btn btn-primary" phx-click="disable_invite" phx-value-id={invite.id}>
-            <%= gettext("Disable") %>
+            <%= gettext("disable") %>
           </a>
         <% else %>
           <a href="#" class="btn btn-primary" phx-click="enable_invite" phx-value-id={invite.id}>
-            <%= gettext("Enable") %>
+            <%= gettext("enable") %>
           </a>
         <% end %>
 
@@ -71,12 +71,12 @@
             phx-click="set_unlimited"
             phx-value-id={invite.id}
             data-confirm={
-              dgettext("prompts", "Are you sure you want to make %{invite_name} unlimited?",
+              dgettext("prompts", "are you sure you want to make %{invite_name} unlimited?",
                 invite_name: invite.name
               )
             }
           >
-            <%= gettext("Set Unlimited") %>
+            <%= gettext("set unlimited") %>
           </a>
         <% end %>
       </.invite_card>
@@ -101,7 +101,7 @@
             data-confirm={
               dgettext(
                 "prompts",
-                "Are you sure you want to delete %{email}? This action is permanent!",
+                "are you sure you want to delete %{email}? This action is permanent!",
                 email: admin.email
               )
             }
@@ -117,7 +117,7 @@
     <hr class="hr" />
 
     <h1 class="title text-2xl text-primary-400">
-      <%= gettext("Users") %>
+      <%= gettext("users") %>
     </h1>
 
     <div class="w-full flex flex-row flex-wrap justify-center items-center">
@@ -131,7 +131,7 @@
             data-confirm={
               dgettext(
                 "prompts",
-                "Are you sure you want to delete %{email}? This action is permanent!",
+                "are you sure you want to delete %{email}? This action is permanent!",
                 email: user.email
               )
             }
