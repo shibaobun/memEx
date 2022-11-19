@@ -131,7 +131,7 @@ msgstr ""
 msgid "content"
 msgstr ""
 
-#: lib/memex_web/components/topbar.ex:53
+#: lib/memex_web/components/topbar.ex:52
 #, elixir-autogen, elixir-format
 msgid "contexts"
 msgstr ""
@@ -272,7 +272,7 @@ msgstr ""
 msgid "no notes found"
 msgstr ""
 
-#: lib/memex_web/components/topbar.ex:44
+#: lib/memex_web/components/topbar.ex:43
 #: lib/memex_web/live/note_live/index.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "notes"
@@ -283,7 +283,7 @@ msgstr ""
 msgid "notes:"
 msgstr ""
 
-#: lib/memex_web/components/topbar.ex:62
+#: lib/memex_web/components/topbar.ex:61
 #, elixir-autogen, elixir-format
 msgid "pipelines"
 msgstr ""

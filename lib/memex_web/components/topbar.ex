@@ -35,36 +35,36 @@ defmodule MemexWeb.Components.Topbar do
 
         <ul class="flex flex-row flex-wrap justify-center items-center
           text-lg text-primary-400 text-ellipsis">
+          <li class="mx-2 my-1">
+            <.link
+              navigate={Routes.note_index_path(Endpoint, :index)}
+              class="text-primary-400 text-primary-400 hover:underline truncate"
+            >
+              <%= gettext("notes") %>
+            </.link>
+          </li>
+
+          <li class="mx-2 my-1">
+            <.link
+              navigate={Routes.context_index_path(Endpoint, :index)}
+              class="text-primary-400 text-primary-400 hover:underline truncate"
+            >
+              <%= gettext("contexts") %>
+            </.link>
+          </li>
+
+          <li class="mx-2 my-1">
+            <.link
+              navigate={Routes.pipeline_index_path(Endpoint, :index)}
+              class="text-primary-400 text-primary-400 hover:underline truncate"
+            >
+              <%= gettext("pipelines") %>
+            </.link>
+          </li>
+
+          <li class="mx-2 my-1 border-left border border-primary-700">​</li>
+
           <%= if @current_user do %>
-            <li class="mx-2 my-1">
-              <.link
-                navigate={Routes.note_index_path(Endpoint, :index)}
-                class="text-primary-400 text-primary-400 hover:underline truncate"
-              >
-                <%= gettext("notes") %>
-              </.link>
-            </li>
-
-            <li class="mx-2 my-1">
-              <.link
-                navigate={Routes.context_index_path(Endpoint, :index)}
-                class="text-primary-400 text-primary-400 hover:underline truncate"
-              >
-                <%= gettext("contexts") %>
-              </.link>
-            </li>
-
-            <li class="mx-2 my-1">
-              <.link
-                navigate={Routes.pipeline_index_path(Endpoint, :index)}
-                class="text-primary-400 text-primary-400 hover:underline truncate"
-              >
-                <%= gettext("pipelines") %>
-              </.link>
-            </li>
-
-            <li class="mx-2 my-1 border-left border border-primary-700">​</li>
-
             <%= if @current_user.role == :admin do %>
               <li class="mx-2 my-1">
                 <.link
