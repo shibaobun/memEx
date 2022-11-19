@@ -3,6 +3,17 @@
     <%= gettext("notes") %>
   </h1>
 
+  <.form
+    :let={f}
+    for={:search}
+    phx-change="search"
+    phx-submit="search"
+    phx-debounce="500"
+    class="self-stretch flex flex-col items-stretch"
+  >
+    <%= text_input(f, :search_term, class: "input input-primary", value: @search) %>
+  </.form>
+
   <%= if @notes |> Enum.empty?() do %>
     <h1 class="self-center text-primary-500">
       <%= gettext("no notes found") %>

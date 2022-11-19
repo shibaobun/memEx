@@ -20,8 +20,32 @@ defmodule Memex.Notes do
 
   """
   @spec list_notes(User.t()) :: [Note.t()]
-  def list_notes(%{id: user_id}) do
+  @spec list_notes(search :: String.t() | nil, User.t()) :: [Note.t()]
+  def list_notes(search \\ nil, user)
+
+  def list_notes(search, %{id: user_id}) when search |> is_nil() or search == "" do
     Repo.all(from n in Note, where: n.user_id == ^user_id, order_by: n.title)
+  end
+
+  def list_notes(search, %{id: user_id}) when search |> is_binary() do
+    trimmed_search = String.trim(search)
+
+    Repo.all(
+      from n in Note,
+        where: n.user_id == ^user_id,
+        where:
+          fragment(
+            "search @@ to_tsquery(websearch_to_tsquery(?)::text || ':*')",
+            ^trimmed_search
+          ),
+        order_by: {
+          :desc,
+          fragment(
+            "ts_rank_cd(search, to_tsquery(websearch_to_tsquery(?)::text || ':*'), 4)",
+            ^trimmed_search
+          )
+        }
+    )
   end
 
   @doc """
@@ -36,8 +60,32 @@ defmodule Memex.Notes do
       [%Note{title: "my note"}, ...]
   """
   @spec list_public_notes() :: [Note.t()]
-  def list_public_notes do
+  @spec list_public_notes(search :: String.t() | nil) :: [Note.t()]
+  def list_public_notes(search \\ nil)
+
+  def list_public_notes(search) when search |> is_nil() or search == "" do
     Repo.all(from n in Note, where: n.visibility == :public, order_by: n.title)
+  end
+
+  def list_public_notes(search) when search |> is_binary() do
+    trimmed_search = String.trim(search)
+
+    Repo.all(
+      from n in Note,
+        where: n.visibility == :public,
+        where:
+          fragment(
+            "search @@ to_tsquery(websearch_to_tsquery(?)::text || ':*')",
+            ^trimmed_search
+          ),
+        order_by: {
+          :desc,
+          fragment(
+            "ts_rank_cd(search, to_tsquery(websearch_to_tsquery(?)::text || ':*'), 4)",
+            ^trimmed_search
+          )
+        }
+    )
   end
 
   @doc """

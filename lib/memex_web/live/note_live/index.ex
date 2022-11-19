@@ -3,13 +3,12 @@ defmodule MemexWeb.NoteLive.Index do
   alias Memex.{Notes, Notes.Note}
 
   @impl true
-  def mount(_params, _session, %{assigns: %{current_user: current_user}} = socket)
-      when not (current_user |> is_nil()) do
-    {:ok, socket |> assign(notes: Notes.list_notes(current_user))}
+  def mount(%{"search" => search}, _session, socket) do
+    {:ok, socket |> assign(search: search) |> display_notes()}
   end
 
   def mount(_params, _session, socket) do
-    {:ok, socket |> assign(notes: Notes.list_public_notes())}
+    {:ok, socket |> assign(search: nil) |> display_notes()}
   end
 
   @impl true
@@ -34,7 +33,17 @@ defmodule MemexWeb.NoteLive.Index do
   defp apply_action(socket, :index, _params) do
     socket
     |> assign(page_title: "notes")
+    |> assign(search: nil)
     |> assign(note: nil)
+    |> display_notes()
+  end
+
+  defp apply_action(socket, :search, %{"search" => search}) do
+    socket
+    |> assign(page_title: "notes")
+    |> assign(search: search)
+    |> assign(note: nil)
+    |> display_notes()
   end
 
   @impl true
@@ -48,5 +57,23 @@ defmodule MemexWeb.NoteLive.Index do
       |> put_flash(:info, gettext("%{title} deleted", title: title))
 
     {:noreply, socket}
+  end
+
+  @impl true
+  def handle_event("search", %{"search" => %{"search_term" => ""}}, socket) do
+    {:noreply, socket |> push_patch(to: Routes.note_index_path(Endpoint, :index))}
+  end
+
+  def handle_event("search", %{"search" => %{"search_term" => search_term}}, socket) do
+    {:noreply, socket |> push_patch(to: Routes.note_index_path(Endpoint, :search, search_term))}
+  end
+
+  defp display_notes(%{assigns: %{current_user: current_user, search: search}} = socket)
+       when not (current_user |> is_nil()) do
+    socket |> assign(notes: Notes.list_notes(search, current_user))
+  end
+
+  defp display_notes(%{assigns: %{search: search}} = socket) do
+    socket |> assign(notes: Notes.list_public_notes(search))
   end
 end

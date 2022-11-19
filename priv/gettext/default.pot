@@ -15,7 +15,7 @@ msgstr ""
 msgid "%{title} created"
 msgstr ""
 
-#: lib/memex_web/live/note_live/index.ex:48
+#: lib/memex_web/live/note_live/index.ex:57
 #, elixir-autogen, elixir-format
 msgid "%{title} deleted"
 msgstr ""
@@ -167,7 +167,7 @@ msgstr ""
 msgid "document your processes, attaching contexts to each step"
 msgstr ""
 
-#: lib/memex_web/live/note_live/index.ex:24
+#: lib/memex_web/live/note_live/index.ex:23
 #, elixir-autogen, elixir-format
 msgid "edit %{title}"
 msgstr ""
@@ -267,7 +267,7 @@ msgstr ""
 msgid "no invites 😔"
 msgstr ""
 
-#: lib/memex_web/live/note_live/index.html.heex:8
+#: lib/memex_web/live/note_live/index.html.heex:19
 #, elixir-autogen, elixir-format
 msgid "no notes found"
 msgstr ""

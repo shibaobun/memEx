@@ -142,7 +142,7 @@ msgid "are you sure you want to make %{invite_name} unlimited?"
 msgstr ""
 
 #: lib/memex_web/live/context_live/index.html.heex:51
-#: lib/memex_web/live/note_live/index.html.heex:29
+#: lib/memex_web/live/note_live/index.html.heex:40
 #: lib/memex_web/live/pipeline_live/index.html.heex:49
 #, elixir-autogen, elixir-format
 msgid "are you sure?"
