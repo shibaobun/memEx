@@ -2,7 +2,6 @@
   .input {
     @apply rounded-lg px-4 py-2 border focus:outline-none;
     @apply shadow-sm focus:shadow-lg;
-    @apply transition-all duration-300 ease-in-out;
   }
 
   .input-primary {
@@ -79,7 +78,7 @@
   }
 
   .alert p {
-    margin-bottom: 0;
+    @apply mb-0;
   }
 
   .alert:empty {
