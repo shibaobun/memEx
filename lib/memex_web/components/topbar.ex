@@ -6,7 +6,7 @@ defmodule MemexWeb.Components.Topbar do
   use MemexWeb, :component
 
   alias Memex.Accounts
-  alias MemexWeb.{Endpoint, HomeLive}
+  alias MemexWeb.HomeLive
 
   def topbar(assigns) do
     assigns =

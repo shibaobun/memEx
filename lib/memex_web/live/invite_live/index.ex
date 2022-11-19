@@ -6,7 +6,7 @@ defmodule MemexWeb.InviteLive.Index do
   use MemexWeb, :live_view
   import MemexWeb.Components.{InviteCard, UserCard}
   alias Memex.{Accounts, Invites, Invites.Invite}
-  alias MemexWeb.{Endpoint, HomeLive}
+  alias MemexWeb.HomeLive
   alias Phoenix.LiveView.JS
 
   @impl true

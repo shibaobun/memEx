@@ -4,7 +4,6 @@ defmodule MemexWeb.Components.InviteCard do
   """
 
   use MemexWeb, :component
-  alias MemexWeb.Endpoint
 
   def invite_card(assigns) do
     ~H"""

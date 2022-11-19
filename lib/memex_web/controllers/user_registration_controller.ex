@@ -3,7 +3,7 @@ defmodule MemexWeb.UserRegistrationController do
   import MemexWeb.Gettext
   alias Memex.{Accounts, Invites}
   alias Memex.Accounts.User
-  alias MemexWeb.{Endpoint, HomeLive}
+  alias MemexWeb.HomeLive
 
   def new(conn, %{"invite" => invite_token}) do
     invite = Invites.get_invite_by_token(invite_token)

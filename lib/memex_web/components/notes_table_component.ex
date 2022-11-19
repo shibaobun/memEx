@@ -5,7 +5,6 @@ defmodule MemexWeb.Components.NotesTableComponent do
   use MemexWeb, :live_component
   alias Ecto.UUID
   alias Memex.{Accounts.User, Notes, Notes.Note}
-  alias MemexWeb.Endpoint
   alias Phoenix.LiveView.{Rendered, Socket}
 
   @impl true

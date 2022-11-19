@@ -1,7 +1,7 @@
 defmodule MemexWeb.LayoutView do
   use MemexWeb, :view
   import MemexWeb.Components.Topbar
-  alias MemexWeb.{Endpoint, HomeLive}
+  alias MemexWeb.HomeLive
 
   # Phoenix LiveDashboard is available only in development by default,
   # so we instruct Elixir to not warn if the dashboard route is missing.

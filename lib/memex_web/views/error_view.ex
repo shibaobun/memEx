@@ -1,7 +1,7 @@
 defmodule MemexWeb.ErrorView do
   use MemexWeb, :view
   import MemexWeb.Components.Topbar
-  alias MemexWeb.{Endpoint, HomeLive}
+  alias MemexWeb.HomeLive
 
   def template_not_found(error_path, _assigns) do
     error_string =

@@ -23,6 +23,7 @@ defmodule MemexWeb do
 
       import Plug.Conn
       import MemexWeb.Gettext
+      alias MemexWeb.Endpoint
       alias MemexWeb.Router.Helpers, as: Routes
     end
   end
@@ -98,6 +99,7 @@ defmodule MemexWeb do
       import Phoenix.View
 
       import MemexWeb.{ErrorHelpers, Gettext, LiveHelpers, ViewHelpers}
+      alias MemexWeb.Endpoint
       alias MemexWeb.Router.Helpers, as: Routes
     end
   end

@@ -90,7 +90,7 @@ msgstr ""
 msgid "User registered on"
 msgstr ""
 
-#: lib/memex_web/components/invite_card.ex:20
+#: lib/memex_web/components/invite_card.ex:19
 #, elixir-autogen, elixir-format
 msgid "Uses Left:"
 msgstr ""
@@ -125,7 +125,7 @@ msgstr ""
 msgid "confirm new password"
 msgstr ""
 
-#: lib/memex_web/components/notes_table_component.ex:49
+#: lib/memex_web/components/notes_table_component.ex:48
 #: lib/memex_web/live/note_live/form_component.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "content"
@@ -217,7 +217,7 @@ msgstr ""
 msgid "instance information"
 msgstr ""
 
-#: lib/memex_web/components/invite_card.ex:25
+#: lib/memex_web/components/invite_card.ex:24
 #, elixir-autogen, elixir-format
 msgid "invite disabled"
 msgstr ""
@@ -353,18 +353,18 @@ msgstr ""
 msgid "tag1,tag2"
 msgstr ""
 
-#: lib/memex_web/components/notes_table_component.ex:50
+#: lib/memex_web/components/notes_table_component.ex:49
 #, elixir-autogen, elixir-format
 msgid "tags"
 msgstr ""
 
-#: lib/memex_web/components/notes_table_component.ex:48
+#: lib/memex_web/components/notes_table_component.ex:47
 #: lib/memex_web/live/note_live/form_component.html.heex:14
 #, elixir-autogen, elixir-format
 msgid "title"
 msgstr ""
 
-#: lib/memex_web/components/invite_card.ex:21
+#: lib/memex_web/components/invite_card.ex:20
 #, elixir-autogen, elixir-format
 msgid "unlimited"
 msgstr ""
@@ -389,7 +389,7 @@ msgstr ""
 msgid "view the source code"
 msgstr ""
 
-#: lib/memex_web/components/notes_table_component.ex:51
+#: lib/memex_web/components/notes_table_component.ex:50
 #, elixir-autogen, elixir-format
 msgid "visibility"
 msgstr ""
