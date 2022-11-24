@@ -1,6 +1,4 @@
-<div>
-  <h2><%= @title %></h2>
-
+<div class="h-full flex flex-col justify-start items-stretch space-y-4">
   <.form
     :let={f}
     for={@changeset}
@@ -8,27 +6,44 @@
     phx-target={@myself}
     phx-change="validate"
     phx-submit="save"
+    phx-debounce="300"
+    class="flex flex-col justify-start items-stretch space-y-4"
   >
-    <%= label(f, :title) %>
-    <%= text_input(f, :title) %>
+    <%= text_input(f, :title,
+      class: "input input-primary",
+      placeholder: gettext("title")
+    ) %>
     <%= error_tag(f, :title) %>
 
-    <%= label(f, :content) %>
-    <%= textarea(f, :content) %>
+    <%= textarea(f, :content,
+      id: "context-form-content",
+      class: "input input-primary h-64 min-h-64",
+      phx_hook: "MaintainAttrs",
+      phx_update: "ignore",
+      placeholder: gettext("content")
+    ) %>
     <%= error_tag(f, :content) %>
 
-    <%= label(f, :tag) %>
-    <%= multiple_select(f, :tag, "Option 1": "option1", "Option 2": "option2") %>
-    <%= error_tag(f, :tag) %>
-
-    <%= label(f, :visibility) %>
-    <%= select(f, :visibility, Ecto.Enum.values(Memex.Contexts.Context, :visibility),
-      prompt: "Choose a value"
+    <%= text_input(f, :tags_string,
+      id: "tags-input",
+      class: "input input-primary",
+      placeholder: gettext("tag1,tag2"),
+      phx_update: "ignore",
+      value: Contexts.get_tags_string(@changeset)
     ) %>
-    <%= error_tag(f, :visibility) %>
+    <%= error_tag(f, :tags_string) %>
 
-    <div>
-      <%= submit("Save", phx_disable_with: "Saving...") %>
+    <div class="flex justify-center items-stretch space-x-4">
+      <%= select(f, :visibility, Ecto.Enum.values(Memex.Contexts.Context, :visibility),
+        class: "grow input input-primary",
+        prompt: gettext("select privacy")
+      ) %>
+
+      <%= submit(dgettext("actions", "save"),
+        phx_disable_with: gettext("saving..."),
+        class: "mx-auto btn btn-primary"
+      ) %>
     </div>
+    <%= error_tag(f, :visibility) %>
   </.form>
 </div>

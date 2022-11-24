@@ -1,10 +1,51 @@
-<h1>show context</h1>
+<div class="mx-auto flex flex-col justify-center items-stretch space-y-4 max-w-3xl">
+  <h1 class="text-xl">
+    <%= @context.title %>
+  </h1>
+
+  <p><%= if @context.tags, do: @context.tags |> Enum.join(", ") %></p>
+
+  <textarea
+    id="show-context-content"
+    class="input input-primary h-128 min-h-128"
+    phx-hook="MaintainAttrs"
+    phx-update="ignore"
+    readonly
+    phx-no-format
+  ><%= @context.content %></textarea>
+
+  <p class="self-end">
+    <%= gettext("Visibility: %{visibility}", visibility: @context.visibility) %>
+  </p>
+
+  <div class="self-end flex space-x-4">
+    <.link class="btn btn-primary" patch={Routes.context_index_path(@socket, :index)}>
+      <%= dgettext("actions", "back") %>
+    </.link>
+    <%= if @current_user do %>
+      <.link class="btn btn-primary" patch={Routes.context_show_path(@socket, :edit, @context)}>
+        <%= dgettext("actions", "edit") %>
+      </.link>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        phx-click="delete"
+        data-confirm={dgettext("prompts", "are you sure?")}
+        data-qa={"delete-context-#{@context.id}"}
+      >
+        <%= dgettext("actions", "delete") %>
+      </button>
+    <% end %>
+  </div>
+</div>
 
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.context_show_path(@socket, :show, @context)}>
     <.live_component
       module={MemexWeb.ContextLive.FormComponent}
       id={@context.id}
+      current_user={@current_user}
       title={@page_title}
       action={@live_action}
       context={@context}
@@ -12,37 +53,3 @@
     />
   </.modal>
 <% end %>
-
-<ul>
-  <li>
-    <strong>Title:</strong>
-    <%= @context.title %>
-  </li>
-
-  <li>
-    <strong>Content:</strong>
-    <%= @context.content %>
-  </li>
-
-  <li>
-    <strong>Tag:</strong>
-    <%= @context.tag %>
-  </li>
-
-  <li>
-    <strong>Visibility:</strong>
-    <%= @context.visibility %>
-  </li>
-</ul>
-
-<span>
-  <.link patch={Routes.context_show_path(@socket, :edit, @context)} class="button">
-    <%= dgettext("actions", "edit") %>
-  </.link>
-</span>
-|
-<span>
-  <.link navigate={Routes.context_index_path(@socket, :index)}>
-    <%= dgettext("actions", "Back") %>
-  </.link>
-</span>

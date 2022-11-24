@@ -3,20 +3,23 @@ defmodule Memex.ContextsFixtures do
   This module defines test helpers for creating
   entities via the `Memex.Contexts` context.
   """
+  alias Memex.{Accounts.User, Contexts, Contexts.Context}
 
   @doc """
   Generate a context.
   """
-  def context_fixture(attrs \\ %{}) do
+  @spec context_fixture(User.t()) :: Context.t()
+  @spec context_fixture(attrs :: map(), User.t()) :: Context.t()
+  def context_fixture(attrs \\ %{}, user) do
     {:ok, context} =
       attrs
       |> Enum.into(%{
         content: "some content",
         tag: [],
         title: "some title",
-        visibility: :public
+        visibility: :private
       })
-      |> Memex.Contexts.create_context()
+      |> Contexts.create_context(user)
 
     context
   end

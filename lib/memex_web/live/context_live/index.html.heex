@@ -1,10 +1,69 @@
-<h1>listing contexts</h1>
+<div class="mx-auto flex flex-col justify-center items-start space-y-4 max-w-3xl">
+  <h1 class="text-xl">
+    <%= gettext("contexts") %>
+  </h1>
+
+  <.form
+    :let={f}
+    for={:search}
+    phx-change="search"
+    phx-submit="search"
+    class="self-stretch flex flex-col items-stretch"
+  >
+    <%= text_input(f, :search_term,
+      class: "input input-primary",
+      value: @search,
+      phx_debounce: 300,
+      placeholder: gettext("search")
+    ) %>
+  </.form>
+
+  <%= if @contexts |> Enum.empty?() do %>
+    <h1 class="self-center text-primary-500">
+      <%= gettext("no contexts found") %>
+    </h1>
+  <% else %>
+    <.live_component
+      module={MemexWeb.Components.ContextsTableComponent}
+      id="contexts-index-table"
+      current_user={@current_user}
+      contexts={@contexts}
+    >
+      <:actions :let={context}>
+        <%= if @current_user do %>
+          <.link
+            patch={Routes.context_index_path(@socket, :edit, context)}
+            data-qa={"context-edit-#{context.id}"}
+          >
+            <%= dgettext("actions", "edit") %>
+          </.link>
+          <.link
+            href="#"
+            phx-click="delete"
+            phx-value-id={context.id}
+            data-confirm={dgettext("prompts", "are you sure?")}
+            data-qa={"delete-context-#{context.id}"}
+          >
+            <%= dgettext("actions", "delete") %>
+          </.link>
+        <% end %>
+      </:actions>
+    </.live_component>
+  <% end %>
+
+  <%= if @current_user do %>
+    <.link patch={Routes.context_index_path(@socket, :new)} class="self-end btn btn-primary">
+      <%= dgettext("actions", "new context") %>
+    </.link>
+  <% end %>
+</div>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.context_index_path(@socket, :index)}>
     <.live_component
       module={MemexWeb.ContextLive.FormComponent}
       id={@context.id || :new}
+      current_user={@current_user}
       title={@page_title}
       action={@live_action}
       context={@context}
@@ -12,55 +71,3 @@
     />
   </.modal>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Tag</th>
-      <th>Visibility</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="contexts">
-    <%= for context <- @contexts do %>
-      <tr id={"context-#{context.id}"}>
-        <td><%= context.title %></td>
-        <td><%= context.content %></td>
-        <td><%= context.tag %></td>
-        <td><%= context.visibility %></td>
-
-        <td>
-          <span>
-            <.link navigate={Routes.context_show_path(@socket, :show, context)}>
-              <%= dgettext("actions", "show") %>
-            </.link>
-          </span>
-          <span>
-            <.link patch={Routes.context_index_path(@socket, :edit, context)}>
-              <%= dgettext("actions", "edit") %>
-            </.link>
-          </span>
-          <span>
-            <.link
-              href="#"
-              phx-click="delete"
-              phx-value-id={context.id}
-              data-confirm={dgettext("prompts", "are you sure?")}
-            >
-              <%= dgettext("actions", "delete") %>
-            </.link>
-          </span>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<span>
-  <.link patch={Routes.context_index_path(@socket, :new)}>
-    <%= dgettext("actions", "new context") %>
-  </.link>
-</span>

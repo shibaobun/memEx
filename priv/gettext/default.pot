@@ -10,17 +10,21 @@
 msgid ""
 msgstr ""
 
+#: lib/memex_web/live/context_live/form_component.ex:61
 #: lib/memex_web/live/note_live/form_component.ex:60
 #, elixir-autogen, elixir-format
 msgid "%{title} created"
 msgstr ""
 
+#: lib/memex_web/live/context_live/index.ex:57
+#: lib/memex_web/live/context_live/show.ex:33
 #: lib/memex_web/live/note_live/index.ex:57
 #: lib/memex_web/live/note_live/show.ex:33
 #, elixir-autogen, elixir-format
 msgid "%{title} deleted"
 msgstr ""
 
+#: lib/memex_web/live/context_live/form_component.ex:44
 #: lib/memex_web/live/note_live/form_component.ex:43
 #, elixir-autogen, elixir-format
 msgid "%{title} saved"
@@ -101,6 +105,7 @@ msgstr ""
 msgid "Uses left"
 msgstr ""
 
+#: lib/memex_web/live/context_live/show.html.heex:18
 #: lib/memex_web/live/note_live/show.html.heex:18
 #, elixir-autogen, elixir-format
 msgid "Visibility: %{visibility}"
@@ -126,13 +131,18 @@ msgstr ""
 msgid "confirm new password"
 msgstr ""
 
+#: lib/memex_web/components/contexts_table_component.ex:48
 #: lib/memex_web/components/notes_table_component.ex:48
+#: lib/memex_web/live/context_live/form_component.html.heex:23
 #: lib/memex_web/live/note_live/form_component.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "content"
 msgstr ""
 
 #: lib/memex_web/components/topbar.ex:52
+#: lib/memex_web/live/context_live/index.ex:35
+#: lib/memex_web/live/context_live/index.ex:43
+#: lib/memex_web/live/context_live/index.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "contexts"
 msgstr ""
@@ -168,6 +178,7 @@ msgstr ""
 msgid "document your processes, attaching contexts to each step"
 msgstr ""
 
+#: lib/memex_web/live/context_live/index.ex:23
 #: lib/memex_web/live/note_live/index.ex:23
 #, elixir-autogen, elixir-format
 msgid "edit %{title}"
@@ -331,11 +342,13 @@ msgstr ""
 msgid "report bugs or request features"
 msgstr ""
 
+#: lib/memex_web/live/context_live/form_component.html.heex:43
 #: lib/memex_web/live/note_live/form_component.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "saving..."
 msgstr ""
 
+#: lib/memex_web/live/context_live/form_component.html.heex:39
 #: lib/memex_web/live/note_live/form_component.html.heex:39
 #, elixir-autogen, elixir-format
 msgid "select privacy"
@@ -351,17 +364,21 @@ msgstr ""
 msgid "settings"
 msgstr ""
 
+#: lib/memex_web/live/context_live/form_component.html.heex:30
 #: lib/memex_web/live/note_live/form_component.html.heex:30
 #, elixir-autogen, elixir-format
 msgid "tag1,tag2"
 msgstr ""
 
+#: lib/memex_web/components/contexts_table_component.ex:49
 #: lib/memex_web/components/notes_table_component.ex:49
 #, elixir-autogen, elixir-format
 msgid "tags"
 msgstr ""
 
+#: lib/memex_web/components/contexts_table_component.ex:47
 #: lib/memex_web/components/notes_table_component.ex:47
+#: lib/memex_web/live/context_live/form_component.html.heex:14
 #: lib/memex_web/live/note_live/form_component.html.heex:14
 #, elixir-autogen, elixir-format
 msgid "title"
@@ -392,6 +409,7 @@ msgstr ""
 msgid "view the source code"
 msgstr ""
 
+#: lib/memex_web/components/contexts_table_component.ex:50
 #: lib/memex_web/components/notes_table_component.ex:50
 #, elixir-autogen, elixir-format
 msgid "visibility"
@@ -412,6 +430,7 @@ msgstr ""
 msgid "new note"
 msgstr ""
 
+#: lib/memex_web/live/context_live/index.html.heex:17
 #: lib/memex_web/live/note_live/index.html.heex:17
 #, elixir-autogen, elixir-format
 msgid "search"
@@ -420,4 +439,24 @@ msgstr ""
 #: lib/memex_web/live/note_live/show.ex:39
 #, elixir-autogen, elixir-format
 msgid "show note"
+msgstr ""
+
+#: lib/memex_web/live/context_live/show.ex:40
+#, elixir-autogen, elixir-format
+msgid "edit context"
+msgstr ""
+
+#: lib/memex_web/live/context_live/index.ex:29
+#, elixir-autogen, elixir-format
+msgid "new context"
+msgstr ""
+
+#: lib/memex_web/live/context_live/index.html.heex:23
+#, elixir-autogen, elixir-format
+msgid "no contexts found"
+msgstr ""
+
+#: lib/memex_web/live/context_live/show.ex:39
+#, elixir-autogen, elixir-format
+msgid "show context"
 msgstr ""
