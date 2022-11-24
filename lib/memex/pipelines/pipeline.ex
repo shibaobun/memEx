@@ -5,7 +5,7 @@ defmodule Memex.Pipelines.Pipeline do
   use Ecto.Schema
   import Ecto.Changeset
   alias Ecto.{Changeset, UUID}
-  alias Memex.Accounts.User
+  alias Memex.{Accounts.User, Pipelines.Step}
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -17,6 +17,8 @@ defmodule Memex.Pipelines.Pipeline do
     field :visibility, Ecto.Enum, values: [:public, :private, :unlisted]
 
     belongs_to :user, User
+
+    has_many :steps, Step, preload_order: [asc: :position]
 
     timestamps()
   end

@@ -3,19 +3,19 @@ defmodule Memex.StepsFixtures do
   This module defines test helpers for creating
   entities via the `Memex.Steps` context.
   """
+  alias Memex.Pipelines.Steps
 
   @doc """
   Generate a step.
   """
-  def step_fixture(attrs \\ %{}) do
+  def step_fixture(attrs \\ %{}, position, pipeline, user) do
     {:ok, step} =
       attrs
       |> Enum.into(%{
-        description: "some description",
-        position: 42,
+        content: "some content",
         title: "some title"
       })
-      |> Memex.Steps.create_step()
+      |> Steps.create_step(position, pipeline, user)
 
     step
   end

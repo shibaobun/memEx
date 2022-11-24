@@ -1,68 +1,94 @@
 defmodule Memex.StepsTest do
   use Memex.DataCase
-
-  alias Memex.Steps
+  import Memex.{PipelinesFixtures, StepsFixtures}
+  alias Memex.Pipelines.{Step, Steps}
+  @moduletag :steps_test
+  @invalid_attrs %{content: nil, title: nil}
 
   describe "steps" do
-    alias Memex.Steps.Step
+    setup do
+      user = user_fixture()
+      pipeline = pipeline_fixture(user)
 
-    import Memex.StepsFixtures
-
-    @invalid_attrs %{description: nil, position: nil, title: nil}
-
-    test "list_steps/0 returns all steps" do
-      step = step_fixture()
-      assert Steps.list_steps() == [step]
+      [user: user, pipeline: pipeline]
     end
 
-    test "get_step!/1 returns the step with given id" do
-      step = step_fixture()
-      assert Steps.get_step!(step.id) == step
+    test "list_steps/1 returns all steps for a user", %{pipeline: pipeline, user: user} do
+      step_a = step_fixture(0, pipeline, user)
+      step_b = step_fixture(1, pipeline, user)
+      step_c = step_fixture(2, pipeline, user)
+      assert Steps.list_steps(pipeline, user) == [step_a, step_b, step_c]
     end
 
-    test "create_step/1 with valid data creates a step" do
-      valid_attrs = %{description: "some description", position: 42, title: "some title"}
+    test "get_step!/1 returns the step with given id", %{pipeline: pipeline, user: user} do
+      step = step_fixture(0, pipeline, user)
+      assert Steps.get_step!(step.id, user) == step
+    end
 
-      assert {:ok, %Step{} = step} = Steps.create_step(valid_attrs)
-      assert step.description == "some description"
-      assert step.position == 42
+    test "get_step!/1 only returns unlisted or public steps for other users", %{user: user} do
+      another_user = user_fixture()
+      another_pipeline = pipeline_fixture(another_user)
+      step = step_fixture(0, another_pipeline, another_user)
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Steps.get_step!(step.id, user)
+      end
+    end
+
+    test "create_step/1 with valid data creates a step", %{pipeline: pipeline, user: user} do
+      valid_attrs = %{
+        "content" => "some content",
+        "title" => "some title"
+      }
+
+      assert {:ok, %Step{} = step} = Steps.create_step(valid_attrs, 0, pipeline, user)
+      assert step.content == "some content"
       assert step.title == "some title"
     end
 
-    test "create_step/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Steps.create_step(@invalid_attrs)
+    test "create_step/1 with invalid data returns error changeset",
+         %{pipeline: pipeline, user: user} do
+      assert {:error, %Ecto.Changeset{}} = Steps.create_step(@invalid_attrs, 0, pipeline, user)
     end
 
-    test "update_step/2 with valid data updates the step" do
-      step = step_fixture()
+    test "update_step/2 with valid data updates the step", %{pipeline: pipeline, user: user} do
+      step = step_fixture(0, pipeline, user)
 
       update_attrs = %{
-        description: "some updated description",
-        position: 43,
-        title: "some updated title"
+        "content" => "some updated content",
+        "title" => "some updated title"
       }
 
-      assert {:ok, %Step{} = step} = Steps.update_step(step, update_attrs)
-      assert step.description == "some updated description"
-      assert step.position == 43
+      assert {:ok, %Step{} = step} = Steps.update_step(step, update_attrs, 0, user)
+      assert step.content == "some updated content"
       assert step.title == "some updated title"
     end
 
-    test "update_step/2 with invalid data returns error changeset" do
-      step = step_fixture()
-      assert {:error, %Ecto.Changeset{}} = Steps.update_step(step, @invalid_attrs)
-      assert step == Steps.get_step!(step.id)
+    test "update_step/2 with invalid data returns error changeset", %{
+      pipeline: pipeline,
+      user: user
+    } do
+      step = step_fixture(0, pipeline, user)
+      assert {:error, %Ecto.Changeset{}} = Steps.update_step(step, @invalid_attrs, 0, user)
+      assert step == Steps.get_step!(step.id, user)
     end
 
-    test "delete_step/1 deletes the step" do
-      step = step_fixture()
-      assert {:ok, %Step{}} = Steps.delete_step(step)
-      assert_raise Ecto.NoResultsError, fn -> Steps.get_step!(step.id) end
+    test "delete_step/1 deletes the step", %{pipeline: pipeline, user: user} do
+      step = step_fixture(0, pipeline, user)
+      assert {:ok, %Step{}} = Steps.delete_step(step, user)
+      assert_raise Ecto.NoResultsError, fn -> Steps.get_step!(step.id, user) end
     end
 
-    test "change_step/1 returns a step changeset" do
-      step = step_fixture()
-      assert %Ecto.Changeset{} = Steps.change_step(step)
+    test "delete_step/1 deletes the step for an admin user", %{pipeline: pipeline, user: user} do
+      admin_user = admin_fixture()
+      step = step_fixture(0, pipeline, user)
+      assert {:ok, %Step{}} = Steps.delete_step(step, admin_user)
+      assert_raise Ecto.NoResultsError, fn -> Steps.get_step!(step.id, user) end
+    end
+
+    test "change_step/1 returns a step changeset", %{pipeline: pipeline, user: user} do
+      step = step_fixture(0, pipeline, user)
+      assert %Ecto.Changeset{} = Steps.change_step(step, 0, user)
     end
   end
 end
