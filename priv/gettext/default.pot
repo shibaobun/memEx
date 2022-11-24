@@ -16,6 +16,7 @@ msgid "%{title} created"
 msgstr ""
 
 #: lib/memex_web/live/note_live/index.ex:57
+#: lib/memex_web/live/note_live/show.ex:33
 #, elixir-autogen, elixir-format
 msgid "%{title} deleted"
 msgstr ""
@@ -267,12 +268,14 @@ msgstr ""
 msgid "no invites 😔"
 msgstr ""
 
-#: lib/memex_web/live/note_live/index.html.heex:19
+#: lib/memex_web/live/note_live/index.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "no notes found"
 msgstr ""
 
 #: lib/memex_web/components/topbar.ex:43
+#: lib/memex_web/live/note_live/index.ex:35
+#: lib/memex_web/live/note_live/index.ex:43
 #: lib/memex_web/live/note_live/index.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "notes"
@@ -397,4 +400,24 @@ msgstr ""
 #: lib/memex_web/components/note_card.ex:18
 #, elixir-autogen, elixir-format
 msgid "visibility: %{visibility}"
+msgstr ""
+
+#: lib/memex_web/live/note_live/show.ex:40
+#, elixir-autogen, elixir-format
+msgid "edit note"
+msgstr ""
+
+#: lib/memex_web/live/note_live/index.ex:29
+#, elixir-autogen, elixir-format
+msgid "new note"
+msgstr ""
+
+#: lib/memex_web/live/note_live/index.html.heex:17
+#, elixir-autogen, elixir-format
+msgid "search"
+msgstr ""
+
+#: lib/memex_web/live/note_live/show.ex:39
+#, elixir-autogen, elixir-format
+msgid "show note"
 msgstr ""

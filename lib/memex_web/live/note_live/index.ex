@@ -26,13 +26,13 @@ defmodule MemexWeb.NoteLive.Index do
 
   defp apply_action(%{assigns: %{current_user: %{id: current_user_id}}} = socket, :new, _params) do
     socket
-    |> assign(page_title: "new note")
+    |> assign(page_title: gettext("new note"))
     |> assign(note: %Note{user_id: current_user_id})
   end
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(page_title: "notes")
+    |> assign(page_title: gettext("notes"))
     |> assign(search: nil)
     |> assign(note: nil)
     |> display_notes()
@@ -40,7 +40,7 @@ defmodule MemexWeb.NoteLive.Index do
 
   defp apply_action(socket, :search, %{"search" => search}) do
     socket
-    |> assign(page_title: "notes")
+    |> assign(page_title: gettext("notes"))
     |> assign(search: search)
     |> assign(note: nil)
     |> display_notes()
@@ -48,8 +48,8 @@ defmodule MemexWeb.NoteLive.Index do
 
   @impl true
   def handle_event("delete", %{"id" => id}, %{assigns: %{current_user: current_user}} = socket) do
-    %{title: title} = note = Notes.get_note!(id, current_user)
-    {:ok, _} = Notes.delete_note(note, current_user)
+    note = Notes.get_note!(id, current_user)
+    {:ok, %{title: title}} = Notes.delete_note(note, current_user)
 
     socket =
       socket

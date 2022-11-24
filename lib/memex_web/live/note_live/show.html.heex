@@ -20,12 +20,22 @@
 
   <div class="self-end flex space-x-4">
     <.link class="btn btn-primary" patch={Routes.note_index_path(@socket, :index)}>
-      <%= dgettext("actions", "Back") %>
+      <%= dgettext("actions", "back") %>
     </.link>
     <%= if @current_user do %>
       <.link class="btn btn-primary" patch={Routes.note_show_path(@socket, :edit, @note)}>
         <%= dgettext("actions", "edit") %>
       </.link>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        phx-click="delete"
+        data-confirm={dgettext("prompts", "are you sure?")}
+        data-qa={"delete-note-#{@note.id}"}
+      >
+        <%= dgettext("actions", "delete") %>
+      </button>
     <% end %>
   </div>
 </div>

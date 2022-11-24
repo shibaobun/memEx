@@ -8,10 +8,14 @@
     for={:search}
     phx-change="search"
     phx-submit="search"
-    phx-debounce="500"
     class="self-stretch flex flex-col items-stretch"
   >
-    <%= text_input(f, :search_term, class: "input input-primary", value: @search) %>
+    <%= text_input(f, :search_term,
+      class: "input input-primary",
+      value: @search,
+      phx_debounce: 300,
+      placeholder: gettext("search")
+    ) %>
   </.form>
 
   <%= if @notes |> Enum.empty?() do %>

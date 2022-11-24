@@ -119,5 +119,17 @@ defmodule MemexWeb.NoteLiveTest do
       assert html =~ "#{@update_attrs |> Map.get("title")} saved"
       assert html =~ "some updated content"
     end
+
+    test "deletes note", %{conn: conn, note: note} do
+      {:ok, show_live, _html} = live(conn, Routes.note_show_path(conn, :show, note))
+
+      {:ok, index_live, _html} =
+        show_live
+        |> element("[data-qa=\"delete-note-#{note.id}\"]")
+        |> render_click()
+        |> follow_redirect(conn, Routes.note_index_path(conn, :index))
+
+      refute has_element?(index_live, "#note-#{note.id}")
+    end
   end
 end

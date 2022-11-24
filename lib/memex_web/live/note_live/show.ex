@@ -20,6 +20,22 @@ defmodule MemexWeb.NoteLive.Show do
      |> assign(:note, Notes.get_note!(id, current_user))}
   end
 
-  defp page_title(:show), do: "show note"
-  defp page_title(:edit), do: "edit note"
+  @impl true
+  def handle_event(
+        "delete",
+        _params,
+        %{assigns: %{note: note, current_user: current_user}} = socket
+      ) do
+    {:ok, %{title: title}} = Notes.delete_note(note, current_user)
+
+    socket =
+      socket
+      |> put_flash(:info, gettext("%{title} deleted", title: title))
+      |> push_navigate(to: Routes.note_index_path(Endpoint, :index))
+
+    {:noreply, socket}
+  end
+
+  defp page_title(:show), do: gettext("show note")
+  defp page_title(:edit), do: gettext("edit note")
 end

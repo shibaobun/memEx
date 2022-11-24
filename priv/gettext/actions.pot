@@ -11,7 +11,6 @@ msgid ""
 msgstr ""
 
 #: lib/memex_web/live/context_live/show.html.heex:46
-#: lib/memex_web/live/note_live/show.html.heex:23
 #: lib/memex_web/live/pipeline_live/show.html.heex:41
 #, elixir-autogen, elixir-format
 msgid "Back"
@@ -75,7 +74,8 @@ msgid "create invite"
 msgstr ""
 
 #: lib/memex_web/live/context_live/index.html.heex:53
-#: lib/memex_web/live/note_live/index.html.heex:43
+#: lib/memex_web/live/note_live/index.html.heex:47
+#: lib/memex_web/live/note_live/show.html.heex:37
 #: lib/memex_web/live/pipeline_live/index.html.heex:51
 #, elixir-autogen, elixir-format
 msgid "delete"
@@ -88,7 +88,7 @@ msgstr ""
 
 #: lib/memex_web/live/context_live/index.html.heex:43
 #: lib/memex_web/live/context_live/show.html.heex:40
-#: lib/memex_web/live/note_live/index.html.heex:34
+#: lib/memex_web/live/note_live/index.html.heex:38
 #: lib/memex_web/live/note_live/show.html.heex:27
 #: lib/memex_web/live/pipeline_live/index.html.heex:41
 #: lib/memex_web/live/pipeline_live/show.html.heex:35
@@ -117,7 +117,7 @@ msgstr ""
 msgid "new context"
 msgstr ""
 
-#: lib/memex_web/live/note_live/index.html.heex:52
+#: lib/memex_web/live/note_live/index.html.heex:56
 #, elixir-autogen, elixir-format
 msgid "new note"
 msgstr ""
@@ -147,4 +147,9 @@ msgstr ""
 #: lib/memex_web/live/pipeline_live/index.html.heex:36
 #, elixir-autogen, elixir-format
 msgid "show"
+msgstr ""
+
+#: lib/memex_web/live/note_live/show.html.heex:23
+#, elixir-autogen, elixir-format
+msgid "back"
 msgstr ""
