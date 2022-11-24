@@ -1,7 +1,7 @@
 defmodule MemexWeb.ContextLive.Show do
   use MemexWeb, :live_view
 
-  alias Memex.Contexts
+  alias Memex.{Accounts.User, Contexts, Contexts.Context}
 
   @impl true
   def mount(_params, _session, socket) do
@@ -38,4 +38,13 @@ defmodule MemexWeb.ContextLive.Show do
 
   defp page_title(:show), do: gettext("show context")
   defp page_title(:edit), do: gettext("edit context")
+
+  @spec is_owner_or_admin?(Context.t(), User.t()) :: boolean()
+  defp is_owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true
+  defp is_owner_or_admin?(_context, %{role: :admin}), do: true
+  defp is_owner_or_admin?(_context, _other_user), do: false
+
+  @spec is_owner?(Context.t(), User.t()) :: boolean()
+  defp is_owner?(%{user_id: user_id}, %{id: user_id}), do: true
+  defp is_owner?(_context, _other_user), do: false
 end

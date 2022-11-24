@@ -30,13 +30,15 @@
       contexts={@contexts}
     >
       <:actions :let={context}>
-        <%= if @current_user do %>
+        <%= if is_owner?(context, @current_user) do %>
           <.link
             patch={Routes.context_index_path(@socket, :edit, context)}
             data-qa={"context-edit-#{context.id}"}
           >
             <%= dgettext("actions", "edit") %>
           </.link>
+        <% end %>
+        <%= if is_owner_or_admin?(context, @current_user) do %>
           <.link
             href="#"
             phx-click="delete"

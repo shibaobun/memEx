@@ -1,6 +1,6 @@
 defmodule MemexWeb.ContextLive.Index do
   use MemexWeb, :live_view
-  alias Memex.{Contexts, Contexts.Context}
+  alias Memex.{Accounts.User, Contexts, Contexts.Context}
 
   @impl true
   def mount(%{"search" => search}, _session, socket) do
@@ -77,4 +77,13 @@ defmodule MemexWeb.ContextLive.Index do
   defp display_contexts(%{assigns: %{search: search}} = socket) do
     socket |> assign(contexts: Contexts.list_public_contexts(search))
   end
+
+  @spec is_owner_or_admin?(Context.t(), User.t()) :: boolean()
+  defp is_owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true
+  defp is_owner_or_admin?(_context, %{role: :admin}), do: true
+  defp is_owner_or_admin?(_context, _other_user), do: false
+
+  @spec is_owner?(Context.t(), User.t()) :: boolean()
+  defp is_owner?(%{user_id: user_id}, %{id: user_id}), do: true
+  defp is_owner?(_context, _other_user), do: false
 end

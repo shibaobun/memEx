@@ -30,13 +30,15 @@
       notes={@notes}
     >
       <:actions :let={note}>
-        <%= if @current_user do %>
+        <%= if is_owner?(note, @current_user) do %>
           <.link
             patch={Routes.note_index_path(@socket, :edit, note)}
             data-qa={"note-edit-#{note.id}"}
           >
             <%= dgettext("actions", "edit") %>
           </.link>
+        <% end %>
+        <%= if is_owner_or_admin?(note, @current_user) do %>
           <.link
             href="#"
             phx-click="delete"

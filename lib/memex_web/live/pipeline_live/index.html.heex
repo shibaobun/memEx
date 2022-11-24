@@ -30,13 +30,15 @@
       pipelines={@pipelines}
     >
       <:actions :let={pipeline}>
-        <%= if @current_user do %>
+        <%= if is_owner?(pipeline, @current_user) do %>
           <.link
             patch={Routes.pipeline_index_path(@socket, :edit, pipeline)}
             data-qa={"pipeline-edit-#{pipeline.id}"}
           >
             <%= dgettext("actions", "edit") %>
           </.link>
+        <% end %>
+        <%= if is_owner_or_admin?(pipeline, @current_user) do %>
           <.link
             href="#"
             phx-click="delete"

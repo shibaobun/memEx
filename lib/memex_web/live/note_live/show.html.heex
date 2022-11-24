@@ -19,14 +19,15 @@
   </p>
 
   <div class="self-end flex space-x-4">
-    <.link class="btn btn-primary" patch={Routes.note_index_path(@socket, :index)}>
+    <.link class="btn btn-primary" navigate={Routes.note_index_path(@socket, :index)}>
       <%= dgettext("actions", "back") %>
     </.link>
-    <%= if @current_user do %>
+    <%= if is_owner?(@note, @current_user) do %>
       <.link class="btn btn-primary" patch={Routes.note_show_path(@socket, :edit, @note)}>
         <%= dgettext("actions", "edit") %>
       </.link>
-
+    <% end %>
+    <%= if is_owner_or_admin?(@note, @current_user) do %>
       <button
         type="button"
         class="btn btn-primary"
