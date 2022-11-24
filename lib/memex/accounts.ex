@@ -363,9 +363,15 @@ defmodule Memex.Accounts do
   """
   @spec is_admin?(User.t()) :: boolean()
   def is_admin?(%User{id: user_id}) do
-    Repo.one(from u in User, where: u.id == ^user_id and u.role == :admin)
-    |> is_nil()
+    Repo.exists?(from u in User, where: u.id == ^user_id and u.role == :admin)
   end
+
+  @doc """
+  Checks to see if user has the admin role
+  """
+  @spec is_already_admin?(User.t() | nil) :: boolean()
+  def is_already_admin?(%User{role: :admin}), do: true
+  def is_already_admin?(_invalid_user), do: false
 
   ## Confirmation
 

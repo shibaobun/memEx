@@ -65,7 +65,7 @@ defmodule MemexWeb.Components.Topbar do
           <li class="mx-2 my-1 border-left border border-primary-700">​</li>
 
           <%= if @current_user do %>
-            <%= if @current_user.role == :admin do %>
+            <%= if @current_user |> Accounts.is_already_admin?() do %>
               <li class="mx-2 my-1">
                 <.link
                   navigate={Routes.invite_index_path(Endpoint, :index)}
