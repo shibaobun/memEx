@@ -23,7 +23,7 @@ defmodule Memex.Accounts do
       nil
 
   """
-  @spec get_user_by_email(String.t()) :: User.t() | nil
+  @spec get_user_by_email(email :: String.t()) :: User.t() | nil
   def get_user_by_email(email) when is_binary(email), do: Repo.get_by(User, email: email)
 
   @doc """
@@ -38,7 +38,7 @@ defmodule Memex.Accounts do
       nil
 
   """
-  @spec get_user_by_email_and_password(String.t(), String.t()) ::
+  @spec get_user_by_email_and_password(email :: String.t(), password :: String.t()) ::
           User.t() | nil
   def get_user_by_email_and_password(email, password)
       when is_binary(email) and is_binary(password) do
@@ -86,7 +86,7 @@ defmodule Memex.Accounts do
       [%User{}]
 
   """
-  @spec list_users_by_role(:admin | :user) :: [User.t()]
+  @spec list_users_by_role(User.role()) :: [User.t()]
   def list_users_by_role(role) do
     role = role |> to_string()
     Repo.all(from u in User, where: u.role == ^role, order_by: u.email)
@@ -106,15 +106,21 @@ defmodule Memex.Accounts do
       {:error, %Changeset{}}
 
   """
-  @spec register_user(map()) :: {:ok, User.t()} | {:error, Changeset.t(User.new_user())}
+  @spec register_user(attrs :: map()) :: {:ok, User.t()} | {:error, User.changeset()}
   def register_user(attrs) do
-    # if no registered users, make first user an admin
-    role =
-      if Repo.one!(from u in User, select: count(u.id), distinct: true) == 0,
-        do: "admin",
-        else: "user"
+    Multi.new()
+    |> Multi.one(:users_count, from(u in User, select: count(u.id), distinct: true))
+    |> Multi.insert(:add_user, fn %{users_count: count} ->
+      # if no registered users, make first user an admin
+      role = if count == 0, do: "admin", else: "user"
 
-    %User{} |> User.registration_changeset(attrs |> Map.put("role", role)) |> Repo.insert()
+      User.registration_changeset(attrs) |> User.role_changeset(role)
+    end)
+    |> Repo.transaction()
+    |> case do
+      {:ok, %{add_user: user}} -> {:ok, user}
+      {:error, :add_user, changeset, _changes_so_far} -> {:error, changeset}
+    end
   end
 
   @doc """
@@ -126,12 +132,10 @@ defmodule Memex.Accounts do
       %Changeset{data: %User{}}
 
   """
-  @spec change_user_registration(User.t() | User.new_user()) ::
-          Changeset.t(User.t() | User.new_user())
-  @spec change_user_registration(User.t() | User.new_user(), map()) ::
-          Changeset.t(User.t() | User.new_user())
-  def change_user_registration(user, attrs \\ %{}),
-    do: User.registration_changeset(user, attrs, hash_password: false)
+  @spec change_user_registration() :: User.changeset()
+  @spec change_user_registration(attrs :: map()) :: User.changeset()
+  def change_user_registration(attrs \\ %{}),
+    do: User.registration_changeset(attrs, hash_password: false)
 
   ## Settings
 
@@ -144,7 +148,7 @@ defmodule Memex.Accounts do
       %Changeset{data: %User{}}
 
   """
-  @spec change_user_email(User.t(), map()) :: Changeset.t(User.t())
+  @spec change_user_email(User.t(), attrs :: map()) :: User.changeset()
   def change_user_email(user, attrs \\ %{}), do: User.email_changeset(user, attrs)
 
   @doc """
@@ -156,7 +160,7 @@ defmodule Memex.Accounts do
       %Changeset{data: %User{}}
 
   """
-  @spec change_user_role(User.t(), atom()) :: Changeset.t(User.t())
+  @spec change_user_role(User.t(), User.role()) :: User.changeset()
   def change_user_role(user, role), do: User.role_changeset(user, role)
 
   @doc """
@@ -172,8 +176,8 @@ defmodule Memex.Accounts do
       {:error, %Changeset{}}
 
   """
-  @spec apply_user_email(User.t(), String.t(), map()) ::
-          {:ok, User.t()} | {:error, Changeset.t(User.t())}
+  @spec apply_user_email(User.t(), password :: String.t(), attrs :: map()) ::
+          {:ok, User.t()} | {:error, User.changeset()}
   def apply_user_email(user, password, attrs) do
     user
     |> User.email_changeset(attrs)
@@ -187,7 +191,7 @@ defmodule Memex.Accounts do
   If the token matches, the user email is updated and the token is deleted.
   The confirmed_at date is also updated to the current time.
   """
-  @spec update_user_email(User.t(), String.t()) :: :ok | :error
+  @spec update_user_email(User.t(), token :: String.t()) :: :ok | :error
   def update_user_email(user, token) do
     context = "change:#{user.email}"
 
@@ -200,7 +204,7 @@ defmodule Memex.Accounts do
     end
   end
 
-  @spec user_email_multi(User.t(), String.t(), String.t()) :: Multi.t()
+  @spec user_email_multi(User.t(), email :: String.t(), context :: String.t()) :: Multi.t()
   defp user_email_multi(user, email, context) do
     changeset = user |> User.email_changeset(%{email: email}) |> User.confirm_changeset()
 
@@ -218,7 +222,8 @@ defmodule Memex.Accounts do
       {:ok, %{to: ..., body: ...}}
 
   """
-  @spec deliver_update_email_instructions(User.t(), String.t(), function) :: Job.t()
+  @spec deliver_update_email_instructions(User.t(), current_email :: String.t(), function) ::
+          Job.t()
   def deliver_update_email_instructions(user, current_email, update_email_url_fun)
       when is_function(update_email_url_fun, 1) do
     {encoded_token, user_token} = UserToken.build_email_token(user, "change:#{current_email}")
@@ -235,7 +240,7 @@ defmodule Memex.Accounts do
       %Changeset{data: %User{}}
 
   """
-  @spec change_user_password(User.t(), map()) :: Changeset.t(User.t())
+  @spec change_user_password(User.t(), attrs :: map()) :: User.changeset()
   def change_user_password(user, attrs \\ %{}),
     do: User.password_changeset(user, attrs, hash_password: false)
 
@@ -251,8 +256,8 @@ defmodule Memex.Accounts do
       {:error, %Changeset{}}
 
   """
-  @spec update_user_password(User.t(), String.t(), map()) ::
-          {:ok, User.t()} | {:error, Changeset.t(User.t())}
+  @spec update_user_password(User.t(), password :: String.t(), attrs :: map()) ::
+          {:ok, User.t()} | {:error, User.changeset()}
   def update_user_password(user, password, attrs) do
     changeset =
       user
@@ -278,7 +283,7 @@ defmodule Memex.Accounts do
       %Changeset{data: %User{}}
 
   """
-  @spec change_user_locale(User.t()) :: Changeset.t(User.t())
+  @spec change_user_locale(User.t()) :: User.changeset()
   def change_user_locale(%{locale: locale} = user), do: User.locale_changeset(user, locale)
 
   @doc """
@@ -294,7 +299,7 @@ defmodule Memex.Accounts do
 
   """
   @spec update_user_locale(User.t(), locale :: String.t()) ::
-          {:ok, User.t()} | {:error, Changeset.t(User.t())}
+          {:ok, User.t()} | {:error, User.changeset()}
   def update_user_locale(user, locale),
     do: user |> User.locale_changeset(locale) |> Repo.update()
 
@@ -310,7 +315,7 @@ defmodule Memex.Accounts do
       %User{}
 
   """
-  @spec delete_user!(User.t(), User.t()) :: User.t()
+  @spec delete_user!(user_to_delete :: User.t(), User.t()) :: User.t()
   def delete_user!(user, %User{role: :admin}), do: user |> Repo.delete!()
   def delete_user!(%User{id: user_id} = user, %User{id: user_id}), do: user |> Repo.delete!()
 
@@ -329,7 +334,7 @@ defmodule Memex.Accounts do
   @doc """
   Gets the user with the given signed token.
   """
-  @spec get_user_by_session_token(String.t()) :: User.t()
+  @spec get_user_by_session_token(token :: String.t()) :: User.t()
   def get_user_by_session_token(token) do
     {:ok, query} = UserToken.verify_session_token_query(token)
     Repo.one(query)
@@ -338,7 +343,7 @@ defmodule Memex.Accounts do
   @doc """
   Deletes the signed token with the given context.
   """
-  @spec delete_session_token(String.t()) :: :ok
+  @spec delete_session_token(token :: String.t()) :: :ok
   def delete_session_token(token) do
     Repo.delete_all(UserToken.token_and_context_query(token, "session"))
     :ok
@@ -394,7 +399,7 @@ defmodule Memex.Accounts do
   If the token matches, the user account is marked as confirmed
   and the token is deleted.
   """
-  @spec confirm_user(String.t()) :: {:ok, User.t()} | atom()
+  @spec confirm_user(token :: String.t()) :: {:ok, User.t()} | atom()
   def confirm_user(token) do
     with {:ok, query} <- UserToken.verify_email_token_query(token, "confirm"),
          %User{} = user <- Repo.one(query),
@@ -443,7 +448,7 @@ defmodule Memex.Accounts do
       nil
 
   """
-  @spec get_user_by_reset_password_token(String.t()) :: User.t() | nil
+  @spec get_user_by_reset_password_token(token :: String.t()) :: User.t() | nil
   def get_user_by_reset_password_token(token) do
     with {:ok, query} <- UserToken.verify_email_token_query(token, "reset_password"),
          %User{} = user <- Repo.one(query) do
@@ -465,7 +470,8 @@ defmodule Memex.Accounts do
       {:error, %Changeset{}}
 
   """
-  @spec reset_user_password(User.t(), map()) :: {:ok, User.t()} | {:error, Changeset.t(User.t())}
+  @spec reset_user_password(User.t(), attrs :: map()) ::
+          {:ok, User.t()} | {:error, User.changeset()}
   def reset_user_password(user, attrs) do
     Multi.new()
     |> Multi.update(:user, User.password_changeset(user, attrs))

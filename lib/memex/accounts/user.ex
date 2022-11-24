@@ -7,7 +7,7 @@ defmodule Memex.Accounts.User do
   import Ecto.Changeset
   import MemexWeb.Gettext
   alias Ecto.{Changeset, UUID}
-  alias Memex.{Accounts.User, Invites.Invite}
+  alias Memex.Invites.Invite
 
   @derive {Inspect, except: [:password]}
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -25,20 +25,22 @@ defmodule Memex.Accounts.User do
     timestamps()
   end
 
-  @type t :: %User{
+  @type t :: %__MODULE__{
           id: id(),
           email: String.t(),
           password: String.t(),
           hashed_password: String.t(),
           confirmed_at: NaiveDateTime.t(),
-          role: atom(),
+          role: role(),
           invites: [Invite.t()],
           locale: String.t() | nil,
           inserted_at: NaiveDateTime.t(),
           updated_at: NaiveDateTime.t()
         }
-  @type new_user :: %User{}
+  @type new_user :: %__MODULE__{}
   @type id :: UUID.t()
+  @type changeset :: Changeset.t(t() | new_user())
+  @type role :: :user | :admin | String.t()
 
   @doc """
   A user changeset for registration.
@@ -57,12 +59,11 @@ defmodule Memex.Accounts.User do
       validations on a LiveView form), this option can be set to `false`.
       Defaults to `true`.
   """
-  @spec registration_changeset(t() | new_user(), attrs :: map()) :: Changeset.t(t() | new_user())
-  @spec registration_changeset(t() | new_user(), attrs :: map(), opts :: keyword()) ::
-          Changeset.t(t() | new_user())
-  def registration_changeset(user, attrs, opts \\ []) do
-    user
-    |> cast(attrs, [:email, :password, :role, :locale])
+  @spec registration_changeset(attrs :: map()) :: changeset()
+  @spec registration_changeset(attrs :: map(), opts :: keyword()) :: changeset()
+  def registration_changeset(attrs, opts \\ []) do
+    %__MODULE__{}
+    |> cast(attrs, [:email, :password, :locale])
     |> validate_email()
     |> validate_password(opts)
   end
@@ -71,12 +72,12 @@ defmodule Memex.Accounts.User do
   A user changeset for role.
 
   """
-  @spec role_changeset(t(), role :: atom()) :: Changeset.t(t())
+  @spec role_changeset(t() | new_user() | changeset(), role()) :: changeset()
   def role_changeset(user, role) do
     user |> cast(%{"role" => role}, [:role])
   end
 
-  @spec validate_email(Changeset.t(t() | new_user())) :: Changeset.t(t() | new_user())
+  @spec validate_email(changeset()) :: changeset()
   defp validate_email(changeset) do
     changeset
     |> validate_required([:email])
@@ -88,8 +89,7 @@ defmodule Memex.Accounts.User do
     |> unique_constraint(:email)
   end
 
-  @spec validate_password(Changeset.t(t() | new_user()), opts :: keyword()) ::
-          Changeset.t(t() | new_user())
+  @spec validate_password(changeset(), opts :: keyword()) :: changeset()
   defp validate_password(changeset, opts) do
     changeset
     |> validate_required([:password])
@@ -100,8 +100,7 @@ defmodule Memex.Accounts.User do
     |> maybe_hash_password(opts)
   end
 
-  @spec maybe_hash_password(Changeset.t(t() | new_user()), opts :: keyword()) ::
-          Changeset.t(t() | new_user())
+  @spec maybe_hash_password(changeset(), opts :: keyword()) :: changeset()
   defp maybe_hash_password(changeset, opts) do
     hash_password? = Keyword.get(opts, :hash_password, true)
     password = get_change(changeset, :password)
@@ -120,7 +119,7 @@ defmodule Memex.Accounts.User do
 
   It requires the email to change otherwise an error is added.
   """
-  @spec email_changeset(t(), attrs :: map()) :: Changeset.t(t())
+  @spec email_changeset(t(), attrs :: map()) :: changeset()
   def email_changeset(user, attrs) do
     user
     |> cast(attrs, [:email])
@@ -143,8 +142,8 @@ defmodule Memex.Accounts.User do
       validations on a LiveView form), this option can be set to `false`.
       Defaults to `true`.
   """
-  @spec password_changeset(t(), attrs :: map()) :: Changeset.t(t())
-  @spec password_changeset(t(), attrs :: map(), opts :: keyword()) :: Changeset.t(t())
+  @spec password_changeset(t(), attrs :: map()) :: changeset()
+  @spec password_changeset(t(), attrs :: map(), opts :: keyword()) :: changeset()
   def password_changeset(user, attrs, opts \\ []) do
     user
     |> cast(attrs, [:password])
@@ -155,7 +154,7 @@ defmodule Memex.Accounts.User do
   @doc """
   Confirms the account by setting `confirmed_at`.
   """
-  @spec confirm_changeset(t() | Changeset.t(t())) :: Changeset.t(t())
+  @spec confirm_changeset(t() | changeset()) :: changeset()
   def confirm_changeset(user_or_changeset) do
     now = NaiveDateTime.utc_now() |> NaiveDateTime.truncate(:second)
     user_or_changeset |> change(confirmed_at: now)
@@ -168,7 +167,7 @@ defmodule Memex.Accounts.User do
   `Bcrypt.no_user_verify/0` to avoid timing attacks.
   """
   @spec valid_password?(t(), String.t()) :: boolean()
-  def valid_password?(%User{hashed_password: hashed_password}, password)
+  def valid_password?(%__MODULE__{hashed_password: hashed_password}, password)
       when is_binary(hashed_password) and byte_size(password) > 0 do
     Bcrypt.verify_pass(password, hashed_password)
   end
@@ -181,7 +180,7 @@ defmodule Memex.Accounts.User do
   @doc """
   Validates the current password otherwise adds an error to the changeset.
   """
-  @spec validate_current_password(Changeset.t(t()), String.t()) :: Changeset.t(t())
+  @spec validate_current_password(changeset(), String.t()) :: changeset()
   def validate_current_password(changeset, password) do
     if valid_password?(changeset.data, password),
       do: changeset,
@@ -191,7 +190,7 @@ defmodule Memex.Accounts.User do
   @doc """
   A changeset for changing the user's locale
   """
-  @spec locale_changeset(t() | Changeset.t(t()), locale :: String.t() | nil) :: Changeset.t(t())
+  @spec locale_changeset(t() | changeset(), locale :: String.t() | nil) :: changeset()
   def locale_changeset(user_or_changeset, locale) do
     user_or_changeset
     |> cast(%{"locale" => locale}, [:locale])

@@ -52,14 +52,14 @@ msgstr ""
 msgid "Reset password link is invalid or it has expired."
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:25
-#: lib/memex_web/controllers/user_registration_controller.ex:56
+#: lib/memex_web/controllers/user_registration_controller.ex:24
+#: lib/memex_web/controllers/user_registration_controller.ex:55
 #, elixir-autogen, elixir-format
 msgid "Sorry, public registration is disabled"
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:15
-#: lib/memex_web/controllers/user_registration_controller.ex:46
+#: lib/memex_web/controllers/user_registration_controller.ex:14
+#: lib/memex_web/controllers/user_registration_controller.ex:45
 #, elixir-autogen, elixir-format
 msgid "Sorry, this invite was not found or expired"
 msgstr ""
@@ -95,22 +95,22 @@ msgstr ""
 msgid "You must confirm your account and log in to access this page."
 msgstr ""
 
-#: lib/memex/accounts/user.ex:130
+#: lib/memex/accounts/user.ex:129
 #, elixir-autogen, elixir-format
 msgid "did not change"
 msgstr ""
 
-#: lib/memex/accounts/user.ex:151
+#: lib/memex/accounts/user.ex:150
 #, elixir-autogen, elixir-format
 msgid "does not match password"
 msgstr ""
 
-#: lib/memex/accounts/user.ex:188
+#: lib/memex/accounts/user.ex:187
 #, elixir-autogen, elixir-format
 msgid "is not valid"
 msgstr ""
 
-#: lib/memex/accounts/user.ex:84
+#: lib/memex/accounts/user.ex:85
 #, elixir-autogen, elixir-format
 msgid "must have the @ sign and no spaces"
 msgstr ""

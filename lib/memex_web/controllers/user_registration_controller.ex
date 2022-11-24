@@ -2,7 +2,6 @@ defmodule MemexWeb.UserRegistrationController do
   use MemexWeb, :controller
   import MemexWeb.Gettext
   alias Memex.{Accounts, Invites}
-  alias Memex.Accounts.User
   alias MemexWeb.HomeLive
 
   def new(conn, %{"invite" => invite_token}) do
@@ -30,7 +29,7 @@ defmodule MemexWeb.UserRegistrationController do
   # renders new user registration page
   defp render_new(conn, invite \\ nil) do
     render(conn, "new.html",
-      changeset: Accounts.change_user_registration(%User{}),
+      changeset: Accounts.change_user_registration(),
       invite: invite,
       page_title: gettext("register")
     )

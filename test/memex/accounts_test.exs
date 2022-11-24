@@ -104,7 +104,7 @@ defmodule Memex.AccountsTest do
 
   describe "change_user_registration/2" do
     test "returns a changeset" do
-      assert %Changeset{} = changeset = Accounts.change_user_registration(%User{})
+      assert %Changeset{} = changeset = Accounts.change_user_registration()
       assert changeset.required == [:password, :email]
     end
 
@@ -112,8 +112,7 @@ defmodule Memex.AccountsTest do
       email = unique_user_email()
       password = valid_user_password()
 
-      changeset =
-        Accounts.change_user_registration(%User{}, %{"email" => email, "password" => password})
+      changeset = Accounts.change_user_registration(%{"email" => email, "password" => password})
 
       assert changeset.valid?
       assert get_change(changeset, :email) == email

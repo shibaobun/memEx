@@ -3,7 +3,7 @@ defmodule Memex.Fixtures do
   This module defines test helpers for creating entities
   """
 
-  alias Memex.{Accounts, Accounts.User, Email}
+  alias Memex.{Accounts, Accounts.User, Email, Repo}
 
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
   def valid_user_password, do: "hello world!"
@@ -26,11 +26,12 @@ defmodule Memex.Fixtures do
     attrs
     |> Enum.into(%{
       "email" => unique_user_email(),
-      "password" => valid_user_password(),
-      "role" => "admin"
+      "password" => valid_user_password()
     })
     |> Accounts.register_user()
     |> unwrap_ok_tuple()
+    |> User.role_changeset("admin")
+    |> Repo.update!()
   end
 
   def extract_user_token(fun) do
