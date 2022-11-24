@@ -7,7 +7,7 @@
   .input-primary {
     @apply bg-primary-900;
     @apply border-primary-900 hover:border-primary-800 active:border-primary-700;
-    @apply text-primary-400;
+    @apply text-primary-400 placeholder-primary-600;
   }
 
   .checkbox {
