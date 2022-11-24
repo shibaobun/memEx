@@ -3,19 +3,23 @@ defmodule Memex.PipelinesFixtures do
   This module defines test helpers for creating
   entities via the `Memex.Pipelines` context.
   """
+  alias Memex.{Accounts.User, Pipelines, Pipelines.Pipeline}
 
   @doc """
   Generate a pipeline.
   """
-  def pipeline_fixture(attrs \\ %{}) do
+  @spec pipeline_fixture(User.t()) :: Pipeline.t()
+  @spec pipeline_fixture(attrs :: map(), User.t()) :: Pipeline.t()
+  def pipeline_fixture(attrs \\ %{}, user) do
     {:ok, pipeline} =
       attrs
       |> Enum.into(%{
         description: "some description",
+        tag: [],
         title: "some title",
-        visibility: :public
+        visibility: :private
       })
-      |> Memex.Pipelines.create_pipeline()
+      |> Pipelines.create_pipeline(user)
 
     pipeline
   end

@@ -1,6 +1,4 @@
-<div>
-  <h2><%= @title %></h2>
-
+<div class="h-full flex flex-col justify-start items-stretch space-y-4">
   <.form
     :let={f}
     for={@changeset}
@@ -8,23 +6,44 @@
     phx-target={@myself}
     phx-change="validate"
     phx-submit="save"
+    phx-debounce="300"
+    class="flex flex-col justify-start items-stretch space-y-4"
   >
-    <%= label(f, :title) %>
-    <%= text_input(f, :title) %>
+    <%= text_input(f, :title,
+      class: "input input-primary",
+      placeholder: gettext("title")
+    ) %>
     <%= error_tag(f, :title) %>
 
-    <%= label(f, :description) %>
-    <%= textarea(f, :description) %>
+    <%= textarea(f, :description,
+      id: "pipeline-form-description",
+      class: "input input-primary h-64 min-h-64",
+      phx_hook: "MaintainAttrs",
+      phx_update: "ignore",
+      placeholder: gettext("description")
+    ) %>
     <%= error_tag(f, :description) %>
 
-    <%= label(f, :visibility) %>
-    <%= select(f, :visibility, Ecto.Enum.values(Memex.Pipelines.Pipeline, :visibility),
-      prompt: "Choose a value"
+    <%= text_input(f, :tags_string,
+      id: "tags-input",
+      class: "input input-primary",
+      placeholder: gettext("tag1,tag2"),
+      phx_update: "ignore",
+      value: Pipelines.get_tags_string(@changeset)
     ) %>
-    <%= error_tag(f, :visibility) %>
+    <%= error_tag(f, :tags_string) %>
 
-    <div>
-      <%= submit("Save", phx_disable_with: "Saving...") %>
+    <div class="flex justify-center items-stretch space-x-4">
+      <%= select(f, :visibility, Ecto.Enum.values(Memex.Pipelines.Pipeline, :visibility),
+        class: "grow input input-primary",
+        prompt: gettext("select privacy")
+      ) %>
+
+      <%= submit(dgettext("actions", "save"),
+        phx_disable_with: gettext("saving..."),
+        class: "mx-auto btn btn-primary"
+      ) %>
     </div>
+    <%= error_tag(f, :visibility) %>
   </.form>
 </div>

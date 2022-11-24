@@ -1,10 +1,69 @@
-<h1>listing pipelines</h1>
+<div class="mx-auto flex flex-col justify-center items-start space-y-4 max-w-3xl">
+  <h1 class="text-xl">
+    <%= gettext("pipelines") %>
+  </h1>
+
+  <.form
+    :let={f}
+    for={:search}
+    phx-change="search"
+    phx-submit="search"
+    class="self-stretch flex flex-col items-stretch"
+  >
+    <%= text_input(f, :search_term,
+      class: "input input-primary",
+      value: @search,
+      phx_debounce: 300,
+      placeholder: gettext("search")
+    ) %>
+  </.form>
+
+  <%= if @pipelines |> Enum.empty?() do %>
+    <h1 class="self-center text-primary-500">
+      <%= gettext("no pipelines found") %>
+    </h1>
+  <% else %>
+    <.live_component
+      module={MemexWeb.Components.PipelinesTableComponent}
+      id="pipelines-index-table"
+      current_user={@current_user}
+      pipelines={@pipelines}
+    >
+      <:actions :let={pipeline}>
+        <%= if @current_user do %>
+          <.link
+            patch={Routes.pipeline_index_path(@socket, :edit, pipeline)}
+            data-qa={"pipeline-edit-#{pipeline.id}"}
+          >
+            <%= dgettext("actions", "edit") %>
+          </.link>
+          <.link
+            href="#"
+            phx-click="delete"
+            phx-value-id={pipeline.id}
+            data-confirm={dgettext("prompts", "are you sure?")}
+            data-qa={"delete-pipeline-#{pipeline.id}"}
+          >
+            <%= dgettext("actions", "delete") %>
+          </.link>
+        <% end %>
+      </:actions>
+    </.live_component>
+  <% end %>
+
+  <%= if @current_user do %>
+    <.link patch={Routes.pipeline_index_path(@socket, :new)} class="self-end btn btn-primary">
+      <%= dgettext("actions", "new pipeline") %>
+    </.link>
+  <% end %>
+</div>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.pipeline_index_path(@socket, :index)}>
     <.live_component
       module={MemexWeb.PipelineLive.FormComponent}
       id={@pipeline.id || :new}
+      current_user={@current_user}
       title={@page_title}
       action={@live_action}
       pipeline={@pipeline}
@@ -12,53 +71,3 @@
     />
   </.modal>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Visibility</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody id="pipelines">
-    <%= for pipeline <- @pipelines do %>
-      <tr id={"pipeline-#{pipeline.id}"}>
-        <td><%= pipeline.title %></td>
-        <td><%= pipeline.description %></td>
-        <td><%= pipeline.visibility %></td>
-
-        <td>
-          <span>
-            <.link navigate={Routes.pipeline_show_path(@socket, :show, pipeline)}>
-              <%= dgettext("actions", "show") %>
-            </.link>
-          </span>
-          <span>
-            <.link patch={Routes.pipeline_index_path(@socket, :edit, pipeline)}>
-              <%= dgettext("actions", "edit") %>
-            </.link>
-          </span>
-          <span>
-            <.link
-              href="#"
-              phx-click="delete"
-              phx-value-id={pipeline.id}
-              data-confirm={dgettext("prompts", "are you sure?")}
-            >
-              <%= dgettext("actions", "delete") %>
-            </.link>
-          </span>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<span>
-  <.link patch={Routes.pipeline_index_path(@socket, :new)}>
-    <%= dgettext("actions", "new pipeline") %>
-  </.link>
-</span>

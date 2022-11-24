@@ -1,10 +1,51 @@
-<h1>show pipeline</h1>
+<div class="mx-auto flex flex-col justify-center items-stretch space-y-4 max-w-3xl">
+  <h1 class="text-xl">
+    <%= @pipeline.title %>
+  </h1>
+
+  <p><%= if @pipeline.tags, do: @pipeline.tags |> Enum.join(", ") %></p>
+
+  <textarea
+    id="show-pipeline-description"
+    class="input input-primary h-128 min-h-128"
+    phx-hook="MaintainAttrs"
+    phx-update="ignore"
+    readonly
+    phx-no-format
+  ><%= @pipeline.description %></textarea>
+
+  <p class="self-end">
+    <%= gettext("Visibility: %{visibility}", visibility: @pipeline.visibility) %>
+  </p>
+
+  <div class="self-end flex space-x-4">
+    <.link class="btn btn-primary" patch={Routes.pipeline_index_path(@socket, :index)}>
+      <%= dgettext("actions", "back") %>
+    </.link>
+    <%= if @current_user do %>
+      <.link class="btn btn-primary" patch={Routes.pipeline_show_path(@socket, :edit, @pipeline)}>
+        <%= dgettext("actions", "edit") %>
+      </.link>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        phx-click="delete"
+        data-confirm={dgettext("prompts", "are you sure?")}
+        data-qa={"delete-pipeline-#{@pipeline.id}"}
+      >
+        <%= dgettext("actions", "delete") %>
+      </button>
+    <% end %>
+  </div>
+</div>
 
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline)}>
     <.live_component
       module={MemexWeb.PipelineLive.FormComponent}
       id={@pipeline.id}
+      current_user={@current_user}
       title={@page_title}
       action={@live_action}
       pipeline={@pipeline}
@@ -12,32 +53,3 @@
     />
   </.modal>
 <% end %>
-
-<ul>
-  <li>
-    <strong>Title:</strong>
-    <%= @pipeline.title %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @pipeline.description %>
-  </li>
-
-  <li>
-    <strong>Visibility:</strong>
-    <%= @pipeline.visibility %>
-  </li>
-</ul>
-
-<span>
-  <.link patch={Routes.pipeline_show_path(@socket, :edit, @pipeline)} class="button">
-    <%= dgettext("actions", "edit") %>
-  </.link>
-</span>
-|
-<span>
-  <.link patch={Routes.pipeline_index_path(@socket, :index)}>
-    <%= dgettext("actions", "Back") %>
-  </.link>
-</span>

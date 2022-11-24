@@ -87,7 +87,8 @@ defmodule MemexWeb.Router do
       live "/context/:id", ContextLive.Show, :show
 
       live "/pipelines", PipelineLive.Index, :index
-      live "/pipelines/:id", PipelineLive.Show, :show
+      live "/pipelines/:search", PipelineLive.Index, :search
+      live "/pipeline/:id", PipelineLive.Show, :show
     end
   end
 
