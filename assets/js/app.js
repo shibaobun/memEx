@@ -45,7 +45,7 @@ window.Alpine = Alpine
 Alpine.start()
 
 // Show progress bar on live navigation and form submits
-topbar.config({ barColors: { 0: '#29d' }, shadowColor: 'rgba(0, 0, 0, .3)' })
+topbar.config({ barThickness: 1, barColors: { 0: '#fff' }, shadowColor: 'rgba(0, 0, 0, .3)' })
 window.addEventListener('phx:page-loading-start', info => topbar.show())
 window.addEventListener('phx:page-loading-stop', info => topbar.hide())
 
