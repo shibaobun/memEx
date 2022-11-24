@@ -98,7 +98,7 @@ defmodule MemexWeb.PipelineLiveTest do
     test "displays pipeline", %{conn: conn, pipeline: pipeline} do
       {:ok, _show_live, html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline))
 
-      assert html =~ "show pipeline"
+      assert html =~ "pipeline"
       assert html =~ pipeline.description
     end
 

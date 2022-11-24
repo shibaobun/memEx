@@ -95,7 +95,7 @@ defmodule MemexWeb.NoteLiveTest do
     test "displays note", %{conn: conn, note: note} do
       {:ok, _show_live, html} = live(conn, Routes.note_show_path(conn, :show, note))
 
-      assert html =~ "show note"
+      assert html =~ "note"
       assert html =~ note.content
     end
 

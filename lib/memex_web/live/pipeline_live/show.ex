@@ -14,10 +14,14 @@ defmodule MemexWeb.PipelineLive.Show do
         _,
         %{assigns: %{live_action: live_action, current_user: current_user}} = socket
       ) do
-    {:noreply,
-     socket
-     |> assign(:page_title, page_title(live_action))
-     |> assign(:pipeline, Pipelines.get_pipeline!(id, current_user))}
+    pipeline = Pipelines.get_pipeline!(id, current_user)
+
+    socket =
+      socket
+      |> assign(:page_title, page_title(live_action, pipeline))
+      |> assign(:pipeline, pipeline)
+
+    {:noreply, socket}
   end
 
   @impl true
@@ -36,8 +40,8 @@ defmodule MemexWeb.PipelineLive.Show do
     {:noreply, socket}
   end
 
-  defp page_title(:show), do: gettext("show pipeline")
-  defp page_title(:edit), do: gettext("edit pipeline")
+  defp page_title(:show, %{title: title}), do: title
+  defp page_title(:edit, %{title: title}), do: gettext("edit %{title}", title: title)
 
   @spec is_owner_or_admin?(Pipeline.t(), User.t()) :: boolean()
   defp is_owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true

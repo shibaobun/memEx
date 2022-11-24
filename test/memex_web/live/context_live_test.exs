@@ -95,7 +95,7 @@ defmodule MemexWeb.ContextLiveTest do
     test "displays context", %{conn: conn, context: context} do
       {:ok, _show_live, html} = live(conn, Routes.context_show_path(conn, :show, context))
 
-      assert html =~ "show context"
+      assert html =~ "context"
       assert html =~ context.content
     end
 
