@@ -16,7 +16,7 @@ defmodule Memex.Contexts do
       [%Context{}, ...]
 
       iex> list_contexts("my context", %User{id: 123})
-      [%Context{title: "my context"}, ...]
+      [%Context{slug: "my context"}, ...]
 
   """
   @spec list_contexts(User.t()) :: [Context.t()]
@@ -24,7 +24,7 @@ defmodule Memex.Contexts do
   def list_contexts(search \\ nil, user)
 
   def list_contexts(search, %{id: user_id}) when search |> is_nil() or search == "" do
-    Repo.all(from c in Context, where: c.user_id == ^user_id, order_by: c.title)
+    Repo.all(from c in Context, where: c.user_id == ^user_id, order_by: c.slug)
   end
 
   def list_contexts(search, %{id: user_id}) when search |> is_binary() do
@@ -57,7 +57,7 @@ defmodule Memex.Contexts do
       [%Context{}, ...]
 
       iex> list_public_contexts("my context")
-      [%Context{title: "my context"}, ...]
+      [%Context{slug: "my context"}, ...]
 
   """
   @spec list_public_contexts() :: [Context.t()]
@@ -65,7 +65,7 @@ defmodule Memex.Contexts do
   def list_public_contexts(search \\ nil)
 
   def list_public_contexts(search) when search |> is_nil() or search == "" do
-    Repo.all(from c in Context, where: c.visibility == :public, order_by: c.title)
+    Repo.all(from c in Context, where: c.visibility == :public, order_by: c.slug)
   end
 
   def list_public_contexts(search) when search |> is_binary() do
@@ -116,6 +116,37 @@ defmodule Memex.Contexts do
     Repo.one!(
       from c in Context,
         where: c.id == ^id,
+        where: c.visibility in [:public, :unlisted]
+    )
+  end
+
+  @doc """
+  Gets a single context by a slug.
+
+  Raises `Ecto.NoResultsError` if the Context does not exist.
+
+  ## Examples
+
+      iex> get_context_by_slug("my-context", %User{id: 123})
+      %Context{}
+
+      iex> get_context_by_slug("my-context", %User{id: 123})
+      ** (Ecto.NoResultsError)
+
+  """
+  @spec get_context_by_slug(Context.slug(), User.t()) :: Context.t() | nil
+  def get_context_by_slug(slug, %{id: user_id}) do
+    Repo.one(
+      from c in Context,
+        where: c.slug == ^slug,
+        where: c.user_id == ^user_id or c.visibility in [:public, :unlisted]
+    )
+  end
+
+  def get_context_by_slug(slug, _invalid_user) do
+    Repo.one(
+      from c in Context,
+        where: c.slug == ^slug,
         where: c.visibility in [:public, :unlisted]
     )
   end

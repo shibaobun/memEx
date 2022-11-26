@@ -10,30 +10,6 @@
 msgid ""
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.ex:61
-#: lib/memex_web/live/note_live/form_component.ex:60
-#: lib/memex_web/live/pipeline_live/form_component.ex:65
-#, elixir-autogen, elixir-format
-msgid "%{title} created"
-msgstr ""
-
-#: lib/memex_web/live/context_live/index.ex:57
-#: lib/memex_web/live/context_live/show.ex:37
-#: lib/memex_web/live/note_live/index.ex:57
-#: lib/memex_web/live/note_live/show.ex:37
-#: lib/memex_web/live/pipeline_live/index.ex:57
-#: lib/memex_web/live/pipeline_live/show.ex:37
-#, elixir-autogen, elixir-format
-msgid "%{title} deleted"
-msgstr ""
-
-#: lib/memex_web/live/context_live/form_component.ex:44
-#: lib/memex_web/live/note_live/form_component.ex:43
-#: lib/memex_web/live/pipeline_live/form_component.ex:48
-#, elixir-autogen, elixir-format
-msgid "%{title} saved"
-msgstr ""
-
 #: lib/memex_web/live/invite_live/index.html.heex:90
 #, elixir-autogen, elixir-format
 msgid "Admins"
@@ -181,16 +157,6 @@ msgstr ""
 #: lib/memex_web/live/home_live.html.heex:35
 #, elixir-autogen, elixir-format
 msgid "document your processes, attaching contexts to each step"
-msgstr ""
-
-#: lib/memex_web/live/context_live/index.ex:23
-#: lib/memex_web/live/context_live/show.ex:44
-#: lib/memex_web/live/note_live/index.ex:23
-#: lib/memex_web/live/note_live/show.ex:44
-#: lib/memex_web/live/pipeline_live/index.ex:23
-#: lib/memex_web/live/pipeline_live/show.ex:44
-#, elixir-autogen, elixir-format
-msgid "edit %{title}"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/index.ex:33
@@ -392,16 +358,6 @@ msgstr ""
 msgid "tags"
 msgstr ""
 
-#: lib/memex_web/components/contexts_table_component.ex:47
-#: lib/memex_web/components/notes_table_component.ex:47
-#: lib/memex_web/components/pipelines_table_component.ex:47
-#: lib/memex_web/live/context_live/form_component.html.heex:14
-#: lib/memex_web/live/note_live/form_component.html.heex:14
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:14
-#, elixir-autogen, elixir-format
-msgid "title"
-msgstr ""
-
 #: lib/memex_web/components/invite_card.ex:20
 #, elixir-autogen, elixir-format
 msgid "unlimited"
@@ -475,4 +431,55 @@ msgstr ""
 #: lib/memex_web/live/pipeline_live/index.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "no pipelines found"
+msgstr ""
+
+#: lib/memex_web/live/context_live/form_component.ex:61
+#: lib/memex_web/live/note_live/form_component.ex:60
+#: lib/memex_web/live/pipeline_live/form_component.ex:65
+#, elixir-autogen, elixir-format
+msgid "%{slug} created"
+msgstr ""
+
+#: lib/memex_web/live/context_live/index.ex:57
+#: lib/memex_web/live/context_live/show.ex:41
+#: lib/memex_web/live/note_live/index.ex:57
+#: lib/memex_web/live/note_live/show.ex:41
+#: lib/memex_web/live/pipeline_live/index.ex:57
+#: lib/memex_web/live/pipeline_live/show.ex:41
+#, elixir-autogen, elixir-format
+msgid "%{slug} deleted"
+msgstr ""
+
+#: lib/memex_web/live/context_live/form_component.ex:44
+#: lib/memex_web/live/note_live/form_component.ex:43
+#: lib/memex_web/live/pipeline_live/form_component.ex:48
+#, elixir-autogen, elixir-format
+msgid "%{slug} saved"
+msgstr ""
+
+#: lib/memex_web/live/context_live/index.ex:23
+#: lib/memex_web/live/context_live/show.ex:48
+#: lib/memex_web/live/note_live/index.ex:23
+#: lib/memex_web/live/note_live/show.ex:48
+#: lib/memex_web/live/pipeline_live/index.ex:23
+#: lib/memex_web/live/pipeline_live/show.ex:48
+#, elixir-autogen, elixir-format
+msgid "edit %{slug}"
+msgstr ""
+
+#: lib/memex_web/components/contexts_table_component.ex:47
+#: lib/memex_web/components/notes_table_component.ex:47
+#: lib/memex_web/components/pipelines_table_component.ex:47
+#: lib/memex_web/live/context_live/form_component.html.heex:14
+#: lib/memex_web/live/note_live/form_component.html.heex:14
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:14
+#, elixir-autogen, elixir-format
+msgid "slug"
+msgstr ""
+
+#: lib/memex_web/live/context_live/show.ex:19
+#: lib/memex_web/live/note_live/show.ex:19
+#: lib/memex_web/live/pipeline_live/show.ex:19
+#, elixir-autogen, elixir-format
+msgid "%{slug} could not be found"
 msgstr ""

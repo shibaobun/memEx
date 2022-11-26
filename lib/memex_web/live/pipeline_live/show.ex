@@ -10,11 +10,15 @@ defmodule MemexWeb.PipelineLive.Show do
 
   @impl true
   def handle_params(
-        %{"id" => id},
+        %{"slug" => slug},
         _,
         %{assigns: %{live_action: live_action, current_user: current_user}} = socket
       ) do
-    pipeline = Pipelines.get_pipeline!(id, current_user)
+    pipeline =
+      case Pipelines.get_pipeline_by_slug(slug, current_user) do
+        nil -> raise MemexWeb.NotFoundError, gettext("%{slug} could not be found", slug: slug)
+        pipeline -> pipeline
+      end
 
     socket =
       socket
@@ -30,18 +34,18 @@ defmodule MemexWeb.PipelineLive.Show do
         _params,
         %{assigns: %{pipeline: pipeline, current_user: current_user}} = socket
       ) do
-    {:ok, %{title: title}} = Pipelines.delete_pipeline(pipeline, current_user)
+    {:ok, %{slug: slug}} = Pipelines.delete_pipeline(pipeline, current_user)
 
     socket =
       socket
-      |> put_flash(:info, gettext("%{title} deleted", title: title))
+      |> put_flash(:info, gettext("%{slug} deleted", slug: slug))
       |> push_navigate(to: Routes.pipeline_index_path(Endpoint, :index))
 
     {:noreply, socket}
   end
 
-  defp page_title(:show, %{title: title}), do: title
-  defp page_title(:edit, %{title: title}), do: gettext("edit %{title}", title: title)
+  defp page_title(:show, %{slug: slug}), do: slug
+  defp page_title(:edit, %{slug: slug}), do: gettext("edit %{slug}", slug: slug)
 
   @spec is_owner_or_admin?(Pipeline.t(), User.t()) :: boolean()
   defp is_owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true

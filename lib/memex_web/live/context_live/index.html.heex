@@ -32,7 +32,7 @@
       <:actions :let={context}>
         <%= if is_owner?(context, @current_user) do %>
           <.link
-            patch={Routes.context_index_path(@socket, :edit, context)}
+            patch={Routes.context_index_path(@socket, :edit, context.slug)}
             data-qa={"context-edit-#{context.id}"}
           >
             <%= dgettext("actions", "edit") %>

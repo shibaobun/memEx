@@ -9,11 +9,11 @@
     phx-debounce="300"
     class="flex flex-col justify-start items-stretch space-y-4"
   >
-    <%= text_input(f, :title,
+    <%= text_input(f, :slug,
       class: "input input-primary",
-      placeholder: gettext("title")
+      placeholder: gettext("slug")
     ) %>
-    <%= error_tag(f, :title) %>
+    <%= error_tag(f, :slug) %>
 
     <%= textarea(f, :content,
       id: "context-form-content",

@@ -68,11 +68,11 @@ msgid "create invite"
 msgstr ""
 
 #: lib/memex_web/live/context_live/index.html.heex:49
-#: lib/memex_web/live/context_live/show.html.heex:38
+#: lib/memex_web/live/context_live/show.html.heex:41
 #: lib/memex_web/live/note_live/index.html.heex:49
 #: lib/memex_web/live/note_live/show.html.heex:38
 #: lib/memex_web/live/pipeline_live/index.html.heex:49
-#: lib/memex_web/live/pipeline_live/show.html.heex:38
+#: lib/memex_web/live/pipeline_live/show.html.heex:41
 #, elixir-autogen, elixir-format
 msgid "delete"
 msgstr ""
@@ -83,11 +83,11 @@ msgid "delete user"
 msgstr ""
 
 #: lib/memex_web/live/context_live/index.html.heex:38
-#: lib/memex_web/live/context_live/show.html.heex:27
+#: lib/memex_web/live/context_live/show.html.heex:30
 #: lib/memex_web/live/note_live/index.html.heex:38
 #: lib/memex_web/live/note_live/show.html.heex:27
 #: lib/memex_web/live/pipeline_live/index.html.heex:38
-#: lib/memex_web/live/pipeline_live/show.html.heex:27
+#: lib/memex_web/live/pipeline_live/show.html.heex:30
 #, elixir-autogen, elixir-format
 msgid "edit"
 msgstr ""

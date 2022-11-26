@@ -1,6 +1,6 @@
 <div class="mx-auto flex flex-col justify-center items-stretch space-y-4 max-w-3xl">
   <h1 class="text-xl">
-    <%= @pipeline.title %>
+    <%= @pipeline.slug %>
   </h1>
 
   <p><%= if @pipeline.tags, do: @pipeline.tags |> Enum.join(", ") %></p>
@@ -23,7 +23,10 @@
       <%= dgettext("actions", "back") %>
     </.link>
     <%= if is_owner?(@pipeline, @current_user) do %>
-      <.link class="btn btn-primary" patch={Routes.pipeline_show_path(@socket, :edit, @pipeline)}>
+      <.link
+        class="btn btn-primary"
+        patch={Routes.pipeline_show_path(@socket, :edit, @pipeline.slug)}
+      >
         <%= dgettext("actions", "edit") %>
       </.link>
     <% end %>
@@ -42,7 +45,7 @@
 </div>
 
 <%= if @live_action in [:edit] do %>
-  <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline)}>
+  <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}>
     <.live_component
       module={MemexWeb.PipelineLive.FormComponent}
       id={@pipeline.id}
@@ -50,7 +53,7 @@
       title={@page_title}
       action={@live_action}
       pipeline={@pipeline}
-      return_to={Routes.pipeline_show_path(@socket, :show, @pipeline)}
+      return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}
     />
   </.modal>
 <% end %>

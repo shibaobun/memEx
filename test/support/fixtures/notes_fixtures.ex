@@ -3,6 +3,7 @@ defmodule Memex.NotesFixtures do
   This module defines test helpers for creating
   entities via the `Memex.Notes` context.
   """
+  import Memex.Fixtures
   alias Memex.{Accounts.User, Notes, Notes.Note}
 
   @doc """
@@ -16,7 +17,7 @@ defmodule Memex.NotesFixtures do
       |> Enum.into(%{
         content: "some content",
         tag: [],
-        title: "some title",
+        slug: random_slug(),
         visibility: :private
       })
       |> Notes.create_note(user)

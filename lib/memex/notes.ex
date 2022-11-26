@@ -16,7 +16,7 @@ defmodule Memex.Notes do
       [%Note{}, ...]
 
       iex> list_notes("my note", %User{id: 123})
-      [%Note{title: "my note"}, ...]
+      [%Note{slug: "my note"}, ...]
 
   """
   @spec list_notes(User.t()) :: [Note.t()]
@@ -24,7 +24,7 @@ defmodule Memex.Notes do
   def list_notes(search \\ nil, user)
 
   def list_notes(search, %{id: user_id}) when search |> is_nil() or search == "" do
-    Repo.all(from n in Note, where: n.user_id == ^user_id, order_by: n.title)
+    Repo.all(from n in Note, where: n.user_id == ^user_id, order_by: n.slug)
   end
 
   def list_notes(search, %{id: user_id}) when search |> is_binary() do
@@ -57,14 +57,14 @@ defmodule Memex.Notes do
       [%Note{}, ...]
 
       iex> list_public_notes("my note")
-      [%Note{title: "my note"}, ...]
+      [%Note{slug: "my note"}, ...]
   """
   @spec list_public_notes() :: [Note.t()]
   @spec list_public_notes(search :: String.t() | nil) :: [Note.t()]
   def list_public_notes(search \\ nil)
 
   def list_public_notes(search) when search |> is_nil() or search == "" do
-    Repo.all(from n in Note, where: n.visibility == :public, order_by: n.title)
+    Repo.all(from n in Note, where: n.visibility == :public, order_by: n.slug)
   end
 
   def list_public_notes(search) when search |> is_binary() do
@@ -115,6 +115,37 @@ defmodule Memex.Notes do
     Repo.one!(
       from n in Note,
         where: n.id == ^id,
+        where: n.visibility in [:public, :unlisted]
+    )
+  end
+
+  @doc """
+  Gets a single note by slug.
+
+  Raises `Ecto.NoResultsError` if the Note does not exist.
+
+  ## Examples
+
+      iex> get_note_by_slug("my-note", %User{id: 123})
+      %Note{}
+
+      iex> get_note_by_slug("my-note", %User{id: 123})
+      ** (Ecto.NoResultsError)
+
+  """
+  @spec get_note_by_slug(Note.slug(), User.t()) :: Note.t() | nil
+  def get_note_by_slug(slug, %{id: user_id}) do
+    Repo.one(
+      from n in Note,
+        where: n.slug == ^slug,
+        where: n.user_id == ^user_id or n.visibility in [:public, :unlisted]
+    )
+  end
+
+  def get_note_by_slug(slug, _invalid_user) do
+    Repo.one(
+      from n in Note,
+        where: n.slug == ^slug,
         where: n.visibility in [:public, :unlisted]
     )
   end
@@ -189,7 +220,7 @@ defmodule Memex.Notes do
       iex> change_note(note, %User{id: 123})
       %Ecto.Changeset{data: %Note{}}
 
-      iex> change_note(note, %{title: "new title"}, %User{id: 123})
+      iex> change_note(note, %{slug: "new slug"}, %User{id: 123})
       %Ecto.Changeset{data: %Note{}}
 
   """

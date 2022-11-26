@@ -3,7 +3,7 @@ defmodule Memex.ContextsTest do
   import Memex.ContextsFixtures
   alias Memex.{Contexts, Contexts.Context}
   @moduletag :contexts_test
-  @invalid_attrs %{content: nil, tag: nil, title: nil, visibility: nil}
+  @invalid_attrs %{content: nil, tag: nil, slug: nil, visibility: nil}
 
   describe "contexts" do
     setup do
@@ -11,9 +11,9 @@ defmodule Memex.ContextsTest do
     end
 
     test "list_contexts/1 returns all contexts for a user", %{user: user} do
-      context_a = context_fixture(%{title: "a", visibility: :public}, user)
-      context_b = context_fixture(%{title: "b", visibility: :unlisted}, user)
-      context_c = context_fixture(%{title: "c", visibility: :private}, user)
+      context_a = context_fixture(%{slug: "a", visibility: :public}, user)
+      context_b = context_fixture(%{slug: "b", visibility: :unlisted}, user)
+      context_c = context_fixture(%{slug: "c", visibility: :private}, user)
       assert Contexts.list_contexts(user) == [context_a, context_b, context_c]
     end
 
@@ -50,18 +50,43 @@ defmodule Memex.ContextsTest do
       end
     end
 
+    test "get_context_by_slug/1 returns the context with given id", %{user: user} do
+      context = context_fixture(%{slug: "a", visibility: :public}, user)
+      assert Contexts.get_context_by_slug("a", user) == context
+
+      context = context_fixture(%{slug: "b", visibility: :unlisted}, user)
+      assert Contexts.get_context_by_slug("b", user) == context
+
+      context = context_fixture(%{slug: "c", visibility: :private}, user)
+      assert Contexts.get_context_by_slug("c", user) == context
+    end
+
+    test "get_context_by_slug/1 only returns unlisted or public contexts for other users", %{
+      user: user
+    } do
+      another_user = user_fixture()
+      context = context_fixture(%{slug: "a", visibility: :public}, another_user)
+      assert Contexts.get_context_by_slug("a", user) == context
+
+      context = context_fixture(%{slug: "b", visibility: :unlisted}, another_user)
+      assert Contexts.get_context_by_slug("b", user) == context
+
+      context_fixture(%{slug: "c", visibility: :private}, another_user)
+      assert Contexts.get_context_by_slug("c", user) |> is_nil()
+    end
+
     test "create_context/1 with valid data creates a context", %{user: user} do
       valid_attrs = %{
         "content" => "some content",
         "tags_string" => "tag1,tag2",
-        "title" => "some title",
+        "slug" => "some-slug",
         "visibility" => :public
       }
 
       assert {:ok, %Context{} = context} = Contexts.create_context(valid_attrs, user)
       assert context.content == "some content"
       assert context.tags == ["tag1", "tag2"]
-      assert context.title == "some title"
+      assert context.slug == "some-slug"
       assert context.visibility == :public
     end
 
@@ -75,14 +100,14 @@ defmodule Memex.ContextsTest do
       update_attrs = %{
         "content" => "some updated content",
         "tags_string" => "tag1,tag2",
-        "title" => "some updated title",
+        "slug" => "some-updated-slug",
         "visibility" => :private
       }
 
       assert {:ok, %Context{} = context} = Contexts.update_context(context, update_attrs, user)
       assert context.content == "some updated content"
       assert context.tags == ["tag1", "tag2"]
-      assert context.title == "some updated title"
+      assert context.slug == "some-updated-slug"
       assert context.visibility == :private
     end
 

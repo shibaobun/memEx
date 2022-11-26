@@ -3,7 +3,7 @@ defmodule Memex.NotesTest do
   import Memex.NotesFixtures
   alias Memex.{Notes, Notes.Note}
   @moduletag :notes_test
-  @invalid_attrs %{content: nil, tag: nil, title: nil, visibility: nil}
+  @invalid_attrs %{content: nil, tag: nil, slug: nil, visibility: nil}
 
   describe "notes" do
     setup do
@@ -11,9 +11,9 @@ defmodule Memex.NotesTest do
     end
 
     test "list_notes/1 returns all notes for a user", %{user: user} do
-      note_a = note_fixture(%{title: "a", visibility: :public}, user)
-      note_b = note_fixture(%{title: "b", visibility: :unlisted}, user)
-      note_c = note_fixture(%{title: "c", visibility: :private}, user)
+      note_a = note_fixture(%{slug: "a", visibility: :public}, user)
+      note_b = note_fixture(%{slug: "b", visibility: :unlisted}, user)
+      note_c = note_fixture(%{slug: "c", visibility: :private}, user)
       assert Notes.list_notes(user) == [note_a, note_b, note_c]
     end
 
@@ -50,18 +50,43 @@ defmodule Memex.NotesTest do
       end
     end
 
+    test "get_note_by_slug/1 returns the note with given id", %{user: user} do
+      note = note_fixture(%{slug: "a", visibility: :public}, user)
+      assert Notes.get_note_by_slug("a", user) == note
+
+      note = note_fixture(%{slug: "b", visibility: :unlisted}, user)
+      assert Notes.get_note_by_slug("b", user) == note
+
+      note = note_fixture(%{slug: "c", visibility: :private}, user)
+      assert Notes.get_note_by_slug("c", user) == note
+    end
+
+    test "get_note_by_slug/1 only returns unlisted or public notes for other users", %{
+      user: user
+    } do
+      another_user = user_fixture()
+      note = note_fixture(%{slug: "a", visibility: :public}, another_user)
+      assert Notes.get_note_by_slug("a", user) == note
+
+      note = note_fixture(%{slug: "b", visibility: :unlisted}, another_user)
+      assert Notes.get_note_by_slug("b", user) == note
+
+      note_fixture(%{slug: "c", visibility: :private}, another_user)
+      assert Notes.get_note_by_slug("c", user) |> is_nil()
+    end
+
     test "create_note/1 with valid data creates a note", %{user: user} do
       valid_attrs = %{
         "content" => "some content",
         "tags_string" => "tag1,tag2",
-        "title" => "some title",
+        "slug" => "some-slug",
         "visibility" => :public
       }
 
       assert {:ok, %Note{} = note} = Notes.create_note(valid_attrs, user)
       assert note.content == "some content"
       assert note.tags == ["tag1", "tag2"]
-      assert note.title == "some title"
+      assert note.slug == "some-slug"
       assert note.visibility == :public
     end
 
@@ -75,14 +100,14 @@ defmodule Memex.NotesTest do
       update_attrs = %{
         "content" => "some updated content",
         "tags_string" => "tag1,tag2",
-        "title" => "some updated title",
+        "slug" => "some-updated-slug",
         "visibility" => :private
       }
 
       assert {:ok, %Note{} = note} = Notes.update_note(note, update_attrs, user)
       assert note.content == "some updated content"
       assert note.tags == ["tag1", "tag2"]
-      assert note.title == "some updated title"
+      assert note.slug == "some-updated-slug"
       assert note.visibility == :private
     end
 

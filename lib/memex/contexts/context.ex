@@ -3,19 +3,19 @@ defmodule Memex.Contexts.Context do
   Represents a document that synthesizes multiple concepts as defined by notes
   into a single consideration
   """
-
   use Ecto.Schema
   import Ecto.Changeset
+  import MemexWeb.Gettext
   alias Ecto.{Changeset, UUID}
   alias Memex.Accounts.User
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "contexts" do
+    field :slug, :string
     field :content, :string
     field :tags, {:array, :string}
     field :tags_string, :string, virtual: true
-    field :title, :string
     field :visibility, Ecto.Enum, values: [:public, :private, :unlisted]
 
     belongs_to :user, User
@@ -24,7 +24,7 @@ defmodule Memex.Contexts.Context do
   end
 
   @type t :: %__MODULE__{
-          title: String.t(),
+          slug: slug(),
           content: String.t(),
           tags: [String.t()] | nil,
           tags_string: String.t(),
@@ -35,24 +35,31 @@ defmodule Memex.Contexts.Context do
           updated_at: NaiveDateTime.t()
         }
   @type id :: UUID.t()
+  @type slug :: String.t()
   @type changeset :: Changeset.t(t())
 
   @doc false
   @spec create_changeset(attrs :: map(), User.t()) :: changeset()
   def create_changeset(attrs, %User{id: user_id}) do
     %__MODULE__{}
-    |> cast(attrs, [:title, :content, :tags, :visibility])
+    |> cast(attrs, [:slug, :content, :tags, :visibility])
     |> change(user_id: user_id)
     |> cast_tags_string(attrs)
-    |> validate_required([:title, :content, :user_id, :visibility])
+    |> validate_format(:slug, ~r/^[\p{L}\p{N}\-]+$/,
+      message: dgettext("errors", "invalid format: only numbers, letters and hyphen are accepted")
+    )
+    |> validate_required([:slug, :content, :user_id, :visibility])
   end
 
   @spec update_changeset(t(), attrs :: map(), User.t()) :: changeset()
   def update_changeset(%{user_id: user_id} = note, attrs, %User{id: user_id}) do
     note
-    |> cast(attrs, [:title, :content, :tags, :visibility])
+    |> cast(attrs, [:slug, :content, :tags, :visibility])
     |> cast_tags_string(attrs)
-    |> validate_required([:title, :content, :visibility])
+    |> validate_format(:slug, ~r/^[\p{L}\p{N}\-]+$/,
+      message: dgettext("errors", "invalid format: only numbers, letters and hyphen are accepted")
+    )
+    |> validate_required([:slug, :content, :visibility])
   end
 
   defp cast_tags_string(changeset, %{"tags_string" => tags_string})

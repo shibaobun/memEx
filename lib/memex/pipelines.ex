@@ -16,7 +16,7 @@ defmodule Memex.Pipelines do
       [%Pipeline{}, ...]
 
       iex> list_pipelines("my pipeline", %User{id: 123})
-      [%Pipeline{title: "my pipeline"}, ...]
+      [%Pipeline{slug: "my pipeline"}, ...]
 
   """
   @spec list_pipelines(User.t()) :: [Pipeline.t()]
@@ -24,7 +24,7 @@ defmodule Memex.Pipelines do
   def list_pipelines(search \\ nil, user)
 
   def list_pipelines(search, %{id: user_id}) when search |> is_nil() or search == "" do
-    Repo.all(from p in Pipeline, where: p.user_id == ^user_id, order_by: p.title)
+    Repo.all(from p in Pipeline, where: p.user_id == ^user_id, order_by: p.slug)
   end
 
   def list_pipelines(search, %{id: user_id}) when search |> is_binary() do
@@ -57,14 +57,14 @@ defmodule Memex.Pipelines do
       [%Pipeline{}, ...]
 
       iex> list_public_pipelines("my pipeline")
-      [%Pipeline{title: "my pipeline"}, ...]
+      [%Pipeline{slug: "my pipeline"}, ...]
   """
   @spec list_public_pipelines() :: [Pipeline.t()]
   @spec list_public_pipelines(search :: String.t() | nil) :: [Pipeline.t()]
   def list_public_pipelines(search \\ nil)
 
   def list_public_pipelines(search) when search |> is_nil() or search == "" do
-    Repo.all(from p in Pipeline, where: p.visibility == :public, order_by: p.title)
+    Repo.all(from p in Pipeline, where: p.visibility == :public, order_by: p.slug)
   end
 
   def list_public_pipelines(search) when search |> is_binary() do
@@ -115,6 +115,37 @@ defmodule Memex.Pipelines do
     Repo.one!(
       from p in Pipeline,
         where: p.id == ^id,
+        where: p.visibility in [:public, :unlisted]
+    )
+  end
+
+  @doc """
+  Gets a single pipeline by it's slug.
+
+  Raises `Ecto.NoResultsError` if the Pipeline does not exist.
+
+  ## Examples
+
+      iex> get_pipeline_by_slug("my-pipeline", %User{id: 123})
+      %Pipeline{}
+
+      iex> get_pipeline_by_slug("my-pipeline", %User{id: 123})
+      ** (Ecto.NoResultsError)
+
+  """
+  @spec get_pipeline_by_slug(Pipeline.slug(), User.t()) :: Pipeline.t() | nil
+  def get_pipeline_by_slug(slug, %{id: user_id}) do
+    Repo.one(
+      from p in Pipeline,
+        where: p.slug == ^slug,
+        where: p.user_id == ^user_id or p.visibility in [:public, :unlisted]
+    )
+  end
+
+  def get_pipeline_by_slug(slug, _invalid_user) do
+    Repo.one(
+      from p in Pipeline,
+        where: p.slug == ^slug,
         where: p.visibility in [:public, :unlisted]
     )
   end
@@ -191,7 +222,7 @@ defmodule Memex.Pipelines do
       iex> change_pipeline(pipeline, %User{id: 123})
       %Ecto.Changeset{data: %Pipeline{}}
 
-      iex> change_pipeline(pipeline, %{title: "new title"}, %User{id: 123})
+      iex> change_pipeline(pipeline, %{slug: "new slug"}, %User{id: 123})
       %Ecto.Changeset{data: %Pipeline{}}
 
   """

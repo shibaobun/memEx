@@ -38,10 +38,10 @@ defmodule MemexWeb.ContextLive.FormComponent do
          context_params
        ) do
     case Contexts.update_context(context, context_params, current_user) do
-      {:ok, %{title: title}} ->
+      {:ok, %{slug: slug}} ->
         {:noreply,
          socket
-         |> put_flash(:info, gettext("%{title} saved", title: title))
+         |> put_flash(:info, gettext("%{slug} saved", slug: slug))
          |> push_navigate(to: return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -55,10 +55,10 @@ defmodule MemexWeb.ContextLive.FormComponent do
          context_params
        ) do
     case Contexts.create_context(context_params, current_user) do
-      {:ok, %{title: title}} ->
+      {:ok, %{slug: slug}} ->
         {:noreply,
          socket
-         |> put_flash(:info, gettext("%{title} created", title: title))
+         |> put_flash(:info, gettext("%{slug} created", slug: slug))
          |> push_navigate(to: return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->

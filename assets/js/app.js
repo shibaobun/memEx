@@ -29,7 +29,9 @@ import topbar from '../vendor/topbar'
 import MaintainAttrs from './maintain_attrs'
 import Alpine from 'alpinejs'
 
-const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute('content')
+const csrfTokenElement = document.querySelector("meta[name='csrf-token']")
+let csrfToken
+if (csrfTokenElement) { csrfToken = csrfTokenElement.getAttribute('content') }
 const liveSocket = new LiveSocket('/live', Socket, {
   dom: {
     onBeforeElUpdated (from, to) {

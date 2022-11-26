@@ -16,11 +16,11 @@ defmodule MemexWeb.PipelineLive.Index do
     {:noreply, apply_action(socket, live_action, params)}
   end
 
-  defp apply_action(%{assigns: %{current_user: current_user}} = socket, :edit, %{"id" => id}) do
-    %{title: title} = pipeline = Pipelines.get_pipeline!(id, current_user)
+  defp apply_action(%{assigns: %{current_user: current_user}} = socket, :edit, %{"slug" => slug}) do
+    %{slug: slug} = pipeline = Pipelines.get_pipeline_by_slug(slug, current_user)
 
     socket
-    |> assign(page_title: gettext("edit %{title}", title: title))
+    |> assign(page_title: gettext("edit %{slug}", slug: slug))
     |> assign(pipeline: pipeline)
   end
 
@@ -49,12 +49,12 @@ defmodule MemexWeb.PipelineLive.Index do
   @impl true
   def handle_event("delete", %{"id" => id}, %{assigns: %{current_user: current_user}} = socket) do
     pipeline = Pipelines.get_pipeline!(id, current_user)
-    {:ok, %{title: title}} = Pipelines.delete_pipeline(pipeline, current_user)
+    {:ok, %{slug: slug}} = Pipelines.delete_pipeline(pipeline, current_user)
 
     socket =
       socket
       |> assign(pipelines: Pipelines.list_pipelines(current_user))
-      |> put_flash(:info, gettext("%{title} deleted", title: title))
+      |> put_flash(:info, gettext("%{slug} deleted", slug: slug))
 
     {:noreply, socket}
   end

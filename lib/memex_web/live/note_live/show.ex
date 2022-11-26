@@ -10,11 +10,15 @@ defmodule MemexWeb.NoteLive.Show do
 
   @impl true
   def handle_params(
-        %{"id" => id},
+        %{"slug" => slug},
         _,
         %{assigns: %{live_action: live_action, current_user: current_user}} = socket
       ) do
-    note = Notes.get_note!(id, current_user)
+    note =
+      case Notes.get_note_by_slug(slug, current_user) do
+        nil -> raise MemexWeb.NotFoundError, gettext("%{slug} could not be found", slug: slug)
+        note -> note
+      end
 
     socket =
       socket
@@ -30,18 +34,18 @@ defmodule MemexWeb.NoteLive.Show do
         _params,
         %{assigns: %{note: note, current_user: current_user}} = socket
       ) do
-    {:ok, %{title: title}} = Notes.delete_note(note, current_user)
+    {:ok, %{slug: slug}} = Notes.delete_note(note, current_user)
 
     socket =
       socket
-      |> put_flash(:info, gettext("%{title} deleted", title: title))
+      |> put_flash(:info, gettext("%{slug} deleted", slug: slug))
       |> push_navigate(to: Routes.note_index_path(Endpoint, :index))
 
     {:noreply, socket}
   end
 
-  defp page_title(:show, %{title: title}), do: title
-  defp page_title(:edit, %{title: title}), do: gettext("edit %{title}", title: title)
+  defp page_title(:show, %{slug: slug}), do: slug
+  defp page_title(:edit, %{slug: slug}), do: gettext("edit %{slug}", slug: slug)
 
   @spec is_owner_or_admin?(Note.t(), User.t()) :: boolean()
   defp is_owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true

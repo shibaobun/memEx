@@ -44,7 +44,7 @@ defmodule MemexWeb.Components.NotesTableComponent do
       end
 
     columns = [
-      %{label: gettext("title"), key: :title},
+      %{label: gettext("slug"), key: :slug},
       %{label: gettext("content"), key: :content},
       %{label: gettext("tags"), key: :tags},
       %{label: gettext("visibility"), key: :visibility}
@@ -89,20 +89,20 @@ defmodule MemexWeb.Components.NotesTableComponent do
 
   @spec get_value_for_key(atom(), Note.t(), additional_data :: map()) ::
           any() | {any(), Rendered.t()}
-  defp get_value_for_key(:title, %{id: id, title: title}, _additional_data) do
-    assigns = %{id: id, title: title}
+  defp get_value_for_key(:slug, %{slug: slug}, _additional_data) do
+    assigns = %{slug: slug}
 
-    title_block = ~H"""
+    slug_block = ~H"""
     <.link
-      navigate={Routes.note_show_path(Endpoint, :show, @id)}
+      navigate={Routes.note_show_path(Endpoint, :show, @slug)}
       class="link"
-      data-qa={"note-show-#{@id}"}
+      data-qa={"note-show-#{@slug}"}
     >
-      <%= @title %>
+      <%= @slug %>
     </.link>
     """
 
-    {title, title_block}
+    {slug, slug_block}
   end
 
   defp get_value_for_key(:content, %{content: content}, _additional_data) do

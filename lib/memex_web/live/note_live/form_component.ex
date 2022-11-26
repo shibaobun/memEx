@@ -37,10 +37,10 @@ defmodule MemexWeb.NoteLive.FormComponent do
          note_params
        ) do
     case Notes.update_note(note, note_params, current_user) do
-      {:ok, %{title: title}} ->
+      {:ok, %{slug: slug}} ->
         {:noreply,
          socket
-         |> put_flash(:info, gettext("%{title} saved", title: title))
+         |> put_flash(:info, gettext("%{slug} saved", slug: slug))
          |> push_navigate(to: return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -54,10 +54,10 @@ defmodule MemexWeb.NoteLive.FormComponent do
          note_params
        ) do
     case Notes.create_note(note_params, current_user) do
-      {:ok, %{title: title}} ->
+      {:ok, %{slug: slug}} ->
         {:noreply,
          socket
-         |> put_flash(:info, gettext("%{title} created", title: title))
+         |> put_flash(:info, gettext("%{slug} created", slug: slug))
          |> push_navigate(to: return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->

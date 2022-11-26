@@ -32,7 +32,7 @@
       <:actions :let={note}>
         <%= if is_owner?(note, @current_user) do %>
           <.link
-            patch={Routes.note_index_path(@socket, :edit, note)}
+            patch={Routes.note_index_path(@socket, :edit, note.slug)}
             data-qa={"note-edit-#{note.id}"}
           >
             <%= dgettext("actions", "edit") %>

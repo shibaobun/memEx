@@ -32,7 +32,7 @@
       <:actions :let={pipeline}>
         <%= if is_owner?(pipeline, @current_user) do %>
           <.link
-            patch={Routes.pipeline_index_path(@socket, :edit, pipeline)}
+            patch={Routes.pipeline_index_path(@socket, :edit, pipeline.slug)}
             data-qa={"pipeline-edit-#{pipeline.id}"}
           >
             <%= dgettext("actions", "edit") %>

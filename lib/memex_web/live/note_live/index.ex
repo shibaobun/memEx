@@ -16,11 +16,11 @@ defmodule MemexWeb.NoteLive.Index do
     {:noreply, apply_action(socket, live_action, params)}
   end
 
-  defp apply_action(%{assigns: %{current_user: current_user}} = socket, :edit, %{"id" => id}) do
-    %{title: title} = note = Notes.get_note!(id, current_user)
+  defp apply_action(%{assigns: %{current_user: current_user}} = socket, :edit, %{"slug" => slug}) do
+    %{slug: slug} = note = Notes.get_note_by_slug(slug, current_user)
 
     socket
-    |> assign(page_title: gettext("edit %{title}", title: title))
+    |> assign(page_title: gettext("edit %{slug}", slug: slug))
     |> assign(note: note)
   end
 
@@ -49,12 +49,12 @@ defmodule MemexWeb.NoteLive.Index do
   @impl true
   def handle_event("delete", %{"id" => id}, %{assigns: %{current_user: current_user}} = socket) do
     note = Notes.get_note!(id, current_user)
-    {:ok, %{title: title}} = Notes.delete_note(note, current_user)
+    {:ok, %{slug: slug}} = Notes.delete_note(note, current_user)
 
     socket =
       socket
       |> assign(notes: Notes.list_notes(current_user))
-      |> put_flash(:info, gettext("%{title} deleted", title: title))
+      |> put_flash(:info, gettext("%{slug} deleted", slug: slug))
 
     {:noreply, socket}
   end

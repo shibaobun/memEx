@@ -44,7 +44,7 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
       end
 
     columns = [
-      %{label: gettext("title"), key: :title},
+      %{label: gettext("slug"), key: :slug},
       %{label: gettext("description"), key: :description},
       %{label: gettext("tags"), key: :tags},
       %{label: gettext("visibility"), key: :visibility}
@@ -89,20 +89,20 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
 
   @spec get_value_for_key(atom(), Pipeline.t(), additional_data :: map()) ::
           any() | {any(), Rendered.t()}
-  defp get_value_for_key(:title, %{id: id, title: title}, _additional_data) do
-    assigns = %{id: id, title: title}
+  defp get_value_for_key(:slug, %{slug: slug}, _additional_data) do
+    assigns = %{slug: slug}
 
-    title_block = ~H"""
+    slug_block = ~H"""
     <.link
-      navigate={Routes.pipeline_show_path(Endpoint, :show, @id)}
+      navigate={Routes.pipeline_show_path(Endpoint, :show, @slug)}
       class="link"
-      data-qa={"pipeline-show-#{@id}"}
+      data-qa={"pipeline-show-#{@slug}"}
     >
-      <%= @title %>
+      <%= @slug %>
     </.link>
     """
 
-    {title, title_block}
+    {slug, slug_block}
   end
 
   defp get_value_for_key(:description, %{description: description}, _additional_data) do

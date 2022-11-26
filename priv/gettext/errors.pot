@@ -20,24 +20,9 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: lib/memex_web/templates/error/error.html.heex:28
-#, elixir-autogen, elixir-format
-msgid "Go back home"
-msgstr ""
-
-#: lib/memex_web/views/error_view.ex:11
-#, elixir-autogen, elixir-format
-msgid "Internal Server Error"
-msgstr ""
-
 #: lib/memex_web/controllers/user_session_controller.ex:17
 #, elixir-autogen, elixir-format
 msgid "Invalid email or password"
-msgstr ""
-
-#: lib/memex_web/views/error_view.ex:9
-#, elixir-autogen, elixir-format
-msgid "Not found"
 msgstr ""
 
 #: lib/memex_web/templates/user_registration/new.html.heex:15
@@ -67,11 +52,6 @@ msgstr ""
 #: lib/memex_web/controllers/user_settings_controller.ex:99
 #, elixir-autogen, elixir-format
 msgid "Unable to delete user"
-msgstr ""
-
-#: lib/memex_web/views/error_view.ex:10
-#, elixir-autogen, elixir-format
-msgid "Unauthorized"
 msgstr ""
 
 #: lib/memex_web/controllers/user_confirmation_controller.ex:54
@@ -119,4 +99,34 @@ msgstr ""
 #: lib/memex_web/templates/user_settings/edit.html.heex:119
 #, elixir-autogen, elixir-format
 msgid "oops, something went wrong! Please check the errors below"
+msgstr ""
+
+#: lib/memex/contexts/context.ex:49
+#: lib/memex/contexts/context.ex:60
+#: lib/memex/notes/note.ex:48
+#: lib/memex/notes/note.ex:59
+#: lib/memex/pipelines/pipeline.ex:50
+#: lib/memex/pipelines/pipeline.ex:61
+#, elixir-autogen, elixir-format
+msgid "invalid format: only numbers, letters and hyphen are accepted"
+msgstr ""
+
+#: lib/memex_web/templates/error/error.html.heex:28
+#, elixir-autogen, elixir-format
+msgid "go back home"
+msgstr ""
+
+#: lib/memex_web/views/error_view.ex:11
+#, elixir-autogen, elixir-format
+msgid "internal server error"
+msgstr ""
+
+#: lib/memex_web/views/error_view.ex:9
+#, elixir-autogen, elixir-format
+msgid "not found"
+msgstr ""
+
+#: lib/memex_web/views/error_view.ex:10
+#, elixir-autogen, elixir-format
+msgid "unauthorized"
 msgstr ""

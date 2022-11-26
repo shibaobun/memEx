@@ -2,7 +2,6 @@ defmodule Memex.Fixtures do
   @moduledoc """
   This module defines test helpers for creating entities
   """
-
   alias Memex.{Accounts, Accounts.User, Email, Repo}
 
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
@@ -55,6 +54,15 @@ defmodule Memex.Fixtures do
       email: unique_user_email(),
       password: valid_user_password()
     })
+  end
+
+  def random_slug(length \\ 20) do
+    symbols = '0123456789abcdef-'
+    symbol_count = Enum.count(symbols)
+
+    for _ <- Range.new(1, length),
+        into: "",
+        do: <<Enum.at(symbols, :rand.uniform(symbol_count - 1))>>
   end
 
   defp unwrap_ok_tuple({:ok, value}), do: value

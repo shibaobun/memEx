@@ -3,7 +3,7 @@ defmodule Memex.PipelinesTest do
   import Memex.PipelinesFixtures
   alias Memex.{Pipelines, Pipelines.Pipeline}
   @moduletag :pipelines_test
-  @invalid_attrs %{description: nil, tag: nil, title: nil, visibility: nil}
+  @invalid_attrs %{description: nil, tag: nil, slug: nil, visibility: nil}
 
   describe "pipelines" do
     setup do
@@ -11,9 +11,9 @@ defmodule Memex.PipelinesTest do
     end
 
     test "list_pipelines/1 returns all pipelines for a user", %{user: user} do
-      pipeline_a = pipeline_fixture(%{title: "a", visibility: :public}, user)
-      pipeline_b = pipeline_fixture(%{title: "b", visibility: :unlisted}, user)
-      pipeline_c = pipeline_fixture(%{title: "c", visibility: :private}, user)
+      pipeline_a = pipeline_fixture(%{slug: "a", visibility: :public}, user)
+      pipeline_b = pipeline_fixture(%{slug: "b", visibility: :unlisted}, user)
+      pipeline_c = pipeline_fixture(%{slug: "c", visibility: :private}, user)
       assert Pipelines.list_pipelines(user) == [pipeline_a, pipeline_b, pipeline_c]
     end
 
@@ -52,18 +52,43 @@ defmodule Memex.PipelinesTest do
       end
     end
 
+    test "get_pipeline_by_slug/1 returns the pipeline with given id", %{user: user} do
+      pipeline = pipeline_fixture(%{slug: "a", visibility: :public}, user)
+      assert Pipelines.get_pipeline_by_slug("a", user) == pipeline
+
+      pipeline = pipeline_fixture(%{slug: "b", visibility: :unlisted}, user)
+      assert Pipelines.get_pipeline_by_slug("b", user) == pipeline
+
+      pipeline = pipeline_fixture(%{slug: "c", visibility: :private}, user)
+      assert Pipelines.get_pipeline_by_slug("c", user) == pipeline
+    end
+
+    test "get_pipeline_by_slug/1 only returns unlisted or public pipelines for other users", %{
+      user: user
+    } do
+      another_user = user_fixture()
+      pipeline = pipeline_fixture(%{slug: "a", visibility: :public}, another_user)
+      assert Pipelines.get_pipeline_by_slug("a", user) == pipeline
+
+      pipeline = pipeline_fixture(%{slug: "b", visibility: :unlisted}, another_user)
+      assert Pipelines.get_pipeline_by_slug("b", user) == pipeline
+
+      pipeline_fixture(%{slug: "c", visibility: :private}, another_user)
+      assert Pipelines.get_pipeline_by_slug("c", user) |> is_nil()
+    end
+
     test "create_pipeline/1 with valid data creates a pipeline", %{user: user} do
       valid_attrs = %{
         "description" => "some description",
         "tags_string" => "tag1,tag2",
-        "title" => "some title",
+        "slug" => "some-slug",
         "visibility" => :public
       }
 
       assert {:ok, %Pipeline{} = pipeline} = Pipelines.create_pipeline(valid_attrs, user)
       assert pipeline.description == "some description"
       assert pipeline.tags == ["tag1", "tag2"]
-      assert pipeline.title == "some title"
+      assert pipeline.slug == "some-slug"
       assert pipeline.visibility == :public
     end
 
@@ -77,7 +102,7 @@ defmodule Memex.PipelinesTest do
       update_attrs = %{
         "description" => "some updated description",
         "tags_string" => "tag1,tag2",
-        "title" => "some updated title",
+        "slug" => "some-updated-slug",
         "visibility" => :private
       }
 
@@ -86,7 +111,7 @@ defmodule Memex.PipelinesTest do
 
       assert pipeline.description == "some updated description"
       assert pipeline.tags == ["tag1", "tag2"]
-      assert pipeline.title == "some updated title"
+      assert pipeline.slug == "some-updated-slug"
       assert pipeline.visibility == :private
     end
 

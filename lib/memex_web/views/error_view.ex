@@ -6,9 +6,9 @@ defmodule MemexWeb.ErrorView do
   def template_not_found(error_path, _assigns) do
     error_string =
       case error_path do
-        "404.html" -> dgettext("errors", "Not found")
-        "401.html" -> dgettext("errors", "Unauthorized")
-        _ -> dgettext("errors", "Internal Server Error")
+        "404.html" -> dgettext("errors", "not found")
+        "401.html" -> dgettext("errors", "unauthorized")
+        _ -> dgettext("errors", "internal server error")
       end
 
     render("error.html", %{error_string: error_string})

@@ -58,16 +58,16 @@ defmodule MemexWeb.Router do
       pipe_through [:browser, :require_authenticated_user]
 
       live "/notes/new", NoteLive.Index, :new
-      live "/notes/:id/edit", NoteLive.Index, :edit
-      live "/note/:id/edit", NoteLive.Show, :edit
+      live "/notes/:slug/edit", NoteLive.Index, :edit
+      live "/note/:slug/edit", NoteLive.Show, :edit
 
       live "/contexts/new", ContextLive.Index, :new
-      live "/contexts/:id/edit", ContextLive.Index, :edit
-      live "/context/:id/edit", ContextLive.Show, :edit
+      live "/contexts/:slug/edit", ContextLive.Index, :edit
+      live "/context/:slug/edit", ContextLive.Show, :edit
 
       live "/pipelines/new", PipelineLive.Index, :new
-      live "/pipelines/:id/edit", PipelineLive.Index, :edit
-      live "/pipelines/:id/show/edit", PipelineLive.Show, :edit
+      live "/pipelines/:slug/edit", PipelineLive.Index, :edit
+      live "/pipeline/:slug/edit", PipelineLive.Show, :edit
 
       get "/users/settings", UserSettingsController, :edit
       put "/users/settings", UserSettingsController, :update
@@ -80,15 +80,15 @@ defmodule MemexWeb.Router do
 
       live "/notes", NoteLive.Index, :index
       live "/notes/:search", NoteLive.Index, :search
-      live "/note/:id", NoteLive.Show, :show
+      live "/note/:slug", NoteLive.Show, :show
 
       live "/contexts", ContextLive.Index, :index
       live "/contexts/:search", ContextLive.Index, :search
-      live "/context/:id", ContextLive.Show, :show
+      live "/context/:slug", ContextLive.Show, :show
 
       live "/pipelines", PipelineLive.Index, :index
       live "/pipelines/:search", PipelineLive.Index, :search
-      live "/pipeline/:id", PipelineLive.Show, :show
+      live "/pipeline/:slug", PipelineLive.Show, :show
     end
   end
 

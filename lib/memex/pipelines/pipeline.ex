@@ -4,13 +4,14 @@ defmodule Memex.Pipelines.Pipeline do
   """
   use Ecto.Schema
   import Ecto.Changeset
+  import MemexWeb.Gettext
   alias Ecto.{Changeset, UUID}
   alias Memex.{Accounts.User, Pipelines.Step}
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "pipelines" do
-    field :title, :string
+    field :slug, :string
     field :description, :string
     field :tags, {:array, :string}
     field :tags_string, :string, virtual: true
@@ -24,7 +25,7 @@ defmodule Memex.Pipelines.Pipeline do
   end
 
   @type t :: %__MODULE__{
-          title: String.t(),
+          slug: slug(),
           description: String.t(),
           tags: [String.t()] | nil,
           tags_string: String.t(),
@@ -35,24 +36,31 @@ defmodule Memex.Pipelines.Pipeline do
           updated_at: NaiveDateTime.t()
         }
   @type id :: UUID.t()
+  @type slug :: String.t()
   @type changeset :: Changeset.t(t())
 
   @doc false
   @spec create_changeset(attrs :: map(), User.t()) :: changeset()
   def create_changeset(attrs, %User{id: user_id}) do
     %__MODULE__{}
-    |> cast(attrs, [:title, :description, :tags, :visibility])
+    |> cast(attrs, [:slug, :description, :tags, :visibility])
     |> change(user_id: user_id)
     |> cast_tags_string(attrs)
-    |> validate_required([:title, :user_id, :visibility])
+    |> validate_format(:slug, ~r/^[\p{L}\p{N}\-]+$/,
+      message: dgettext("errors", "invalid format: only numbers, letters and hyphen are accepted")
+    )
+    |> validate_required([:slug, :user_id, :visibility])
   end
 
   @spec update_changeset(t(), attrs :: map(), User.t()) :: changeset()
   def update_changeset(%{user_id: user_id} = pipeline, attrs, %User{id: user_id}) do
     pipeline
-    |> cast(attrs, [:title, :description, :tags, :visibility])
+    |> cast(attrs, [:slug, :description, :tags, :visibility])
     |> cast_tags_string(attrs)
-    |> validate_required([:title, :visibility])
+    |> validate_format(:slug, ~r/^[\p{L}\p{N}\-]+$/,
+      message: dgettext("errors", "invalid format: only numbers, letters and hyphen are accepted")
+    )
+    |> validate_required([:slug, :visibility])
   end
 
   defp cast_tags_string(changeset, %{"tags_string" => tags_string})
