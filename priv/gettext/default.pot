@@ -30,11 +30,6 @@ msgstr ""
 msgid "Forgot your password?"
 msgstr ""
 
-#: lib/memex_web/live/home_live.ex:12
-#, elixir-autogen, elixir-format
-msgid "Home"
-msgstr ""
-
 #: lib/memex_web/templates/user_session/new.html.heex:27
 #, elixir-autogen, elixir-format
 msgid "Keep me logged in for 60 days"
@@ -482,4 +477,9 @@ msgstr ""
 #: lib/memex_web/live/pipeline_live/show.ex:19
 #, elixir-autogen, elixir-format
 msgid "%{slug} could not be found"
+msgstr ""
+
+#: lib/memex_web/live/home_live.ex:12
+#, elixir-autogen, elixir-format
+msgid "home"
 msgstr ""

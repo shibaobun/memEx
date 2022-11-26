@@ -9,7 +9,7 @@ defmodule MemexWeb.HomeLive do
   @impl true
   def mount(_params, _session, socket) do
     admins = Accounts.list_users_by_role(:admin)
-    {:ok, socket |> assign(page_title: gettext("Home"), query: "", results: %{}, admins: admins)}
+    {:ok, socket |> assign(page_title: gettext("home"), query: "", results: %{}, admins: admins)}
   end
 
   @impl true
