@@ -5,14 +5,7 @@
 
   <p><%= if @context.tags, do: @context.tags |> Enum.join(", ") %></p>
 
-  <textarea
-    id="show-context-content"
-    class="input input-primary h-128 min-h-128"
-    phx-hook="MaintainAttrs"
-    phx-update="ignore"
-    readonly
-    phx-no-format
-  ><%= @context.content %></textarea>
+  <.context_content context={@context} />
 
   <p class="self-end">
     <%= gettext("Visibility: %{visibility}", visibility: @context.visibility) %>

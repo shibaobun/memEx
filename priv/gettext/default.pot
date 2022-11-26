@@ -80,7 +80,7 @@ msgstr ""
 msgid "Uses left"
 msgstr ""
 
-#: lib/memex_web/live/context_live/show.html.heex:18
+#: lib/memex_web/live/context_live/show.html.heex:11
 #: lib/memex_web/live/note_live/show.html.heex:18
 #: lib/memex_web/live/pipeline_live/show.html.heex:18
 #, elixir-autogen, elixir-format
@@ -109,7 +109,6 @@ msgstr ""
 
 #: lib/memex_web/components/contexts_table_component.ex:48
 #: lib/memex_web/components/notes_table_component.ex:48
-#: lib/memex_web/live/context_live/form_component.html.heex:23
 #: lib/memex_web/live/note_live/form_component.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "content"
@@ -385,11 +384,6 @@ msgstr ""
 msgid "visibility"
 msgstr ""
 
-#: lib/memex_web/components/note_card.ex:18
-#, elixir-autogen, elixir-format
-msgid "visibility: %{visibility}"
-msgstr ""
-
 #: lib/memex_web/live/note_live/index.ex:29
 #, elixir-autogen, elixir-format
 msgid "new note"
@@ -482,4 +476,9 @@ msgstr ""
 #: lib/memex_web/live/home_live.ex:12
 #, elixir-autogen, elixir-format
 msgid "home"
+msgstr ""
+
+#: lib/memex_web/live/context_live/form_component.html.heex:23
+#, elixir-autogen, elixir-format
+msgid "use [[note-slug]] to link to a note"
 msgstr ""

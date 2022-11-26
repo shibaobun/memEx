@@ -1,6 +1,6 @@
 defmodule MemexWeb.ContextLive.Show do
   use MemexWeb, :live_view
-
+  import MemexWeb.Components.ContextContent
   alias Memex.{Accounts.User, Contexts, Contexts.Context}
 
   @impl true
