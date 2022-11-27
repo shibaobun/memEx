@@ -1,0 +1,34 @@
+<div class="h-full flex flex-col justify-start items-stretch space-y-4">
+  <.form
+    :let={f}
+    for={@changeset}
+    id="step-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save"
+    phx-debounce="300"
+    class="flex flex-col justify-start items-stretch space-y-4"
+  >
+    <%= text_input(f, :title,
+      class: "input input-primary",
+      placeholder: gettext("title")
+    ) %>
+    <%= error_tag(f, :title) %>
+
+    <%= textarea(f, :content,
+      id: "step-form-content",
+      class: "input input-primary h-64 min-h-64",
+      phx_hook: "MaintainAttrs",
+      phx_update: "ignore",
+      placeholder: gettext("use [[context-slug]] to link to a context")
+    ) %>
+    <%= error_tag(f, :content) %>
+
+    <div class="flex justify-center items-stretch space-x-4">
+      <%= submit(dgettext("actions", "save"),
+        phx_disable_with: gettext("saving..."),
+        class: "mx-auto btn btn-primary"
+      ) %>
+    </div>
+  </.form>
+</div>

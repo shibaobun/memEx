@@ -69,6 +69,8 @@ defmodule MemexWeb.Router do
       live "/pipelines/new", PipelineLive.Index, :new
       live "/pipelines/:slug/edit", PipelineLive.Index, :edit
       live "/pipeline/:slug/edit", PipelineLive.Show, :edit
+      live "/pipeline/:slug/add_step", PipelineLive.Show, :add_step
+      live "/pipeline/:slug/:step_id", PipelineLive.Show, :edit_step
 
       get "/users/settings", UserSettingsController, :edit
       put "/users/settings", UserSettingsController, :update

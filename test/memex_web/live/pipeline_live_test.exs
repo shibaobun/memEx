@@ -1,8 +1,7 @@
 defmodule MemexWeb.PipelineLiveTest do
   use MemexWeb.ConnCase
-
   import Phoenix.LiveViewTest
-  import Memex.PipelinesFixtures
+  import Memex.{PipelinesFixtures, StepsFixtures}
 
   @create_attrs %{
     "description" => "some description",
@@ -21,6 +20,18 @@ defmodule MemexWeb.PipelineLiveTest do
     "tags_string" => "",
     "slug" => nil,
     "visibility" => nil
+  }
+  @step_create_attrs %{
+    "content" => "some content",
+    "title" => "some title"
+  }
+  @step_update_attrs %{
+    "content" => "some updated content",
+    "title" => "some updated title"
+  }
+  @step_invalid_attrs %{
+    "content" => nil,
+    "title" => nil
   }
 
   defp create_pipeline(%{user: user}) do
@@ -133,6 +144,111 @@ defmodule MemexWeb.PipelineLiveTest do
         |> follow_redirect(conn, Routes.pipeline_index_path(conn, :index))
 
       refute has_element?(index_live, "#pipeline-#{pipeline.id}")
+    end
+
+    test "creates a step", %{conn: conn, pipeline: pipeline} do
+      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+
+      show_live
+      |> element("[data-qa=\"add-step-#{pipeline.id}\"]")
+      |> render_click()
+
+      assert_patch(show_live, Routes.pipeline_show_path(conn, :add_step, pipeline.slug))
+
+      {:ok, _show_live, html} =
+        show_live
+        |> form("#step-form", step: @step_create_attrs)
+        |> render_submit()
+        |> follow_redirect(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+
+      assert html =~ "some title created"
+      assert html =~ "some description"
+    end
+  end
+
+  describe "show with a step" do
+    setup [:register_and_log_in_user, :create_pipeline]
+
+    setup %{pipeline: pipeline, user: user} do
+      [
+        step: step_fixture(0, pipeline, user)
+      ]
+    end
+
+    test "updates a step", %{conn: conn, pipeline: pipeline, step: step} do
+      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+
+      show_live
+      |> element("[data-qa=\"edit-step-#{step.id}\"]")
+      |> render_click()
+
+      assert_patch(show_live, Routes.pipeline_show_path(conn, :edit_step, pipeline.slug, step.id))
+
+      assert show_live
+             |> form("#step-form", step: @step_invalid_attrs)
+             |> render_change() =~ "can&#39;t be blank"
+
+      {:ok, _show_live, html} =
+        show_live
+        |> form("#step-form", step: @step_update_attrs)
+        |> render_submit()
+        |> follow_redirect(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+
+      assert html =~ "some updated title saved"
+      assert html =~ "some updated content"
+    end
+
+    test "deletes a step", %{conn: conn, pipeline: pipeline, step: step} do
+      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+
+      html =
+        show_live
+        |> element("[data-qa=\"delete-step-#{step.id}\"]")
+        |> render_click()
+
+      assert_patch(show_live, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+
+      assert html =~ "some title deleted"
+      refute html =~ "some updated content"
+    end
+  end
+
+  describe "show with multiple steps" do
+    setup [:register_and_log_in_user, :create_pipeline]
+
+    setup %{pipeline: pipeline, user: user} do
+      [
+        first_step: step_fixture(%{title: "first step"}, 0, pipeline, user),
+        second_step: step_fixture(%{title: "second step"}, 1, pipeline, user),
+        third_step: step_fixture(%{title: "third step"}, 2, pipeline, user)
+      ]
+    end
+
+    test "reorders a step",
+         %{conn: conn, pipeline: pipeline, first_step: first_step, second_step: second_step} do
+      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+
+      html =
+        show_live
+        |> element("[data-qa=\"move-step-up-#{second_step.id}\"]")
+        |> render_click()
+
+      assert html =~ "1. second step"
+      assert html =~ "2. first step"
+      assert html =~ "3. third step"
+
+      refute has_element?(show_live, "[data-qa=\"move-step-up-#{second_step.id}\"]")
+
+      html =
+        show_live
+        |> element("[data-qa=\"move-step-down-#{first_step.id}\"]")
+        |> render_click()
+
+      assert html =~ "1. second step"
+      assert html =~ "2. third step"
+      assert html =~ "3. first step"
+
+      refute has_element?(show_live, "[data-qa=\"move-step-down-#{first_step.id}\"]")
     end
   end
 end

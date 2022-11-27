@@ -1,4 +1,4 @@
-defmodule Memex.Pipelines.Step do
+defmodule Memex.Pipelines.Steps.Step do
   @moduledoc """
   Represents a step taken while executing a pipeline
   """
@@ -46,16 +46,25 @@ defmodule Memex.Pipelines.Step do
     |> validate_required([:title, :content, :user_id, :position])
   end
 
-  @spec update_changeset(t(), attrs :: map(), position :: non_neg_integer(), User.t()) ::
+  @spec update_changeset(t(), attrs :: map(), User.t()) ::
           changeset()
   def update_changeset(
         %{user_id: user_id} = step,
         attrs,
-        position,
         %User{id: user_id}
       ) do
     step
     |> cast(attrs, [:title, :content])
+    |> validate_required([:title, :content, :user_id, :position])
+  end
+
+  @spec position_changeset(t(), position :: non_neg_integer(), User.t()) :: changeset()
+  def position_changeset(
+        %{user_id: user_id} = step,
+        position,
+        %User{id: user_id}
+      ) do
+    step
     |> change(position: position)
     |> validate_required([:title, :content, :user_id, :position])
   end

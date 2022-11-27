@@ -146,7 +146,8 @@ msgstr ""
 #: lib/memex_web/live/note_live/index.html.heex:46
 #: lib/memex_web/live/note_live/show.html.heex:35
 #: lib/memex_web/live/pipeline_live/index.html.heex:46
-#: lib/memex_web/live/pipeline_live/show.html.heex:38
+#: lib/memex_web/live/pipeline_live/show.html.heex:40
+#: lib/memex_web/live/pipeline_live/show.html.heex:110
 #, elixir-autogen, elixir-format
 msgid "are you sure?"
 msgstr ""

@@ -5,20 +5,22 @@
 
   <p><%= if @pipeline.tags, do: @pipeline.tags |> Enum.join(", ") %></p>
 
-  <textarea
-    id="show-pipeline-description"
-    class="input input-primary h-128 min-h-128"
-    phx-hook="MaintainAttrs"
-    phx-update="ignore"
-    readonly
-    phx-no-format
-  ><%= @pipeline.description %></textarea>
+  <%= if @pipeline.description do %>
+    <textarea
+      id="show-pipeline-description"
+      class="input input-primary h-32 min-h-32"
+      phx-hook="MaintainAttrs"
+      phx-update="ignore"
+      readonly
+      phx-no-format
+    ><%= @pipeline.description %></textarea>
+  <% end %>
 
   <p class="self-end">
     <%= gettext("Visibility: %{visibility}", visibility: @pipeline.visibility) %>
   </p>
 
-  <div class="self-end flex space-x-4">
+  <div class="pb-4 self-end flex space-x-4">
     <.link class="btn btn-primary" navigate={Routes.pipeline_index_path(@socket, :index)}>
       <%= dgettext("actions", "back") %>
     </.link>
@@ -42,18 +44,131 @@
       </button>
     <% end %>
   </div>
+
+  <hr class="hr" />
+
+  <h2 class="pt-2 self-center text-lg">
+    <%= gettext("steps:") %>
+  </h2>
+
+  <%= if @steps |> Enum.empty?() do %>
+    <h3 class="self-center text-md text-primary-600">
+      <%= gettext("no steps") %>
+    </h3>
+  <% else %>
+    <%= for %{id: step_id, position: position, title: title} = step <- @steps do %>
+      <div class="flex justify-between items-center space-x-4">
+        <h3 class="text-md">
+          <%= gettext("%{position}. %{title}", position: position + 1, title: title) %>
+        </h3>
+
+        <%= if is_owner?(@pipeline, @current_user) do %>
+          <div class="flex justify-between items-center space-x-4">
+            <%= if position <= 0 do %>
+              <i class="fas text-xl fa-chevron-up cursor-not-allowed opacity-25"></i>
+            <% else %>
+              <button
+                type="button"
+                class="cursor-pointer flex justify-center items-center"
+                phx-click="reorder_step"
+                phx-value-direction="up"
+                phx-value-step-id={step_id}
+                data-qa={"move-step-up-#{step_id}"}
+              >
+                <i class="fas text-xl fa-chevron-up"></i>
+              </button>
+            <% end %>
+
+            <%= if position >= length(@steps) - 1 do %>
+              <i class="fas text-xl fa-chevron-down cursor-not-allowed opacity-25"></i>
+            <% else %>
+              <button
+                type="button"
+                class="cursor-pointer flex justify-center items-center"
+                phx-click="reorder_step"
+                phx-value-direction="down"
+                phx-value-step-id={step_id}
+                data-qa={"move-step-down-#{step_id}"}
+              >
+                <i class="fas text-xl fa-chevron-down"></i>
+              </button>
+            <% end %>
+
+            <.link
+              class="self-end btn btn-primary"
+              patch={Routes.pipeline_show_path(@socket, :edit_step, @pipeline.slug, step_id)}
+              data-qa={"edit-step-#{step_id}"}
+            >
+              <%= dgettext("actions", "edit") %>
+            </.link>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              phx-click="delete_step"
+              phx-value-step-id={step_id}
+              data-confirm={dgettext("prompts", "are you sure?")}
+              data-qa={"delete-step-#{step_id}"}
+            >
+              <%= dgettext("actions", "delete") %>
+            </button>
+          </div>
+        <% end %>
+      </div>
+
+      <.step_content step={step} />
+    <% end %>
+  <% end %>
+
+  <%= if is_owner?(@pipeline, @current_user) do %>
+    <.link
+      class="self-end btn btn-primary"
+      patch={Routes.pipeline_show_path(@socket, :add_step, @pipeline.slug)}
+      data-qa={"add-step-#{@pipeline.id}"}
+    >
+      <%= dgettext("actions", "add step") %>
+    </.link>
+  <% end %>
 </div>
 
-<%= if @live_action in [:edit] do %>
-  <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}>
-    <.live_component
-      module={MemexWeb.PipelineLive.FormComponent}
-      id={@pipeline.id}
-      current_user={@current_user}
-      title={@page_title}
-      action={@live_action}
-      pipeline={@pipeline}
-      return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}
-    />
-  </.modal>
+<%= case @live_action do %>
+  <% :edit -> %>
+    <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}>
+      <.live_component
+        module={MemexWeb.PipelineLive.FormComponent}
+        id={@pipeline.id}
+        current_user={@current_user}
+        title={@page_title}
+        action={@live_action}
+        pipeline={@pipeline}
+        return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}
+      />
+    </.modal>
+  <% :add_step -> %>
+    <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}>
+      <.live_component
+        module={MemexWeb.StepLive.FormComponent}
+        id={@pipeline.id || :new}
+        current_user={@current_user}
+        title={@page_title}
+        action={@live_action}
+        pipeline={@pipeline}
+        step={@step}
+        return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}
+      />
+    </.modal>
+  <% :edit_step -> %>
+    <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}>
+      <.live_component
+        module={MemexWeb.StepLive.FormComponent}
+        id={@pipeline.id || :new}
+        current_user={@current_user}
+        title={@page_title}
+        action={@live_action}
+        pipeline={@pipeline}
+        step={@step}
+        return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}
+      />
+    </.modal>
+  <% _ -> %>
 <% end %>

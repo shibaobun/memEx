@@ -6,7 +6,7 @@ defmodule Memex.Pipelines.Pipeline do
   import Ecto.Changeset
   import MemexWeb.Gettext
   alias Ecto.{Changeset, UUID}
-  alias Memex.{Accounts.User, Pipelines.Step}
+  alias Memex.{Accounts.User, Pipelines.Steps.Step}
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
