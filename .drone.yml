@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: memex
+name: memEx
 
 steps:
 - name: restore-cache

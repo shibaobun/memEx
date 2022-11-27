@@ -1,13 +1,12 @@
-<div class="flex flex-col justify-center items-center text-center space-y-4">
-  <h1 class="title text-primary-400 text-2xl">
-    <%= gettext("memex") %>
+<div class="mx-auto flex flex-col justify-center items-stretch space-y-4 max-w-3xl">
+  <h1 class="title text-primary-400 text-2xl text-center">
+    <%= gettext("memEx") %>
   </h1>
 
   <hr class="hr" />
 
   <ul class="flex flex-col space-y-4 text-center">
-    <li class="flex flex-col justify-center items-center
-      space-y-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <b class="whitespace-nowrap">
         <%= gettext("notes:") %>
       </b>
@@ -16,8 +15,7 @@
       </p>
     </li>
 
-    <li class="flex flex-col justify-center items-center
-      space-y-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <b class="whitespace-nowrap">
         <%= gettext("contexts:") %>
       </b>
@@ -26,14 +24,22 @@
       </p>
     </li>
 
-    <li class="flex flex-col justify-center items-center
-      space-y-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <b class="whitespace-nowrap">
         <%= gettext("pipelines:") %>
       </b>
       <p>
         <%= gettext("document your processes, attaching contexts to each step") %>
       </p>
+    </li>
+
+    <li class="flex flex-col justify-center items-center space-y-2">
+      <.link
+        navigate={Routes.live_path(Endpoint, FaqLive)}
+        class="link title text-primary-400 text-lg"
+      >
+        <%= gettext("read more on how to use %{name}", name: "memEx") %>
+      </.link>
     </li>
   </ul>
 
@@ -44,8 +50,7 @@
       <%= gettext("features") %>
     </h2>
 
-    <li class="flex flex-col justify-center items-center
-      space-y-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <b class="whitespace-nowrap">
         <%= gettext("multi-user:") %>
       </b>
@@ -54,8 +59,7 @@
       </p>
     </li>
 
-    <li class="flex flex-col justify-center items-center
-      space-y-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <b class="whitespace-nowrap">
         <%= gettext("privacy:") %>
       </b>
@@ -64,8 +68,7 @@
       </p>
     </li>
 
-    <li class="flex flex-col justify-center items-center
-      space-y-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <b class="whitespace-nowrap">
         <%= gettext("convenient:") %>
       </b>
@@ -88,16 +91,13 @@
       </b>
       <p>
         <%= if @admins |> Enum.empty?() do %>
-          <.link
-            href={Routes.user_registration_path(MemexWeb.Endpoint, :new)}
-            class="hover:underline"
-          >
-            <%= dgettext("prompts", "register to setup %{name}", name: "memex") %>
+          <.link href={Routes.user_registration_path(Endpoint, :new)} class="link">
+            <%= dgettext("prompts", "register to setup %{name}", name: "memEx") %>
           </.link>
         <% else %>
           <div class="flex flex-wrap justify-center space-x-2">
             <%= for admin <- @admins do %>
-              <a class="hover:underline" href={"mailto:#{admin.email}"}>
+              <a class="link" href={"mailto:#{admin.email}"}>
                 <%= admin.email %>
               </a>
             <% end %>
@@ -109,7 +109,7 @@
     <li class="flex flex-row justify-center space-x-2">
       <b><%= gettext("registration:") %></b>
       <p>
-        <%= Application.get_env(:memex, MemexWeb.Endpoint)[:registration]
+        <%= Application.get_env(:memex, Endpoint)[:registration]
         |> case do
           "public" -> gettext("public signups")
           _ -> gettext("invite only")
@@ -121,7 +121,7 @@
       <b><%= gettext("version:") %></b>
       <.link
         href="https://gitea.bubbletea.dev/shibao/memex/src/branch/stable/CHANGELOG.md"
-        class="flex flex-row justify-center items-center space-x-2 hover:underline"
+        class="flex flex-row justify-center items-center space-x-2 link"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -141,7 +141,7 @@
     <li class="flex flex-col justify-center space-x-2">
       <.link
         href="https://gitea.bubbletea.dev/shibao/memex"
-        class="flex flex-row justify-center items-center space-x-2 hover:underline"
+        class="flex flex-row justify-center items-center space-x-2 link"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -152,7 +152,7 @@
     <li class="flex flex-col justify-center space-x-2">
       <.link
         href="https://weblate.bubbletea.dev/engage/memex"
-        class="flex flex-row justify-center items-center space-x-2 hover:underline"
+        class="flex flex-row justify-center items-center space-x-2 link"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -163,7 +163,7 @@
     <li class="flex flex-col justify-center space-x-2">
       <.link
         href="https://gitea.bubbletea.dev/shibao/memex/issues/new"
-        class="flex flex-row justify-center items-center space-x-2 hover:underline"
+        class="flex flex-row justify-center items-center space-x-2 link"
         target="_blank"
         rel="noopener noreferrer"
       >

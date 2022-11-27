@@ -87,17 +87,17 @@ msgstr ""
 msgid "Visibility: %{visibility}"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:73
+#: lib/memex_web/live/home_live.html.heex:76
 #, elixir-autogen, elixir-format
 msgid "accessible from any internet-capable device"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:87
+#: lib/memex_web/live/home_live.html.heex:90
 #, elixir-autogen, elixir-format
 msgid "admins:"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:53
+#: lib/memex_web/live/home_live.html.heex:58
 #, elixir-autogen, elixir-format
 msgid "built with sharing and collaboration in mind"
 msgstr ""
@@ -122,12 +122,12 @@ msgstr ""
 msgid "contexts"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:22
+#: lib/memex_web/live/home_live.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "contexts:"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:70
+#: lib/memex_web/live/home_live.html.heex:73
 #, elixir-autogen, elixir-format
 msgid "convenient:"
 msgstr ""
@@ -143,12 +143,12 @@ msgstr ""
 msgid "disable"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:15
+#: lib/memex_web/live/home_live.html.heex:14
 #, elixir-autogen, elixir-format
 msgid "document notes about individual items or concepts"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:35
+#: lib/memex_web/live/home_live.html.heex:32
 #, elixir-autogen, elixir-format
 msgid "document your processes, attaching contexts to each step"
 msgstr ""
@@ -178,7 +178,7 @@ msgstr ""
 msgid "english"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:44
+#: lib/memex_web/live/home_live.html.heex:50
 #, elixir-autogen, elixir-format
 msgid "features"
 msgstr ""
@@ -193,7 +193,7 @@ msgstr ""
 msgid "help translate"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:82
+#: lib/memex_web/live/home_live.html.heex:85
 #, elixir-autogen, elixir-format
 msgid "instance information"
 msgstr ""
@@ -220,15 +220,7 @@ msgstr ""
 msgid "log in"
 msgstr ""
 
-#: lib/memex_web/components/topbar.ex:23
-#: lib/memex_web/live/home_live.html.heex:3
-#: lib/memex_web/templates/layout/root.html.heex:8
-#: lib/memex_web/templates/layout/root.html.heex:9
-#, elixir-autogen, elixir-format
-msgid "memex"
-msgstr ""
-
-#: lib/memex_web/live/home_live.html.heex:50
+#: lib/memex_web/live/home_live.html.heex:55
 #, elixir-autogen, elixir-format
 msgid "multi-user:"
 msgstr ""
@@ -261,7 +253,7 @@ msgstr ""
 msgid "notes"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:12
+#: lib/memex_web/live/home_live.html.heex:11
 #, elixir-autogen, elixir-format
 msgid "notes:"
 msgstr ""
@@ -274,22 +266,22 @@ msgstr ""
 msgid "pipelines"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:32
+#: lib/memex_web/live/home_live.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "pipelines:"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:63
+#: lib/memex_web/live/home_live.html.heex:67
 #, elixir-autogen, elixir-format
 msgid "privacy controls on a per-note, context or pipeline basis"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:60
+#: lib/memex_web/live/home_live.html.heex:64
 #, elixir-autogen, elixir-format
 msgid "privacy:"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:25
+#: lib/memex_web/live/home_live.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "provide context around a single topic and hotlink to your notes"
 msgstr ""
@@ -473,7 +465,7 @@ msgstr ""
 msgid "%{slug} could not be found"
 msgstr ""
 
-#: lib/memex_web/live/home_live.ex:12
+#: lib/memex_web/live/home_live.ex:13
 #, elixir-autogen, elixir-format
 msgid "home"
 msgstr ""
@@ -481,4 +473,33 @@ msgstr ""
 #: lib/memex_web/live/context_live/form_component.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "use [[note-slug]] to link to a note"
+msgstr ""
+
+#: lib/memex_web/live/faq_live.ex:10
+#: lib/memex_web/live/faq_live.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "faq"
+msgstr ""
+
+#: lib/memex_web/components/topbar.ex:23
+#: lib/memex_web/live/home_live.html.heex:3
+#: lib/memex_web/templates/layout/root.html.heex:8
+#: lib/memex_web/templates/layout/root.html.heex:9
+#, elixir-autogen, elixir-format
+msgid "memEx"
+msgstr ""
+
+#: lib/memex_web/live/home_live.html.heex:41
+#, elixir-autogen, elixir-format
+msgid "read more on how to use %{name}"
+msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:14
+#, elixir-autogen, elixir-format
+msgid "this is a memex, used to document your notes"
+msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:11
+#, elixir-autogen, elixir-format
+msgid "what is this?"
 msgstr ""

@@ -9,6 +9,6 @@ defmodule MemexWeb.HomeControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "memex"
+    assert html_response(conn, 200) =~ "memEx"
   end
 end

@@ -1,6 +1,6 @@
-# Memex
+# memEx
 
-memex is an easy way to digitize the structured processes of your life.
+memEx is an easy way to digitize the structured processes of your life.
 
 - Notes: Document notes about individual items or concepts
 - Contexts: Provide context around a single topic and hotlink to individual
@@ -16,7 +16,7 @@ memex is an easy way to digitize the structured processes of your life.
 # Installation
 
 1. Install [Docker Compose](https://docs.docker.com/compose/install/) or alternatively [Docker Desktop](https://docs.docker.com/desktop/) on your machine.
-1. Copy the example [docker-compose.yml](https://gitea.bubbletea.dev/shibao/memex/src/branch/stable/docker-compose.yml). into your local machine where you want.
+1. Copy the example [docker-compose.yml](https://gitea.bubbletea.dev/shibao/memEx/src/branch/stable/docker-compose.yml). into your local machine where you want.
    Bind mounts are created in the same directory by default.
 1. Set the configuration variables in `docker-compose.yml`. You'll need to run
    `docker run -it shibaobun/memex /app/priv/random.sh` to generate a new
@@ -27,8 +27,8 @@ The first created user will be created as an admin.
 
 # Configuration
 
-You can use the following environment variables to configure Memex in
-[docker-compose.yml](https://gitea.bubbletea.dev/shibao/memex/src/branch/stable/docker-compose.yml).
+You can use the following environment variables to configure memEx in
+[docker-compose.yml](https://gitea.bubbletea.dev/shibao/memEx/src/branch/stable/docker-compose.yml).
 
 - `HOST`: External url to generate links with. Must be set with your hosted
   domain name! I.e. `memex.mywebsite.tld`
@@ -55,4 +55,4 @@ You can use the following environment variables to configure Memex in
 ---
 
 [![Build
-Status](https://drone.bubbletea.dev/api/badges/shibao/memex/status.svg?ref=refs/heads/dev)](https://drone.bubbletea.dev/shibao/memex)
+Status](https://drone.bubbletea.dev/api/badges/shibao/memEx/status.svg?ref=refs/heads/dev)](https://drone.bubbletea.dev/shibao/memEx)

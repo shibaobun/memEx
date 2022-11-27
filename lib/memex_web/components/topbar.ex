@@ -20,7 +20,7 @@ defmodule MemexWeb.Components.Topbar do
             navigate={Routes.live_path(Endpoint, HomeLive)}
             class="mx-2 my-1 leading-5 text-xl text-primary-400 hover:underline"
           >
-            <%= gettext("memex") %>
+            <%= gettext("memEx") %>
           </.link>
 
           <%= if @title_content do %>

@@ -15,9 +15,9 @@ defmodule Memex.MixProject do
       consolidate_protocols: Mix.env() not in [:dev, :test],
       preferred_cli_env: [test: :test, "test.all": :test],
       # ExDoc
-      name: "memex",
-      source_url: "https://gitea.bubbletea.dev/shibao/memex",
-      homepage_url: "https://gitea.bubbletea.dev/shibao/memex",
+      name: "memEx",
+      source_url: "https://gitea.bubbletea.dev/shibao/memEx",
+      homepage_url: "https://gitea.bubbletea.dev/shibao/memEx",
       docs: [
         # The main page in the docs
         main: "README.md",

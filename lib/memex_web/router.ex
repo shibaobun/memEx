@@ -36,6 +36,7 @@ defmodule MemexWeb.Router do
     pipe_through :browser
 
     live "/", HomeLive
+    live "/faq", FaqLive
   end
 
   ## Authentication routes

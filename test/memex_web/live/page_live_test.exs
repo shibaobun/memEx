@@ -5,7 +5,7 @@ defmodule MemexWeb.HomeLiveTest do
 
   test "disconnected and connected render", %{conn: conn} do
     {:ok, page_live, disconnected_html} = live(conn, "/")
-    assert disconnected_html =~ "memex"
-    assert render(page_live) =~ "memex"
+    assert disconnected_html =~ "memEx"
+    assert render(page_live) =~ "memEx"
   end
 end
