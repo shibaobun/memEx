@@ -7,5 +7,5 @@
 =====================
 
 <%= dgettext("emails",
-  "This email was sent from Memex at %{url}, the self-hosted firearm tracker website.",
+  "This email was sent from memEx at %{url}",
   url: Routes.live_url(Endpoint, HomeLive)) %>
