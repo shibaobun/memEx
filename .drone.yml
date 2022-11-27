@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: memEx
+name: memex
 
 steps:
 - name: restore-cache
@@ -16,7 +16,7 @@ steps:
       - assets/node_modules/
 
 - name: test
-  image: elixir:1.13.4-alpine
+  image: elixir:1.14.1-alpine
   environment:
     TEST_DATABASE_URL: ecto://postgres:postgres@database/memex_test
     HOST: testing.example.tld
@@ -29,7 +29,7 @@ steps:
   - npm --prefix ./assets ci --progress=false --no-audit --loglevel=error
   - npm run --prefix ./assets deploy
   - mix do phx.digest, gettext.extract
-  - mix test
+  - mix test.all
 
 - name: build and publish stable
   image: thegeeklab/drone-docker-buildx
@@ -38,7 +38,7 @@ steps:
     repo: shibaobun/memex
     purge: true
     compress: true
-    platforms: linux/amd64,linux/arm64,linux/arm/v7
+    platforms: linux/amd64,linux/arm/v7
     username:
       from_secret: docker_username
     password:
@@ -55,7 +55,7 @@ steps:
     repo: shibaobun/memex
     purge: true
     compress: true
-    platforms: linux/amd64,linux/arm64,linux/arm/v7
+    platforms: linux/amd64,linux/arm/v7
     username:
       from_secret: docker_username
     password:
