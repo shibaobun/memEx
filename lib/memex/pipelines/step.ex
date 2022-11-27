@@ -5,8 +5,7 @@ defmodule Memex.Pipelines.Step do
   use Ecto.Schema
   import Ecto.Changeset
   alias Ecto.{Changeset, UUID}
-  alias Memex.{Accounts.User, Contexts.Context}
-  alias Memex.Pipelines.{Pipeline, StepContext}
+  alias Memex.{Accounts.User, Pipelines.Pipeline}
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -17,8 +16,6 @@ defmodule Memex.Pipelines.Step do
 
     belongs_to :pipeline, Pipeline
     belongs_to :user, User
-
-    many_to_many :contexts, Context, join_through: StepContext
 
     timestamps()
   end
