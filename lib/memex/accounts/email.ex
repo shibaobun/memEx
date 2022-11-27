@@ -19,8 +19,8 @@ defmodule Memex.Email do
 
   @spec base_email(User.t(), String.t()) :: t()
   defp base_email(%User{email: email}, subject) do
-    from = Application.get_env(:Memex, Memex.Mailer)[:email_from] || "noreply@localhost"
-    name = Application.get_env(:Memex, Memex.Mailer)[:email_name]
+    from = Application.get_env(:memex, Memex.Mailer)[:email_from] || "noreply@localhost"
+    name = Application.get_env(:memex, Memex.Mailer)[:email_name]
     new() |> to(email) |> from({name, from}) |> subject(subject)
   end
 

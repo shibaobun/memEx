@@ -79,7 +79,7 @@ if config_env() == :prod do
     password: System.get_env("SMTP_PASSWORD") || raise("No SMTP_PASSWORD set!"),
     ssl: System.get_env("SMTP_SSL") == "true",
     email_from: System.get_env("EMAIL_FROM") || "no-reply@#{System.get_env("HOST")}",
-    email_name: System.get_env("EMAIL_NAME") || "Memex"
+    email_name: System.get_env("EMAIL_NAME") || "memEx"
 
   # ## Using releases
   #
