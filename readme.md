@@ -1,5 +1,7 @@
 # memEx
 
+![old screenshot](https://gitea.bubbletea.dev/shibao/memEx/raw/branch/stable/home.png)
+
 memEx is an easy way to digitize the structured processes of your life.
 
 - Notes: Document notes about individual items or concepts
@@ -56,3 +58,5 @@ You can use the following environment variables to configure memEx in
 
 [![Build
 Status](https://drone.bubbletea.dev/api/badges/shibao/memEx/status.svg?ref=refs/heads/dev)](https://drone.bubbletea.dev/shibao/memEx)
+[![translation
+status](https://weblate.bubbletea.dev/widgets/memEx/-/svg-badge.svg)](https://weblate.bubbletea.dev/engage/memEx/)
