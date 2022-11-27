@@ -44,11 +44,7 @@
   }
 
   .hr {
-    @apply border border-primary-400 w-full max-w-2xl;
-  }
-
-  .hr-light {
-    @apply border border-primary-600 w-full max-w-2xl;
+    @apply mx-auto border border-primary-600 w-full max-w-2xl;
   }
 
   .link {
