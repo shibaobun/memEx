@@ -1,17 +1,123 @@
-<div class="mx-auto flex flex-col justify-center items-stretch space-y-8 max-w-3xl">
-  <h1 class="title text-primary-400 text-2xl text-center">
+<div class="mx-auto flex flex-col justify-center items-stretch space-y-8 text-center max-w-3xl">
+  <h1 class="title text-primary-400 text-2xl">
     <%= gettext("faq") %>
   </h1>
 
   <hr class="hr" />
 
-  <ul class="flex flex-col justify-start items-stretch space-y-4">
-    <li class="flex flex-col justify-start items-stretch space-y-2">
+  <ul class="flex flex-col justify-center items-stretch space-y-8">
+    <li class="flex flex-col justify-center items-stretch space-y-2">
       <b class="whitespace-nowrap">
         <%= gettext("what is this?") %>
       </b>
       <p>
-        <%= gettext("this is a memex, used to document your notes") %>
+        <%= gettext(
+          "this is a memex, used to document not just your notes, but also your perspectives and processes."
+        ) %>
+      </p>
+
+      <p>
+        <%= gettext("some things that this memex is very loosely inspired by:") %>
+      </p>
+
+      <ul class="list-disc flex flex-col justify-center items-center space-y-2">
+        <li>
+          <.link
+            href="https://en.wikipedia.org/wiki/Memex"
+            class="flex flex-row justify-center items-center space-x-2 link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <%= gettext("memex") %>
+          </.link>
+        </li>
+        <li>
+          <.link
+            href="https://en.wikipedia.org/wiki/Zettelkasten"
+            class="flex flex-row justify-center items-center space-x-2 link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <%= gettext("zettelkasten") %>
+          </.link>
+        </li>
+        <li>
+          <.link
+            href="https://en.wikipedia.org/wiki/Org-mode"
+            class="flex flex-row justify-center items-center space-x-2 link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <%= gettext("org-mode") %>
+          </.link>
+        </li>
+      </ul>
+    </li>
+
+    <li class="flex flex-col justify-center items-stretch space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("why split up into notes, contexts and pipelines?") %>
+      </b>
+      <p>
+        <%= gettext(
+          "i really admired the idea of a zettelkasten, especially with org-mode backlinks, however I felt like my notes would immediately become too messy by just putting everything into a single hierarchy."
+        ) %>
+      </p>
+      <p>
+        <%= gettext(
+          "i wanted to separate between a personal dictionary of concepts and then my thought processes that are built off of my experiences and life lessons. these are notes, and contexts, respectively."
+        ) %>
+      </p>
+      <p>
+        <%= gettext(
+          "finally, i wanted to externalize the processes for common situations that use these thought processes at discrete steps. these are pipelines!"
+        ) %>
+      </p>
+    </li>
+
+    <li class="flex flex-col justify-center items-stretch space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("what should my notes be like?") %>
+      </b>
+      <p>
+        <%= gettext(
+          "in my opinion, notes should be written by any of the discrete objects or concepts that are meaningful to you in your life."
+        ) %>
+      </p>
+      <p>
+        <%= gettext(
+          "spoons? probably not. a particular brand of spoons that you really like? why not :)"
+        ) %>
+      </p>
+    </li>
+
+    <li class="flex flex-col justify-center items-stretch space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("what should my contexts be like?") %>
+      </b>
+      <p>
+        <%= gettext("in my opinion, contexts should be like single-topic blog posts.") %>
+      </p>
+      <p>
+        <%= gettext(
+          "for instance, a good context could be what makes some physical designs spark joy for you, and in that context you could backlink to the spoon note as an example of how it fits nicely into your hand."
+        ) %>
+      </p>
+    </li>
+
+    <li class="flex flex-col justify-center items-stretch space-y-2">
+      <b class="whitespace-nowrap">
+        <%= gettext("what should my pipelines be like?") %>
+      </b>
+      <p>
+        <%= gettext(
+          "in my opinion, pipelines should be pretty lightweight, and just backlink to contexts to provide most of the heavy lifting."
+        ) %>
+      </p>
+      <p>
+        <%= gettext(
+          "for instance, a pipeline for buying an object could have a step where you consider how much it sparks joy, and it could backlink to the physical designs context, maybe with some notes about how it applies in this case."
+        ) %>
       </p>
     </li>
   </ul>
