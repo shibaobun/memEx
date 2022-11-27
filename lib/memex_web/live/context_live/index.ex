@@ -27,7 +27,7 @@ defmodule MemexWeb.ContextLive.Index do
   defp apply_action(%{assigns: %{current_user: %{id: current_user_id}}} = socket, :new, _params) do
     socket
     |> assign(page_title: gettext("new context"))
-    |> assign(context: %Context{user_id: current_user_id})
+    |> assign(context: %Context{visibility: :private, user_id: current_user_id})
   end
 
   defp apply_action(socket, :index, _params) do
