@@ -1,0 +1,159 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: de\n"
+"Plural-Forms: nplurals=2\n"
+
+#: lib/memex_web/controllers/user_confirmation_controller.ex:38
+#, elixir-autogen, elixir-format
+msgid "%{email} confirmed successfully."
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.ex:62
+#, elixir-autogen, elixir-format
+msgid "%{invite_name} created successfully"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.ex:53
+#, elixir-autogen, elixir-format
+msgid "%{invite_name} deleted succesfully"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.ex:114
+#, elixir-autogen, elixir-format
+msgid "%{invite_name} disabled succesfully"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.ex:90
+#, elixir-autogen, elixir-format
+msgid "%{invite_name} enabled succesfully"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.ex:68
+#, elixir-autogen, elixir-format
+msgid "%{invite_name} updated succesfully"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.ex:42
+#, elixir-autogen, elixir-format
+msgid "%{invite_name} updated successfully"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.ex:139
+#, elixir-autogen, elixir-format
+msgid "%{user_email} deleted succesfully"
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:29
+#, elixir-autogen, elixir-format
+msgid "A link to confirm your email change has been sent to the new address."
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.ex:127
+#, elixir-autogen, elixir-format
+msgid "Copied to clipboard"
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:77
+#, elixir-autogen, elixir-format
+msgid "Email changed successfully."
+msgstr ""
+
+#: lib/memex_web/controllers/user_confirmation_controller.ex:23
+#, elixir-autogen, elixir-format
+msgid "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
+msgstr ""
+
+#: lib/memex_web/controllers/user_reset_password_controller.ex:24
+#, elixir-autogen, elixir-format
+msgid "If your email is in our system, you will receive instructions to reset your password shortly."
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:65
+#, elixir-autogen, elixir-format
+msgid "Language updated successfully."
+msgstr ""
+
+#: lib/memex_web/controllers/user_session_controller.ex:23
+#, elixir-autogen, elixir-format
+msgid "Logged out successfully."
+msgstr ""
+
+#: lib/memex_web/controllers/user_reset_password_controller.ex:46
+#, elixir-autogen, elixir-format
+msgid "Password reset successfully."
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:49
+#, elixir-autogen, elixir-format
+msgid "Password updated successfully."
+msgstr ""
+
+#: lib/memex_web/controllers/user_registration_controller.ex:73
+#, elixir-autogen, elixir-format
+msgid "Please check your email to verify your account"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.html.heex:30
+#, elixir-autogen, elixir-format
+msgid "Saving..."
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:95
+#, elixir-autogen, elixir-format
+msgid "Your account has been deleted"
+msgstr ""
+
+#: lib/memex_web/templates/user_settings/edit.html.heex:133
+#, elixir-autogen, elixir-format
+msgid "are you sure you want to change your language?"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.html.heex:102
+#: lib/memex_web/live/invite_live/index.html.heex:132
+#, elixir-autogen, elixir-format
+msgid "are you sure you want to delete %{email}? This action is permanent!"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.html.heex:48
+#, elixir-autogen, elixir-format
+msgid "are you sure you want to delete the invite for %{invite_name}?"
+msgstr ""
+
+#: lib/memex_web/templates/user_settings/edit.html.heex:143
+#, elixir-autogen, elixir-format
+msgid "are you sure you want to delete your account?"
+msgstr ""
+
+#: lib/memex_web/components/topbar.ex:92
+#, elixir-autogen, elixir-format
+msgid "are you sure you want to log out?"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.html.heex:74
+#, elixir-autogen, elixir-format
+msgid "are you sure you want to make %{invite_name} unlimited?"
+msgstr ""
+
+#: lib/memex_web/live/context_live/index.html.heex:46
+#: lib/memex_web/live/context_live/show.html.heex:31
+#: lib/memex_web/live/note_live/index.html.heex:46
+#: lib/memex_web/live/note_live/show.html.heex:35
+#: lib/memex_web/live/pipeline_live/index.html.heex:46
+#: lib/memex_web/live/pipeline_live/show.html.heex:40
+#: lib/memex_web/live/pipeline_live/show.html.heex:110
+#, elixir-autogen, elixir-format
+msgid "are you sure?"
+msgstr ""
+
+#: lib/memex_web/live/home_live.html.heex:95
+#, elixir-autogen, elixir-format
+msgid "register to setup %{name}"
+msgstr ""

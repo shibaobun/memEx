@@ -1,0 +1,133 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: de\n"
+"Plural-Forms: nplurals=2\n"
+
+#: lib/memex_web/controllers/user_settings_controller.ex:84
+#, elixir-autogen, elixir-format
+msgid "Email change link is invalid or it has expired."
+msgstr ""
+
+#: lib/memex_web/templates/error/error.html.heex:8
+#, elixir-autogen, elixir-format
+msgid "Error"
+msgstr ""
+
+#: lib/memex_web/controllers/user_session_controller.ex:17
+#, elixir-autogen, elixir-format
+msgid "Invalid email or password"
+msgstr ""
+
+#: lib/memex_web/templates/user_registration/new.html.heex:15
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:15
+#: lib/memex_web/templates/user_settings/edit.html.heex:64
+#, elixir-autogen, elixir-format
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr ""
+
+#: lib/memex_web/controllers/user_reset_password_controller.ex:63
+#, elixir-autogen, elixir-format
+msgid "Reset password link is invalid or it has expired."
+msgstr ""
+
+#: lib/memex_web/controllers/user_registration_controller.ex:24
+#: lib/memex_web/controllers/user_registration_controller.ex:55
+#, elixir-autogen, elixir-format
+msgid "Sorry, public registration is disabled"
+msgstr ""
+
+#: lib/memex_web/controllers/user_registration_controller.ex:14
+#: lib/memex_web/controllers/user_registration_controller.ex:45
+#, elixir-autogen, elixir-format
+msgid "Sorry, this invite was not found or expired"
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:99
+#, elixir-autogen, elixir-format
+msgid "Unable to delete user"
+msgstr ""
+
+#: lib/memex_web/controllers/user_confirmation_controller.ex:54
+#, elixir-autogen, elixir-format
+msgid "User confirmation link is invalid or it has expired."
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.ex:18
+#, elixir-autogen, elixir-format
+msgid "You are not authorized to view this page"
+msgstr ""
+
+#: lib/memex_web/controllers/user_auth.ex:177
+#, elixir-autogen, elixir-format
+msgid "You are not authorized to view this page."
+msgstr ""
+
+#: lib/memex_web/controllers/user_auth.ex:39
+#: lib/memex_web/controllers/user_auth.ex:161
+#, elixir-autogen, elixir-format
+msgid "You must confirm your account and log in to access this page."
+msgstr ""
+
+#: lib/memex/accounts/user.ex:129
+#, elixir-autogen, elixir-format
+msgid "did not change"
+msgstr ""
+
+#: lib/memex/accounts/user.ex:150
+#, elixir-autogen, elixir-format
+msgid "does not match password"
+msgstr ""
+
+#: lib/memex/accounts/user.ex:187
+#, elixir-autogen, elixir-format
+msgid "is not valid"
+msgstr ""
+
+#: lib/memex/accounts/user.ex:85
+#, elixir-autogen, elixir-format
+msgid "must have the @ sign and no spaces"
+msgstr ""
+
+#: lib/memex_web/templates/user_settings/edit.html.heex:21
+#: lib/memex_web/templates/user_settings/edit.html.heex:119
+#, elixir-autogen, elixir-format
+msgid "oops, something went wrong! Please check the errors below"
+msgstr ""
+
+#: lib/memex/contexts/context.ex:49
+#: lib/memex/contexts/context.ex:60
+#: lib/memex/notes/note.ex:48
+#: lib/memex/notes/note.ex:59
+#: lib/memex/pipelines/pipeline.ex:50
+#: lib/memex/pipelines/pipeline.ex:61
+#, elixir-autogen, elixir-format
+msgid "invalid format: only numbers, letters and hyphen are accepted"
+msgstr ""
+
+#: lib/memex_web/templates/error/error.html.heex:28
+#, elixir-autogen, elixir-format
+msgid "go back home"
+msgstr ""
+
+#: lib/memex_web/views/error_view.ex:11
+#, elixir-autogen, elixir-format
+msgid "internal server error"
+msgstr ""
+
+#: lib/memex_web/views/error_view.ex:9
+#, elixir-autogen, elixir-format
+msgid "not found"
+msgstr ""
+
+#: lib/memex_web/views/error_view.ex:10
+#, elixir-autogen, elixir-format
+msgid "unauthorized"
+msgstr ""
