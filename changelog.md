@@ -4,4 +4,4 @@
 - fix some typos
 
 # v0.1.0
-initial release >:3c
+- initial release >:3c
