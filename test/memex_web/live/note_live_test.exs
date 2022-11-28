@@ -34,7 +34,7 @@ defmodule MemexWeb.NoteLiveTest do
       {:ok, _index_live, html} = live(conn, Routes.note_index_path(conn, :index))
 
       assert html =~ "notes"
-      assert html =~ note.content
+      assert html =~ note.slug
     end
 
     test "saves new note", %{conn: conn} do
@@ -56,7 +56,7 @@ defmodule MemexWeb.NoteLiveTest do
         |> follow_redirect(conn, Routes.note_index_path(conn, :index))
 
       assert html =~ "#{@create_attrs |> Map.get("slug")} created"
-      assert html =~ "some content"
+      assert html =~ "some-slug"
     end
 
     test "updates note in listing", %{conn: conn, note: note} do
@@ -78,7 +78,7 @@ defmodule MemexWeb.NoteLiveTest do
         |> follow_redirect(conn, Routes.note_index_path(conn, :index))
 
       assert html =~ "#{@update_attrs |> Map.get("slug")} saved"
-      assert html =~ "some updated content"
+      assert html =~ "some-updated-slug"
     end
 
     test "deletes note in listing", %{conn: conn, note: note} do
@@ -96,7 +96,7 @@ defmodule MemexWeb.NoteLiveTest do
       {:ok, _show_live, html} = live(conn, Routes.note_show_path(conn, :show, note.slug))
 
       assert html =~ "note"
-      assert html =~ note.content
+      assert html =~ note.slug
     end
 
     test "updates note within modal", %{conn: conn, note: note} do
@@ -117,7 +117,7 @@ defmodule MemexWeb.NoteLiveTest do
         |> follow_redirect(conn, Routes.note_show_path(conn, :show, note.slug))
 
       assert html =~ "#{note.slug} saved"
-      assert html =~ "some updated content"
+      assert html =~ "tag2"
     end
 
     test "deletes note", %{conn: conn, note: note} do

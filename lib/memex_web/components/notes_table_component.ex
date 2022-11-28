@@ -4,7 +4,7 @@ defmodule MemexWeb.Components.NotesTableComponent do
   """
   use MemexWeb, :live_component
   alias Ecto.UUID
-  alias Memex.{Accounts.User, Notes, Notes.Note}
+  alias Memex.{Accounts.User, Notes.Note}
   alias Phoenix.LiveView.{Rendered, Socket}
 
   @impl true
@@ -45,7 +45,6 @@ defmodule MemexWeb.Components.NotesTableComponent do
 
     columns = [
       %{label: gettext("slug"), key: :slug},
-      %{label: gettext("content"), key: :content},
       %{label: gettext("tags"), key: :tags},
       %{label: gettext("visibility"), key: :visibility}
       | columns
@@ -105,20 +104,8 @@ defmodule MemexWeb.Components.NotesTableComponent do
     {slug, slug_block}
   end
 
-  defp get_value_for_key(:content, %{content: content}, _additional_data) do
-    assigns = %{content: content}
-
-    content_block = ~H"""
-    <div class="truncate max-w-sm">
-      <%= @content %>
-    </div>
-    """
-
-    {content, content_block}
-  end
-
   defp get_value_for_key(:tags, %{tags: tags}, _additional_data) do
-    tags |> Notes.get_tags_string()
+    tags |> Enum.join(", ")
   end
 
   defp get_value_for_key(:actions, note, %{actions: actions}) do

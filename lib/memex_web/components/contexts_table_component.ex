@@ -4,7 +4,7 @@ defmodule MemexWeb.Components.ContextsTableComponent do
   """
   use MemexWeb, :live_component
   alias Ecto.UUID
-  alias Memex.{Accounts.User, Contexts, Contexts.Context}
+  alias Memex.{Accounts.User, Contexts.Context}
   alias Phoenix.LiveView.{Rendered, Socket}
 
   @impl true
@@ -45,7 +45,6 @@ defmodule MemexWeb.Components.ContextsTableComponent do
 
     columns = [
       %{label: gettext("slug"), key: :slug},
-      %{label: gettext("content"), key: :content},
       %{label: gettext("tags"), key: :tags},
       %{label: gettext("visibility"), key: :visibility}
       | columns
@@ -105,20 +104,8 @@ defmodule MemexWeb.Components.ContextsTableComponent do
     {slug, slug_block}
   end
 
-  defp get_value_for_key(:content, %{content: content}, _additional_data) do
-    assigns = %{content: content}
-
-    content_block = ~H"""
-    <div class="truncate max-w-sm">
-      <%= @content %>
-    </div>
-    """
-
-    {content, content_block}
-  end
-
   defp get_value_for_key(:tags, %{tags: tags}, _additional_data) do
-    tags |> Contexts.get_tags_string()
+    tags |> Enum.join(", ")
   end
 
   defp get_value_for_key(:actions, context, %{actions: actions}) do

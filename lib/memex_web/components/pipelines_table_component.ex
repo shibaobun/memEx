@@ -4,7 +4,7 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
   """
   use MemexWeb, :live_component
   alias Ecto.UUID
-  alias Memex.{Accounts.User, Pipelines, Pipelines.Pipeline}
+  alias Memex.{Accounts.User, Pipelines.Pipeline}
   alias Phoenix.LiveView.{Rendered, Socket}
 
   @impl true
@@ -118,7 +118,7 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
   end
 
   defp get_value_for_key(:tags, %{tags: tags}, _additional_data) do
-    tags |> Pipelines.get_tags_string()
+    tags |> Enum.join(", ")
   end
 
   defp get_value_for_key(:actions, pipeline, %{actions: actions}) do

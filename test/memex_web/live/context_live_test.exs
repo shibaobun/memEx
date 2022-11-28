@@ -34,7 +34,7 @@ defmodule MemexWeb.ContextLiveTest do
       {:ok, _index_live, html} = live(conn, Routes.context_index_path(conn, :index))
 
       assert html =~ "contexts"
-      assert html =~ context.content
+      assert html =~ context.slug
     end
 
     test "saves new context", %{conn: conn} do
@@ -56,7 +56,7 @@ defmodule MemexWeb.ContextLiveTest do
         |> follow_redirect(conn, Routes.context_index_path(conn, :index))
 
       assert html =~ "#{@create_attrs |> Map.get("slug")} created"
-      assert html =~ "some content"
+      assert html =~ "some-slug"
     end
 
     test "updates context in listing", %{conn: conn, context: context} do
@@ -78,7 +78,7 @@ defmodule MemexWeb.ContextLiveTest do
         |> follow_redirect(conn, Routes.context_index_path(conn, :index))
 
       assert html =~ "#{@update_attrs |> Map.get("slug")} saved"
-      assert html =~ "some updated content"
+      assert html =~ "some-updated-slug"
     end
 
     test "deletes context in listing", %{conn: conn, context: context} do
@@ -96,7 +96,7 @@ defmodule MemexWeb.ContextLiveTest do
       {:ok, _show_live, html} = live(conn, Routes.context_show_path(conn, :show, context.slug))
 
       assert html =~ "context"
-      assert html =~ context.content
+      assert html =~ context.slug
     end
 
     test "updates context within modal", %{conn: conn, context: context} do
@@ -117,7 +117,7 @@ defmodule MemexWeb.ContextLiveTest do
         |> follow_redirect(conn, Routes.context_show_path(conn, :show, context.slug))
 
       assert html =~ "#{context.slug} saved"
-      assert html =~ "some updated content"
+      assert html =~ "tag2"
     end
 
     test "deletes context", %{conn: conn, context: context} do
