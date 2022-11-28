@@ -495,6 +495,7 @@ msgstr ""
 #: lib/memex_web/live/home_live.html.heex:3
 #: lib/memex_web/templates/layout/root.html.heex:8
 #: lib/memex_web/templates/layout/root.html.heex:9
+#: lib/memex_web/views/layout_view.ex:11
 #, elixir-autogen, elixir-format
 msgid "memEx"
 msgstr ""
@@ -642,4 +643,9 @@ msgstr ""
 #: lib/memex_web/live/faq_live.html.heex:41
 #, elixir-autogen, elixir-format
 msgid "zettelkasten"
+msgstr ""
+
+#: lib/memex_web/views/layout_view.ex:10
+#, elixir-autogen, elixir-format
+msgid "memEx | %{title}"
 msgstr ""

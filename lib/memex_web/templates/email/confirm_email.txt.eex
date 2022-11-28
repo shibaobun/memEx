@@ -1,7 +1,7 @@
 
 <%= dgettext("emails", "Hi %{email},", email: @user.email) %>
 
-<%= dgettext("emails", "Welcome to Memex") %>
+<%= dgettext("emails", "Welcome to memEx") %>
 
 <%= dgettext("emails", "You can confirm your account by visiting the URL below:") %>
 

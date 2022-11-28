@@ -30,21 +30,10 @@ msgstr ""
 msgid "If you didn't create an account at %{url}, please ignore this."
 msgstr ""
 
-#: lib/memex_web/templates/email/confirm_email.html.heex:22
-#, elixir-autogen, elixir-format
-msgid "If you didn't create an account at Memex, please ignore this."
-msgstr ""
-
 #: lib/memex_web/templates/email/reset_password.txt.eex:8
 #: lib/memex_web/templates/email/update_email.txt.eex:8
 #, elixir-autogen, elixir-format
 msgid "If you didn't request this change from %{url}, please ignore this."
-msgstr ""
-
-#: lib/memex_web/templates/email/reset_password.html.heex:16
-#: lib/memex_web/templates/email/update_email.html.heex:16
-#, elixir-autogen, elixir-format
-msgid "If you didn't request this change from Memex, please ignore this."
 msgstr ""
 
 #: lib/memex/accounts/email.ex:37
@@ -55,12 +44,6 @@ msgstr ""
 #: lib/memex/accounts/email.ex:44
 #, elixir-autogen, elixir-format
 msgid "Update your Memex email"
-msgstr ""
-
-#: lib/memex_web/templates/email/confirm_email.html.heex:9
-#: lib/memex_web/templates/email/confirm_email.txt.eex:4
-#, elixir-autogen, elixir-format
-msgid "Welcome to Memex"
 msgstr ""
 
 #: lib/memex_web/templates/email/update_email.html.heex:8
@@ -89,4 +72,21 @@ msgstr ""
 #: lib/memex_web/templates/layout/email.txt.eex:9
 #, elixir-autogen, elixir-format
 msgid "This email was sent from memEx at %{url}"
+msgstr ""
+
+#: lib/memex_web/templates/email/confirm_email.html.heex:22
+#, elixir-autogen, elixir-format
+msgid "If you didn't create an account at memEx, please ignore this."
+msgstr ""
+
+#: lib/memex_web/templates/email/reset_password.html.heex:16
+#: lib/memex_web/templates/email/update_email.html.heex:16
+#, elixir-autogen, elixir-format
+msgid "If you didn't request this change from memEx, please ignore this."
+msgstr ""
+
+#: lib/memex_web/templates/email/confirm_email.html.heex:9
+#: lib/memex_web/templates/email/confirm_email.txt.eex:4
+#, elixir-autogen, elixir-format
+msgid "Welcome to memEx"
 msgstr ""

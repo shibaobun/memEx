@@ -25,8 +25,8 @@ services:
       # - SMTP_SSL=false
       # optional, default is format below
       # - EMAIL_FROM=no-reply@memex.example.tld
-      # optional, default is "Memex"
-      # - EMAIL_NAME=Memex
+      # optional, default is "memEx"
+      # - EMAIL_NAME=memEx
     expose:
       - "4000"
     depends_on:

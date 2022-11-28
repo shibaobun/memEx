@@ -77,14 +77,14 @@ Check them out!
 For development, I recommend setting environment variables with
 [direnv](https://direnv.net).
 
-By default, Memex will always bind to all external IPv4 and IPv6 addresses in
+By default, memEx will always bind to all external IPv4 and IPv6 addresses in
 `dev` and `prod` mode, respectively. If you would like to use different values,
 they will need to be overridden in `config/dev.exs` and `config/runtime.exs` for
 `dev` and `prod` modes, respectively.
 
 ## `MIX_ENV=dev`
 
-In `dev` mode, Memex will listen for these environment variables at runtime.
+In `dev` mode, memEx will listen for these environment variables at runtime.
 
 - `HOST`: External url to generate links with. Set this especially if you're
   behind a reverse proxy. Defaults to `localhost`. External URLs will always be
@@ -100,7 +100,7 @@ In `dev` mode, Memex will listen for these environment variables at runtime.
 
 ## `MIX_ENV=test`
 
-In `test` mode (or in the Docker container), Memex will listen for the same environment variables as dev mode, but also include the following at runtime:
+In `test` mode (or in the Docker container), memEx will listen for the same environment variables as dev mode, but also include the following at runtime:
 
 - `TEST_DATABASE_URL`: REPLACES `DATABASE_URL`. Controls the database url to
   connect to. Defaults to `ecto://postgres:postgres@localhost/memex_test`.
@@ -110,7 +110,7 @@ In `test` mode (or in the Docker container), Memex will listen for the same envi
 
 ## `MIX_ENV=prod`
 
-In `prod` mode (or in the Docker container), Memex will listen for the same environment variables as dev mode, but also include the following at runtime:
+In `prod` mode (or in the Docker container), memEx will listen for the same environment variables as dev mode, but also include the following at runtime:
 
 - `SECRET_KEY_BASE`: Secret key base used to sign cookies. Must be generated
   with `docker run -it shibaobun/memex mix phx.gen.secret` and set for server to start.
@@ -121,4 +121,4 @@ In `prod` mode (or in the Docker container), Memex will listen for the same envi
 - `SMTP_SSL`: Set to `true` to enable SSL for emails. Defaults to `false`.
 - `EMAIL_FROM`: Sets the sender email in sent emails. Defaults to
   `no-reply@HOST` where `HOST` was previously defined.
-- `EMAIL_NAME`: Sets the sender name in sent emails. Defaults to "Memex".
+- `EMAIL_NAME`: Sets the sender name in sent emails. Defaults to "memEx".

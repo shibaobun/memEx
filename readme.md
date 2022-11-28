@@ -52,7 +52,7 @@ You can use the following environment variables to configure memEx in
 - `SMTP_SSL`: Set to `true` to enable SSL for emails. Defaults to `false`.
 - `EMAIL_FROM`: Sets the sender email in sent emails. Defaults to
   `no-reply@HOST` where `HOST` was previously defined.
-- `EMAIL_NAME`: Sets the sender name in sent emails. Defaults to "Memex".
+- `EMAIL_NAME`: Sets the sender name in sent emails. Defaults to "memEx".
 
 ---
 
