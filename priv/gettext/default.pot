@@ -634,3 +634,23 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "forgot your password?"
 msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:126
+#, elixir-autogen, elixir-format
+msgid "how many people should i invite?"
+msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:134
+#, elixir-autogen, elixir-format
+msgid "note, context and pipeline slugs must be unique, and you are free to backlink to notes not written by you."
+msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:139
+#, elixir-autogen, elixir-format
+msgid "so, i'd recommend inviting anyone you'd like to work on your collective memEx. however, when in doubt, hopefully setting up a new instance is easy enough. if it isn't, then feel free to let me know :)"
+msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:129
+#, elixir-autogen, elixir-format
+msgid "while memEx fully supports multiple users, each memEx instance should be treated as a single cohesive and collaborative document."
+msgstr ""

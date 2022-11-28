@@ -1,5 +1,6 @@
 # v0.1.2
 - fix more typos
+- add to faq
 
 # v0.1.1
 - improve search a whole lot
