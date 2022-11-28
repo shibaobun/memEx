@@ -53,16 +53,6 @@ msgstr ""
 msgid "Reset your Memex password"
 msgstr ""
 
-#: lib/memex_web/templates/layout/email.txt.eex:9
-#, elixir-autogen, elixir-format
-msgid "This email was sent from Memex at %{url}, the self-hosted firearm tracker website."
-msgstr ""
-
-#: lib/memex_web/templates/layout/email.html.heex:13
-#, elixir-autogen, elixir-format
-msgid "This email was sent from Memex, the self-hosted firearm tracker website."
-msgstr ""
-
 #: lib/memex/accounts/email.ex:44
 #, elixir-autogen, elixir-format
 msgid "Update your Memex email"
@@ -90,4 +80,14 @@ msgstr ""
 #: lib/memex_web/templates/email/reset_password.txt.eex:4
 #, elixir-autogen, elixir-format
 msgid "You can reset your password by visiting the URL below:"
+msgstr ""
+
+#: lib/memex_web/templates/layout/email.html.heex:13
+#, elixir-autogen, elixir-format
+msgid "This email was sent from memEx"
+msgstr ""
+
+#: lib/memex_web/templates/layout/email.txt.eex:9
+#, elixir-autogen, elixir-format
+msgid "This email was sent from memEx at %{url}"
 msgstr ""
