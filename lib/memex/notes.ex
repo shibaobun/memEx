@@ -35,13 +35,13 @@ defmodule Memex.Notes do
         where: n.user_id == ^user_id,
         where:
           fragment(
-            "search @@ to_tsquery(websearch_to_tsquery(?)::text || ':*')",
+            "search @@ websearch_to_tsquery('english', ?)",
             ^trimmed_search
           ),
         order_by: {
           :desc,
           fragment(
-            "ts_rank_cd(search, to_tsquery(websearch_to_tsquery(?)::text || ':*'), 4)",
+            "ts_rank_cd(search, websearch_to_tsquery('english', ?), 4)",
             ^trimmed_search
           )
         }
@@ -75,13 +75,13 @@ defmodule Memex.Notes do
         where: n.visibility == :public,
         where:
           fragment(
-            "search @@ to_tsquery(websearch_to_tsquery(?)::text || ':*')",
+            "search @@ websearch_to_tsquery('english', ?)",
             ^trimmed_search
           ),
         order_by: {
           :desc,
           fragment(
-            "ts_rank_cd(search, to_tsquery(websearch_to_tsquery(?)::text || ':*'), 4)",
+            "ts_rank_cd(search, websearch_to_tsquery('english', ?), 4)",
             ^trimmed_search
           )
         }

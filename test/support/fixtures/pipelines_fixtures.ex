@@ -16,7 +16,7 @@ defmodule Memex.PipelinesFixtures do
       attrs
       |> Enum.into(%{
         description: "some description",
-        tag: [],
+        tags: [],
         slug: random_slug(),
         visibility: :private
       })

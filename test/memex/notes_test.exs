@@ -14,7 +14,39 @@ defmodule Memex.NotesTest do
       note_a = note_fixture(%{slug: "a", visibility: :public}, user)
       note_b = note_fixture(%{slug: "b", visibility: :unlisted}, user)
       note_c = note_fixture(%{slug: "c", visibility: :private}, user)
+      _shouldnt_return = note_fixture(%{visibility: :private}, user_fixture())
+
       assert Notes.list_notes(user) == [note_a, note_b, note_c]
+    end
+
+    test "list_notes/2 returns relevant notes for a user", %{user: user} do
+      note_a = note_fixture(%{slug: "dogs", content: "has some treats in it"}, user)
+      note_b = note_fixture(%{slug: "cats", tags: ["home"]}, user)
+
+      note_c =
+        %{slug: "chickens", content: "bananas stuff", tags: ["life", "decisions"]}
+        |> note_fixture(user)
+
+      _shouldnt_return =
+        %{slug: "dog", content: "banana treat stuff", visibility: :private}
+        |> note_fixture(user_fixture())
+
+      # slug
+      assert Notes.list_notes("dog", user) == [note_a]
+      assert Notes.list_notes("dogs", user) == [note_a]
+      assert Notes.list_notes("cat", user) == [note_b]
+      assert Notes.list_notes("chicken", user) == [note_c]
+
+      # content
+      assert Notes.list_notes("treat", user) == [note_a]
+      assert Notes.list_notes("banana", user) == [note_c]
+      assert Notes.list_notes("stuff", user) == [note_c]
+
+      # tag
+      assert Notes.list_notes("home", user) == [note_b]
+      assert Notes.list_notes("life", user) == [note_c]
+      assert Notes.list_notes("decision", user) == [note_c]
+      assert Notes.list_notes("decisions", user) == [note_c]
     end
 
     test "list_public_notes/0 returns public notes", %{user: user} do
@@ -22,6 +54,51 @@ defmodule Memex.NotesTest do
       note_fixture(%{visibility: :unlisted}, user)
       note_fixture(%{visibility: :private}, user)
       assert Notes.list_public_notes() == [public_note]
+    end
+
+    test "list_public_notes/1 returns relevant notes for a user", %{user: user} do
+      note_a =
+        %{slug: "dogs", content: "has some treats in it", visibility: :public}
+        |> note_fixture(user)
+
+      note_b =
+        %{slug: "cats", tags: ["home"], visibility: :public}
+        |> note_fixture(user)
+
+      note_c =
+        %{
+          slug: "chickens",
+          content: "bananas stuff",
+          tags: ["life", "decisions"],
+          visibility: :public
+        }
+        |> note_fixture(user)
+
+      _shouldnt_return =
+        %{
+          slug: "dog",
+          content: "treats bananas stuff",
+          tags: ["home", "life", "decisions"],
+          visibility: :private
+        }
+        |> note_fixture(user)
+
+      # slug
+      assert Notes.list_public_notes("dog") == [note_a]
+      assert Notes.list_public_notes("dogs") == [note_a]
+      assert Notes.list_public_notes("cat") == [note_b]
+      assert Notes.list_public_notes("chicken") == [note_c]
+
+      # content
+      assert Notes.list_public_notes("treat") == [note_a]
+      assert Notes.list_public_notes("banana") == [note_c]
+      assert Notes.list_public_notes("stuff") == [note_c]
+
+      # tag
+      assert Notes.list_public_notes("home") == [note_b]
+      assert Notes.list_public_notes("life") == [note_c]
+      assert Notes.list_public_notes("decision") == [note_c]
+      assert Notes.list_public_notes("decisions") == [note_c]
     end
 
     test "get_note!/1 returns the note with given id", %{user: user} do

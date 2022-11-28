@@ -17,11 +17,86 @@ defmodule Memex.PipelinesTest do
       assert Pipelines.list_pipelines(user) == [pipeline_a, pipeline_b, pipeline_c]
     end
 
+    test "list_pipelines/2 returns relevant pipelines for a user", %{user: user} do
+      pipeline_a = pipeline_fixture(%{slug: "dogs", description: "has some treats in it"}, user)
+      pipeline_b = pipeline_fixture(%{slug: "cats", tags: ["home"]}, user)
+
+      pipeline_c =
+        %{slug: "chickens", description: "bananas stuff", tags: ["life", "decisions"]}
+        |> pipeline_fixture(user)
+
+      _shouldnt_return =
+        %{slug: "dog", description: "banana treat stuff", visibility: :private}
+        |> pipeline_fixture(user_fixture())
+
+      # slug
+      assert Pipelines.list_pipelines("dog", user) == [pipeline_a]
+      assert Pipelines.list_pipelines("dogs", user) == [pipeline_a]
+      assert Pipelines.list_pipelines("cat", user) == [pipeline_b]
+      assert Pipelines.list_pipelines("chicken", user) == [pipeline_c]
+
+      # description
+      assert Pipelines.list_pipelines("treat", user) == [pipeline_a]
+      assert Pipelines.list_pipelines("banana", user) == [pipeline_c]
+      assert Pipelines.list_pipelines("stuff", user) == [pipeline_c]
+
+      # tag
+      assert Pipelines.list_pipelines("home", user) == [pipeline_b]
+      assert Pipelines.list_pipelines("life", user) == [pipeline_c]
+      assert Pipelines.list_pipelines("decision", user) == [pipeline_c]
+      assert Pipelines.list_pipelines("decisions", user) == [pipeline_c]
+    end
+
     test "list_public_pipelines/0 returns public pipelines", %{user: user} do
       public_pipeline = pipeline_fixture(%{visibility: :public}, user)
       pipeline_fixture(%{visibility: :unlisted}, user)
       pipeline_fixture(%{visibility: :private}, user)
       assert Pipelines.list_public_pipelines() == [public_pipeline]
+    end
+
+    test "list_public_pipelines/1 returns relevant pipelines for a user", %{user: user} do
+      pipeline_a =
+        %{slug: "dogs", description: "has some treats in it", visibility: :public}
+        |> pipeline_fixture(user)
+
+      pipeline_b =
+        %{slug: "cats", tags: ["home"], visibility: :public}
+        |> pipeline_fixture(user)
+
+      pipeline_c =
+        %{
+          slug: "chickens",
+          description: "bananas stuff",
+          tags: ["life", "decisions"],
+          visibility: :public
+        }
+        |> pipeline_fixture(user)
+
+      _shouldnt_return =
+        %{
+          slug: "dog",
+          description: "treats bananas stuff",
+          tags: ["home", "life", "decisions"],
+          visibility: :private
+        }
+        |> pipeline_fixture(user)
+
+      # slug
+      assert Pipelines.list_public_pipelines("dog") == [pipeline_a]
+      assert Pipelines.list_public_pipelines("dogs") == [pipeline_a]
+      assert Pipelines.list_public_pipelines("cat") == [pipeline_b]
+      assert Pipelines.list_public_pipelines("chicken") == [pipeline_c]
+
+      # description
+      assert Pipelines.list_public_pipelines("treat") == [pipeline_a]
+      assert Pipelines.list_public_pipelines("banana") == [pipeline_c]
+      assert Pipelines.list_public_pipelines("stuff") == [pipeline_c]
+
+      # tag
+      assert Pipelines.list_public_pipelines("home") == [pipeline_b]
+      assert Pipelines.list_public_pipelines("life") == [pipeline_c]
+      assert Pipelines.list_public_pipelines("decision") == [pipeline_c]
+      assert Pipelines.list_public_pipelines("decisions") == [pipeline_c]
     end
 
     test "get_pipeline!/1 returns the pipeline with given id", %{user: user} do

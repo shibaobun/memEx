@@ -17,11 +17,86 @@ defmodule Memex.ContextsTest do
       assert Contexts.list_contexts(user) == [context_a, context_b, context_c]
     end
 
+    test "list_contexts/2 returns relevant contexts for a user", %{user: user} do
+      context_a = context_fixture(%{slug: "dogs", content: "has some treats in it"}, user)
+      context_b = context_fixture(%{slug: "cats", tags: ["home"]}, user)
+
+      context_c =
+        %{slug: "chickens", content: "bananas stuff", tags: ["life", "decisions"]}
+        |> context_fixture(user)
+
+      _shouldnt_return =
+        %{slug: "dog", content: "banana treat stuff", visibility: :private}
+        |> context_fixture(user_fixture())
+
+      # slug
+      assert Contexts.list_contexts("dog", user) == [context_a]
+      assert Contexts.list_contexts("dogs", user) == [context_a]
+      assert Contexts.list_contexts("cat", user) == [context_b]
+      assert Contexts.list_contexts("chicken", user) == [context_c]
+
+      # content
+      assert Contexts.list_contexts("treat", user) == [context_a]
+      assert Contexts.list_contexts("banana", user) == [context_c]
+      assert Contexts.list_contexts("stuff", user) == [context_c]
+
+      # tag
+      assert Contexts.list_contexts("home", user) == [context_b]
+      assert Contexts.list_contexts("life", user) == [context_c]
+      assert Contexts.list_contexts("decision", user) == [context_c]
+      assert Contexts.list_contexts("decisions", user) == [context_c]
+    end
+
     test "list_public_contexts/0 returns public contexts", %{user: user} do
       public_context = context_fixture(%{visibility: :public}, user)
       context_fixture(%{visibility: :unlisted}, user)
       context_fixture(%{visibility: :private}, user)
       assert Contexts.list_public_contexts() == [public_context]
+    end
+
+    test "list_public_contexts/1 returns relevant contexts for a user", %{user: user} do
+      context_a =
+        %{slug: "dogs", content: "has some treats in it", visibility: :public}
+        |> context_fixture(user)
+
+      context_b =
+        %{slug: "cats", tags: ["home"], visibility: :public}
+        |> context_fixture(user)
+
+      context_c =
+        %{
+          slug: "chickens",
+          content: "bananas stuff",
+          tags: ["life", "decisions"],
+          visibility: :public
+        }
+        |> context_fixture(user)
+
+      _shouldnt_return =
+        %{
+          slug: "dog",
+          content: "treats bananas stuff",
+          tags: ["home", "life", "decisions"],
+          visibility: :private
+        }
+        |> context_fixture(user)
+
+      # slug
+      assert Contexts.list_public_contexts("dog") == [context_a]
+      assert Contexts.list_public_contexts("dogs") == [context_a]
+      assert Contexts.list_public_contexts("cat") == [context_b]
+      assert Contexts.list_public_contexts("chicken") == [context_c]
+
+      # content
+      assert Contexts.list_public_contexts("treat") == [context_a]
+      assert Contexts.list_public_contexts("banana") == [context_c]
+      assert Contexts.list_public_contexts("stuff") == [context_c]
+
+      # tag
+      assert Contexts.list_public_contexts("home") == [context_b]
+      assert Contexts.list_public_contexts("life") == [context_c]
+      assert Contexts.list_public_contexts("decision") == [context_c]
+      assert Contexts.list_public_contexts("decisions") == [context_c]
     end
 
     test "get_context!/1 returns the context with given id", %{user: user} do

@@ -16,7 +16,7 @@ defmodule Memex.ContextsFixtures do
       attrs
       |> Enum.into(%{
         content: "some content",
-        tag: [],
+        tags: [],
         slug: random_slug(),
         visibility: :private
       })
