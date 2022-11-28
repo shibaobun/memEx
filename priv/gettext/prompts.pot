@@ -80,11 +80,6 @@ msgstr ""
 msgid "Language updated successfully."
 msgstr ""
 
-#: lib/memex_web/controllers/user_session_controller.ex:23
-#, elixir-autogen, elixir-format
-msgid "Logged out successfully."
-msgstr ""
-
 #: lib/memex_web/controllers/user_reset_password_controller.ex:46
 #, elixir-autogen, elixir-format
 msgid "Password reset successfully."
@@ -155,4 +150,9 @@ msgstr ""
 #: lib/memex_web/live/home_live.html.heex:95
 #, elixir-autogen, elixir-format
 msgid "register to setup %{name}"
+msgstr ""
+
+#: lib/memex_web/controllers/user_session_controller.ex:23
+#, elixir-autogen, elixir-format
+msgid "logged out successfully."
 msgstr ""

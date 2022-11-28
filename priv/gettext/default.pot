@@ -20,16 +20,6 @@ msgstr ""
 msgid "Confirm your account"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:36
-#, elixir-autogen, elixir-format
-msgid "English"
-msgstr ""
-
-#: lib/memex_web/controllers/user_reset_password_controller.ex:9
-#, elixir-autogen, elixir-format
-msgid "Forgot your password?"
-msgstr ""
-
 #: lib/memex_web/templates/user_session/new.html.heex:27
 #, elixir-autogen, elixir-format
 msgid "Keep me logged in for 60 days"
@@ -171,6 +161,7 @@ msgstr ""
 msgid "enable"
 msgstr ""
 
+#: lib/memex_web/templates/user_registration/new.html.heex:36
 #: lib/memex_web/templates/user_settings/edit.html.heex:126
 #, elixir-autogen, elixir-format
 msgid "english"
@@ -637,4 +628,9 @@ msgstr ""
 #: lib/memex_web/views/layout_view.ex:10
 #, elixir-autogen, elixir-format
 msgid "memEx | %{title}"
+msgstr ""
+
+#: lib/memex_web/controllers/user_reset_password_controller.ex:9
+#, elixir-autogen, elixir-format
+msgid "forgot your password?"
 msgstr ""

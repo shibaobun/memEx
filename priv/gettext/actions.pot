@@ -15,13 +15,6 @@ msgstr ""
 msgid "Copy to clipboard"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:51
-#: lib/memex_web/templates/user_reset_password/new.html.heex:3
-#: lib/memex_web/templates/user_session/new.html.heex:44
-#, elixir-autogen, elixir-format
-msgid "Forgot your password?"
-msgstr ""
-
 #: lib/memex_web/templates/user_confirmation/new.html.heex:3
 #: lib/memex_web/templates/user_confirmation/new.html.heex:15
 #, elixir-autogen, elixir-format
@@ -37,11 +30,6 @@ msgstr ""
 #: lib/memex_web/live/invite_live/form_component.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "Save"
-msgstr ""
-
-#: lib/memex_web/templates/user_reset_password/new.html.heex:15
-#, elixir-autogen, elixir-format
-msgid "Send instructions to reset password"
 msgstr ""
 
 #: lib/memex_web/templates/user_settings/edit.html.heex:15
@@ -154,4 +142,16 @@ msgstr ""
 #: lib/memex_web/live/pipeline_live/show.html.heex:129
 #, elixir-autogen, elixir-format
 msgid "add step"
+msgstr ""
+
+#: lib/memex_web/templates/user_registration/new.html.heex:51
+#: lib/memex_web/templates/user_reset_password/new.html.heex:3
+#: lib/memex_web/templates/user_session/new.html.heex:44
+#, elixir-autogen, elixir-format
+msgid "forgot your password?"
+msgstr ""
+
+#: lib/memex_web/templates/user_reset_password/new.html.heex:15
+#, elixir-autogen, elixir-format
+msgid "send instructions to reset password"
 msgstr ""

@@ -33,7 +33,7 @@
     <%= select(
       f,
       :locale,
-      [{gettext("English"), "en_US"}],
+      [{gettext("english"), "en_US"}],
       class: "input input-primary col-span-2"
     ) %>
     <%= error_tag(f, :locale) %>
@@ -48,7 +48,7 @@
       <%= dgettext("actions", "log in") %>
     </.link>
     <.link href={Routes.user_reset_password_path(@conn, :new)} class="btn btn-primary">
-      <%= dgettext("actions", "Forgot your password?") %>
+      <%= dgettext("actions", "forgot your password?") %>
     </.link>
   </div>
 </div>

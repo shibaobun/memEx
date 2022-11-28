@@ -20,7 +20,7 @@ defmodule MemexWeb.UserSessionController do
 
   def delete(conn, _params) do
     conn
-    |> put_flash(:info, dgettext("prompts", "Logged out successfully."))
+    |> put_flash(:info, dgettext("prompts", "logged out successfully."))
     |> UserAuth.log_out_user()
   end
 end
