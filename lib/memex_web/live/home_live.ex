@@ -3,6 +3,8 @@ defmodule MemexWeb.HomeLive do
   Liveview for the main home page
   """
 
+  @version Mix.Project.config()[:version]
+
   use MemexWeb, :live_view
   alias Memex.Accounts
   alias MemexWeb.{Endpoint, FaqLive}
@@ -10,6 +12,6 @@ defmodule MemexWeb.HomeLive do
   @impl true
   def mount(_params, _session, socket) do
     admins = Accounts.list_users_by_role(:admin)
-    {:ok, socket |> assign(page_title: gettext("home"), admins: admins)}
+    {:ok, socket |> assign(page_title: gettext("home"), admins: admins, version: @version)}
   end
 end

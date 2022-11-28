@@ -464,7 +464,7 @@ msgstr ""
 msgid "%{slug} could not be found"
 msgstr ""
 
-#: lib/memex_web/live/home_live.ex:13
+#: lib/memex_web/live/home_live.ex:15
 #, elixir-autogen, elixir-format
 msgid "home"
 msgstr ""
