@@ -6,7 +6,7 @@ defmodule Memex.Pipelines.Pipeline do
   import Ecto.Changeset
   import MemexWeb.Gettext
   alias Ecto.{Changeset, UUID}
-  alias Memex.{Accounts.User, Pipelines.Steps.Step}
+  alias Memex.{Accounts.User, Pipelines.Steps.Step, Repo}
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -50,6 +50,8 @@ defmodule Memex.Pipelines.Pipeline do
       message: dgettext("errors", "invalid format: only numbers, letters and hyphen are accepted")
     )
     |> validate_required([:slug, :user_id, :visibility])
+    |> unique_constraint(:slug)
+    |> unsafe_validate_unique(:slug, Repo)
   end
 
   @spec update_changeset(t(), attrs :: map(), User.t()) :: changeset()
@@ -61,6 +63,8 @@ defmodule Memex.Pipelines.Pipeline do
       message: dgettext("errors", "invalid format: only numbers, letters and hyphen are accepted")
     )
     |> validate_required([:slug, :visibility])
+    |> unique_constraint(:slug)
+    |> unsafe_validate_unique(:slug, Repo)
   end
 
   defp cast_tags_string(changeset, %{"tags_string" => tags_string})

@@ -103,11 +103,11 @@ msgid "oops, something went wrong! Please check the errors below"
 msgstr ""
 
 #: lib/memex/contexts/context.ex:49
-#: lib/memex/contexts/context.ex:60
+#: lib/memex/contexts/context.ex:62
 #: lib/memex/notes/note.ex:48
-#: lib/memex/notes/note.ex:59
+#: lib/memex/notes/note.ex:61
 #: lib/memex/pipelines/pipeline.ex:50
-#: lib/memex/pipelines/pipeline.ex:61
+#: lib/memex/pipelines/pipeline.ex:63
 #, elixir-autogen, elixir-format
 msgid "invalid format: only numbers, letters and hyphen are accepted"
 msgstr ""
