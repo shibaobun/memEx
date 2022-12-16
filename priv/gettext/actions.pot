@@ -58,7 +58,7 @@ msgstr ""
 #: lib/memex_web/live/context_live/index.html.heex:49
 #: lib/memex_web/live/context_live/show.html.heex:34
 #: lib/memex_web/live/note_live/index.html.heex:49
-#: lib/memex_web/live/note_live/show.html.heex:38
+#: lib/memex_web/live/note_live/show.html.heex:31
 #: lib/memex_web/live/pipeline_live/index.html.heex:49
 #: lib/memex_web/live/pipeline_live/show.html.heex:43
 #: lib/memex_web/live/pipeline_live/show.html.heex:113
@@ -74,7 +74,7 @@ msgstr ""
 #: lib/memex_web/live/context_live/index.html.heex:38
 #: lib/memex_web/live/context_live/show.html.heex:23
 #: lib/memex_web/live/note_live/index.html.heex:38
-#: lib/memex_web/live/note_live/show.html.heex:27
+#: lib/memex_web/live/note_live/show.html.heex:20
 #: lib/memex_web/live/pipeline_live/index.html.heex:38
 #: lib/memex_web/live/pipeline_live/show.html.heex:32
 #: lib/memex_web/live/pipeline_live/show.html.heex:102
@@ -133,7 +133,7 @@ msgid "save"
 msgstr ""
 
 #: lib/memex_web/live/context_live/show.html.heex:16
-#: lib/memex_web/live/note_live/show.html.heex:23
+#: lib/memex_web/live/note_live/show.html.heex:16
 #: lib/memex_web/live/pipeline_live/show.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "back"

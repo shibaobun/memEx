@@ -1,3 +1,6 @@
+# v0.1.3
+- backlink to other notes in notes
+
 # v0.1.2
 - fix more typos
 - add to faq

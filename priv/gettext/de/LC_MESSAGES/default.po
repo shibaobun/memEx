@@ -82,7 +82,7 @@ msgid "Uses left"
 msgstr ""
 
 #: lib/memex_web/live/context_live/show.html.heex:11
-#: lib/memex_web/live/note_live/show.html.heex:18
+#: lib/memex_web/live/note_live/show.html.heex:11
 #: lib/memex_web/live/pipeline_live/show.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "Visibility: %{visibility}"

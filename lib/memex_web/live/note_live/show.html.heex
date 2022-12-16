@@ -5,14 +5,7 @@
 
   <p><%= if @note.tags, do: @note.tags |> Enum.join(", ") %></p>
 
-  <textarea
-    id="show-note-content"
-    class="input input-primary h-128 min-h-128"
-    phx-hook="MaintainAttrs"
-    phx-update="ignore"
-    readonly
-    phx-no-format
-  ><%= @note.content %></textarea>
+  <.note_content note={@note} />
 
   <p class="self-end">
     <%= gettext("Visibility: %{visibility}", visibility: @note.visibility) %>

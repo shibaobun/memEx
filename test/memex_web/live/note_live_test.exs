@@ -3,6 +3,7 @@ defmodule MemexWeb.NoteLiveTest do
 
   import Phoenix.LiveViewTest
   import Memex.NotesFixtures
+  alias MemexWeb.Endpoint
 
   @create_attrs %{
     "content" => "some content",
@@ -130,6 +131,33 @@ defmodule MemexWeb.NoteLiveTest do
         |> follow_redirect(conn, Routes.note_index_path(conn, :index))
 
       refute has_element?(index_live, "#note-#{note.id}")
+    end
+  end
+
+  describe "show with note" do
+    setup [:register_and_log_in_user]
+
+    setup %{user: user} do
+      %{slug: note_slug} = note = note_fixture(user)
+
+      [
+        note: note,
+        backlinked_note:
+          note_fixture(%{content: "example with backlink to [[#{note_slug}]] note"}, user)
+      ]
+    end
+
+    test "displays context", %{
+      conn: conn,
+      backlinked_note: %{slug: backlinked_note_slug},
+      note: %{slug: note_slug}
+    } do
+      {:ok, show_live, html} =
+        live(conn, Routes.note_show_path(conn, :show, backlinked_note_slug))
+
+      assert html =~ "context"
+      assert html =~ Routes.note_show_path(Endpoint, :show, note_slug)
+      assert has_element?(show_live, "[data-qa=\"note-link-#{note_slug}\"]")
     end
   end
 end
