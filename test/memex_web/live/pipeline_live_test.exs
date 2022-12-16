@@ -48,6 +48,14 @@ defmodule MemexWeb.PipelineLiveTest do
       assert html =~ pipeline.description
     end
 
+    test "searches by tag", %{conn: conn} do
+      {:ok, index_live, html} = live(conn, Routes.pipeline_index_path(conn, :index))
+
+      assert html =~ "example-tag"
+      assert index_live |> element("a", "example-tag") |> render_click()
+      assert_patch(index_live, Routes.pipeline_index_path(conn, :search, "example-tag"))
+    end
+
     test "saves new pipeline", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.pipeline_index_path(conn, :index))
 
@@ -173,6 +181,14 @@ defmodule MemexWeb.PipelineLiveTest do
       [
         step: step_fixture(0, pipeline, user)
       ]
+    end
+
+    test "searches by tag", %{conn: conn, pipeline: pipeline} do
+      {:ok, show_live, html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+
+      assert html =~ "example-tag"
+      assert show_live |> element("a", "example-tag") |> render_click()
+      assert_redirect(show_live, Routes.pipeline_index_path(conn, :search, "example-tag"))
     end
 
     test "updates a step", %{conn: conn, pipeline: pipeline, step: step} do

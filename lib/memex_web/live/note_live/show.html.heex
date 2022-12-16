@@ -3,7 +3,13 @@
     <%= @note.slug %>
   </h1>
 
-  <p><%= if @note.tags, do: @note.tags |> Enum.join(", ") %></p>
+  <div class="flex flex-wrap space-x-1">
+    <%= for tag <- @note.tags do %>
+      <.link navigate={Routes.note_index_path(Endpoint, :search, tag)} class="link">
+        <%= tag %>
+      </.link>
+    <% end %>
+  </div>
 
   <.note_content note={@note} />
 

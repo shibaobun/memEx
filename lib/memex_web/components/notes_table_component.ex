@@ -105,7 +105,17 @@ defmodule MemexWeb.Components.NotesTableComponent do
   end
 
   defp get_value_for_key(:tags, %{tags: tags}, _additional_data) do
-    tags |> Enum.join(", ")
+    assigns = %{tags: tags}
+
+    ~H"""
+    <div class="flex flex-wrap justify-center space-x-1">
+      <%= for tag <- @tags do %>
+        <.link patch={Routes.note_index_path(Endpoint, :search, tag)} class="link">
+          <%= tag %>
+        </.link>
+      <% end %>
+    </div>
+    """
   end
 
   defp get_value_for_key(:actions, note, %{actions: actions}) do

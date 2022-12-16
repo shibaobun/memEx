@@ -81,9 +81,9 @@ msgstr ""
 msgid "Uses left"
 msgstr ""
 
-#: lib/memex_web/live/context_live/show.html.heex:11
-#: lib/memex_web/live/note_live/show.html.heex:11
-#: lib/memex_web/live/pipeline_live/show.html.heex:20
+#: lib/memex_web/live/context_live/show.html.heex:17
+#: lib/memex_web/live/note_live/show.html.heex:17
+#: lib/memex_web/live/pipeline_live/show.html.heex:26
 #, elixir-autogen, elixir-format
 msgid "Visibility: %{visibility}"
 msgstr ""
@@ -501,7 +501,7 @@ msgstr ""
 msgid "what is this?"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:62
+#: lib/memex_web/live/pipeline_live/show.html.heex:68
 #, elixir-autogen, elixir-format
 msgid "%{position}. %{title}"
 msgstr ""
@@ -526,12 +526,12 @@ msgstr ""
 msgid "add step to %{slug}"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:56
+#: lib/memex_web/live/pipeline_live/show.html.heex:62
 #, elixir-autogen, elixir-format
 msgid "no steps"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:51
+#: lib/memex_web/live/pipeline_live/show.html.heex:57
 #, elixir-autogen, elixir-format
 msgid "steps:"
 msgstr ""

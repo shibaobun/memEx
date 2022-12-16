@@ -3,7 +3,13 @@
     <%= @pipeline.slug %>
   </h1>
 
-  <p><%= if @pipeline.tags, do: @pipeline.tags |> Enum.join(", ") %></p>
+  <div class="flex flex-wrap space-x-1">
+    <%= for tag <- @pipeline.tags do %>
+      <.link navigate={Routes.pipeline_index_path(Endpoint, :search, tag)} class="link">
+        <%= tag %>
+      </.link>
+    <% end %>
+  </div>
 
   <%= if @pipeline.description do %>
     <textarea

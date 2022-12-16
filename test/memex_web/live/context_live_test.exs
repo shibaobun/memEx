@@ -37,6 +37,14 @@ defmodule MemexWeb.ContextLiveTest do
       assert html =~ context.slug
     end
 
+    test "searches by tag", %{conn: conn} do
+      {:ok, index_live, html} = live(conn, Routes.context_index_path(conn, :index))
+
+      assert html =~ "example-tag"
+      assert index_live |> element("a", "example-tag") |> render_click()
+      assert_patch(index_live, Routes.context_index_path(conn, :search, "example-tag"))
+    end
+
     test "saves new context", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
 
@@ -144,6 +152,14 @@ defmodule MemexWeb.ContextLiveTest do
         context:
           context_fixture(%{content: "example with backlink to [[#{note_slug}]] note"}, user)
       ]
+    end
+
+    test "searches by tag", %{conn: conn, context: context} do
+      {:ok, show_live, html} = live(conn, Routes.context_show_path(conn, :show, context.slug))
+
+      assert html =~ "example-tag"
+      assert show_live |> element("a", "example-tag") |> render_click()
+      assert_redirect(show_live, Routes.context_index_path(conn, :search, "example-tag"))
     end
 
     test "displays context", %{conn: conn, context: context, note: %{slug: note_slug}} do

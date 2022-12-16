@@ -3,7 +3,13 @@
     <%= @context.slug %>
   </h1>
 
-  <p><%= if @context.tags, do: @context.tags |> Enum.join(", ") %></p>
+  <div class="flex flex-wrap space-x-1">
+    <%= for tag <- @context.tags do %>
+      <.link navigate={Routes.context_index_path(Endpoint, :search, tag)} class="link">
+        <%= tag %>
+      </.link>
+    <% end %>
+  </div>
 
   <.context_content context={@context} />
 

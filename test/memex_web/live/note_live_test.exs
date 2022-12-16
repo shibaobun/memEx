@@ -38,6 +38,14 @@ defmodule MemexWeb.NoteLiveTest do
       assert html =~ note.slug
     end
 
+    test "searches by tag", %{conn: conn} do
+      {:ok, index_live, html} = live(conn, Routes.note_index_path(conn, :index))
+
+      assert html =~ "example-tag"
+      assert index_live |> element("a", "example-tag") |> render_click()
+      assert_patch(index_live, Routes.note_index_path(conn, :search, "example-tag"))
+    end
+
     test "saves new note", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.note_index_path(conn, :index))
 
@@ -145,6 +153,14 @@ defmodule MemexWeb.NoteLiveTest do
         backlinked_note:
           note_fixture(%{content: "example with backlink to [[#{note_slug}]] note"}, user)
       ]
+    end
+
+    test "searches by tag", %{conn: conn, note: note} do
+      {:ok, show_live, html} = live(conn, Routes.note_show_path(conn, :show, note.slug))
+
+      assert html =~ "example-tag"
+      assert show_live |> element("a", "example-tag") |> render_click()
+      assert_redirect(show_live, Routes.note_index_path(conn, :search, "example-tag"))
     end
 
     test "displays context", %{
