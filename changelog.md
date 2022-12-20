@@ -2,6 +2,7 @@
 - fix docker-compose
 - fix newlines in notes/context/step contents
 - fix user invite page
+- improve tagging logic
 
 # v0.1.3
 - backlink to other notes in notes

@@ -18,7 +18,7 @@ defmodule MemexWeb.ContextLiveTest do
   }
   @invalid_attrs %{
     "content" => nil,
-    "tags_string" => "",
+    "tags_string" => " ",
     "slug" => nil,
     "visibility" => nil
   }
@@ -114,9 +114,13 @@ defmodule MemexWeb.ContextLiveTest do
 
       assert_patch(show_live, Routes.context_show_path(conn, :edit, context.slug))
 
-      assert show_live
-             |> form("#context-form", context: @invalid_attrs)
-             |> render_change() =~ "can&#39;t be blank"
+      html =
+        show_live
+        |> form("#context-form", context: @invalid_attrs)
+        |> render_change()
+
+      assert html =~ "can&#39;t be blank"
+      assert html =~ "tags must be comma-delimited"
 
       {:ok, _, html} =
         show_live

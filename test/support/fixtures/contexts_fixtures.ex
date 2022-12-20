@@ -22,6 +22,6 @@ defmodule Memex.ContextsFixtures do
       })
       |> Contexts.create_context(user)
 
-    context
+    %{context | tags_string: nil}
   end
 end

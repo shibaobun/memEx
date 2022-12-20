@@ -27,7 +27,7 @@ defmodule Memex.Contexts.Context do
           slug: slug(),
           content: String.t(),
           tags: [String.t()] | nil,
-          tags_string: String.t(),
+          tags_string: String.t() | nil,
           visibility: :public | :private | :unlisted,
           user: User.t() | Ecto.Association.NotLoaded.t(),
           user_id: User.id(),
@@ -66,16 +66,38 @@ defmodule Memex.Contexts.Context do
     |> unsafe_validate_unique(:slug, Repo)
   end
 
-  defp cast_tags_string(changeset, %{"tags_string" => tags_string})
-       when tags_string |> is_binary() do
-    tags =
-      tags_string
-      |> String.split(",", trim: true)
-      |> Enum.map(fn str -> str |> String.trim() end)
-      |> Enum.sort()
-
-    changeset |> change(tags: tags)
+  defp cast_tags_string(changeset, attrs) do
+    changeset
+    |> put_change(:tags_string, changeset |> get_field(:tags) |> get_tags_string())
+    |> cast(attrs, [:tags_string])
+    |> validate_format(:tags_string, ~r/^[\p{L}\p{N}\-\,]+$/,
+      message:
+        dgettext(
+          "errors",
+          "invalid format: only numbers, letters and hyphen are accepted. tags must be comma-delimited"
+        )
+    )
+    |> cast_tags()
   end
 
-  defp cast_tags_string(changeset, _attrs), do: changeset
+  defp cast_tags(%{valid?: false} = changeset), do: changeset
+
+  defp cast_tags(%{valid?: true} = changeset) do
+    tags = changeset |> get_field(:tags_string) |> process_tags()
+    changeset |> put_change(:tags, tags)
+  end
+
+  defp process_tags(tags_string) when tags_string |> is_binary() do
+    tags_string
+    |> String.split(",", trim: true)
+    |> Enum.map(fn str -> str |> String.trim() end)
+    |> Enum.reject(fn str -> str |> is_nil() end)
+    |> Enum.sort()
+  end
+
+  defp process_tags(_other_tags_string), do: []
+
+  @spec get_tags_string([String.t()] | nil) :: String.t()
+  def get_tags_string(nil), do: ""
+  def get_tags_string(tags) when tags |> is_list(), do: tags |> Enum.join(",")
 end

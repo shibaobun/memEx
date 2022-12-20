@@ -22,6 +22,6 @@ defmodule Memex.PipelinesFixtures do
       })
       |> Pipelines.create_pipeline(user)
 
-    pipeline
+    %{pipeline | tags_string: nil}
   end
 end

@@ -4,7 +4,6 @@ defmodule Memex.Pipelines do
   """
 
   import Ecto.Query, warn: false
-  alias Ecto.Changeset
   alias Memex.{Accounts.User, Pipelines.Pipeline, Repo}
 
   @doc """
@@ -230,19 +229,5 @@ defmodule Memex.Pipelines do
   @spec change_pipeline(Pipeline.t(), attrs :: map(), User.t()) :: Pipeline.changeset()
   def change_pipeline(%Pipeline{} = pipeline, attrs \\ %{}, user) do
     pipeline |> Pipeline.update_changeset(attrs, user)
-  end
-
-  @doc """
-  Gets a canonical string representation of the `:tags` field for a Pipeline
-  """
-  @spec get_tags_string(Pipeline.t() | Pipeline.changeset() | [String.t()] | nil) :: String.t()
-  def get_tags_string(nil), do: ""
-  def get_tags_string(tags) when tags |> is_list(), do: tags |> Enum.join(",")
-  def get_tags_string(%Pipeline{tags: tags}), do: tags |> get_tags_string()
-
-  def get_tags_string(%Changeset{} = changeset) do
-    changeset
-    |> Changeset.get_field(:tags)
-    |> get_tags_string()
   end
 end

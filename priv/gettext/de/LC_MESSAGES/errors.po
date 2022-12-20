@@ -131,3 +131,10 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "unauthorized"
 msgstr ""
+
+#: lib/memex/contexts/context.ex:75
+#: lib/memex/notes/note.ex:74
+#: lib/memex/pipelines/pipeline.ex:76
+#, elixir-autogen, elixir-format, fuzzy
+msgid "invalid format: only numbers, letters and hyphen are accepted. tags must be comma-delimited"
+msgstr ""

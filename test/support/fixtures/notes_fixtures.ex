@@ -22,6 +22,6 @@ defmodule Memex.NotesFixtures do
       })
       |> Notes.create_note(user)
 
-    note
+    %{note | tags_string: nil}
   end
 end

@@ -4,7 +4,6 @@ defmodule Memex.Notes do
   """
 
   import Ecto.Query, warn: false
-  alias Ecto.Changeset
   alias Memex.{Accounts.User, Notes.Note, Repo}
 
   @doc """
@@ -228,19 +227,5 @@ defmodule Memex.Notes do
   @spec change_note(Note.t(), attrs :: map(), User.t()) :: Note.changeset()
   def change_note(%Note{} = note, attrs \\ %{}, user) do
     note |> Note.update_changeset(attrs, user)
-  end
-
-  @doc """
-  Gets a canonical string representation of the `:tags` field for a Note
-  """
-  @spec get_tags_string(Note.t() | Note.changeset() | [String.t()] | nil) :: String.t()
-  def get_tags_string(nil), do: ""
-  def get_tags_string(tags) when tags |> is_list(), do: tags |> Enum.join(",")
-  def get_tags_string(%Note{tags: tags}), do: tags |> get_tags_string()
-
-  def get_tags_string(%Changeset{} = changeset) do
-    changeset
-    |> Changeset.get_field(:tags)
-    |> get_tags_string()
   end
 end

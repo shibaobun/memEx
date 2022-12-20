@@ -19,7 +19,7 @@ defmodule MemexWeb.NoteLiveTest do
   }
   @invalid_attrs %{
     "content" => nil,
-    "tags_string" => "",
+    "tags_string" => " ",
     "slug" => nil,
     "visibility" => nil
   }
@@ -54,9 +54,13 @@ defmodule MemexWeb.NoteLiveTest do
 
       assert_patch(index_live, Routes.note_index_path(conn, :new))
 
-      assert index_live
-             |> form("#note-form", note: @invalid_attrs)
-             |> render_change() =~ "can&#39;t be blank"
+      html =
+        index_live
+        |> form("#note-form", note: @invalid_attrs)
+        |> render_change()
+
+      assert html =~ "can&#39;t be blank"
+      assert html =~ "tags must be comma-delimited"
 
       {:ok, _, html} =
         index_live

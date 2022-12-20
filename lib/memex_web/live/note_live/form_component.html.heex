@@ -27,9 +27,7 @@
     <%= text_input(f, :tags_string,
       id: "tags-input",
       class: "input input-primary",
-      placeholder: gettext("tag1,tag2"),
-      phx_update: "ignore",
-      value: Notes.get_tags_string(@changeset)
+      placeholder: gettext("tag1,tag2")
     ) %>
     <%= error_tag(f, :tags_string) %>
 

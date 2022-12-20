@@ -17,7 +17,7 @@ defmodule MemexWeb.PipelineLiveTest do
   }
   @invalid_attrs %{
     "description" => nil,
-    "tags_string" => "",
+    "tags_string" => " ",
     "slug" => nil,
     "visibility" => nil
   }
@@ -128,9 +128,13 @@ defmodule MemexWeb.PipelineLiveTest do
 
       assert_patch(show_live, Routes.pipeline_show_path(conn, :edit, pipeline.slug))
 
-      assert show_live
-             |> form("#pipeline-form", pipeline: @invalid_attrs)
-             |> render_change() =~ "can&#39;t be blank"
+      html =
+        show_live
+        |> form("#pipeline-form", pipeline: @invalid_attrs)
+        |> render_change()
+
+      assert html =~ "can&#39;t be blank"
+      assert html =~ "tags must be comma-delimited"
 
       {:ok, _, html} =
         show_live

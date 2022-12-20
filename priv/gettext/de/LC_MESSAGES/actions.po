@@ -125,9 +125,9 @@ msgstr ""
 msgid "register"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:42
-#: lib/memex_web/live/note_live/form_component.html.heex:42
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:42
+#: lib/memex_web/live/context_live/form_component.html.heex:40
+#: lib/memex_web/live/note_live/form_component.html.heex:40
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:40
 #: lib/memex_web/live/step_live/form_component.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "save"

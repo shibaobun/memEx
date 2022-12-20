@@ -290,17 +290,17 @@ msgstr ""
 msgid "report bugs or request features"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:43
-#: lib/memex_web/live/note_live/form_component.html.heex:43
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:43
+#: lib/memex_web/live/context_live/form_component.html.heex:41
+#: lib/memex_web/live/note_live/form_component.html.heex:41
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:41
 #: lib/memex_web/live/step_live/form_component.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "saving..."
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:39
-#: lib/memex_web/live/note_live/form_component.html.heex:39
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:39
+#: lib/memex_web/live/context_live/form_component.html.heex:37
+#: lib/memex_web/live/note_live/form_component.html.heex:37
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:37
 #, elixir-autogen, elixir-format
 msgid "select privacy"
 msgstr ""
