@@ -22,15 +22,15 @@ defmodule MemexWeb.Components.UserCard do
           <%= if @user.confirmed_at |> is_nil() do %>
             <%= gettext("email unconfirmed") %>
           <% else %>
-            <%= gettext(
-              "user was confirmed at %{relative_datetime}",
-              relative_datetime: @user.confirmed_at |> display_datetime()
-            ) %>
+            <p>
+              <%= gettext("user confirmed on") %>
+              <%= @user.confirmed_at |> display_datetime() %>
+            </p>
           <% end %>
         </p>
 
         <p>
-          <%= gettext("User registered on") %>
+          <%= gettext("user registered on") %>
           <%= @user.inserted_at |> display_datetime() %>
         </p>
       </h3>

@@ -1,3 +1,8 @@
+# v0.1.4
+- fix docker-compose
+- fix newlines in notes/context/step contents
+- fix user invite page
+
 # v0.1.3
 - backlink to other notes in notes
 - search tags on click

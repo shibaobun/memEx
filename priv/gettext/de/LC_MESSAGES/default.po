@@ -66,11 +66,6 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: lib/memex_web/components/user_card.ex:33
-#, elixir-autogen, elixir-format
-msgid "User registered on"
-msgstr ""
-
 #: lib/memex_web/components/invite_card.ex:19
 #, elixir-autogen, elixir-format
 msgid "Uses Left:"
@@ -348,11 +343,6 @@ msgstr ""
 #: lib/memex_web/components/invite_card.ex:20
 #, elixir-autogen, elixir-format
 msgid "unlimited"
-msgstr ""
-
-#: lib/memex_web/components/user_card.ex:25
-#, elixir-autogen, elixir-format
-msgid "user was confirmed at %{relative_datetime}"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/index.html.heex:120
@@ -664,4 +654,14 @@ msgstr ""
 #: lib/memex_web/live/faq_live.html.heex:129
 #, elixir-autogen, elixir-format
 msgid "while memEx fully supports multiple users, each memEx instance should be treated as a single cohesive and collaborative document."
+msgstr ""
+
+#: lib/memex_web/components/user_card.ex:26
+#, elixir-autogen, elixir-format
+msgid "user confirmed on"
+msgstr ""
+
+#: lib/memex_web/components/user_card.ex:33
+#, elixir-autogen, elixir-format, fuzzy
+msgid "user registered on"
 msgstr ""
