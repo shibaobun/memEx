@@ -1,3 +1,6 @@
+# v0.1.6
+- fix formatting in note/context/step contents
+
 # v0.1.5
 - fix overflow on note/contexts/step contents
 

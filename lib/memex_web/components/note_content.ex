@@ -12,7 +12,7 @@ defmodule MemexWeb.Components.NoteContent do
     ~H"""
     <div
       id={"show-note-content-#{@note.id}"}
-      class="input input-primary h-128 min-h-128 inline-block overflow-x-hidden overflow-y-auto"
+      class="input input-primary h-128 min-h-128 inline-block whitespace-pre-wrap overflow-x-hidden overflow-y-auto"
       phx-hook="MaintainAttrs"
       phx-update="ignore"
       readonly
@@ -39,7 +39,6 @@ defmodule MemexWeb.Components.NoteContent do
         "</p>#{link}<p class=\"inline\">"
       end
     )
-    |> String.replace("\n", "<br>")
     |> HTML.raw()
   end
 end
