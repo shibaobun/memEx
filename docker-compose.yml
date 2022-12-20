@@ -2,8 +2,7 @@ version: '3'
 
 services:
   memex:
-    build:
-      context: .
+    image: shibaobun/memex
     container_name: memex
     restart: always
     environment:
