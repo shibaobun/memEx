@@ -39,6 +39,7 @@ defmodule MemexWeb.Components.ContextContent do
         "</p>#{link}<p class=\"inline\">"
       end
     )
+    |> String.replace("\n", "<br>")
     |> HTML.raw()
   end
 end
