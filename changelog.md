@@ -1,6 +1,9 @@
+# v0.1.5
+- fix overflow on note/contexts/step contents
+
 # v0.1.4
 - fix docker-compose
-- fix newlines in notes/context/step contents
+- fix newlines in note/context/step contents
 - fix user invite page
 - improve tagging logic
 

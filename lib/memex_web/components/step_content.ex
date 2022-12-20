@@ -12,7 +12,7 @@ defmodule MemexWeb.Components.StepContent do
     ~H"""
     <div
       id={"show-step-content-#{@step.id}"}
-      class="input input-primary h-32 min-h-32 inline-block"
+      class="input input-primary h-32 min-h-32 inline-block overflow-x-hidden overflow-y-auto"
       phx-hook="MaintainAttrs"
       phx-update="ignore"
       readonly
