@@ -8,6 +8,16 @@ defmodule Memex.Pipelines.Pipeline do
   alias Ecto.{Changeset, UUID}
   alias Memex.{Accounts.User, Pipelines.Steps.Step, Repo}
 
+  @derive {Jason.Encoder,
+           only: [
+             :slug,
+             :description,
+             :tags,
+             :visibility,
+             :inserted_at,
+             :steps,
+             :updated_at
+           ]}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "pipelines" do

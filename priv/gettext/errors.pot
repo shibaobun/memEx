@@ -75,22 +75,22 @@ msgstr ""
 msgid "You must confirm your account and log in to access this page."
 msgstr ""
 
-#: lib/memex/accounts/user.ex:129
+#: lib/memex/accounts/user.ex:139
 #, elixir-autogen, elixir-format
 msgid "did not change"
 msgstr ""
 
-#: lib/memex/accounts/user.ex:150
+#: lib/memex/accounts/user.ex:160
 #, elixir-autogen, elixir-format
 msgid "does not match password"
 msgstr ""
 
-#: lib/memex/accounts/user.ex:187
+#: lib/memex/accounts/user.ex:197
 #, elixir-autogen, elixir-format
 msgid "is not valid"
 msgstr ""
 
-#: lib/memex/accounts/user.ex:85
+#: lib/memex/accounts/user.ex:95
 #, elixir-autogen, elixir-format
 msgid "must have the @ sign and no spaces"
 msgstr ""
@@ -101,12 +101,12 @@ msgstr ""
 msgid "oops, something went wrong! Please check the errors below"
 msgstr ""
 
-#: lib/memex/contexts/context.ex:49
-#: lib/memex/contexts/context.ex:62
-#: lib/memex/notes/note.ex:48
-#: lib/memex/notes/note.ex:61
-#: lib/memex/pipelines/pipeline.ex:50
-#: lib/memex/pipelines/pipeline.ex:63
+#: lib/memex/contexts/context.ex:58
+#: lib/memex/contexts/context.ex:71
+#: lib/memex/notes/note.ex:57
+#: lib/memex/notes/note.ex:70
+#: lib/memex/pipelines/pipeline.ex:60
+#: lib/memex/pipelines/pipeline.ex:73
 #, elixir-autogen, elixir-format
 msgid "invalid format: only numbers, letters and hyphen are accepted"
 msgstr ""
@@ -131,9 +131,9 @@ msgstr ""
 msgid "unauthorized"
 msgstr ""
 
-#: lib/memex/contexts/context.ex:75
-#: lib/memex/notes/note.ex:74
-#: lib/memex/pipelines/pipeline.ex:76
+#: lib/memex/contexts/context.ex:84
+#: lib/memex/notes/note.ex:83
+#: lib/memex/pipelines/pipeline.ex:86
 #, elixir-autogen, elixir-format
 msgid "invalid format: only numbers, letters and hyphen are accepted. tags must be comma-delimited"
 msgstr ""

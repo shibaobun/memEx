@@ -8,6 +8,15 @@ defmodule Memex.Notes.Note do
   alias Ecto.{Changeset, UUID}
   alias Memex.{Accounts.User, Repo}
 
+  @derive {Jason.Encoder,
+           only: [
+             :slug,
+             :content,
+             :tags,
+             :visibility,
+             :inserted_at,
+             :updated_at
+           ]}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "notes" do

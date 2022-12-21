@@ -67,7 +67,7 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:145
+#: lib/memex_web/templates/user_settings/edit.html.heex:154
 #, elixir-autogen, elixir-format
 msgid "delete user"
 msgstr ""
@@ -155,4 +155,9 @@ msgstr ""
 #: lib/memex_web/templates/user_reset_password/new.html.heex:15
 #, elixir-autogen, elixir-format, fuzzy
 msgid "send instructions to reset password"
+msgstr ""
+
+#: lib/memex_web/templates/user_settings/edit.html.heex:145
+#, elixir-autogen, elixir-format
+msgid "export data as json"
 msgstr ""

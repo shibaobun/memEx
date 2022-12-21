@@ -76,6 +76,7 @@ defmodule MemexWeb.Router do
       put "/users/settings", UserSettingsController, :update
       delete "/users/settings/:id", UserSettingsController, :delete
       get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+      get "/export/:mode", ExportController, :export
     end
 
     scope "/", MemexWeb do

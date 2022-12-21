@@ -121,7 +121,7 @@ msgstr ""
 msgid "are you sure you want to delete the invite for %{invite_name}?"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:143
+#: lib/memex_web/templates/user_settings/edit.html.heex:152
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to delete your account?"
 msgstr ""

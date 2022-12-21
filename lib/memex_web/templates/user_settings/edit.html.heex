@@ -136,12 +136,22 @@
 
   <hr class="hr" />
 
-  <.link
-    href={Routes.user_settings_path(@conn, :delete, @current_user)}
-    method={:delete}
-    class="btn btn-alert"
-    data-confirm={dgettext("prompts", "are you sure you want to delete your account?")}
-  >
-    <%= dgettext("actions", "delete user") %>
-  </.link>
+  <div class="flex justify-center items-center">
+    <.link
+      href={Routes.export_path(@conn, :export, :json)}
+      class="mx-4 my-2 btn btn-primary"
+      target="_blank"
+    >
+      <%= dgettext("actions", "export data as json") %>
+    </.link>
+
+    <.link
+      href={Routes.user_settings_path(@conn, :delete, @current_user)}
+      method={:delete}
+      class="mx-4 my-2 btn btn-alert"
+      data-confirm={dgettext("prompts", "are you sure you want to delete your account?")}
+    >
+      <%= dgettext("actions", "delete user") %>
+    </.link>
+  </div>
 </div>

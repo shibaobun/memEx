@@ -7,6 +7,14 @@ defmodule Memex.Pipelines.Steps.Step do
   alias Ecto.{Changeset, UUID}
   alias Memex.{Accounts.User, Pipelines.Pipeline}
 
+  @derive {Jason.Encoder,
+           only: [
+             :title,
+             :content,
+             :position,
+             :inserted_at,
+             :updated_at
+           ]}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "steps" do

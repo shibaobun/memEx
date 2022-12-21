@@ -9,6 +9,16 @@ defmodule Memex.Accounts.User do
   alias Ecto.{Changeset, UUID}
   alias Memex.Invites.Invite
 
+  @derive {Jason.Encoder,
+           only: [
+             :id,
+             :email,
+             :confirmed_at,
+             :role,
+             :locale,
+             :inserted_at,
+             :updated_at
+           ]}
   @derive {Inspect, except: [:password]}
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
