@@ -50,6 +50,8 @@ Alpine.start()
 topbar.config({ barThickness: 1, barColors: { 0: '#fff' }, shadowColor: 'rgba(0, 0, 0, .3)' })
 window.addEventListener('phx:page-loading-start', info => topbar.show())
 window.addEventListener('phx:page-loading-stop', info => topbar.hide())
+window.addEventListener('submit', info => topbar.show())
+window.addEventListener('beforeunload', info => topbar.show())
 
 // connect if there are any LiveViews on the page
 liveSocket.connect()
