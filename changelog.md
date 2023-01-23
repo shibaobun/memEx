@@ -1,3 +1,8 @@
+# v0.1.7
+- Update dependencies
+- Show topbar on form submit/page refresh
+- Make loading/reconnection less intrusive
+
 # v0.1.6
 - fix formatting in note/context/step contents
 - add json export for data

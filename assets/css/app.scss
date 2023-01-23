@@ -25,12 +25,13 @@ $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
   100% { scale: 1.0; opacity: 1; }
 }
 
-.phx-connected > #disconnect, #loading {
+// disconnect toast
+.phx-connected > #disconnect {
   opacity: 0 !important;
   pointer-events: none;
 }
 
-.phx-loading:not(.phx-error) > #loading, .phx-error > #disconnect {
+.phx-error > #disconnect {
   opacity: 0.95 !important;
 }
 
