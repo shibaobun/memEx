@@ -13,7 +13,7 @@ defmodule Memex.MixProject do
       deps: deps(),
       dialyzer: [plt_add_apps: [:ex_unit]],
       consolidate_protocols: Mix.env() not in [:dev, :test],
-      preferred_cli_env: [test: :test, "test.all": :test],
+      preferred_cli_env: ["test.all": :test],
       # ExDoc
       name: "memEx",
       source_url: "https://gitea.bubbletea.dev/shibao/memEx",
