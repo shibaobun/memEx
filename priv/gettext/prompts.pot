@@ -10,133 +10,133 @@
 msgid ""
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_confirmation_controller.ex:38
+#, elixir-autogen, elixir-format
 msgid "%{email} confirmed successfully."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_settings_controller.ex:29
+#, elixir-autogen, elixir-format
 msgid "A link to confirm your email change has been sent to the new address."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/user_settings/edit.html.heex:143
+#, elixir-autogen, elixir-format
 msgid "Are you sure you want to delete your account?"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/components/topbar.ex:71
+#, elixir-autogen, elixir-format
 msgid "Are you sure you want to log out?"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_settings_controller.ex:77
+#, elixir-autogen, elixir-format
 msgid "Email changed successfully."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_confirmation_controller.ex:23
+#, elixir-autogen, elixir-format
 msgid "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_reset_password_controller.ex:24
+#, elixir-autogen, elixir-format
 msgid "If your email is in our system, you will receive instructions to reset your password shortly."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_session_controller.ex:23
+#, elixir-autogen, elixir-format
 msgid "Logged out successfully."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_reset_password_controller.ex:46
+#, elixir-autogen, elixir-format
 msgid "Password reset successfully."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_settings_controller.ex:49
+#, elixir-autogen, elixir-format
 msgid "Password updated successfully."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_registration_controller.ex:74
+#, elixir-autogen, elixir-format
 msgid "Please check your email to verify your account"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_settings_controller.ex:95
+#, elixir-autogen, elixir-format
 msgid "Your account has been deleted"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.html.heex:101
 #: lib/lokal_web/live/invite_live/index.html.heex:130
+#, elixir-autogen, elixir-format
 msgid "Are you sure you want to delete %{email}? This action is permanent!"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.ex:127
+#, elixir-autogen, elixir-format
 msgid "Copied to clipboard"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/form_component.html.heex:30
+#, elixir-autogen, elixir-format
 msgid "Saving..."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/user_settings/edit.html.heex:133
+#, elixir-autogen, elixir-format
 msgid "Are you sure you want to change your language?"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_settings_controller.ex:65
+#, elixir-autogen, elixir-format
 msgid "Language updated successfully."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/form_component.ex:62
+#, elixir-autogen, elixir-format
 msgid "%{invite_name} created successfully"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.ex:53
+#, elixir-autogen, elixir-format
 msgid "%{invite_name} deleted succesfully"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.ex:114
+#, elixir-autogen, elixir-format
 msgid "%{invite_name} disabled succesfully"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.ex:90
+#, elixir-autogen, elixir-format
 msgid "%{invite_name} enabled succesfully"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.ex:68
+#, elixir-autogen, elixir-format
 msgid "%{invite_name} updated succesfully"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/form_component.ex:42
+#, elixir-autogen, elixir-format
 msgid "%{invite_name} updated successfully"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.ex:139
+#, elixir-autogen, elixir-format
 msgid "%{user_email} deleted succesfully"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.html.heex:48
+#, elixir-autogen, elixir-format
 msgid "Are you sure you want to delete the invite for %{invite_name}?"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.html.heex:73
+#, elixir-autogen, elixir-format
 msgid "Are you sure you want to make %{invite_name} unlimited?"
 msgstr ""

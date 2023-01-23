@@ -10,162 +10,162 @@
 msgid ""
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/user_settings/edit.html.heex:78
+#, elixir-autogen, elixir-format
 msgid "Confirm new password"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_confirmation_controller.ex:8
+#, elixir-autogen, elixir-format
 msgid "Confirm your account"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/user_settings/edit.html.heex:32
 #: lib/lokal_web/templates/user_settings/edit.html.heex:87
+#, elixir-autogen, elixir-format
 msgid "Current password"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_reset_password_controller.ex:9
+#, elixir-autogen, elixir-format
 msgid "Forgot your password?"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/components/invite_card.ex:25
+#, elixir-autogen, elixir-format
 msgid "Invite Disabled"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/components/topbar.ex:56
 #: lib/lokal_web/live/invite_live/index.ex:41
 #: lib/lokal_web/live/invite_live/index.html.heex:3
+#, elixir-autogen, elixir-format
 msgid "Invites"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/user_session/new.html.heex:27
+#, elixir-autogen, elixir-format
 msgid "Keep me logged in for 60 days"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/layout/live.html.heex:37
+#, elixir-autogen, elixir-format
 msgid "Loading..."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_session_controller.ex:8
+#, elixir-autogen, elixir-format
 msgid "Log in"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/user_settings/edit.html.heex:71
+#, elixir-autogen, elixir-format
 msgid "New password"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/layout/live.html.heex:50
+#, elixir-autogen, elixir-format
 msgid "Reconnecting..."
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_registration_controller.ex:35
+#, elixir-autogen, elixir-format
 msgid "Register"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_reset_password_controller.ex:36
+#, elixir-autogen, elixir-format
 msgid "Reset your password"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/controllers/user_settings_controller.ex:10
 #: lib/lokal_web/templates/user_settings/edit.html.heex:3
+#, elixir-autogen, elixir-format
 msgid "Settings"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/home_live.html.heex:7
+#, elixir-autogen, elixir-format
 msgid "Shop from your community"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/components/invite_card.ex:20
+#, elixir-autogen, elixir-format
 msgid "Uses Left:"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/home_live.html.heex:3
+#, elixir-autogen, elixir-format
 msgid "Welcome to Lokal"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/home_live.ex:10
+#, elixir-autogen, elixir-format
 msgid "Home"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.html.heex:89
+#, elixir-autogen, elixir-format
 msgid "Admins"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.html.heex:58
+#, elixir-autogen, elixir-format
 msgid "Disable"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.ex:33
+#, elixir-autogen, elixir-format
 msgid "Edit Invite"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.html.heex:62
+#, elixir-autogen, elixir-format
 msgid "Enable"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/form_component.html.heex:20
+#, elixir-autogen, elixir-format
 msgid "Name"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.ex:37
+#, elixir-autogen, elixir-format
 msgid "New Invite"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.html.heex:8
+#, elixir-autogen, elixir-format
 msgid "No invites 😔"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.html.heex:78
+#, elixir-autogen, elixir-format
 msgid "Set Unlimited"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/index.html.heex:118
+#, elixir-autogen, elixir-format
 msgid "Users"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/live/invite_live/form_component.html.heex:24
+#, elixir-autogen, elixir-format
 msgid "Uses left"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/user_registration/new.html.heex:36
 #: lib/lokal_web/templates/user_settings/edit.html.heex:126
+#, elixir-autogen, elixir-format
 msgid "English"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/components/user_card.ex:30
+#, elixir-autogen, elixir-format
 msgid "User registered on"
 msgstr ""
 
-#, elixir-autogen, elixir-format
 #: lib/lokal_web/templates/user_registration/new.html.heex:32
+#, elixir-autogen, elixir-format
 msgid "Language"
 msgstr ""
