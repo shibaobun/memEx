@@ -13,7 +13,7 @@ defmodule Lokal.MixProject do
       deps: deps(),
       dialyzer: [plt_add_apps: [:ex_unit]],
       consolidate_protocols: Mix.env() not in [:dev, :test],
-      preferred_cli_env: [test: :test],
+      preferred_cli_env: ["test.all": :test],
       # ExDoc
       name: "Lokal",
       source_url: "https://gitea.bubbletea.dev/shibao/lokal",
@@ -85,13 +85,13 @@ defmodule Lokal.MixProject do
       setup: ["deps.get", "compile", "ecto.setup", "cmd npm install --prefix assets"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      format: [
+      "format.all": [
         "cmd npm run format --prefix assets",
         "format",
         "gettext.extract --merge",
         "gettext.merge --no-fuzzy priv/gettext"
       ],
-      test: [
+      "test.all": [
         "cmd npm run test --prefix assets",
         "dialyzer",
         "credo --strict",
