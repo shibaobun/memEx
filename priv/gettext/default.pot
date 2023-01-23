@@ -25,22 +25,12 @@ msgstr ""
 msgid "Keep me logged in for 60 days"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:32
-#, elixir-autogen, elixir-format
-msgid "Language"
-msgstr ""
-
-#: lib/memex_web/templates/layout/live.html.heex:37
-#, elixir-autogen, elixir-format
-msgid "Loading..."
-msgstr ""
-
 #: lib/memex_web/live/invite_live/form_component.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "Name"
 msgstr ""
 
-#: lib/memex_web/templates/layout/live.html.heex:50
+#: lib/memex_web/templates/layout/live.html.heex:40
 #, elixir-autogen, elixir-format
 msgid "Reconnecting..."
 msgstr ""
@@ -653,4 +643,9 @@ msgstr ""
 #: lib/memex_web/components/user_card.ex:33
 #, elixir-autogen, elixir-format
 msgid "user registered on"
+msgstr ""
+
+#: lib/memex_web/templates/user_registration/new.html.heex:32
+#, elixir-autogen, elixir-format
+msgid "language"
 msgstr ""

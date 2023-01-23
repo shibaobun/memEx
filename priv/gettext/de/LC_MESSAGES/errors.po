@@ -9,7 +9,6 @@
 msgid ""
 msgstr ""
 "Language: de\n"
-"Plural-Forms: nplurals=2\n"
 
 #: lib/memex_web/controllers/user_settings_controller.ex:84
 #, elixir-autogen, elixir-format

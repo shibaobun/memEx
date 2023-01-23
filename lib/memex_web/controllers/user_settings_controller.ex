@@ -62,7 +62,7 @@ defmodule MemexWeb.UserSettingsController do
     case Accounts.update_user_locale(user, locale) do
       {:ok, _user} ->
         conn
-        |> put_flash(:info, dgettext("prompts", "Language updated successfully."))
+        |> put_flash(:info, dgettext("prompts", "language updated successfully."))
         |> redirect(to: Routes.user_settings_path(conn, :edit))
 
       {:error, changeset} ->

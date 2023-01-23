@@ -9,7 +9,6 @@
 msgid ""
 msgstr ""
 "Language: de\n"
-"Plural-Forms: nplurals=2\n"
 
 #: lib/memex_web/controllers/user_confirmation_controller.ex:38
 #, elixir-autogen, elixir-format
@@ -74,11 +73,6 @@ msgstr ""
 #: lib/memex_web/controllers/user_reset_password_controller.ex:24
 #, elixir-autogen, elixir-format
 msgid "If your email is in our system, you will receive instructions to reset your password shortly."
-msgstr ""
-
-#: lib/memex_web/controllers/user_settings_controller.ex:65
-#, elixir-autogen, elixir-format
-msgid "Language updated successfully."
 msgstr ""
 
 #: lib/memex_web/controllers/user_reset_password_controller.ex:46
@@ -156,4 +150,9 @@ msgstr ""
 #: lib/memex_web/controllers/user_session_controller.ex:23
 #, elixir-autogen, elixir-format, fuzzy
 msgid "logged out successfully."
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:65
+#, elixir-autogen, elixir-format, fuzzy
+msgid "language updated successfully."
 msgstr ""
