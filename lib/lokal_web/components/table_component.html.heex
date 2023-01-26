@@ -4,7 +4,7 @@
       <tr>
         <%= for %{key: key, label: label} = column <- @columns do %>
           <%= if column |> Map.get(:sortable, true) do %>
-            <th class={"p-2 #{column[:class]}"}>
+            <th class={["p-2", column[:class]]}>
               <span
                 class="cursor-pointer"
                 phx-click="sort_by"
@@ -25,7 +25,7 @@
               </span>
             </th>
           <% else %>
-            <th class={"p-2 #{column[:class]}"}>
+            <th class={["p-2", column[:class]]}>
               <%= label %>
             </th>
           <% end %>
@@ -36,7 +36,7 @@
       <%= for values <- @rows do %>
         <tr>
           <%= for %{key: key} = value <- @columns do %>
-            <td class={"p-2 #{value[:class]}"}>
+            <td class={["p-2", value[:class]]}>
               <%= case values |> Map.get(key) do %>
                 <% {_custom_sort_value, value} -> %>
                   <%= value %>

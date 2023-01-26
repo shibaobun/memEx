@@ -18,7 +18,7 @@ defmodule LokalWeb.ErrorHelpers do
 
     ~H"""
     <%= for error <- Keyword.get_values(@form.errors, @field) do %>
-      <span class={"invalid-feedback #{@extra_class}"} phx-feedback-for={input_name(@form, @field)}>
+      <span class={["invalid-feedback", @extra_class]} phx-feedback-for={input_name(@form, @field)}>
         <%= translate_error(error) %>
       </span>
     <% end %>
