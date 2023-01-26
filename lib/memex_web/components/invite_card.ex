@@ -33,6 +33,11 @@ defmodule MemexWeb.Components.InviteCard do
         </h2>
       <% end %>
 
+      <.qr_code
+        content={Routes.user_registration_url(Endpoint, :new, invite: @invite.token)}
+        filename={@invite.name}
+      />
+
       <div class="flex flex-row flex-wrap justify-center items-center">
         <code
           id={"code-#{@invite.id}"}

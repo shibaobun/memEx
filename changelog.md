@@ -2,6 +2,7 @@
 - Update dependencies
 - Show topbar on form submit/page refresh
 - Make loading/reconnection less intrusive
+- Add QR code for invite link
 
 # v0.1.6
 - fix formatting in note/context/step contents

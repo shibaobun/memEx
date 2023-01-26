@@ -63,4 +63,36 @@ defmodule MemexWeb.ViewHelpers do
     <% end %>
     """
   end
+
+  @doc """
+  Displays content in a QR code as a base64 encoded PNG
+  """
+  @spec qr_code_image(String.t()) :: String.t()
+  @spec qr_code_image(String.t(), width :: non_neg_integer()) :: String.t()
+  def qr_code_image(content, width \\ 384) do
+    img_data =
+      content
+      |> EQRCode.encode()
+      |> EQRCode.png(width: width, background_color: <<39, 39, 42>>, color: <<255, 255, 255>>)
+      |> Base.encode64()
+
+    "data:image/png;base64," <> img_data
+  end
+
+  @doc """
+  Creates a downloadable QR Code element
+  """
+
+  attr :content, :string, required: true
+  attr :filename, :string, default: "qrcode", doc: "filename without .png extension"
+  attr :image_class, :string, default: "w-64 h-max"
+  attr :width, :integer, default: 384, doc: "width of png to generate"
+
+  def qr_code(assigns) do
+    ~H"""
+    <a href={qr_code_image(@content)} download={@filename <> ".png"}>
+      <img class={@image_class} alt={@filename} src={qr_code_image(@content)} />
+    </a>
+    """
+  end
 end
