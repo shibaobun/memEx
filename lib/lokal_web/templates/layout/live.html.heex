@@ -28,27 +28,15 @@
 </main>
 
 <div
-  id="loading"
-  class="fixed opacity-0 top-0 left-0 w-screen h-screen bg-white z-50
-  flex flex-col justify-center items-center space-y-4
-  transition-opacity ease-in-out duration-500"
->
-  <h1 class="title text-2xl title-primary-500 text-primary-500">
-    <%= gettext("Loading...") %>
-  </h1>
-
-  <i class="fas fa-3x fa-spin fa-gear text-primary-500"></i>
-</div>
-
-<div
   id="disconnect"
-  class="fixed opacity-0 top-0 left-0 w-screen h-screen bg-white z-50
-  flex flex-col justify-center items-center space-y-4
-  transition-opacity ease-in-out duration-500"
+  class="z-50 fixed opacity-0 bottom-12 right-12 px-8 py-4 w-max h-max
+  border border-primary-200 shadow-lg rounded-lg bg-white
+  flex justify-center items-center space-x-4
+  transition-opacity ease-in-out duration-500 delay-[2000ms]"
 >
-  <h1 class="title text-2xl title-primary-500 text-primary-500">
+  <i class="fas fa-fade text-md fa-satellite-dish"></i>
+
+  <h1 class="title text-md title-primary-500">
     <%= gettext("Reconnecting...") %>
   </h1>
-
-  <i class="fas fa-3x fa-fade fa-satellite-dish text-primary-500"></i>
 </div>

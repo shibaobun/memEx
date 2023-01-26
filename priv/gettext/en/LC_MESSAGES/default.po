@@ -48,11 +48,6 @@ msgstr ""
 msgid "Keep me logged in for 60 days"
 msgstr ""
 
-#: lib/lokal_web/templates/layout/live.html.heex:37
-#, elixir-autogen, elixir-format
-msgid "Loading..."
-msgstr ""
-
 #: lib/lokal_web/controllers/user_session_controller.ex:8
 #, elixir-autogen, elixir-format
 msgid "Log in"
@@ -63,7 +58,7 @@ msgstr ""
 msgid "New password"
 msgstr ""
 
-#: lib/lokal_web/templates/layout/live.html.heex:50
+#: lib/lokal_web/templates/layout/live.html.heex:40
 #, elixir-autogen, elixir-format
 msgid "Reconnecting..."
 msgstr ""
