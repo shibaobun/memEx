@@ -46,7 +46,7 @@ defmodule MemexWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {MemexWeb.LayoutView, :live}
+        layout: {MemexWeb.LayoutView, "live.html"}
 
       on_mount MemexWeb.InitAssigns
       unquote(view_helpers())

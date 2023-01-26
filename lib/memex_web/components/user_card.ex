@@ -19,19 +19,23 @@ defmodule MemexWeb.Components.UserCard do
 
       <h3 class="px-4 py-2 rounded-lg title text-lg">
         <p>
-          <%= if @user.confirmed_at |> is_nil() do %>
-            <%= gettext("email unconfirmed") %>
+          <%= if @user.confirmed_at do %>
+            <%= gettext(
+              "user confirmed on%{confirmed_datetime}",
+              confirmed_datetime: ""
+            ) %>
+            <.datetime datetime={@user.confirmed_at} />
           <% else %>
-            <p>
-              <%= gettext("user confirmed on") %>
-              <%= @user.confirmed_at |> display_datetime() %>
-            </p>
+            <%= gettext("email unconfirmed") %>
           <% end %>
         </p>
 
         <p>
-          <%= gettext("user registered on") %>
-          <%= @user.inserted_at |> display_datetime() %>
+          <%= gettext(
+            "user registered on%{registered_datetime}",
+            registered_datetime: ""
+          ) %>
+          <.datetime datetime={@user.inserted_at} />
         </p>
       </h3>
 

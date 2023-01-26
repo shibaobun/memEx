@@ -45,11 +45,6 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: lib/memex_web/components/invite_card.ex:19
-#, elixir-autogen, elixir-format
-msgid "Uses Left:"
-msgstr ""
-
 #: lib/memex_web/live/invite_live/form_component.html.heex:24
 #, elixir-autogen, elixir-format
 msgid "Uses left"
@@ -136,7 +131,7 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: lib/memex_web/components/user_card.ex:23
+#: lib/memex_web/components/user_card.ex:29
 #, elixir-autogen, elixir-format
 msgid "email unconfirmed"
 msgstr ""
@@ -172,7 +167,7 @@ msgstr ""
 msgid "instance information"
 msgstr ""
 
-#: lib/memex_web/components/invite_card.ex:24
+#: lib/memex_web/components/invite_card.ex:32
 #, elixir-autogen, elixir-format
 msgid "invite disabled"
 msgstr ""
@@ -317,11 +312,6 @@ msgstr ""
 #: lib/memex_web/components/pipelines_table_component.ex:49
 #, elixir-autogen, elixir-format
 msgid "tags"
-msgstr ""
-
-#: lib/memex_web/components/invite_card.ex:20
-#, elixir-autogen, elixir-format
-msgid "unlimited"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/index.html.heex:120
@@ -635,17 +625,27 @@ msgstr ""
 msgid "while memEx fully supports multiple users, each memEx instance should be treated as a single cohesive and collaborative document."
 msgstr ""
 
-#: lib/memex_web/components/user_card.ex:26
-#, elixir-autogen, elixir-format
-msgid "user confirmed on"
-msgstr ""
-
-#: lib/memex_web/components/user_card.ex:33
-#, elixir-autogen, elixir-format
-msgid "user registered on"
-msgstr ""
-
 #: lib/memex_web/templates/user_registration/new.html.heex:32
 #, elixir-autogen, elixir-format
 msgid "language"
+msgstr ""
+
+#: lib/memex_web/components/user_card.ex:23
+#, elixir-autogen, elixir-format
+msgid "user confirmed on%{confirmed_datetime}"
+msgstr ""
+
+#: lib/memex_web/components/user_card.ex:34
+#, elixir-autogen, elixir-format
+msgid "user registered on%{registered_datetime}"
+msgstr ""
+
+#: lib/memex_web/components/invite_card.ex:22
+#, elixir-autogen, elixir-format
+msgid "uses left: %{uses_left}"
+msgstr ""
+
+#: lib/memex_web/components/invite_card.ex:27
+#, elixir-autogen, elixir-format
+msgid "uses left: unlimited"
 msgstr ""
