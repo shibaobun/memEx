@@ -22,7 +22,7 @@ msgstr ""
 msgid "Change password"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:139
+#: lib/lokal_web/templates/user_settings/edit.html.heex:145
 #, elixir-autogen, elixir-format
 msgid "Delete User"
 msgstr ""
@@ -34,9 +34,9 @@ msgstr ""
 msgid "Forgot your password?"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:93
+#: lib/lokal_web/components/topbar.ex:109
 #: lib/lokal_web/templates/user_confirmation/new.html.heex:29
-#: lib/lokal_web/templates/user_registration/new.html.heex:47
+#: lib/lokal_web/templates/user_registration/new.html.heex:48
 #: lib/lokal_web/templates/user_reset_password/edit.html.heex:47
 #: lib/lokal_web/templates/user_reset_password/new.html.heex:29
 #: lib/lokal_web/templates/user_session/new.html.heex:3
@@ -45,13 +45,13 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:86
-#: lib/lokal_web/templates/user_confirmation/new.html.heex:24
+#: lib/lokal_web/components/topbar.ex:100
+#: lib/lokal_web/templates/user_confirmation/new.html.heex:25
 #: lib/lokal_web/templates/user_registration/new.html.heex:3
 #: lib/lokal_web/templates/user_registration/new.html.heex:41
-#: lib/lokal_web/templates/user_reset_password/edit.html.heex:42
-#: lib/lokal_web/templates/user_reset_password/new.html.heex:24
-#: lib/lokal_web/templates/user_session/new.html.heex:39
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:43
+#: lib/lokal_web/templates/user_reset_password/new.html.heex:25
+#: lib/lokal_web/templates/user_session/new.html.heex:40
 #, elixir-autogen, elixir-format
 msgid "Register"
 msgstr ""
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Send instructions to reset password"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:32
+#: lib/lokal_web/live/invite_live/index.html.heex:30
 #, elixir-autogen, elixir-format
 msgid "Copy to clipboard"
 msgstr ""
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Create Invite"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:11
+#: lib/lokal_web/live/invite_live/index.html.heex:12
 #, elixir-autogen, elixir-format
 msgid "Invite someone new!"
 msgstr ""

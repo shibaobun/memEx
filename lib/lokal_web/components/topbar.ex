@@ -16,10 +16,12 @@ defmodule LokalWeb.Components.Topbar do
     <nav role="navigation" class="mb-8 px-8 py-4 w-full bg-primary-400">
       <div class="flex flex-col sm:flex-row justify-between items-center">
         <div class="mb-4 sm:mb-0 sm:mr-8 flex flex-row justify-start items-center space-x-2">
-          <%= live_redirect("Lokal",
-            to: Routes.live_path(Endpoint, HomeLive),
-            class: "mx-2 my-1 leading-5 text-xl text-white hover:underline"
-          ) %>
+          <.link
+            navigate={Routes.live_path(Endpoint, HomeLive)}
+            class="mx-2 my-1 leading-5 text-xl text-white hover:underline"
+          >
+            <%= gettext("Lokal") %>
+          </.link>
 
           <%= if @title_content do %>
             <span class="mx-2 my-1">
@@ -53,47 +55,59 @@ defmodule LokalWeb.Components.Topbar do
             </form>
             <%= if @current_user.role == :admin do %>
               <li class="mx-2 my-1">
-                <%= live_redirect(gettext("Invites"),
-                  to: Routes.invite_index_path(Endpoint, :index),
-                  class: "text-white text-white hover:underline"
-                ) %>
+                <.link
+                  navigate={Routes.invite_index_path(Endpoint, :index)}
+                  class="text-white text-white hover:underline"
+                >
+                  <%= gettext("Invites") %>
+                </.link>
               </li>
             <% end %>
             <li class="mx-2 my-1">
-              <%= live_redirect(@current_user.email,
-                to: Routes.user_settings_path(Endpoint, :edit),
-                class: "text-white text-white hover:underline truncate"
-              ) %>
+              <.link
+                navigate={Routes.user_settings_path(Endpoint, :edit)}
+                class="text-white text-white hover:underline truncate"
+              >
+                <%= @current_user.email %>
+              </.link>
             </li>
             <li class="mx-2 my-1">
-              <%= link to: Routes.user_session_path(Endpoint, :delete),
-                   method: :delete,
-                   data: [confirm: dgettext("prompts", "Are you sure you want to log out?")] do %>
+              <.link
+                href={Routes.user_session_path(Endpoint, :delete)}
+                method="delete"
+                data-confirm={dgettext("prompts", "Are you sure you want to log out?")}
+              >
                 <i class="fas fa-sign-out-alt"></i>
-              <% end %>
+              </.link>
             </li>
             <%= if @current_user.role == :admin and function_exported?(Routes, :live_dashboard_path, 2) do %>
               <li class="mx-2 my-1">
-                <%= live_redirect to: Routes.live_dashboard_path(Endpoint, :home),
-                  class: "text-white text-white hover:underline" do %>
+                <.link
+                  navigate={Routes.live_dashboard_path(Endpoint, :home)}
+                  class="text-white text-white hover:underline"
+                >
                   <i class="fas fa-gauge"></i>
-                <% end %>
+                </.link>
               </li>
             <% end %>
           <% else %>
             <%= if Accounts.allow_registration?() do %>
               <li class="mx-2 my-1">
-                <%= live_redirect(dgettext("actions", "Register"),
-                  to: Routes.user_registration_path(Endpoint, :new),
-                  class: "text-white text-white hover:underline truncate"
-                ) %>
+                <.link
+                  navigate={Routes.user_registration_path(Endpoint, :new)}
+                  class="text-white text-white hover:underline truncate"
+                >
+                  <%= dgettext("actions", "Register") %>
+                </.link>
               </li>
             <% end %>
             <li class="mx-2 my-1">
-              <%= live_redirect(dgettext("actions", "Log in"),
-                to: Routes.user_session_path(Endpoint, :new),
-                class: "text-white text-white hover:underline truncate"
-              ) %>
+              <.link
+                navigate={Routes.user_session_path(Endpoint, :new)}
+                class="text-white text-white hover:underline truncate"
+              >
+                <%= dgettext("actions", "Log in") %>
+              </.link>
             </li>
           <% end %>
         </ul>

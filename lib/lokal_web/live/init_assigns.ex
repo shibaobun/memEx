@@ -2,7 +2,7 @@ defmodule LokalWeb.InitAssigns do
   @moduledoc """
   Ensures common `assigns` are applied to all LiveViews attaching this hook.
   """
-  import Phoenix.LiveView
+  import Phoenix.Component
   alias Lokal.Accounts
 
   def on_mount(:default, _params, %{"locale" => locale, "user_token" => user_token}, socket) do

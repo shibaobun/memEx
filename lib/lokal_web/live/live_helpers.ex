@@ -3,7 +3,7 @@ defmodule LokalWeb.LiveHelpers do
   Contains resuable methods for all liveviews
   """
 
-  import Phoenix.LiveView.Helpers
+  import Phoenix.Component
   alias Phoenix.LiveView.JS
 
   @doc """
@@ -27,17 +27,17 @@ defmodule LokalWeb.LiveHelpers do
   """
   def modal(assigns) do
     ~H"""
-    <%= live_patch to: @return_to,
-      id: "modal-bg",
-      class:
-        "fade-in fixed z-10 left-0 top-0
+    <.link
+      id="modal-bg"
+      patch={@return_to}
+      class="fade-in fixed z-10 left-0 top-0
          w-full h-full overflow-hidden
-         p-8 flex flex-col justify-center items-center cursor-auto",
-      style: "background-color: rgba(0,0,0,0.4);",
-      phx_remove: hide_modal()
-    do %>
+         p-8 flex flex-col justify-center items-center cursor-auto"
+      style="background-color: rgba(0,0,0,0.4);"
+      phx_remove={hide_modal()}
+    >
       <span class="hidden"></span>
-    <% end %>
+    </.link>
 
     <div
       id="modal"
@@ -53,15 +53,16 @@ defmodule LokalWeb.LiveHelpers do
         flex flex-col justify-start items-center
         bg-white border-2 rounded-lg"
       >
-        <%= live_patch to: @return_to,
-                   id: "close",
-                   class:
-                     "absolute top-8 right-10
+        <.link
+          id="close"
+          href={@return_to}
+          class="absolute top-8 right-10
                       text-gray-500 hover:text-gray-800
-                      transition-all duration-500 ease-in-out",
-                   phx_remove: hide_modal() do %>
+                      transition-all duration-500 ease-in-out"
+          phx_remove={hide_modal()}
+        >
           <i class="fa-fw fa-lg fas fa-times"></i>
-        <% end %>
+        </.link>
 
         <div class="overflow-x-hidden overflow-y-auto w-full p-8 flex flex-col space-y-4 justify-start items-center">
           <%= render_slot(@inner_block) %>

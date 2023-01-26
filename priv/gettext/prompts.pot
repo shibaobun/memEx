@@ -25,7 +25,7 @@ msgstr ""
 msgid "Are you sure you want to delete your account?"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:71
+#: lib/lokal_web/components/topbar.ex:78
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to log out?"
 msgstr ""
@@ -70,8 +70,8 @@ msgstr ""
 msgid "Your account has been deleted"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:101
-#: lib/lokal_web/live/invite_live/index.html.heex:130
+#: lib/lokal_web/live/invite_live/index.html.heex:102
+#: lib/lokal_web/live/invite_live/index.html.heex:132
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to delete %{email}? This action is permanent!"
 msgstr ""
@@ -136,7 +136,7 @@ msgstr ""
 msgid "Are you sure you want to delete the invite for %{invite_name}?"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:73
+#: lib/lokal_web/live/invite_live/index.html.heex:74
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to make %{invite_name} unlimited?"
 msgstr ""
