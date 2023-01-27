@@ -75,7 +75,7 @@ if config_env() == :prod do
   config :lokal, Lokal.Mailer,
     adapter: Swoosh.Adapters.SMTP,
     relay: System.get_env("SMTP_HOST") || raise("No SMTP_HOST set!"),
-    port: System.get_env("SMTP_PORT", 587),
+    port: System.get_env("SMTP_PORT", "587"),
     username: System.get_env("SMTP_USERNAME") || raise("No SMTP_USERNAME set!"),
     password: System.get_env("SMTP_PASSWORD") || raise("No SMTP_PASSWORD set!"),
     ssl: System.get_env("SMTP_SSL") == "true",
