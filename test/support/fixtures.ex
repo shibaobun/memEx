@@ -29,7 +29,7 @@ defmodule Memex.Fixtures do
     })
     |> Accounts.register_user()
     |> unwrap_ok_tuple()
-    |> User.role_changeset("admin")
+    |> User.role_changeset(:admin)
     |> Repo.update!()
   end
 

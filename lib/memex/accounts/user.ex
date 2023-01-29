@@ -50,7 +50,7 @@ defmodule Memex.Accounts.User do
   @type new_user :: %__MODULE__{}
   @type id :: UUID.t()
   @type changeset :: Changeset.t(t() | new_user())
-  @type role :: :user | :admin | String.t()
+  @type role :: :user | :admin
 
   @doc """
   A user changeset for registration.
@@ -84,7 +84,7 @@ defmodule Memex.Accounts.User do
   """
   @spec role_changeset(t() | new_user() | changeset(), role()) :: changeset()
   def role_changeset(user, role) do
-    user |> cast(%{"role" => role}, [:role])
+    user |> change(role: role)
   end
 
   @spec validate_email(changeset()) :: changeset()

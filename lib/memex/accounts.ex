@@ -112,7 +112,7 @@ defmodule Memex.Accounts do
     |> Multi.one(:users_count, from(u in User, select: count(u.id), distinct: true))
     |> Multi.insert(:add_user, fn %{users_count: count} ->
       # if no registered users, make first user an admin
-      role = if count == 0, do: "admin", else: "user"
+      role = if count == 0, do: :admin, else: :user
 
       User.registration_changeset(attrs) |> User.role_changeset(role)
     end)
