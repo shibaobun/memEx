@@ -63,7 +63,7 @@ msgstr ""
 msgid "Reconnecting..."
 msgstr ""
 
-#: lib/lokal_web/controllers/user_registration_controller.ex:35
+#: lib/lokal_web/controllers/user_registration_controller.ex:34
 #, elixir-autogen, elixir-format
 msgid "Register"
 msgstr ""

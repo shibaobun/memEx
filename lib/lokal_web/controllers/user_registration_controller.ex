@@ -2,7 +2,6 @@ defmodule LokalWeb.UserRegistrationController do
   use LokalWeb, :controller
   import LokalWeb.Gettext
   alias Lokal.{Accounts, Invites}
-  alias Lokal.Accounts.User
   alias LokalWeb.{Endpoint, HomeLive}
 
   def new(conn, %{"invite" => invite_token}) do
@@ -30,7 +29,7 @@ defmodule LokalWeb.UserRegistrationController do
   # renders new user registration page
   defp render_new(conn, invite \\ nil) do
     render(conn, "new.html",
-      changeset: Accounts.change_user_registration(%User{}),
+      changeset: Accounts.change_user_registration(),
       invite: invite,
       page_title: gettext("Register")
     )

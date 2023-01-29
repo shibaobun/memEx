@@ -60,7 +60,7 @@ msgstr ""
 msgid "Password updated successfully."
 msgstr ""
 
-#: lib/lokal_web/controllers/user_registration_controller.ex:74
+#: lib/lokal_web/controllers/user_registration_controller.ex:73
 #, elixir-autogen, elixir-format
 msgid "Please check your email to verify your account"
 msgstr ""
