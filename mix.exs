@@ -34,7 +34,7 @@ defmodule Memex.MixProject do
   def application do
     [
       mod: {Memex.Application, []},
-      extra_applications: [:logger, :runtime_tools, :os_mon]
+      extra_applications: [:logger, :runtime_tools, :os_mon, :crypto]
     ]
   end
 
