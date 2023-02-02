@@ -34,7 +34,7 @@ defmodule Lokal.MixProject do
   def application do
     [
       mod: {Lokal.Application, []},
-      extra_applications: [:logger, :runtime_tools, :os_mon]
+      extra_applications: [:logger, :runtime_tools, :os_mon, :crypto]
     ]
   end
 
