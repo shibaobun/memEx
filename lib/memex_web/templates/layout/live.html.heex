@@ -3,22 +3,25 @@
     <.topbar current_user={assigns[:current_user]}></.topbar>
 
     <div class="mx-8 my-2 flex flex-col space-y-4 text-center">
-      <%= if @flash && @flash |> Map.has_key?("info") do %>
-        <p class="alert alert-info" role="alert" phx-click="lv:clear-flash" phx-value-key="info">
-          <%= live_flash(@flash, "info") %>
-        </p>
-      <% end %>
+      <p
+        :if={@flash && @flash |> Map.has_key?("info")}
+        class="alert alert-info"
+        role="alert"
+        phx-click="lv:clear-flash"
+        phx-value-key="info"
+      >
+        <%= live_flash(@flash, "info") %>
+      </p>
 
-      <%= if @flash && @flash |> Map.has_key?("error") do %>
-        <p
-          class="alert alert-danger"
-          role="alert"
-          phx-click="lv:clear-flash"
-          phx-value-key="error"
-        >
-          <%= live_flash(@flash, "error") %>
-        </p>
-      <% end %>
+      <p
+        :if={@flash && @flash |> Map.has_key?("error")}
+        class="alert alert-danger"
+        role="alert"
+        phx-click="lv:clear-flash"
+        phx-value-key="error"
+      >
+        <%= live_flash(@flash, "error") %>
+      </p>
     </div>
   </header>
 

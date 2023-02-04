@@ -109,11 +109,9 @@ defmodule MemexWeb.Components.NotesTableComponent do
 
     ~H"""
     <div class="flex flex-wrap justify-center space-x-1">
-      <%= for tag <- @tags do %>
-        <.link patch={Routes.note_index_path(Endpoint, :search, tag)} class="link">
-          <%= tag %>
-        </.link>
-      <% end %>
+      <.link :for={tag <- @tags} patch={Routes.note_index_path(Endpoint, :search, tag)} class="link">
+        <%= tag %>
+      </.link>
     </div>
     """
   end

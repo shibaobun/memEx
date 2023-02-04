@@ -9,13 +9,11 @@
     action={Routes.user_registration_path(@conn, :create)}
     class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
   >
-    <%= if @changeset.action && not @changeset.valid? do %>
-      <div class="alert alert-danger col-span-3">
-        <p>
-          <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
-        </p>
-      </div>
-    <% end %>
+    <div :if={@changeset.action && not @changeset.valid?()} class="alert alert-danger col-span-3">
+      <p>
+        <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
+      </p>
+    </div>
 
     <%= if @invite do %>
       <%= hidden_input(f, :invite_token, value: @invite.token) %>

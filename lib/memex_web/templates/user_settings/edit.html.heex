@@ -15,13 +15,14 @@
       <%= dgettext("actions", "change email") %>
     </h3>
 
-    <%= if @email_changeset.action && not @email_changeset.valid? do %>
-      <div class="alert alert-danger col-span-3">
-        <p>
-          <%= dgettext("errors", "oops, something went wrong! Please check the errors below") %>
-        </p>
-      </div>
-    <% end %>
+    <div
+      :if={@email_changeset.action && not @email_changeset.valid?()}
+      class="alert alert-danger col-span-3"
+    >
+      <p>
+        <%= dgettext("errors", "oops, something went wrong! Please check the errors below") %>
+      </p>
+    </div>
 
     <%= hidden_input(f, :action, name: "action", value: "update_email") %>
 
@@ -58,13 +59,14 @@
       <%= dgettext("actions", "change password") %>
     </h3>
 
-    <%= if @password_changeset.action && not @password_changeset.valid? do %>
-      <div class="alert alert-danger col-span-3">
-        <p>
-          <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
-        </p>
-      </div>
-    <% end %>
+    <div
+      :if={@password_changeset.action && not @password_changeset.valid?()}
+      class="alert alert-danger col-span-3"
+    >
+      <p>
+        <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
+      </p>
+    </div>
 
     <%= hidden_input(f, :action, name: "action", value: "update_password") %>
 
@@ -113,13 +115,14 @@
       <%= dgettext("actions", "change language") %>
     </h3>
 
-    <%= if @locale_changeset.action && not @locale_changeset.valid? do %>
-      <div class="alert alert-danger">
-        <p>
-          <%= dgettext("errors", "oops, something went wrong! Please check the errors below") %>
-        </p>
-      </div>
-    <% end %>
+    <div
+      :if={@locale_changeset.action && not @locale_changeset.valid?()}
+      class="alert alert-danger"
+    >
+      <p>
+        <%= dgettext("errors", "oops, something went wrong! Please check the errors below") %>
+      </p>
+    </div>
 
     <%= hidden_input(f, :action, name: "action", value: "update_locale") %>
 

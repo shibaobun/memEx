@@ -30,46 +30,44 @@
       notes={@notes}
     >
       <:actions :let={note}>
-        <%= if is_owner?(note, @current_user) do %>
-          <.link
-            patch={Routes.note_index_path(@socket, :edit, note.slug)}
-            data-qa={"note-edit-#{note.id}"}
-          >
-            <%= dgettext("actions", "edit") %>
-          </.link>
-        <% end %>
-        <%= if is_owner_or_admin?(note, @current_user) do %>
-          <.link
-            href="#"
-            phx-click="delete"
-            phx-value-id={note.id}
-            data-confirm={dgettext("prompts", "are you sure?")}
-            data-qa={"delete-note-#{note.id}"}
-          >
-            <%= dgettext("actions", "delete") %>
-          </.link>
-        <% end %>
+        <.link
+          :if={is_owner?(note, @current_user)}
+          patch={Routes.note_index_path(@socket, :edit, note.slug)}
+          data-qa={"note-edit-#{note.id}"}
+        >
+          <%= dgettext("actions", "edit") %>
+        </.link>
+        <.link
+          :if={is_owner_or_admin?(note, @current_user)}
+          href="#"
+          phx-click="delete"
+          phx-value-id={note.id}
+          data-confirm={dgettext("prompts", "are you sure?")}
+          data-qa={"delete-note-#{note.id}"}
+        >
+          <%= dgettext("actions", "delete") %>
+        </.link>
       </:actions>
     </.live_component>
   <% end %>
 
-  <%= if @current_user do %>
-    <.link patch={Routes.note_index_path(@socket, :new)} class="self-end btn btn-primary">
-      <%= dgettext("actions", "new note") %>
-    </.link>
-  <% end %>
+  <.link
+    :if={@current_user}
+    patch={Routes.note_index_path(@socket, :new)}
+    class="self-end btn btn-primary"
+  >
+    <%= dgettext("actions", "new note") %>
+  </.link>
 </div>
 
-<%= if @live_action in [:new, :edit] do %>
-  <.modal return_to={Routes.note_index_path(@socket, :index)}>
-    <.live_component
-      module={MemexWeb.NoteLive.FormComponent}
-      id={@note.id || :new}
-      current_user={@current_user}
-      title={@page_title}
-      action={@live_action}
-      note={@note}
-      return_to={Routes.note_index_path(@socket, :index)}
-    />
-  </.modal>
-<% end %>
+<.modal :if={@live_action in [:new, :edit]} return_to={Routes.note_index_path(@socket, :index)}>
+  <.live_component
+    module={MemexWeb.NoteLive.FormComponent}
+    id={@note.id || :new}
+    current_user={@current_user}
+    title={@page_title}
+    action={@live_action}
+    note={@note}
+    return_to={Routes.note_index_path(@socket, :index)}
+  />
+</.modal>

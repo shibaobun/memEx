@@ -4,11 +4,13 @@
   </h1>
 
   <div class="flex flex-wrap space-x-1">
-    <%= for tag <- @context.tags do %>
-      <.link navigate={Routes.context_index_path(Endpoint, :search, tag)} class="link">
-        <%= tag %>
-      </.link>
-    <% end %>
+    <.link
+      :for={tag <- @context.tags}
+      navigate={Routes.context_index_path(Endpoint, :search, tag)}
+      class="link"
+    >
+      <%= tag %>
+    </.link>
   </div>
 
   <.context_content context={@context} />
@@ -21,38 +23,37 @@
     <.link class="btn btn-primary" navigate={Routes.context_index_path(@socket, :index)}>
       <%= dgettext("actions", "back") %>
     </.link>
-    <%= if is_owner?(@context, @current_user) do %>
-      <.link
-        class="btn btn-primary"
-        patch={Routes.context_show_path(@socket, :edit, @context.slug)}
-      >
-        <%= dgettext("actions", "edit") %>
-      </.link>
-    <% end %>
-    <%= if is_owner_or_admin?(@context, @current_user) do %>
-      <button
-        type="button"
-        class="btn btn-primary"
-        phx-click="delete"
-        data-confirm={dgettext("prompts", "are you sure?")}
-        data-qa={"delete-context-#{@context.id}"}
-      >
-        <%= dgettext("actions", "delete") %>
-      </button>
-    <% end %>
+    <.link
+      :if={is_owner?(@context, @current_user)}
+      class="btn btn-primary"
+      patch={Routes.context_show_path(@socket, :edit, @context.slug)}
+    >
+      <%= dgettext("actions", "edit") %>
+    </.link>
+    <button
+      :if={is_owner_or_admin?(@context, @current_user)}
+      type="button"
+      class="btn btn-primary"
+      phx-click="delete"
+      data-confirm={dgettext("prompts", "are you sure?")}
+      data-qa={"delete-context-#{@context.id}"}
+    >
+      <%= dgettext("actions", "delete") %>
+    </button>
   </div>
 </div>
 
-<%= if @live_action in [:edit] do %>
-  <.modal return_to={Routes.context_show_path(@socket, :show, @context.slug)}>
-    <.live_component
-      module={MemexWeb.ContextLive.FormComponent}
-      id={@context.id}
-      current_user={@current_user}
-      title={@page_title}
-      action={@live_action}
-      context={@context}
-      return_to={Routes.context_show_path(@socket, :show, @context.slug)}
-    />
-  </.modal>
-<% end %>
+<.modal
+  if={@live_action == :edit}
+  return_to={Routes.context_show_path(@socket, :show, @context.slug)}
+>
+  <.live_component
+    module={MemexWeb.ContextLive.FormComponent}
+    id={@context.id}
+    current_user={@current_user}
+    title={@page_title}
+    action={@live_action}
+    context={@context}
+    return_to={Routes.context_show_path(@socket, :show, @context.slug)}
+  />
+</.modal>

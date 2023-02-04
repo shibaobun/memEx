@@ -4,23 +4,24 @@
   </h1>
 
   <div class="flex flex-wrap space-x-1">
-    <%= for tag <- @pipeline.tags do %>
-      <.link navigate={Routes.pipeline_index_path(Endpoint, :search, tag)} class="link">
-        <%= tag %>
-      </.link>
-    <% end %>
+    <.link
+      :for={tag <- @pipeline.tags}
+      navigate={Routes.pipeline_index_path(Endpoint, :search, tag)}
+      class="link"
+    >
+      <%= tag %>
+    </.link>
   </div>
 
-  <%= if @pipeline.description do %>
-    <textarea
-      id="show-pipeline-description"
-      class="input input-primary h-32 min-h-32"
-      phx-hook="MaintainAttrs"
-      phx-update="ignore"
-      readonly
-      phx-no-format
-    ><%= @pipeline.description %></textarea>
-  <% end %>
+  <textarea
+    :if={@pipeline.description}
+    id="show-pipeline-description"
+    class="input input-primary h-32 min-h-32"
+    phx-hook="MaintainAttrs"
+    phx-update="ignore"
+    readonly
+    phx-no-format
+  ><%= @pipeline.description %></textarea>
 
   <p class="self-end">
     <%= gettext("Visibility: %{visibility}", visibility: @pipeline.visibility) %>
@@ -30,25 +31,23 @@
     <.link class="btn btn-primary" navigate={Routes.pipeline_index_path(@socket, :index)}>
       <%= dgettext("actions", "back") %>
     </.link>
-    <%= if is_owner?(@pipeline, @current_user) do %>
-      <.link
-        class="btn btn-primary"
-        patch={Routes.pipeline_show_path(@socket, :edit, @pipeline.slug)}
-      >
-        <%= dgettext("actions", "edit") %>
-      </.link>
-    <% end %>
-    <%= if is_owner_or_admin?(@pipeline, @current_user) do %>
-      <button
-        type="button"
-        class="btn btn-primary"
-        phx-click="delete"
-        data-confirm={dgettext("prompts", "are you sure?")}
-        data-qa={"delete-pipeline-#{@pipeline.id}"}
-      >
-        <%= dgettext("actions", "delete") %>
-      </button>
-    <% end %>
+    <.link
+      :if={is_owner?(@pipeline, @current_user)}
+      class="btn btn-primary"
+      patch={Routes.pipeline_show_path(@socket, :edit, @pipeline.slug)}
+    >
+      <%= dgettext("actions", "edit") %>
+    </.link>
+    <button
+      :if={is_owner_or_admin?(@pipeline, @current_user)}
+      type="button"
+      class="btn btn-primary"
+      phx-click="delete"
+      data-confirm={dgettext("prompts", "are you sure?")}
+      data-qa={"delete-pipeline-#{@pipeline.id}"}
+    >
+      <%= dgettext("actions", "delete") %>
+    </button>
   </div>
 
   <hr class="hr" />
@@ -126,15 +125,14 @@
     <% end %>
   <% end %>
 
-  <%= if is_owner?(@pipeline, @current_user) do %>
-    <.link
-      class="self-end btn btn-primary"
-      patch={Routes.pipeline_show_path(@socket, :add_step, @pipeline.slug)}
-      data-qa={"add-step-#{@pipeline.id}"}
-    >
-      <%= dgettext("actions", "add step") %>
-    </.link>
-  <% end %>
+  <.link
+    :if={is_owner?(@pipeline, @current_user)}
+    class="self-end btn btn-primary"
+    patch={Routes.pipeline_show_path(@socket, :add_step, @pipeline.slug)}
+    data-qa={"add-step-#{@pipeline.id}"}
+  >
+    <%= dgettext("actions", "add step") %>
+  </.link>
 </div>
 
 <%= case @live_action do %>
@@ -150,20 +148,7 @@
         return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}
       />
     </.modal>
-  <% :add_step -> %>
-    <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}>
-      <.live_component
-        module={MemexWeb.StepLive.FormComponent}
-        id={@pipeline.id || :new}
-        current_user={@current_user}
-        title={@page_title}
-        action={@live_action}
-        pipeline={@pipeline}
-        step={@step}
-        return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}
-      />
-    </.modal>
-  <% :edit_step -> %>
+  <% action when action in [:add_step, :edit_step] -> %>
     <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}>
       <.live_component
         module={MemexWeb.StepLive.FormComponent}

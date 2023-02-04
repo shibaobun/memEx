@@ -4,11 +4,13 @@
   </h1>
 
   <div class="flex flex-wrap space-x-1">
-    <%= for tag <- @note.tags do %>
-      <.link navigate={Routes.note_index_path(Endpoint, :search, tag)} class="link">
-        <%= tag %>
-      </.link>
-    <% end %>
+    <.link
+      :for={tag <- @note.tags}
+      navigate={Routes.note_index_path(Endpoint, :search, tag)}
+      class="link"
+    >
+      <%= tag %>
+    </.link>
   </div>
 
   <.note_content note={@note} />
@@ -21,35 +23,34 @@
     <.link class="btn btn-primary" navigate={Routes.note_index_path(@socket, :index)}>
       <%= dgettext("actions", "back") %>
     </.link>
-    <%= if is_owner?(@note, @current_user) do %>
-      <.link class="btn btn-primary" patch={Routes.note_show_path(@socket, :edit, @note.slug)}>
-        <%= dgettext("actions", "edit") %>
-      </.link>
-    <% end %>
-    <%= if is_owner_or_admin?(@note, @current_user) do %>
-      <button
-        type="button"
-        class="btn btn-primary"
-        phx-click="delete"
-        data-confirm={dgettext("prompts", "are you sure?")}
-        data-qa={"delete-note-#{@note.id}"}
-      >
-        <%= dgettext("actions", "delete") %>
-      </button>
-    <% end %>
+    <.link
+      :if={is_owner?(@note, @current_user)}
+      class="btn btn-primary"
+      patch={Routes.note_show_path(@socket, :edit, @note.slug)}
+    >
+      <%= dgettext("actions", "edit") %>
+    </.link>
+    <button
+      :if={is_owner_or_admin?(@note, @current_user)}
+      type="button"
+      class="btn btn-primary"
+      phx-click="delete"
+      data-confirm={dgettext("prompts", "are you sure?")}
+      data-qa={"delete-note-#{@note.id}"}
+    >
+      <%= dgettext("actions", "delete") %>
+    </button>
   </div>
 </div>
 
-<%= if @live_action in [:edit] do %>
-  <.modal return_to={Routes.note_show_path(@socket, :show, @note.slug)}>
-    <.live_component
-      module={MemexWeb.NoteLive.FormComponent}
-      id={@note.id}
-      current_user={@current_user}
-      title={@page_title}
-      action={@live_action}
-      note={@note}
-      return_to={Routes.note_show_path(@socket, :show, @note.slug)}
-    />
-  </.modal>
-<% end %>
+<.modal :if={@live_action == :edit} return_to={Routes.note_show_path(@socket, :show, @note.slug)}>
+  <.live_component
+    module={MemexWeb.NoteLive.FormComponent}
+    id={@note.id}
+    current_user={@current_user}
+    title={@page_title}
+    action={@live_action}
+    note={@note}
+    return_to={Routes.note_show_path(@socket, :show, @note.slug)}
+  />
+</.modal>

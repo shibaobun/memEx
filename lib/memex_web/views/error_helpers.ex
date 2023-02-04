@@ -17,11 +17,13 @@ defmodule MemexWeb.ErrorHelpers do
     assigns = %{extra_class: extra_class, form: form, field: field}
 
     ~H"""
-    <%= for error <- Keyword.get_values(@form.errors, @field) do %>
-      <span class={["invalid-feedback", @extra_class]} phx-feedback-for={input_name(@form, @field)}>
-        <%= translate_error(error) %>
-      </span>
-    <% end %>
+    <span
+      :for={error <- Keyword.get_values(@form.errors, @field)}
+      class={["invalid-feedback", @extra_class]}
+      phx-feedback-for={input_name(@form, @field)}
+    >
+      <%= translate_error(error) %>
+    </span>
     """
   end
 

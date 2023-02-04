@@ -65,16 +65,14 @@ defmodule MemexWeb.Components.Topbar do
           <li class="mx-2 my-1 border-left border border-primary-700">​</li>
 
           <%= if @current_user do %>
-            <%= if @current_user |> Accounts.is_already_admin?() do %>
-              <li class="mx-2 my-1">
-                <.link
-                  navigate={Routes.invite_index_path(Endpoint, :index)}
-                  class="text-primary-400 text-primary-400 hover:underline"
-                >
-                  <%= gettext("invites") %>
-                </.link>
-              </li>
-            <% end %>
+            <li :if={@current_user |> Accounts.is_already_admin?()} class="mx-2 my-1">
+              <.link
+                navigate={Routes.invite_index_path(Endpoint, :index)}
+                class="text-primary-400 text-primary-400 hover:underline"
+              >
+                <%= gettext("invites") %>
+              </.link>
+            </li>
 
             <li class="mx-2 my-1">
               <.link
@@ -95,27 +93,28 @@ defmodule MemexWeb.Components.Topbar do
               </.link>
             </li>
 
-            <%= if @current_user.role == :admin and function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li class="mx-2 my-1">
-                <.link
-                  navigate={Routes.live_dashboard_path(Endpoint, :home)}
-                  class="text-primary-400 text-primary-400 hover:underline"
-                >
-                  <i class="fas fa-gauge"></i>
-                </.link>
-              </li>
-            <% end %>
+            <li
+              :if={
+                @current_user.role == :admin and function_exported?(Routes, :live_dashboard_path, 2)
+              }
+              class="mx-2 my-1"
+            >
+              <.link
+                navigate={Routes.live_dashboard_path(Endpoint, :home)}
+                class="text-primary-400 text-primary-400 hover:underline"
+              >
+                <i class="fas fa-gauge"></i>
+              </.link>
+            </li>
           <% else %>
-            <%= if Accounts.allow_registration?() do %>
-              <li class="mx-2 my-1">
-                <.link
-                  navigate={Routes.user_registration_path(Endpoint, :new)}
-                  class="text-primary-400 text-primary-400 hover:underline truncate"
-                >
-                  <%= dgettext("actions", "register") %>
-                </.link>
-              </li>
-            <% end %>
+            <li :if={Accounts.allow_registration?()} class="mx-2 my-1">
+              <.link
+                navigate={Routes.user_registration_path(Endpoint, :new)}
+                class="text-primary-400 text-primary-400 hover:underline truncate"
+              >
+                <%= dgettext("actions", "register") %>
+              </.link>
+            </li>
 
             <li class="mx-2 my-1">
               <.link

@@ -7,6 +7,11 @@ defmodule MemexWeb.LayoutView do
   # so we instruct Elixir to not warn if the dashboard route is missing.
   @compile {:no_warn_undefined, {Routes, :live_dashboard_path, 2}}
 
-  def get_title(%{assigns: %{title: title}}), do: gettext("memEx | %{title}", title: title)
-  def get_title(_conn), do: gettext("memEx")
+  def get_title(%{assigns: %{title: title}}) do
+    gettext("memEx | %{title}", title: title)
+  end
+
+  def get_title(_conn) do
+    gettext("memEx")
+  end
 end

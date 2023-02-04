@@ -90,7 +90,7 @@ msgstr ""
 msgid "Please check your email to verify your account"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.html.heex:30
+#: lib/memex_web/live/invite_live/form_component.html.heex:31
 #, elixir-autogen, elixir-format
 msgid "Saving..."
 msgstr ""
@@ -100,51 +100,46 @@ msgstr ""
 msgid "Your account has been deleted"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:133
+#: lib/memex_web/templates/user_settings/edit.html.heex:136
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to change your language?"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:102
-#: lib/memex_web/live/invite_live/index.html.heex:132
+#: lib/memex_web/live/invite_live/index.html.heex:97
+#: lib/memex_web/live/invite_live/index.html.heex:125
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to delete %{email}? This action is permanent!"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:48
+#: lib/memex_web/live/invite_live/index.html.heex:47
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to delete the invite for %{invite_name}?"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:152
+#: lib/memex_web/templates/user_settings/edit.html.heex:155
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to delete your account?"
 msgstr ""
 
-#: lib/memex_web/components/topbar.ex:92
+#: lib/memex_web/components/topbar.ex:90
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to log out?"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:74
+#: lib/memex_web/live/invite_live/index.html.heex:72
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to make %{invite_name} unlimited?"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:46
-#: lib/memex_web/live/context_live/show.html.heex:37
-#: lib/memex_web/live/note_live/index.html.heex:46
-#: lib/memex_web/live/note_live/show.html.heex:34
-#: lib/memex_web/live/pipeline_live/index.html.heex:46
+#: lib/memex_web/live/context_live/index.html.heex:45
+#: lib/memex_web/live/context_live/show.html.heex:38
+#: lib/memex_web/live/note_live/index.html.heex:45
+#: lib/memex_web/live/note_live/show.html.heex:38
+#: lib/memex_web/live/pipeline_live/index.html.heex:45
 #: lib/memex_web/live/pipeline_live/show.html.heex:46
-#: lib/memex_web/live/pipeline_live/show.html.heex:116
+#: lib/memex_web/live/pipeline_live/show.html.heex:115
 #, elixir-autogen, elixir-format
 msgid "are you sure?"
-msgstr ""
-
-#: lib/memex_web/live/home_live.html.heex:95
-#, elixir-autogen, elixir-format
-msgid "register to setup %{name}"
 msgstr ""
 
 #: lib/memex_web/controllers/user_session_controller.ex:23
@@ -155,4 +150,9 @@ msgstr ""
 #: lib/memex_web/controllers/user_settings_controller.ex:65
 #, elixir-autogen, elixir-format
 msgid "language updated successfully."
+msgstr ""
+
+#: lib/memex_web/live/home_live.html.heex:95
+#, elixir-autogen, elixir-format
+msgid "register to setup memEx"
 msgstr ""

@@ -109,11 +109,13 @@ defmodule MemexWeb.Components.ContextsTableComponent do
 
     ~H"""
     <div class="flex flex-wrap justify-center space-x-1">
-      <%= for tag <- @tags do %>
-        <.link patch={Routes.context_index_path(Endpoint, :search, tag)} class="link">
-          <%= tag %>
-        </.link>
-      <% end %>
+      <.link
+        :for={tag <- @tags}
+        patch={Routes.context_index_path(Endpoint, :search, tag)}
+        class="link"
+      >
+        <%= tag %>
+      </.link>
     </div>
     """
   end

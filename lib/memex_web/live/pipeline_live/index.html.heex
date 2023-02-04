@@ -30,46 +30,47 @@
       pipelines={@pipelines}
     >
       <:actions :let={pipeline}>
-        <%= if is_owner?(pipeline, @current_user) do %>
-          <.link
-            patch={Routes.pipeline_index_path(@socket, :edit, pipeline.slug)}
-            data-qa={"pipeline-edit-#{pipeline.id}"}
-          >
-            <%= dgettext("actions", "edit") %>
-          </.link>
-        <% end %>
-        <%= if is_owner_or_admin?(pipeline, @current_user) do %>
-          <.link
-            href="#"
-            phx-click="delete"
-            phx-value-id={pipeline.id}
-            data-confirm={dgettext("prompts", "are you sure?")}
-            data-qa={"delete-pipeline-#{pipeline.id}"}
-          >
-            <%= dgettext("actions", "delete") %>
-          </.link>
-        <% end %>
+        <.link
+          :if={is_owner?(pipeline, @current_user)}
+          patch={Routes.pipeline_index_path(@socket, :edit, pipeline.slug)}
+          data-qa={"pipeline-edit-#{pipeline.id}"}
+        >
+          <%= dgettext("actions", "edit") %>
+        </.link>
+        <.link
+          :if={is_owner_or_admin?(pipeline, @current_user)}
+          href="#"
+          phx-click="delete"
+          phx-value-id={pipeline.id}
+          data-confirm={dgettext("prompts", "are you sure?")}
+          data-qa={"delete-pipeline-#{pipeline.id}"}
+        >
+          <%= dgettext("actions", "delete") %>
+        </.link>
       </:actions>
     </.live_component>
   <% end %>
 
-  <%= if @current_user do %>
-    <.link patch={Routes.pipeline_index_path(@socket, :new)} class="self-end btn btn-primary">
-      <%= dgettext("actions", "new pipeline") %>
-    </.link>
-  <% end %>
+  <.link
+    :if={@current_user}
+    patch={Routes.pipeline_index_path(@socket, :new)}
+    class="self-end btn btn-primary"
+  >
+    <%= dgettext("actions", "new pipeline") %>
+  </.link>
 </div>
 
-<%= if @live_action in [:new, :edit] do %>
-  <.modal return_to={Routes.pipeline_index_path(@socket, :index)}>
-    <.live_component
-      module={MemexWeb.PipelineLive.FormComponent}
-      id={@pipeline.id || :new}
-      current_user={@current_user}
-      title={@page_title}
-      action={@live_action}
-      pipeline={@pipeline}
-      return_to={Routes.pipeline_index_path(@socket, :index)}
-    />
-  </.modal>
-<% end %>
+<.modal
+  :if={@live_action in [:new, :edit]}
+  return_to={Routes.pipeline_index_path(@socket, :index)}
+>
+  <.live_component
+    module={MemexWeb.PipelineLive.FormComponent}
+    id={@pipeline.id || :new}
+    current_user={@current_user}
+    title={@page_title}
+    action={@live_action}
+    pipeline={@pipeline}
+    return_to={Routes.pipeline_index_path(@socket, :index)}
+  />
+</.modal>
