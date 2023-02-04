@@ -7,7 +7,7 @@ defmodule Lokal.Accounts.User do
   import Ecto.Changeset
   import LokalWeb.Gettext
   alias Ecto.{Changeset, UUID}
-  alias Lokal.{Accounts.User, Invites.Invite}
+  alias Lokal.Accounts.{Invite, User}
 
   @derive {Jason.Encoder,
            only: [

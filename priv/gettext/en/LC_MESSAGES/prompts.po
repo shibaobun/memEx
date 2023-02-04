@@ -60,7 +60,7 @@ msgstr ""
 msgid "Password updated successfully."
 msgstr ""
 
-#: lib/lokal_web/controllers/user_registration_controller.ex:73
+#: lib/lokal_web/controllers/user_registration_controller.ex:65
 #, elixir-autogen, elixir-format
 msgid "Please check your email to verify your account"
 msgstr ""
@@ -76,7 +76,7 @@ msgstr ""
 msgid "Are you sure you want to delete %{email}? This action is permanent!"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.ex:127
+#: lib/lokal_web/live/invite_live/index.ex:128
 #, elixir-autogen, elixir-format
 msgid "Copied to clipboard"
 msgstr ""
@@ -96,37 +96,27 @@ msgstr ""
 msgid "Language updated successfully."
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.ex:62
-#, elixir-autogen, elixir-format
-msgid "%{invite_name} created successfully"
-msgstr ""
-
-#: lib/lokal_web/live/invite_live/index.ex:53
+#: lib/lokal_web/live/invite_live/index.ex:54
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} deleted succesfully"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.ex:114
+#: lib/lokal_web/live/invite_live/index.ex:115
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} disabled succesfully"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.ex:90
+#: lib/lokal_web/live/invite_live/index.ex:91
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} enabled succesfully"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.ex:68
+#: lib/lokal_web/live/invite_live/index.ex:69
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} updated succesfully"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.ex:42
-#, elixir-autogen, elixir-format
-msgid "%{invite_name} updated successfully"
-msgstr ""
-
-#: lib/lokal_web/live/invite_live/index.ex:139
+#: lib/lokal_web/live/invite_live/index.ex:140
 #, elixir-autogen, elixir-format
 msgid "%{user_email} deleted succesfully"
 msgstr ""
@@ -144,4 +134,14 @@ msgstr ""
 #: lib/lokal_web/live/home_live.html.heex:56
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Register to setup Lokal"
+msgstr ""
+
+#: lib/lokal_web/live/invite_live/form_component.ex:80
+#, elixir-autogen, elixir-format, fuzzy
+msgid "%{name} created successfully"
+msgstr ""
+
+#: lib/lokal_web/live/invite_live/form_component.ex:62
+#, elixir-autogen, elixir-format, fuzzy
+msgid "%{name} updated successfully"
 msgstr ""

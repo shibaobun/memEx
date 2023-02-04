@@ -1,11 +1,11 @@
 defmodule LokalWeb.InviteLive.FormComponent do
   @moduledoc """
-  Livecomponent that can update or create an Lokal.Invites.Invite
+  Livecomponent that can update or create an Lokal.Accounts.Invite
   """
 
   use LokalWeb, :live_component
   alias Ecto.Changeset
-  alias Lokal.{Accounts.User, Invites, Invites.Invite}
+  alias Lokal.Accounts.{Invite, Invites, User}
   alias Phoenix.LiveView.Socket
 
   @impl true
@@ -13,21 +13,42 @@ defmodule LokalWeb.InviteLive.FormComponent do
           %{:invite => Invite.t(), :current_user => User.t(), optional(any) => any},
           Socket.t()
         ) :: {:ok, Socket.t()}
-  def update(%{invite: invite} = assigns, socket) do
-    {:ok, socket |> assign(assigns) |> assign(:changeset, Invites.change_invite(invite))}
+  def update(%{invite: _invite} = assigns, socket) do
+    {:ok, socket |> assign(assigns) |> assign_changeset(%{})}
   end
 
   @impl true
-  def handle_event(
-        "validate",
-        %{"invite" => invite_params},
-        %{assigns: %{invite: invite}} = socket
-      ) do
-    {:noreply, socket |> assign(:changeset, invite |> Invites.change_invite(invite_params))}
+  def handle_event("validate", %{"invite" => invite_params}, socket) do
+    {:noreply, socket |> assign_changeset(invite_params)}
   end
 
   def handle_event("save", %{"invite" => invite_params}, %{assigns: %{action: action}} = socket) do
     save_invite(socket, action, invite_params)
+  end
+
+  defp assign_changeset(
+         %{assigns: %{action: action, current_user: user, invite: invite}} = socket,
+         invite_params
+       ) do
+    changeset_action =
+      case action do
+        :new -> :insert
+        :edit -> :update
+      end
+
+    changeset =
+      case action do
+        :new -> Invite.create_changeset(user, "example_token", invite_params)
+        :edit -> invite |> Invite.update_changeset(invite_params)
+      end
+
+    changeset =
+      case changeset |> Changeset.apply_action(changeset_action) do
+        {:ok, _data} -> changeset
+        {:error, changeset} -> changeset
+      end
+
+    socket |> assign(:changeset, changeset)
   end
 
   defp save_invite(
@@ -38,10 +59,8 @@ defmodule LokalWeb.InviteLive.FormComponent do
     socket =
       case invite |> Invites.update_invite(invite_params, current_user) do
         {:ok, %{name: invite_name}} ->
-          prompt =
-            dgettext("prompts", "%{invite_name} updated successfully", invite_name: invite_name)
-
-          socket |> put_flash(:info, prompt) |> push_redirect(to: return_to)
+          prompt = dgettext("prompts", "%{name} updated successfully", name: invite_name)
+          socket |> put_flash(:info, prompt) |> push_navigate(to: return_to)
 
         {:error, %Changeset{} = changeset} ->
           socket |> assign(:changeset, changeset)
@@ -58,10 +77,8 @@ defmodule LokalWeb.InviteLive.FormComponent do
     socket =
       case current_user |> Invites.create_invite(invite_params) do
         {:ok, %{name: invite_name}} ->
-          prompt =
-            dgettext("prompts", "%{invite_name} created successfully", invite_name: invite_name)
-
-          socket |> put_flash(:info, prompt) |> push_redirect(to: return_to)
+          prompt = dgettext("prompts", "%{name} created successfully", name: invite_name)
+          socket |> put_flash(:info, prompt) |> push_navigate(to: return_to)
 
         {:error, %Changeset{} = changeset} ->
           socket |> assign(changeset: changeset)

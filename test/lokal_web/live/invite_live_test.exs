@@ -6,7 +6,7 @@ defmodule LokalWeb.InviteLiveTest do
   use LokalWeb.ConnCase
   import Phoenix.LiveViewTest
   import LokalWeb.Gettext
-  alias Lokal.Invites
+  alias Lokal.Accounts.Invites
 
   @moduletag :invite_live_test
   @create_attrs %{"name" => "some name"}

@@ -137,14 +137,15 @@ msgstr ""
 msgid "Reset password link is invalid or it has expired."
 msgstr ""
 
-#: lib/lokal_web/controllers/user_registration_controller.ex:24
-#: lib/lokal_web/controllers/user_registration_controller.ex:55
+#: lib/lokal_web/controllers/user_registration_controller.ex:22
+#: lib/lokal_web/controllers/user_registration_controller.ex:51
 #, elixir-autogen, elixir-format
 msgid "Sorry, public registration is disabled"
 msgstr ""
 
-#: lib/lokal_web/controllers/user_registration_controller.ex:14
-#: lib/lokal_web/controllers/user_registration_controller.ex:45
+#: lib/lokal_web/controllers/user_registration_controller.ex:12
+#: lib/lokal_web/controllers/user_registration_controller.ex:41
+#: lib/lokal_web/controllers/user_registration_controller.ex:70
 #, elixir-autogen, elixir-format
 msgid "Sorry, this invite was not found or expired"
 msgstr ""
@@ -195,7 +196,7 @@ msgstr ""
 msgid "must have the @ sign and no spaces"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.ex:18
+#: lib/lokal_web/live/invite_live/index.ex:19
 #, elixir-autogen, elixir-format
 msgid "You are not authorized to view this page"
 msgstr ""

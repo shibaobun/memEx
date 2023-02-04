@@ -1,11 +1,12 @@
 defmodule LokalWeb.InviteLive.Index do
   @moduledoc """
-  Liveview to show a Lokal.Invites.Invite index
+  Liveview to show a Lokal.Accounts.Invite index
   """
 
   use LokalWeb, :live_view
   import LokalWeb.Components.{InviteCard, UserCard}
-  alias Lokal.{Accounts, Invites, Invites.Invite}
+  alias Lokal.Accounts
+  alias Lokal.Accounts.{Invite, Invites}
   alias LokalWeb.{Endpoint, HomeLive}
   alias Phoenix.LiveView.JS
 
