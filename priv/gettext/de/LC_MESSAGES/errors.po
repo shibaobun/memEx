@@ -10,11 +10,6 @@ msgid ""
 msgstr ""
 "Language: de\n"
 
-#: lib/memex_web/controllers/user_settings_controller.ex:84
-#, elixir-autogen, elixir-format
-msgid "Email change link is invalid or it has expired."
-msgstr ""
-
 #: lib/memex_web/templates/error/error.html.heex:8
 #, elixir-autogen, elixir-format
 msgid "Error"
@@ -25,7 +20,6 @@ msgstr ""
 msgid "Invalid email or password"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:14
 #: lib/memex_web/templates/user_reset_password/edit.html.heex:14
 #: lib/memex_web/templates/user_settings/edit.html.heex:67
 #, elixir-autogen, elixir-format
@@ -37,31 +31,21 @@ msgstr ""
 msgid "Reset password link is invalid or it has expired."
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:24
-#: lib/memex_web/controllers/user_registration_controller.ex:55
+#: lib/memex_web/controllers/user_registration_controller.ex:22
+#: lib/memex_web/controllers/user_registration_controller.ex:51
 #, elixir-autogen, elixir-format
 msgid "Sorry, public registration is disabled"
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:14
-#: lib/memex_web/controllers/user_registration_controller.ex:45
+#: lib/memex_web/controllers/user_registration_controller.ex:12
+#: lib/memex_web/controllers/user_registration_controller.ex:41
 #, elixir-autogen, elixir-format
 msgid "Sorry, this invite was not found or expired"
-msgstr ""
-
-#: lib/memex_web/controllers/user_settings_controller.ex:99
-#, elixir-autogen, elixir-format
-msgid "Unable to delete user"
 msgstr ""
 
 #: lib/memex_web/controllers/user_confirmation_controller.ex:54
 #, elixir-autogen, elixir-format
 msgid "User confirmation link is invalid or it has expired."
-msgstr ""
-
-#: lib/memex_web/live/invite_live/index.ex:18
-#, elixir-autogen, elixir-format
-msgid "You are not authorized to view this page"
 msgstr ""
 
 #: lib/memex_web/controllers/user_auth.ex:177
@@ -75,22 +59,22 @@ msgstr ""
 msgid "You must confirm your account and log in to access this page."
 msgstr ""
 
-#: lib/memex/accounts/user.ex:139
+#: lib/memex/accounts/user.ex:144
 #, elixir-autogen, elixir-format
 msgid "did not change"
 msgstr ""
 
-#: lib/memex/accounts/user.ex:160
+#: lib/memex/accounts/user.ex:165
 #, elixir-autogen, elixir-format
 msgid "does not match password"
 msgstr ""
 
-#: lib/memex/accounts/user.ex:197
+#: lib/memex/accounts/user.ex:202
 #, elixir-autogen, elixir-format
 msgid "is not valid"
 msgstr ""
 
-#: lib/memex/accounts/user.ex:95
+#: lib/memex/accounts/user.ex:99
 #, elixir-autogen, elixir-format
 msgid "must have the @ sign and no spaces"
 msgstr ""
@@ -136,4 +120,29 @@ msgstr ""
 #: lib/memex/pipelines/pipeline.ex:86
 #, elixir-autogen, elixir-format, fuzzy
 msgid "invalid format: only numbers, letters and hyphen are accepted. tags must be comma-delimited"
+msgstr ""
+
+#: lib/memex_web/templates/user_registration/new.html.heex:13
+#, elixir-autogen, elixir-format, fuzzy
+msgid "oops, something went wrong! please check the errors below."
+msgstr ""
+
+#: lib/memex_web/controllers/user_registration_controller.ex:70
+#, elixir-autogen, elixir-format, fuzzy
+msgid "sorry, this invite was not found or expired"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.ex:19
+#, elixir-autogen, elixir-format, fuzzy
+msgid "you are not authorized to view this page"
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:84
+#, elixir-autogen, elixir-format, fuzzy
+msgid "email change link is invalid or it has expired."
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:99
+#, elixir-autogen, elixir-format, fuzzy
+msgid "unable to delete user"
 msgstr ""

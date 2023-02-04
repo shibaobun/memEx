@@ -51,11 +51,6 @@ msgstr ""
 msgid "Reset your password"
 msgstr ""
 
-#: lib/memex_web/controllers/user_settings_controller.ex:10
-#, elixir-autogen, elixir-format
-msgid "Settings"
-msgstr ""
-
 #: lib/memex_web/live/invite_live/form_component.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "Uses left"
@@ -132,7 +127,7 @@ msgstr ""
 msgid "document your processes, attaching contexts to each step"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:33
+#: lib/memex_web/live/invite_live/index.ex:34
 #, elixir-autogen, elixir-format
 msgid "edit invite"
 msgstr ""
@@ -152,7 +147,7 @@ msgstr ""
 msgid "enable"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:34
+#: lib/memex_web/templates/user_registration/new.html.heex:32
 #: lib/memex_web/templates/user_settings/edit.html.heex:129
 #, elixir-autogen, elixir-format
 msgid "english"
@@ -178,7 +173,7 @@ msgstr ""
 msgid "instance information"
 msgstr ""
 
-#: lib/memex_web/components/invite_card.ex:32
+#: lib/memex_web/components/invite_card.ex:42
 #, elixir-autogen, elixir-format
 msgid "invite disabled"
 msgstr ""
@@ -189,7 +184,7 @@ msgid "invite only"
 msgstr ""
 
 #: lib/memex_web/components/topbar.ex:73
-#: lib/memex_web/live/invite_live/index.ex:41
+#: lib/memex_web/live/invite_live/index.ex:42
 #: lib/memex_web/live/invite_live/index.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "invites"
@@ -205,7 +200,7 @@ msgstr ""
 msgid "multi-user:"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:37
+#: lib/memex_web/live/invite_live/index.ex:38
 #, elixir-autogen, elixir-format
 msgid "new invite"
 msgstr ""
@@ -271,7 +266,7 @@ msgstr ""
 msgid "public signups"
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:34
+#: lib/memex_web/controllers/user_registration_controller.ex:32
 #, elixir-autogen, elixir-format
 msgid "register"
 msgstr ""
@@ -306,6 +301,7 @@ msgstr ""
 msgid "set unlimited"
 msgstr ""
 
+#: lib/memex_web/controllers/user_settings_controller.ex:10
 #: lib/memex_web/templates/user_settings/edit.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "settings"
@@ -632,7 +628,7 @@ msgstr ""
 msgid "while memEx fully supports multiple users, each memEx instance should be treated as a single cohesive and collaborative document."
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:30
+#: lib/memex_web/templates/user_registration/new.html.heex:28
 #, elixir-autogen, elixir-format, fuzzy
 msgid "language"
 msgstr ""
@@ -647,12 +643,7 @@ msgstr ""
 msgid "user registered on%{registered_datetime}"
 msgstr ""
 
-#: lib/memex_web/components/invite_card.ex:22
-#, elixir-autogen, elixir-format
-msgid "uses left: %{uses_left}"
-msgstr ""
-
-#: lib/memex_web/components/invite_card.ex:27
+#: lib/memex_web/components/invite_card.ex:37
 #, elixir-autogen, elixir-format
 msgid "uses left: unlimited"
 msgstr ""
@@ -660,4 +651,14 @@ msgstr ""
 #: lib/memex_web/live/home_live.html.heex:41
 #, elixir-autogen, elixir-format, fuzzy
 msgid "read more on how to use memEx"
+msgstr ""
+
+#: lib/memex_web/components/invite_card.ex:32
+#, elixir-autogen, elixir-format, fuzzy
+msgid "uses left: %{uses_left_count}"
+msgstr ""
+
+#: lib/memex_web/components/invite_card.ex:52
+#, elixir-autogen, elixir-format
+msgid "uses: %{uses_count}"
 msgstr ""

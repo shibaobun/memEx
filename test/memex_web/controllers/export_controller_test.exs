@@ -8,14 +8,7 @@ defmodule MemexWeb.ExportControllerTest do
 
   @moduletag :export_controller_test
 
-  setup %{conn: conn} do
-    current_user = user_fixture() |> confirm_user()
-
-    [
-      current_user: current_user,
-      conn: conn |> log_in_user(current_user)
-    ]
-  end
+  setup [:register_and_log_in_user]
 
   defp add_data(%{current_user: current_user}) do
     note = note_fixture(current_user)

@@ -22,10 +22,8 @@ defmodule Memex.DataCase do
       alias Memex.Repo
 
       import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
-      import Memex.DataCase
-      import Memex.Fixtures
+      import Ecto.{Changeset, Query}
+      import Memex.{DataCase, Fixtures}
     end
   end
 
@@ -45,7 +43,7 @@ defmodule Memex.DataCase do
   """
   def errors_on(changeset) do
     Ecto.Changeset.traverse_errors(changeset, fn {message, opts} ->
-      Regex.replace(~r"%{(\w+)}", message, fn _, key ->
+      Regex.replace(~r"%{(\w+)}", message, fn _capture, key ->
         opts |> Keyword.get(String.to_existing_atom(key), key) |> to_string()
       end)
     end)

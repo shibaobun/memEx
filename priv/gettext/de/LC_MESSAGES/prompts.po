@@ -15,54 +15,29 @@ msgstr ""
 msgid "%{email} confirmed successfully."
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.ex:62
-#, elixir-autogen, elixir-format
-msgid "%{invite_name} created successfully"
-msgstr ""
-
-#: lib/memex_web/live/invite_live/index.ex:53
+#: lib/memex_web/live/invite_live/index.ex:54
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} deleted succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:114
+#: lib/memex_web/live/invite_live/index.ex:115
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} disabled succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:90
+#: lib/memex_web/live/invite_live/index.ex:91
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} enabled succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:68
+#: lib/memex_web/live/invite_live/index.ex:69
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} updated succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.ex:42
-#, elixir-autogen, elixir-format
-msgid "%{invite_name} updated successfully"
-msgstr ""
-
-#: lib/memex_web/live/invite_live/index.ex:139
+#: lib/memex_web/live/invite_live/index.ex:140
 #, elixir-autogen, elixir-format
 msgid "%{user_email} deleted succesfully"
-msgstr ""
-
-#: lib/memex_web/controllers/user_settings_controller.ex:29
-#, elixir-autogen, elixir-format
-msgid "A link to confirm your email change has been sent to the new address."
-msgstr ""
-
-#: lib/memex_web/live/invite_live/index.ex:127
-#, elixir-autogen, elixir-format
-msgid "Copied to clipboard"
-msgstr ""
-
-#: lib/memex_web/controllers/user_settings_controller.ex:77
-#, elixir-autogen, elixir-format
-msgid "Email changed successfully."
 msgstr ""
 
 #: lib/memex_web/controllers/user_confirmation_controller.ex:23
@@ -80,24 +55,9 @@ msgstr ""
 msgid "Password reset successfully."
 msgstr ""
 
-#: lib/memex_web/controllers/user_settings_controller.ex:49
-#, elixir-autogen, elixir-format
-msgid "Password updated successfully."
-msgstr ""
-
-#: lib/memex_web/controllers/user_registration_controller.ex:73
-#, elixir-autogen, elixir-format
-msgid "Please check your email to verify your account"
-msgstr ""
-
 #: lib/memex_web/live/invite_live/form_component.html.heex:31
 #, elixir-autogen, elixir-format
 msgid "Saving..."
-msgstr ""
-
-#: lib/memex_web/controllers/user_settings_controller.ex:95
-#, elixir-autogen, elixir-format
-msgid "Your account has been deleted"
 msgstr ""
 
 #: lib/memex_web/templates/user_settings/edit.html.heex:136
@@ -155,4 +115,44 @@ msgstr ""
 #: lib/memex_web/live/home_live.html.heex:95
 #, elixir-autogen, elixir-format, fuzzy
 msgid "register to setup memEx"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.ex:80
+#, elixir-autogen, elixir-format, fuzzy
+msgid "%{name} created successfully"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.ex:62
+#, elixir-autogen, elixir-format, fuzzy
+msgid "%{name} updated successfully"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.ex:128
+#, elixir-autogen, elixir-format, fuzzy
+msgid "copied to clipboard"
+msgstr ""
+
+#: lib/memex_web/controllers/user_registration_controller.ex:65
+#, elixir-autogen, elixir-format, fuzzy
+msgid "please check your email to verify your account"
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:29
+#, elixir-autogen, elixir-format, fuzzy
+msgid "a link to confirm your email change has been sent to the new address."
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:77
+#, elixir-autogen, elixir-format, fuzzy
+msgid "email changed successfully."
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:49
+#, elixir-autogen, elixir-format, fuzzy
+msgid "password updated successfully."
+msgstr ""
+
+#: lib/memex_web/controllers/user_settings_controller.ex:95
+#, elixir-autogen, elixir-format, fuzzy
+msgid "your account has been deleted"
 msgstr ""

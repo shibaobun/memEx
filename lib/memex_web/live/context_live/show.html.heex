@@ -44,7 +44,7 @@
 </div>
 
 <.modal
-  if={@live_action == :edit}
+  :if={@live_action == :edit}
   return_to={Routes.context_show_path(@socket, :show, @context.slug)}
 >
   <.live_component

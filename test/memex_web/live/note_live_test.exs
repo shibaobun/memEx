@@ -24,8 +24,8 @@ defmodule MemexWeb.NoteLiveTest do
     "visibility" => nil
   }
 
-  defp create_note(%{user: user}) do
-    [note: note_fixture(user)]
+  defp create_note(%{current_user: current_user}) do
+    [note: note_fixture(current_user)]
   end
 
   describe "Index" do
@@ -149,13 +149,13 @@ defmodule MemexWeb.NoteLiveTest do
   describe "show with note" do
     setup [:register_and_log_in_user]
 
-    setup %{user: user} do
-      %{slug: note_slug} = note = note_fixture(user)
+    setup %{current_user: current_user} do
+      %{slug: note_slug} = note = note_fixture(current_user)
 
       [
         note: note,
         backlinked_note:
-          note_fixture(%{content: "example with backlink to [[#{note_slug}]] note"}, user)
+          note_fixture(%{content: "example with backlink to [[#{note_slug}]] note"}, current_user)
       ]
     end
 

@@ -1,12 +1,13 @@
 defmodule MemexWeb.InviteLive.Index do
   @moduledoc """
-  Liveview to show a Memex.Invites.Invite index
+  Liveview to show a Memex.Accounts.Invite index
   """
 
   use MemexWeb, :live_view
   import MemexWeb.Components.{InviteCard, UserCard}
-  alias Memex.{Accounts, Invites, Invites.Invite}
-  alias MemexWeb.HomeLive
+  alias Memex.Accounts
+  alias Memex.Accounts.{Invite, Invites}
+  alias MemexWeb.{Endpoint, HomeLive}
   alias Phoenix.LiveView.JS
 
   @impl true
@@ -15,9 +16,9 @@ defmodule MemexWeb.InviteLive.Index do
       if current_user |> Map.get(:role) == :admin do
         socket |> display_invites()
       else
-        prompt = dgettext("errors", "You are not authorized to view this page")
+        prompt = dgettext("errors", "you are not authorized to view this page")
         return_to = Routes.live_path(Endpoint, HomeLive)
-        socket |> put_flash(:error, prompt) |> push_navigate(to: return_to)
+        socket |> put_flash(:error, prompt) |> push_redirect(to: return_to)
       end
 
     {:ok, socket}
@@ -61,7 +62,7 @@ defmodule MemexWeb.InviteLive.Index do
       ) do
     socket =
       Invites.get_invite!(id, current_user)
-      |> Invites.update_invite(%{"uses_left" => nil}, current_user)
+      |> Invites.update_invite(%{uses_left: nil}, current_user)
       |> case do
         {:ok, %{name: invite_name}} ->
           prompt =
@@ -83,7 +84,7 @@ defmodule MemexWeb.InviteLive.Index do
       ) do
     socket =
       Invites.get_invite!(id, current_user)
-      |> Invites.update_invite(%{"uses_left" => nil, "disabled_at" => nil}, current_user)
+      |> Invites.update_invite(%{uses_left: nil, disabled_at: nil}, current_user)
       |> case do
         {:ok, %{name: invite_name}} ->
           prompt =
@@ -107,7 +108,7 @@ defmodule MemexWeb.InviteLive.Index do
 
     socket =
       Invites.get_invite!(id, current_user)
-      |> Invites.update_invite(%{"uses_left" => 0, "disabled_at" => now}, current_user)
+      |> Invites.update_invite(%{uses_left: 0, disabled_at: now}, current_user)
       |> case do
         {:ok, %{name: invite_name}} ->
           prompt =
@@ -124,7 +125,7 @@ defmodule MemexWeb.InviteLive.Index do
 
   @impl true
   def handle_event("copy_to_clipboard", _, socket) do
-    prompt = dgettext("prompts", "Copied to clipboard")
+    prompt = dgettext("prompts", "copied to clipboard")
     {:noreply, socket |> put_flash(:info, prompt)}
   end
 

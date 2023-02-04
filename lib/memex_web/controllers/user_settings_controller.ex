@@ -7,7 +7,7 @@ defmodule MemexWeb.UserSettingsController do
   plug :assign_email_and_password_changesets
 
   def edit(conn, _params) do
-    render(conn, "edit.html", page_title: gettext("Settings"))
+    render(conn, "edit.html", page_title: gettext("settings"))
   end
 
   def update(%{assigns: %{current_user: user}} = conn, %{
@@ -28,7 +28,7 @@ defmodule MemexWeb.UserSettingsController do
           :info,
           dgettext(
             "prompts",
-            "A link to confirm your email change has been sent to the new address."
+            "a link to confirm your email change has been sent to the new address."
           )
         )
         |> redirect(to: Routes.user_settings_path(conn, :edit))
@@ -46,7 +46,7 @@ defmodule MemexWeb.UserSettingsController do
     case Accounts.update_user_password(user, password, user_params) do
       {:ok, user} ->
         conn
-        |> put_flash(:info, dgettext("prompts", "Password updated successfully."))
+        |> put_flash(:info, dgettext("prompts", "password updated successfully."))
         |> put_session(:user_return_to, Routes.user_settings_path(conn, :edit))
         |> UserAuth.log_in_user(user)
 
@@ -74,14 +74,14 @@ defmodule MemexWeb.UserSettingsController do
     case Accounts.update_user_email(user, token) do
       :ok ->
         conn
-        |> put_flash(:info, dgettext("prompts", "Email changed successfully."))
+        |> put_flash(:info, dgettext("prompts", "email changed successfully."))
         |> redirect(to: Routes.user_settings_path(conn, :edit))
 
       :error ->
         conn
         |> put_flash(
           :error,
-          dgettext("errors", "Email change link is invalid or it has expired.")
+          dgettext("errors", "email change link is invalid or it has expired.")
         )
         |> redirect(to: Routes.user_settings_path(conn, :edit))
     end
@@ -92,11 +92,11 @@ defmodule MemexWeb.UserSettingsController do
       current_user |> Accounts.delete_user!(current_user)
 
       conn
-      |> put_flash(:error, dgettext("prompts", "Your account has been deleted"))
+      |> put_flash(:error, dgettext("prompts", "your account has been deleted"))
       |> redirect(to: Routes.live_path(conn, HomeLive))
     else
       conn
-      |> put_flash(:error, dgettext("errors", "Unable to delete user"))
+      |> put_flash(:error, dgettext("errors", "unable to delete user"))
       |> redirect(to: Routes.user_settings_path(conn, :edit))
     end
   end

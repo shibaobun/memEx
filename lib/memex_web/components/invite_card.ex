@@ -4,9 +4,19 @@ defmodule MemexWeb.Components.InviteCard do
   """
 
   use MemexWeb, :component
+  alias Memex.Accounts.{Invite, Invites, User}
+  alias MemexWeb.Endpoint
 
-  def invite_card(assigns) do
-    assigns = assigns |> assign_new(:code_actions, fn -> [] end)
+  attr :invite, Invite, required: true
+  attr :current_user, User, required: true
+  slot(:inner_block)
+  slot(:code_actions)
+
+  def invite_card(%{invite: invite, current_user: current_user} = assigns) do
+    assigns =
+      assigns
+      |> assign(:use_count, Invites.get_use_count(invite, current_user))
+      |> assign_new(:code_actions, fn -> [] end)
 
     ~H"""
     <div class="mx-4 my-2 px-8 py-4 flex flex-col justify-center items-center space-y-4
@@ -20,8 +30,8 @@ defmodule MemexWeb.Components.InviteCard do
         <h2 class="title text-md">
           <%= if @invite.uses_left do %>
             <%= gettext(
-              "uses left: %{uses_left}",
-              uses_left: @invite.uses_left
+              "uses left: %{uses_left_count}",
+              uses_left_count: @invite.uses_left
             ) %>
           <% else %>
             <%= gettext("uses left: unlimited") %>
@@ -37,6 +47,10 @@ defmodule MemexWeb.Components.InviteCard do
         content={Routes.user_registration_url(Endpoint, :new, invite: @invite.token)}
         filename={@invite.name}
       />
+
+      <h2 :if={@use_count != 0} class="title text-md">
+        <%= gettext("uses: %{uses_count}", uses_count: @use_count) %>
+      </h2>
 
       <div class="flex flex-row flex-wrap justify-center items-center">
         <code

@@ -23,10 +23,11 @@ defmodule MemexWeb.ConnCase do
   using do
     quote do
       # Import conveniences for testing with connections
-      import Plug.Conn
-      import Phoenix.ConnTest
+      # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
       import Memex.Fixtures
       import MemexWeb.ConnCase
+      import Phoenix.ConnTest
+      import Plug.Conn
 
       alias MemexWeb.Router.Helpers, as: Routes
 
@@ -50,10 +51,10 @@ defmodule MemexWeb.ConnCase do
   test context.
   """
   @spec register_and_log_in_user(%{conn: Plug.Conn.t()}) ::
-          %{conn: Plug.Conn.t(), user: User.t()}
+          %{conn: Plug.Conn.t(), current_user: User.t()}
   def register_and_log_in_user(%{conn: conn}) do
-    user = user_fixture() |> confirm_user()
-    %{conn: log_in_user(conn, user), user: user}
+    current_user = user_fixture() |> confirm_user()
+    %{conn: log_in_user(conn, current_user), current_user: current_user}
   end
 
   @spec confirm_user(User.t()) :: User.t()

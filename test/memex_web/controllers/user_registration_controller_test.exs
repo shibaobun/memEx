@@ -33,7 +33,7 @@ defmodule MemexWeb.UserRegistrationControllerTest do
         })
 
       assert get_session(conn, :phoenix_flash) == %{
-               "info" => dgettext("prompts", "Please check your email to verify your account")
+               "info" => dgettext("prompts", "please check your email to verify your account")
              }
 
       assert redirected_to(conn) =~ "/"

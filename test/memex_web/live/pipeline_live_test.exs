@@ -34,8 +34,8 @@ defmodule MemexWeb.PipelineLiveTest do
     "title" => nil
   }
 
-  defp create_pipeline(%{user: user}) do
-    [pipeline: pipeline_fixture(user)]
+  defp create_pipeline(%{current_user: current_user}) do
+    [pipeline: pipeline_fixture(current_user)]
   end
 
   describe "Index" do
@@ -181,9 +181,9 @@ defmodule MemexWeb.PipelineLiveTest do
   describe "show with a step" do
     setup [:register_and_log_in_user, :create_pipeline]
 
-    setup %{pipeline: pipeline, user: user} do
+    setup %{pipeline: pipeline, current_user: current_user} do
       [
-        step: step_fixture(0, pipeline, user)
+        step: step_fixture(0, pipeline, current_user)
       ]
     end
 
@@ -236,11 +236,11 @@ defmodule MemexWeb.PipelineLiveTest do
   describe "show with multiple steps" do
     setup [:register_and_log_in_user, :create_pipeline]
 
-    setup %{pipeline: pipeline, user: user} do
+    setup %{pipeline: pipeline, current_user: current_user} do
       [
-        first_step: step_fixture(%{title: "first step"}, 0, pipeline, user),
-        second_step: step_fixture(%{title: "second step"}, 1, pipeline, user),
-        third_step: step_fixture(%{title: "third step"}, 2, pipeline, user)
+        first_step: step_fixture(%{title: "first step"}, 0, pipeline, current_user),
+        second_step: step_fixture(%{title: "second step"}, 1, pipeline, current_user),
+        third_step: step_fixture(%{title: "third step"}, 2, pipeline, current_user)
       ]
     end
 

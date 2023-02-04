@@ -23,8 +23,8 @@ defmodule MemexWeb.ContextLiveTest do
     "visibility" => nil
   }
 
-  defp create_context(%{user: user}) do
-    [context: context_fixture(user)]
+  defp create_context(%{current_user: current_user}) do
+    [context: context_fixture(current_user)]
   end
 
   describe "Index" do
@@ -148,13 +148,16 @@ defmodule MemexWeb.ContextLiveTest do
   describe "show with note" do
     setup [:register_and_log_in_user]
 
-    setup %{user: user} do
-      %{slug: note_slug} = note = note_fixture(user)
+    setup %{current_user: current_user} do
+      %{slug: note_slug} = note = note_fixture(current_user)
 
       [
         note: note,
         context:
-          context_fixture(%{content: "example with backlink to [[#{note_slug}]] note"}, user)
+          context_fixture(
+            %{content: "example with backlink to [[#{note_slug}]] note"},
+            current_user
+          )
       ]
     end
 

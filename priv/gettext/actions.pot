@@ -89,7 +89,7 @@ msgstr ""
 
 #: lib/memex_web/components/topbar.ex:124
 #: lib/memex_web/templates/user_confirmation/new.html.heex:31
-#: lib/memex_web/templates/user_registration/new.html.heex:46
+#: lib/memex_web/templates/user_registration/new.html.heex:44
 #: lib/memex_web/templates/user_reset_password/edit.html.heex:47
 #: lib/memex_web/templates/user_reset_password/new.html.heex:31
 #: lib/memex_web/templates/user_session/new.html.heex:3
@@ -116,7 +116,7 @@ msgstr ""
 #: lib/memex_web/components/topbar.ex:115
 #: lib/memex_web/templates/user_confirmation/new.html.heex:28
 #: lib/memex_web/templates/user_registration/new.html.heex:3
-#: lib/memex_web/templates/user_registration/new.html.heex:39
+#: lib/memex_web/templates/user_registration/new.html.heex:37
 #: lib/memex_web/templates/user_reset_password/edit.html.heex:44
 #: lib/memex_web/templates/user_reset_password/new.html.heex:28
 #: lib/memex_web/templates/user_session/new.html.heex:41
@@ -144,7 +144,7 @@ msgstr ""
 msgid "add step"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:49
+#: lib/memex_web/templates/user_registration/new.html.heex:47
 #: lib/memex_web/templates/user_reset_password/new.html.heex:3
 #: lib/memex_web/templates/user_session/new.html.heex:44
 #, elixir-autogen, elixir-format

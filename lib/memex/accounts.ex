@@ -5,7 +5,7 @@ defmodule Memex.Accounts do
 
   import Ecto.Query, warn: false
   alias Memex.{Mailer, Repo}
-  alias Memex.Accounts.{User, UserToken}
+  alias Memex.Accounts.{Invite, Invites, User, UserToken}
   alias Ecto.{Changeset, Multi}
   alias Oban.Job
 
@@ -25,7 +25,9 @@ defmodule Memex.Accounts do
 
   """
   @spec get_user_by_email(email :: String.t()) :: User.t() | nil
-  def get_user_by_email(email) when is_binary(email), do: Repo.get_by(User, email: email)
+  def get_user_by_email(email) when is_binary(email) do
+    Repo.get_by(User, email: email)
+  end
 
   @doc """
   Gets a user by email and password.
@@ -64,7 +66,9 @@ defmodule Memex.Accounts do
 
   """
   @spec get_user!(User.t()) :: User.t()
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+    Repo.get!(User, id)
+  end
 
   @doc """
   Returns all users grouped by role.
@@ -113,19 +117,27 @@ defmodule Memex.Accounts do
       :passed
 
   """
-  @spec register_user(attrs :: map()) :: {:ok, User.t()} | {:error, User.changeset()}
-  def register_user(attrs) do
+  @spec register_user(attrs :: map(), Invite.token() | nil) ::
+          {:ok, User.t()} | {:error, :invalid_token | User.changeset()}
+  def register_user(attrs, invite_token \\ nil) do
     Multi.new()
     |> Multi.one(:users_count, from(u in User, select: count(u.id), distinct: true))
-    |> Multi.insert(:add_user, fn %{users_count: count} ->
+    |> Multi.run(:use_invite, fn _changes_so_far, _repo ->
+      if allow_registration?() and invite_token |> is_nil() do
+        {:ok, nil}
+      else
+        Invites.use_invite(invite_token)
+      end
+    end)
+    |> Multi.insert(:add_user, fn %{users_count: count, use_invite: invite} ->
       # if no registered users, make first user an admin
       role = if count == 0, do: :admin, else: :user
-
-      User.registration_changeset(attrs) |> User.role_changeset(role)
+      User.registration_changeset(attrs, invite) |> User.role_changeset(role)
     end)
     |> Repo.transaction()
     |> case do
       {:ok, %{add_user: user}} -> {:ok, user}
+      {:error, :use_invite, :invalid_token, _changes_so_far} -> {:error, :invalid_token}
       {:error, :add_user, changeset, _changes_so_far} -> {:error, changeset}
     end
   end
@@ -144,8 +156,9 @@ defmodule Memex.Accounts do
   """
   @spec change_user_registration() :: User.changeset()
   @spec change_user_registration(attrs :: map()) :: User.changeset()
-  def change_user_registration(attrs \\ %{}),
-    do: User.registration_changeset(attrs, hash_password: false)
+  def change_user_registration(attrs \\ %{}) do
+    User.registration_changeset(attrs, nil, hash_password: false)
+  end
 
   ## Settings
 
@@ -160,7 +173,9 @@ defmodule Memex.Accounts do
   """
   @spec change_user_email(User.t()) :: User.changeset()
   @spec change_user_email(User.t(), attrs :: map()) :: User.changeset()
-  def change_user_email(user, attrs \\ %{}), do: User.email_changeset(user, attrs)
+  def change_user_email(user, attrs \\ %{}) do
+    User.email_changeset(user, attrs)
+  end
 
   @doc """
   Returns an `%Changeset{}` for changing the user role.
@@ -172,7 +187,9 @@ defmodule Memex.Accounts do
 
   """
   @spec change_user_role(User.t(), User.role()) :: User.changeset()
-  def change_user_role(user, role), do: User.role_changeset(user, role)
+  def change_user_role(user, role) do
+    User.role_changeset(user, role)
+  end
 
   @doc """
   Emulates that the email will change without actually changing
@@ -262,8 +279,9 @@ defmodule Memex.Accounts do
 
   """
   @spec change_user_password(User.t(), attrs :: map()) :: User.changeset()
-  def change_user_password(user, attrs \\ %{}),
-    do: User.password_changeset(user, attrs, hash_password: false)
+  def change_user_password(user, attrs \\ %{}) do
+    User.password_changeset(user, attrs, hash_password: false)
+  end
 
   @doc """
   Updates the user password.
@@ -314,7 +332,9 @@ defmodule Memex.Accounts do
 
   """
   @spec change_user_locale(User.t()) :: User.changeset()
-  def change_user_locale(%{locale: locale} = user), do: User.locale_changeset(user, locale)
+  def change_user_locale(%{locale: locale} = user) do
+    User.locale_changeset(user, locale)
+  end
 
   @doc """
   Updates the user locale.
@@ -328,8 +348,9 @@ defmodule Memex.Accounts do
   """
   @spec update_user_locale(User.t(), locale :: String.t()) ::
           {:ok, User.t()} | {:error, User.changeset()}
-  def update_user_locale(user, locale),
-    do: user |> User.locale_changeset(locale) |> Repo.update()
+  def update_user_locale(user, locale) do
+    user |> User.locale_changeset(locale) |> Repo.update()
+  end
 
   @doc """
   Deletes a user. must be performed by an admin or the same user!
@@ -346,8 +367,13 @@ defmodule Memex.Accounts do
 
   """
   @spec delete_user!(user_to_delete :: User.t(), User.t()) :: User.t()
-  def delete_user!(user, %User{role: :admin}), do: user |> Repo.delete!()
-  def delete_user!(%User{id: user_id} = user, %User{id: user_id}), do: user |> Repo.delete!()
+  def delete_user!(user, %User{role: :admin}) do
+    user |> Repo.delete!()
+  end
+
+  def delete_user!(%User{id: user_id} = user, %User{id: user_id}) do
+    user |> Repo.delete!()
+  end
 
   ## Session
 
@@ -375,7 +401,7 @@ defmodule Memex.Accounts do
   """
   @spec delete_session_token(token :: String.t()) :: :ok
   def delete_session_token(token) do
-    Repo.delete_all(UserToken.token_and_context_query(token, "session"))
+    UserToken.token_and_context_query(token, "session") |> Repo.delete_all()
     :ok
   end
 

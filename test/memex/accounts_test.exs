@@ -6,7 +6,7 @@ defmodule Memex.AccountsTest do
   use Memex.DataCase
   alias Ecto.Changeset
   alias Memex.Accounts
-  alias Memex.Accounts.{User, UserToken}
+  alias Memex.Accounts.{Invites, User, UserToken}
 
   @moduletag :accounts_test
 
@@ -101,6 +101,17 @@ defmodule Memex.AccountsTest do
       assert is_binary(user.hashed_password)
       assert is_nil(user.confirmed_at)
       assert is_nil(user.password)
+    end
+
+    test "records used invite during registration" do
+      {:ok, %{id: invite_id, token: token}} =
+        admin_fixture() |> Invites.create_invite(%{"name" => "my invite"})
+
+      assert {:ok, %{invite_id: ^invite_id}} =
+               Accounts.register_user(
+                 %{"email" => unique_user_email(), "password" => valid_user_password()},
+                 token
+               )
     end
   end
 

@@ -1,6 +1,7 @@
 # v0.1.8
 - Fix bug with public registration
 - Improve templates
+- Improve invites, record usage
 
 # v0.1.7
 - Update dependencies

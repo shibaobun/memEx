@@ -6,8 +6,8 @@ defmodule Memex.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
   import MemexWeb.Gettext
-  alias Ecto.{Changeset, UUID}
-  alias Memex.Invites.Invite
+  alias Ecto.{Association, Changeset, UUID}
+  alias Memex.Accounts.{Invite, User}
 
   @derive {Jason.Encoder,
            only: [
@@ -30,27 +30,31 @@ defmodule Memex.Accounts.User do
     field :role, Ecto.Enum, values: [:admin, :user], default: :user
     field :locale, :string
 
-    has_many :invites, Invite, on_delete: :delete_all
+    has_many :created_invites, Invite, foreign_key: :created_by_id
+
+    belongs_to :invite, Invite
 
     timestamps()
   end
 
-  @type t :: %__MODULE__{
+  @type t :: %User{
           id: id(),
           email: String.t(),
           password: String.t(),
           hashed_password: String.t(),
           confirmed_at: NaiveDateTime.t(),
           role: role(),
-          invites: [Invite.t()],
           locale: String.t() | nil,
+          created_invites: [Invite.t()] | Association.NotLoaded.t(),
+          invite: Invite.t() | nil | Association.NotLoaded.t(),
+          invite_id: Invite.id() | nil,
           inserted_at: NaiveDateTime.t(),
           updated_at: NaiveDateTime.t()
         }
-  @type new_user :: %__MODULE__{}
+  @type new_user :: %User{}
   @type id :: UUID.t()
   @type changeset :: Changeset.t(t() | new_user())
-  @type role :: :user | :admin
+  @type role :: :admin | :user
 
   @doc """
   A user changeset for registration.
@@ -69,18 +73,18 @@ defmodule Memex.Accounts.User do
       validations on a LiveView form), this option can be set to `false`.
       Defaults to `true`.
   """
-  @spec registration_changeset(attrs :: map()) :: changeset()
-  @spec registration_changeset(attrs :: map(), opts :: keyword()) :: changeset()
-  def registration_changeset(attrs, opts \\ []) do
-    %__MODULE__{}
+  @spec registration_changeset(attrs :: map(), Invite.t() | nil) :: changeset()
+  @spec registration_changeset(attrs :: map(), Invite.t() | nil, opts :: keyword()) :: changeset()
+  def registration_changeset(attrs, invite, opts \\ []) do
+    %User{}
     |> cast(attrs, [:email, :password, :locale])
+    |> put_change(:invite_id, if(invite, do: invite.id))
     |> validate_email()
     |> validate_password(opts)
   end
 
   @doc """
   A user changeset for role.
-
   """
   @spec role_changeset(t() | new_user() | changeset(), role()) :: changeset()
   def role_changeset(user, role) do
@@ -99,7 +103,8 @@ defmodule Memex.Accounts.User do
     |> unique_constraint(:email)
   end
 
-  @spec validate_password(changeset(), opts :: keyword()) :: changeset()
+  @spec validate_password(changeset(), opts :: keyword()) ::
+          changeset()
   defp validate_password(changeset, opts) do
     changeset
     |> validate_required([:password])
@@ -177,12 +182,12 @@ defmodule Memex.Accounts.User do
   `Bcrypt.no_user_verify/0` to avoid timing attacks.
   """
   @spec valid_password?(t(), String.t()) :: boolean()
-  def valid_password?(%__MODULE__{hashed_password: hashed_password}, password)
+  def valid_password?(%User{hashed_password: hashed_password}, password)
       when is_binary(hashed_password) and byte_size(password) > 0 do
     Bcrypt.verify_pass(password, hashed_password)
   end
 
-  def valid_password?(_, _) do
+  def valid_password?(_invalid_user, _invalid_password) do
     Bcrypt.no_user_verify()
     false
   end
