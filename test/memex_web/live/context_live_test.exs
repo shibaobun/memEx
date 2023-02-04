@@ -57,7 +57,7 @@ defmodule MemexWeb.ContextLiveTest do
              |> form("#context-form", context: @invalid_attrs)
              |> render_change() =~ "can&#39;t be blank"
 
-      {:ok, _, html} =
+      {:ok, _live, html} =
         index_live
         |> form("#context-form", context: @create_attrs)
         |> render_submit()
@@ -79,7 +79,7 @@ defmodule MemexWeb.ContextLiveTest do
              |> form("#context-form", context: @invalid_attrs)
              |> render_change() =~ "can&#39;t be blank"
 
-      {:ok, _, html} =
+      {:ok, _live, html} =
         index_live
         |> form("#context-form", context: @update_attrs)
         |> render_submit()
@@ -122,7 +122,7 @@ defmodule MemexWeb.ContextLiveTest do
       assert html =~ "can&#39;t be blank"
       assert html =~ "tags must be comma-delimited"
 
-      {:ok, _, html} =
+      {:ok, _live, html} =
         show_live
         |> form("#context-form", context: Map.put(@update_attrs, "slug", context.slug))
         |> render_submit()

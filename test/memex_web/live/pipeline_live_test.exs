@@ -68,7 +68,7 @@ defmodule MemexWeb.PipelineLiveTest do
              |> form("#pipeline-form", pipeline: @invalid_attrs)
              |> render_change() =~ "can&#39;t be blank"
 
-      {:ok, _, html} =
+      {:ok, _live, html} =
         index_live
         |> form("#pipeline-form", pipeline: @create_attrs)
         |> render_submit()
@@ -90,7 +90,7 @@ defmodule MemexWeb.PipelineLiveTest do
              |> form("#pipeline-form", pipeline: @invalid_attrs)
              |> render_change() =~ "can&#39;t be blank"
 
-      {:ok, _, html} =
+      {:ok, _live, html} =
         index_live
         |> form("#pipeline-form", pipeline: @update_attrs)
         |> render_submit()
@@ -136,7 +136,7 @@ defmodule MemexWeb.PipelineLiveTest do
       assert html =~ "can&#39;t be blank"
       assert html =~ "tags must be comma-delimited"
 
-      {:ok, _, html} =
+      {:ok, _live, html} =
         show_live
         |> form("#pipeline-form", pipeline: Map.put(@update_attrs, "slug", pipeline.slug))
         |> render_submit()

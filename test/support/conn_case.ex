@@ -26,6 +26,7 @@ defmodule MemexWeb.ConnCase do
       # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
       import Memex.Fixtures
       import MemexWeb.ConnCase
+      # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
       import Phoenix.ConnTest
       import Plug.Conn
 

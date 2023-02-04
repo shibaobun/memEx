@@ -62,7 +62,7 @@ defmodule MemexWeb.NoteLiveTest do
       assert html =~ "can&#39;t be blank"
       assert html =~ "tags must be comma-delimited"
 
-      {:ok, _, html} =
+      {:ok, _live, html} =
         index_live
         |> form("#note-form", note: @create_attrs)
         |> render_submit()
@@ -84,7 +84,7 @@ defmodule MemexWeb.NoteLiveTest do
              |> form("#note-form", note: @invalid_attrs)
              |> render_change() =~ "can&#39;t be blank"
 
-      {:ok, _, html} =
+      {:ok, _live, html} =
         index_live
         |> form("#note-form", note: @update_attrs)
         |> render_submit()
@@ -123,7 +123,7 @@ defmodule MemexWeb.NoteLiveTest do
              |> form("#note-form", note: @invalid_attrs)
              |> render_change() =~ "can&#39;t be blank"
 
-      {:ok, _, html} =
+      {:ok, _live, html} =
         show_live
         |> form("#note-form", note: Map.put(@update_attrs, "slug", note.slug))
         |> render_submit()

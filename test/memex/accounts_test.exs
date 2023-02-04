@@ -316,7 +316,7 @@ defmodule Memex.AccountsTest do
     end
 
     test "deletes all tokens for the given user", %{user: user} do
-      _ = Accounts.generate_user_session_token(user)
+      _session_token = Accounts.generate_user_session_token(user)
 
       {:ok, _} =
         Accounts.update_user_password(user, valid_user_password(), %{
@@ -513,7 +513,7 @@ defmodule Memex.AccountsTest do
     end
 
     test "deletes all tokens for the given user", %{user: user} do
-      _ = Accounts.generate_user_session_token(user)
+      _session_token = Accounts.generate_user_session_token(user)
       {:ok, _} = Accounts.reset_user_password(user, %{"password" => "new valid password"})
       refute Repo.get_by(UserToken, user_id: user.id)
     end

@@ -11,7 +11,7 @@ defmodule MemexWeb.ContextLive.Show do
   @impl true
   def handle_params(
         %{"slug" => slug},
-        _,
+        _params,
         %{assigns: %{live_action: live_action, current_user: current_user}} = socket
       ) do
     context =

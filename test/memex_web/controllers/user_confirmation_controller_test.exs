@@ -5,8 +5,7 @@ defmodule MemexWeb.UserConfirmationControllerTest do
 
   use MemexWeb.ConnCase, async: true
   import MemexWeb.Gettext
-  alias Memex.Accounts
-  alias Memex.Repo
+  alias Memex.{Accounts, Repo}
 
   @moduletag :user_confirmation_controller_test
 

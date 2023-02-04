@@ -3,11 +3,11 @@ defmodule MemexWeb.HomeLive do
   Liveview for the main home page
   """
 
-  @version Mix.Project.config()[:version]
-
   use MemexWeb, :live_view
   alias Memex.Accounts
   alias MemexWeb.{Endpoint, FaqLive}
+
+  @version Mix.Project.config()[:version]
 
   @impl true
   def mount(_params, _session, socket) do

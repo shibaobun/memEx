@@ -124,7 +124,7 @@ defmodule MemexWeb.InviteLive.Index do
   end
 
   @impl true
-  def handle_event("copy_to_clipboard", _, socket) do
+  def handle_event("copy_to_clipboard", _params, socket) do
     prompt = dgettext("prompts", "copied to clipboard")
     {:noreply, socket |> put_flash(:info, prompt)}
   end
