@@ -8,7 +8,7 @@ defmodule LokalWeb.ErrorView do
       case error_path do
         "404.html" -> dgettext("errors", "Not found")
         "401.html" -> dgettext("errors", "Unauthorized")
-        _ -> dgettext("errors", "Internal Server Error")
+        _other_path -> dgettext("errors", "Internal Server Error")
       end
 
     render("error.html", %{error_string: error_string})

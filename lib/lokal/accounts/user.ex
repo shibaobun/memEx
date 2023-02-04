@@ -15,7 +15,9 @@ defmodule Lokal.Accounts.User do
              :email,
              :confirmed_at,
              :role,
-             :locale
+             :locale,
+             :inserted_at,
+             :updated_at
            ]}
   @derive {Inspect, except: [:password]}
   @primary_key {:id, :binary_id, autogenerate: true}

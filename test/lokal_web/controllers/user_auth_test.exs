@@ -116,7 +116,7 @@ defmodule LokalWeb.UserAuthTest do
     end
 
     test "does not authenticate if data is missing", %{conn: conn, current_user: current_user} do
-      _ = Accounts.generate_user_session_token(current_user)
+      _session_token = Accounts.generate_user_session_token(current_user)
       conn = UserAuth.fetch_current_user(conn, [])
       refute get_session(conn, :user_token)
       refute conn.assigns.current_user

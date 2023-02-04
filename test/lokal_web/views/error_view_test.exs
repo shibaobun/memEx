@@ -5,11 +5,10 @@ defmodule LokalWeb.ErrorViewTest do
 
   use LokalWeb.ConnCase, async: true
   import LokalWeb.Gettext
-
-  @moduletag :error_view_test
-
   # Bring render/3 and render_to_string/3 for testing custom views
   import Phoenix.View
+
+  @moduletag :error_view_test
 
   test "renders 404.html" do
     assert render_to_string(LokalWeb.ErrorView, "404.html", []) =~

@@ -5,8 +5,7 @@ defmodule LokalWeb.UserConfirmationControllerTest do
 
   use LokalWeb.ConnCase, async: true
   import LokalWeb.Gettext
-  alias Lokal.Accounts
-  alias Lokal.Repo
+  alias Lokal.{Accounts, Repo}
 
   @moduletag :user_confirmation_controller_test
 

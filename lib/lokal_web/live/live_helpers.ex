@@ -49,7 +49,7 @@ defmodule LokalWeb.LiveHelpers do
         id="modal-content"
         class="fade-in-scale w-full max-w-3xl relative
           pointer-events-auto overflow-hidden
-          px-8 py-4 sm:py-8 flex flex-col justify-center items-center
+          px-8 py-4 sm:py-8
           flex flex-col justify-start items-center
           bg-white border-2 rounded-lg"
       >

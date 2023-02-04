@@ -72,15 +72,16 @@ defmodule LokalWeb do
     quote do
       use Phoenix.Router
 
+      import Phoenix.{Controller, LiveView.Router}
+      # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
       import Plug.Conn
-      import Phoenix.Controller
-      import Phoenix.LiveView.Router
     end
   end
 
   def channel do
     quote do
       use Phoenix.Channel
+      # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
       import LokalWeb.Gettext
     end
   end
@@ -88,15 +89,14 @@ defmodule LokalWeb do
   defp view_helpers do
     quote do
       # Use all HTML functionality (forms, tags, etc)
+      # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
       use Phoenix.HTML
 
       # Import LiveView and .heex helpers (live_render, link, <.form>, etc)
-      import Phoenix.Component
-
       # Import basic rendering functionality (render, render_layout, etc)
-      import Phoenix.View
-
+      import Phoenix.{Component, View}
       import LokalWeb.{ErrorHelpers, Gettext, LiveHelpers, ViewHelpers}
+
       alias LokalWeb.Router.Helpers, as: Routes
     end
   end
