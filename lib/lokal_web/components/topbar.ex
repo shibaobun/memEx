@@ -53,16 +53,14 @@ defmodule LokalWeb.Components.Topbar do
                 <% end %>
               </datalist>
             </form>
-            <%= if @current_user.role == :admin do %>
-              <li class="mx-2 my-1">
-                <.link
-                  navigate={Routes.invite_index_path(Endpoint, :index)}
-                  class="text-white text-white hover:underline"
-                >
-                  <%= gettext("Invites") %>
-                </.link>
-              </li>
-            <% end %>
+            <li :if={@current_user.role == :admin} class="mx-2 my-1">
+              <.link
+                navigate={Routes.invite_index_path(Endpoint, :index)}
+                class="text-white text-white hover:underline"
+              >
+                <%= gettext("Invites") %>
+              </.link>
+            </li>
             <li class="mx-2 my-1">
               <.link
                 navigate={Routes.user_settings_path(Endpoint, :edit)}
@@ -80,27 +78,28 @@ defmodule LokalWeb.Components.Topbar do
                 <i class="fas fa-sign-out-alt"></i>
               </.link>
             </li>
-            <%= if @current_user.role == :admin and function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li class="mx-2 my-1">
-                <.link
-                  navigate={Routes.live_dashboard_path(Endpoint, :home)}
-                  class="text-white text-white hover:underline"
-                >
-                  <i class="fas fa-gauge"></i>
-                </.link>
-              </li>
-            <% end %>
+            <li
+              :if={
+                @current_user.role == :admin and function_exported?(Routes, :live_dashboard_path, 2)
+              }
+              class="mx-2 my-1"
+            >
+              <.link
+                navigate={Routes.live_dashboard_path(Endpoint, :home)}
+                class="text-white text-white hover:underline"
+              >
+                <i class="fas fa-gauge"></i>
+              </.link>
+            </li>
           <% else %>
-            <%= if Accounts.allow_registration?() do %>
-              <li class="mx-2 my-1">
-                <.link
-                  navigate={Routes.user_registration_path(Endpoint, :new)}
-                  class="text-white text-white hover:underline truncate"
-                >
-                  <%= dgettext("actions", "Register") %>
-                </.link>
-              </li>
-            <% end %>
+            <li :if={Accounts.allow_registration?()} class="mx-2 my-1">
+              <.link
+                navigate={Routes.user_registration_path(Endpoint, :new)}
+                class="text-white text-white hover:underline truncate"
+              >
+                <%= dgettext("actions", "Register") %>
+              </.link>
+            </li>
             <li class="mx-2 my-1">
               <.link
                 navigate={Routes.user_session_path(Endpoint, :new)}

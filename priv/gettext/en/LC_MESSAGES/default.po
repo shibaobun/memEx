@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Language: en\n"
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:78
+#: lib/lokal_web/templates/user_settings/edit.html.heex:80
 #, elixir-autogen, elixir-format
 msgid "Confirm new password"
 msgstr ""
@@ -20,8 +20,8 @@ msgstr ""
 msgid "Confirm your account"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:32
-#: lib/lokal_web/templates/user_settings/edit.html.heex:87
+#: lib/lokal_web/templates/user_settings/edit.html.heex:33
+#: lib/lokal_web/templates/user_settings/edit.html.heex:89
 #, elixir-autogen, elixir-format
 msgid "Current password"
 msgstr ""
@@ -36,14 +36,14 @@ msgstr ""
 msgid "Invite Disabled"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:62
+#: lib/lokal_web/components/topbar.ex:61
 #: lib/lokal_web/live/invite_live/index.ex:41
 #: lib/lokal_web/live/invite_live/index.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Invites"
 msgstr ""
 
-#: lib/lokal_web/templates/user_session/new.html.heex:27
+#: lib/lokal_web/templates/user_session/new.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "Keep me logged in for 60 days"
 msgstr ""
@@ -53,12 +53,12 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:71
+#: lib/lokal_web/templates/user_settings/edit.html.heex:73
 #, elixir-autogen, elixir-format
 msgid "New password"
 msgstr ""
 
-#: lib/lokal_web/templates/layout/live.html.heex:40
+#: lib/lokal_web/templates/layout/live.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "Reconnecting..."
 msgstr ""
@@ -79,27 +79,17 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:7
-#, elixir-autogen, elixir-format
-msgid "Shop from your community"
-msgstr ""
-
-#: lib/lokal_web/live/home_live.html.heex:3
-#, elixir-autogen, elixir-format
-msgid "Welcome to Lokal"
-msgstr ""
-
-#: lib/lokal_web/live/home_live.ex:10
+#: lib/lokal_web/live/home_live.ex:15
 #, elixir-autogen, elixir-format
 msgid "Home"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:90
+#: lib/lokal_web/live/invite_live/index.html.heex:86
 #, elixir-autogen, elixir-format
 msgid "Admins"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:59
+#: lib/lokal_web/live/invite_live/index.html.heex:62
 #, elixir-autogen, elixir-format
 msgid "Disable"
 msgstr ""
@@ -109,12 +99,12 @@ msgstr ""
 msgid "Edit Invite"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:63
+#: lib/lokal_web/live/invite_live/index.html.heex:62
 #, elixir-autogen, elixir-format
 msgid "Enable"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.html.heex:20
+#: lib/lokal_web/live/invite_live/form_component.html.heex:21
 #, elixir-autogen, elixir-format
 msgid "Name"
 msgstr ""
@@ -129,28 +119,28 @@ msgstr ""
 msgid "No invites 😔"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:79
+#: lib/lokal_web/live/invite_live/index.html.heex:77
 #, elixir-autogen, elixir-format
 msgid "Set Unlimited"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:120
+#: lib/lokal_web/live/invite_live/index.html.heex:114
 #, elixir-autogen, elixir-format
 msgid "Users"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.html.heex:24
+#: lib/lokal_web/live/invite_live/form_component.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "Uses left"
 msgstr ""
 
-#: lib/lokal_web/templates/user_registration/new.html.heex:36
-#: lib/lokal_web/templates/user_settings/edit.html.heex:126
+#: lib/lokal_web/templates/user_registration/new.html.heex:32
+#: lib/lokal_web/templates/user_settings/edit.html.heex:124
 #, elixir-autogen, elixir-format
 msgid "English"
 msgstr ""
 
-#: lib/lokal_web/templates/user_registration/new.html.heex:32
+#: lib/lokal_web/templates/user_registration/new.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "Language"
 msgstr ""
@@ -161,8 +151,10 @@ msgid "Email unconfirmed"
 msgstr ""
 
 #: lib/lokal_web/components/topbar.ex:23
+#: lib/lokal_web/templates/error/error.html.heex:8
 #: lib/lokal_web/templates/layout/root.html.heex:8
 #: lib/lokal_web/templates/layout/root.html.heex:9
+#: lib/lokal_web/views/layout_view.ex:15
 #, elixir-autogen, elixir-format
 msgid "Lokal"
 msgstr ""
@@ -185,4 +177,104 @@ msgstr ""
 #: lib/lokal_web/components/invite_card.ex:28
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Uses Left: Unlimited"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:37
+#, elixir-autogen, elixir-format
+msgid "Access from any internet-capable device"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:51
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Admins:"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:16
+#, elixir-autogen, elixir-format
+msgid "Easy to Use:"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:98
+#, elixir-autogen, elixir-format
+msgid "Get involved!"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:119
+#, elixir-autogen, elixir-format
+msgid "Help translate"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:46
+#, elixir-autogen, elixir-format
+msgid "Instance Information"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:73
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Invite Only"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:72
+#, elixir-autogen, elixir-format
+msgid "Public Signups"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:69
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Registration:"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:130
+#, elixir-autogen, elixir-format
+msgid "Report bugs or request features"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:24
+#, elixir-autogen, elixir-format
+msgid "Secure:"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:27
+#, elixir-autogen, elixir-format
+msgid "Self-host your own instance, or use an instance from someone you trust."
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:34
+#, elixir-autogen, elixir-format
+msgid "Simple:"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:79
+#, elixir-autogen, elixir-format
+msgid "Version:"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:108
+#, elixir-autogen, elixir-format
+msgid "View the source code"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:28
+#, elixir-autogen, elixir-format
+msgid "Your data stays with you, period"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:19
+#, elixir-autogen, elixir-format
+msgid "Lokal lets you easily shop from your local community"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:7
+#, elixir-autogen, elixir-format
+msgid "Shop from your local community"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:3
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Welcome to Lokal"
+msgstr ""
+
+#: lib/lokal_web/views/layout_view.ex:11
+#, elixir-autogen, elixir-format
+msgid "Lokal | %{title}"
 msgstr ""

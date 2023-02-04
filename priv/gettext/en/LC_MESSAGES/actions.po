@@ -11,47 +11,47 @@ msgstr ""
 "Language: en\n"
 
 #: lib/lokal_web/templates/user_settings/edit.html.heex:15
-#: lib/lokal_web/templates/user_settings/edit.html.heex:44
+#: lib/lokal_web/templates/user_settings/edit.html.heex:45
 #, elixir-autogen, elixir-format
 msgid "Change email"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:58
-#: lib/lokal_web/templates/user_settings/edit.html.heex:99
+#: lib/lokal_web/templates/user_settings/edit.html.heex:59
+#: lib/lokal_web/templates/user_settings/edit.html.heex:101
 #, elixir-autogen, elixir-format
 msgid "Change password"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:145
+#: lib/lokal_web/templates/user_settings/edit.html.heex:143
 #, elixir-autogen, elixir-format
 msgid "Delete User"
 msgstr ""
 
-#: lib/lokal_web/templates/user_registration/new.html.heex:51
+#: lib/lokal_web/templates/user_registration/new.html.heex:47
 #: lib/lokal_web/templates/user_reset_password/new.html.heex:3
-#: lib/lokal_web/templates/user_session/new.html.heex:44
+#: lib/lokal_web/templates/user_session/new.html.heex:42
 #, elixir-autogen, elixir-format
 msgid "Forgot your password?"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:109
-#: lib/lokal_web/templates/user_confirmation/new.html.heex:29
-#: lib/lokal_web/templates/user_registration/new.html.heex:48
-#: lib/lokal_web/templates/user_reset_password/edit.html.heex:47
-#: lib/lokal_web/templates/user_reset_password/new.html.heex:29
+#: lib/lokal_web/components/topbar.ex:108
+#: lib/lokal_web/templates/user_confirmation/new.html.heex:31
+#: lib/lokal_web/templates/user_registration/new.html.heex:44
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:45
+#: lib/lokal_web/templates/user_reset_password/new.html.heex:31
 #: lib/lokal_web/templates/user_session/new.html.heex:3
-#: lib/lokal_web/templates/user_session/new.html.heex:32
+#: lib/lokal_web/templates/user_session/new.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "Log in"
 msgstr ""
 
 #: lib/lokal_web/components/topbar.ex:100
-#: lib/lokal_web/templates/user_confirmation/new.html.heex:25
+#: lib/lokal_web/templates/user_confirmation/new.html.heex:28
 #: lib/lokal_web/templates/user_registration/new.html.heex:3
-#: lib/lokal_web/templates/user_registration/new.html.heex:41
-#: lib/lokal_web/templates/user_reset_password/edit.html.heex:43
-#: lib/lokal_web/templates/user_reset_password/new.html.heex:25
-#: lib/lokal_web/templates/user_session/new.html.heex:40
+#: lib/lokal_web/templates/user_registration/new.html.heex:37
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:42
+#: lib/lokal_web/templates/user_reset_password/new.html.heex:28
+#: lib/lokal_web/templates/user_session/new.html.heex:39
 #, elixir-autogen, elixir-format
 msgid "Register"
 msgstr ""
@@ -63,7 +63,7 @@ msgid "Resend confirmation instructions"
 msgstr ""
 
 #: lib/lokal_web/templates/user_reset_password/edit.html.heex:3
-#: lib/lokal_web/templates/user_reset_password/edit.html.heex:33
+#: lib/lokal_web/templates/user_reset_password/edit.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "Reset password"
 msgstr ""
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Send instructions to reset password"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:30
+#: lib/lokal_web/live/invite_live/index.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "Copy to clipboard"
 msgstr ""
@@ -88,17 +88,17 @@ msgstr ""
 msgid "Invite someone new!"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.html.heex:28
+#: lib/lokal_web/live/invite_live/form_component.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "Save"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:113
+#: lib/lokal_web/templates/user_settings/edit.html.heex:115
 #, elixir-autogen, elixir-format
 msgid "Change Language"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:131
+#: lib/lokal_web/templates/user_settings/edit.html.heex:129
 #, elixir-autogen, elixir-format
 msgid "Change language"
 msgstr ""

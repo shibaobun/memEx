@@ -11,11 +11,12 @@
     phx-change="validate"
     phx-submit="save"
   >
-    <%= if @changeset.action && not @changeset.valid? do %>
-      <div class="invalid-feedback col-span-3 text-center">
-        <%= changeset_errors(@changeset) %>
-      </div>
-    <% end %>
+    <div
+      :if={@changeset.action && not @changeset.valid?()}
+      class="invalid-feedback col-span-3 text-center"
+    >
+      <%= changeset_errors(@changeset) %>
+    </div>
 
     <%= label(f, :name, gettext("Name"), class: "title text-lg text-primary-600") %>
     <%= text_input(f, :name, class: "input input-primary col-span-2") %>

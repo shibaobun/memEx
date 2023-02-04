@@ -7,11 +7,11 @@ defmodule LokalWeb.LayoutView do
   # so we instruct Elixir to not warn if the dashboard route is missing.
   @compile {:no_warn_undefined, {Routes, :live_dashboard_path, 2}}
 
-  def get_title(conn) do
-    if conn.assigns |> Map.has_key?(:title) do
-      "Lokal | #{conn.assigns.title}"
-    else
-      "Lokal"
-    end
+  def get_title(%{assigns: %{title: title}}) when title not in [nil, ""] do
+    gettext("Lokal | %{title}", title: title)
+  end
+
+  def get_title(_conn) do
+    gettext("Lokal")
   end
 end

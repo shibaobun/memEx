@@ -48,11 +48,9 @@ defmodule LokalWeb.Components.InviteCard do
         <%= render_slot(@code_actions) %>
       </div>
 
-      <%= if @inner_block do %>
-        <div class="flex space-x-4 justify-center items-center">
-          <%= render_slot(@inner_block) %>
-        </div>
-      <% end %>
+      <div :if={@inner_block} class="flex space-x-4 justify-center items-center">
+        <%= render_slot(@inner_block) %>
+      </div>
     </div>
     """
   end

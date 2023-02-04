@@ -10,13 +10,9 @@
     as="user"
     class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
   >
-    <%= if @error_message do %>
-      <div class="alert alert-danger col-span-3">
-        <p>
-          <%= @error_message %>
-        </p>
-      </div>
-    <% end %>
+    <p :if={@error_message} class="alert alert-danger col-span-3">
+      <%= @error_message %>
+    </p>
 
     <%= label(f, :email, class: "title text-lg text-primary-600") %>
     <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
@@ -35,11 +31,13 @@
   <hr class="hr" />
 
   <div class="flex flex-row justify-center items-center space-x-4">
-    <%= if Accounts.allow_registration?() do %>
-      <.link href={Routes.user_registration_path(@conn, :new)} class="btn btn-primary">
-        <%= dgettext("actions", "Register") %>
-      </.link>
-    <% end %>
+    <.link
+      :if={Accounts.allow_registration?()}
+      href={Routes.user_registration_path(@conn, :new)}
+      class="btn btn-primary"
+    >
+      <%= dgettext("actions", "Register") %>
+    </.link>
     <.link href={Routes.user_reset_password_path(@conn, :new)} class="btn btn-primary">
       <%= dgettext("actions", "Forgot your password?") %>
     </.link>

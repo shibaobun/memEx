@@ -16,19 +16,18 @@ defmodule LokalWeb.ViewHelpers do
 
   def datetime(assigns) do
     ~H"""
-    <%= if @datetime do %>
-      <time
-        datetime={cast_datetime(@datetime)}
-        x-data={"{
-          datetime:
-            Intl.DateTimeFormat([], {dateStyle: 'short', timeStyle: 'long'})
-              .format(new Date(\"#{cast_datetime(@datetime)}\"))
-        }"}
-        x-text="datetime"
-      >
-        <%= cast_datetime(@datetime) %>
-      </time>
-    <% end %>
+    <time
+      :if={@datetime}
+      datetime={cast_datetime(@datetime)}
+      x-data={"{
+        datetime:
+          Intl.DateTimeFormat([], {dateStyle: 'short', timeStyle: 'long'})
+            .format(new Date(\"#{cast_datetime(@datetime)}\"))
+      }"}
+      x-text="datetime"
+    >
+      <%= cast_datetime(@datetime) %>
+    </time>
     """
   end
 
@@ -48,19 +47,18 @@ defmodule LokalWeb.ViewHelpers do
 
   def date(assigns) do
     ~H"""
-    <%= if @date do %>
-      <time
-        datetime={@date |> Date.to_iso8601(:extended)}
-        x-data={"{
-          date:
-            Intl.DateTimeFormat([], {timeZone: 'Etc/UTC', dateStyle: 'short'})
-              .format(new Date(\"#{@date |> Date.to_iso8601(:extended)}\"))
-        }"}
-        x-text="date"
-      >
-        <%= @date |> Date.to_iso8601(:extended) %>
-      </time>
-    <% end %>
+    <time
+      :if={@date}
+      datetime={@date |> Date.to_iso8601(:extended)}
+      x-data={"{
+        date:
+          Intl.DateTimeFormat([], {timeZone: 'Etc/UTC', dateStyle: 'short'})
+            .format(new Date(\"#{@date |> Date.to_iso8601(:extended)}\"))
+      }"}
+      x-text="date"
+    >
+      <%= @date |> Date.to_iso8601(:extended) %>
+    </time>
     """
   end
 

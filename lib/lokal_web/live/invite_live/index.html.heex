@@ -18,69 +18,65 @@
   <% end %>
 
   <div class="w-full flex flex-row flex-wrap justify-center items-center">
-    <%= for invite <- @invites do %>
-      <.invite_card invite={invite}>
-        <:code_actions>
-          <form phx-submit="copy_to_clipboard">
-            <button
-              type="submit"
-              class="mx-2 my-1 btn btn-primary"
-              phx-click={JS.dispatch("lokal:clipcopy", to: "#code-#{invite.id}")}
-            >
-              <%= dgettext("actions", "Copy to clipboard") %>
-            </button>
-          </form>
-        </:code_actions>
-        <.link
-          patch={Routes.invite_index_path(Endpoint, :edit, invite)}
-          class="text-primary-600 link"
-          data-qa={"edit-#{invite.id}"}
-        >
-          <i class="fa-fw fa-lg fas fa-edit"></i>
-        </.link>
-
-        <.link
-          href="#"
-          class="text-primary-600 link"
-          phx-click="delete_invite"
-          phx-value-id={invite.id}
-          data-confirm={
-            dgettext("prompts", "Are you sure you want to delete the invite for %{invite_name}?",
-              invite_name: invite.name
-            )
-          }
-          data-qa={"delete-#{invite.id}"}
-        >
-          <i class="fa-fw fa-lg fas fa-trash"></i>
-        </.link>
-
-        <%= if invite.disabled_at |> is_nil() do %>
-          <a href="#" class="btn btn-primary" phx-click="disable_invite" phx-value-id={invite.id}>
-            <%= gettext("Disable") %>
-          </a>
-        <% else %>
-          <a href="#" class="btn btn-primary" phx-click="enable_invite" phx-value-id={invite.id}>
-            <%= gettext("Enable") %>
-          </a>
-        <% end %>
-
-        <%= if invite.disabled_at |> is_nil() and not (invite.uses_left |> is_nil()) do %>
-          <a
-            href="#"
-            class="btn btn-primary"
-            phx-click="set_unlimited"
-            phx-value-id={invite.id}
-            data-confirm={
-              dgettext("prompts", "Are you sure you want to make %{invite_name} unlimited?",
-                invite_name: invite.name
-              )
-            }
+    <.invite_card :for={invite <- @invites} invite={invite}>
+      <:code_actions>
+        <form phx-submit="copy_to_clipboard">
+          <button
+            type="submit"
+            class="mx-2 my-1 btn btn-primary"
+            phx-click={JS.dispatch("lokal:clipcopy", to: "#code-#{invite.id}")}
           >
-            <%= gettext("Set Unlimited") %>
-          </a>
-        <% end %>
-      </.invite_card>
-    <% end %>
+            <%= dgettext("actions", "Copy to clipboard") %>
+          </button>
+        </form>
+      </:code_actions>
+      <.link
+        patch={Routes.invite_index_path(Endpoint, :edit, invite)}
+        class="text-primary-600 link"
+        data-qa={"edit-#{invite.id}"}
+      >
+        <i class="fa-fw fa-lg fas fa-edit"></i>
+      </.link>
+
+      <.link
+        href="#"
+        class="text-primary-600 link"
+        phx-click="delete_invite"
+        phx-value-id={invite.id}
+        data-confirm={
+          dgettext("prompts", "Are you sure you want to delete the invite for %{invite_name}?",
+            invite_name: invite.name
+          )
+        }
+        data-qa={"delete-#{invite.id}"}
+      >
+        <i class="fa-fw fa-lg fas fa-trash"></i>
+      </.link>
+
+      <a
+        href="#"
+        class="btn btn-primary"
+        phx-click={if invite.disabled_at, do: "enable_invite", else: "disable_invite"}
+        phx-value-id={invite.id}
+      >
+        <%= if invite.disabled_at, do: gettext("Enable"), else: gettext("Disable") %>
+      </a>
+
+      <a
+        :if={invite.disabled_at |> is_nil() and not (invite.uses_left |> is_nil())}
+        href="#"
+        class="btn btn-primary"
+        phx-click="set_unlimited"
+        phx-value-id={invite.id}
+        data-confirm={
+          dgettext("prompts", "Are you sure you want to make %{invite_name} unlimited?",
+            invite_name: invite.name
+          )
+        }
+      >
+        <%= gettext("Set Unlimited") %>
+      </a>
+    </.invite_card>
   </div>
 
   <%= unless @admins |> Enum.empty?() do %>
@@ -91,25 +87,23 @@
     </h1>
 
     <div class="w-full flex flex-row flex-wrap justify-center items-center">
-      <%= for admin <- @admins do %>
-        <.user_card user={admin}>
-          <.link
-            href="#"
-            class="text-primary-600 link"
-            phx-click="delete_user"
-            phx-value-id={admin.id}
-            data-confirm={
-              dgettext(
-                "prompts",
-                "Are you sure you want to delete %{email}? This action is permanent!",
-                email: admin.email
-              )
-            }
-          >
-            <i class="fa-fw fa-lg fas fa-trash"></i>
-          </.link>
-        </.user_card>
-      <% end %>
+      <.user_card :for={admin <- @admins} user={admin}>
+        <.link
+          href="#"
+          class="text-primary-600 link"
+          phx-click="delete_user"
+          phx-value-id={admin.id}
+          data-confirm={
+            dgettext(
+              "prompts",
+              "Are you sure you want to delete %{email}? This action is permanent!",
+              email: admin.email
+            )
+          }
+        >
+          <i class="fa-fw fa-lg fas fa-trash"></i>
+        </.link>
+      </.user_card>
     </div>
   <% end %>
 
@@ -121,39 +115,35 @@
     </h1>
 
     <div class="w-full flex flex-row flex-wrap justify-center items-center">
-      <%= for user <- @users do %>
-        <.user_card user={user}>
-          <.link
-            href="#"
-            class="text-primary-600 link"
-            phx-click="delete_user"
-            phx-value-id={user.id}
-            data-confirm={
-              dgettext(
-                "prompts",
-                "Are you sure you want to delete %{email}? This action is permanent!",
-                email: user.email
-              )
-            }
-          >
-            <i class="fa-fw fa-lg fas fa-trash"></i>
-          </.link>
-        </.user_card>
-      <% end %>
+      <.user_card :for={user <- @users} user={user}>
+        <.link
+          href="#"
+          class="text-primary-600 link"
+          phx-click="delete_user"
+          phx-value-id={user.id}
+          data-confirm={
+            dgettext(
+              "prompts",
+              "Are you sure you want to delete %{email}? This action is permanent!",
+              email: user.email
+            )
+          }
+        >
+          <i class="fa-fw fa-lg fas fa-trash"></i>
+        </.link>
+      </.user_card>
     </div>
   <% end %>
 </div>
 
-<%= if @live_action in [:new, :edit] do %>
-  <.modal return_to={Routes.invite_index_path(Endpoint, :index)}>
-    <.live_component
-      module={LokalWeb.InviteLive.FormComponent}
-      id={@invite.id || :new}
-      title={@page_title}
-      action={@live_action}
-      invite={@invite}
-      return_to={Routes.invite_index_path(Endpoint, :index)}
-      current_user={@current_user}
-    />
-  </.modal>
-<% end %>
+<.modal :if={@live_action in [:new, :edit]} return_to={Routes.invite_index_path(Endpoint, :index)}>
+  <.live_component
+    module={LokalWeb.InviteLive.FormComponent}
+    id={@invite.id || :new}
+    title={@page_title}
+    action={@live_action}
+    invite={@invite}
+    return_to={Routes.invite_index_path(Endpoint, :index)}
+    current_user={@current_user}
+  />
+</.modal>

@@ -20,12 +20,12 @@ msgstr ""
 msgid "A link to confirm your email change has been sent to the new address."
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:143
+#: lib/lokal_web/templates/user_settings/edit.html.heex:141
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to delete your account?"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:78
+#: lib/lokal_web/components/topbar.ex:76
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to log out?"
 msgstr ""
@@ -70,8 +70,8 @@ msgstr ""
 msgid "Your account has been deleted"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:102
-#: lib/lokal_web/live/invite_live/index.html.heex:132
+#: lib/lokal_web/live/invite_live/index.html.heex:97
+#: lib/lokal_web/live/invite_live/index.html.heex:125
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to delete %{email}? This action is permanent!"
 msgstr ""
@@ -81,12 +81,12 @@ msgstr ""
 msgid "Copied to clipboard"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.html.heex:30
+#: lib/lokal_web/live/invite_live/form_component.html.heex:31
 #, elixir-autogen, elixir-format
 msgid "Saving..."
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:133
+#: lib/lokal_web/templates/user_settings/edit.html.heex:131
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to change your language?"
 msgstr ""
@@ -131,12 +131,17 @@ msgstr ""
 msgid "%{user_email} deleted succesfully"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:48
+#: lib/lokal_web/live/invite_live/index.html.heex:47
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to delete the invite for %{invite_name}?"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:74
+#: lib/lokal_web/live/invite_live/index.html.heex:72
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to make %{invite_name} unlimited?"
+msgstr ""
+
+#: lib/lokal_web/live/home_live.html.heex:56
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Register to setup Lokal"
 msgstr ""

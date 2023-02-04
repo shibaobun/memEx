@@ -33,20 +33,16 @@
       </tr>
     </thead>
     <tbody>
-      <%= for values <- @rows do %>
-        <tr>
-          <%= for %{key: key} = value <- @columns do %>
-            <td class={["p-2", value[:class]]}>
-              <%= case values |> Map.get(key) do %>
-                <% {_custom_sort_value, value} -> %>
-                  <%= value %>
-                <% value -> %>
-                  <%= value %>
-              <% end %>
-            </td>
+      <tr :for={values <- @rows}>
+        <td :for={%{key: key} = value <- @columns} class={["p-2", value[:class]]}>
+          <%= case values |> Map.get(key) do %>
+            <% {_custom_sort_value, value} -> %>
+              <%= value %>
+            <% value -> %>
+              <%= value %>
           <% end %>
-        </tr>
-      <% end %>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

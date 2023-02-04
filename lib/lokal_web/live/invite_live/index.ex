@@ -61,7 +61,7 @@ defmodule LokalWeb.InviteLive.Index do
       ) do
     socket =
       Invites.get_invite!(id, current_user)
-      |> Invites.update_invite(%{"uses_left" => nil}, current_user)
+      |> Invites.update_invite(%{uses_left: nil}, current_user)
       |> case do
         {:ok, %{name: invite_name}} ->
           prompt =
@@ -83,7 +83,7 @@ defmodule LokalWeb.InviteLive.Index do
       ) do
     socket =
       Invites.get_invite!(id, current_user)
-      |> Invites.update_invite(%{"uses_left" => nil, "disabled_at" => nil}, current_user)
+      |> Invites.update_invite(%{uses_left: nil, disabled_at: nil}, current_user)
       |> case do
         {:ok, %{name: invite_name}} ->
           prompt =
@@ -107,7 +107,7 @@ defmodule LokalWeb.InviteLive.Index do
 
     socket =
       Invites.get_invite!(id, current_user)
-      |> Invites.update_invite(%{"uses_left" => 0, "disabled_at" => now}, current_user)
+      |> Invites.update_invite(%{uses_left: 0, disabled_at: now}, current_user)
       |> case do
         {:ok, %{name: invite_name}} ->
           prompt =
