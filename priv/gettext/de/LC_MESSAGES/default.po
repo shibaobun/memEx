@@ -163,12 +163,12 @@ msgstr ""
 msgid "features"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:138
+#: lib/memex_web/live/home_live.html.heex:137
 #, elixir-autogen, elixir-format
 msgid "get involved!"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:159
+#: lib/memex_web/live/home_live.html.heex:158
 #, elixir-autogen, elixir-format
 msgid "help translate"
 msgstr ""
@@ -183,7 +183,7 @@ msgstr ""
 msgid "invite disabled"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:115
+#: lib/memex_web/live/home_live.html.heex:114
 #, elixir-autogen, elixir-format
 msgid "invite only"
 msgstr ""
@@ -266,7 +266,7 @@ msgstr ""
 msgid "provide context around a single topic and hotlink to your notes"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:114
+#: lib/memex_web/live/home_live.html.heex:113
 #, elixir-autogen, elixir-format
 msgid "public signups"
 msgstr ""
@@ -281,7 +281,7 @@ msgstr ""
 msgid "registration:"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:170
+#: lib/memex_web/live/home_live.html.heex:169
 #, elixir-autogen, elixir-format
 msgid "report bugs or request features"
 msgstr ""
@@ -330,12 +330,12 @@ msgstr ""
 msgid "users"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:121
+#: lib/memex_web/live/home_live.html.heex:120
 #, elixir-autogen, elixir-format
 msgid "version:"
 msgstr ""
 
-#: lib/memex_web/live/home_live.html.heex:148
+#: lib/memex_web/live/home_live.html.heex:147
 #, elixir-autogen, elixir-format
 msgid "view the source code"
 msgstr ""

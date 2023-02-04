@@ -11,6 +11,8 @@ config :memex,
   ecto_repos: [Memex.Repo],
   generators: [binary_id: true]
 
+config :memex, Memex.Accounts, registration: System.get_env("REGISTRATION", "invite")
+
 # Configures the endpoint
 config :memex, MemexWeb.Endpoint,
   url: [scheme: "https", host: System.get_env("HOST") || "localhost", port: "443"],
@@ -18,8 +20,7 @@ config :memex, MemexWeb.Endpoint,
   secret_key_base: "KH59P0iZixX5gP/u+zkxxG8vAAj6vgt0YqnwEB5JP5K+E567SsqkCz69uWShjE7I",
   render_errors: [view: MemexWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Memex.PubSub,
-  live_view: [signing_salt: "zOLgd3lr"],
-  registration: System.get_env("REGISTRATION") || "invite"
+  live_view: [signing_salt: "zOLgd3lr"]
 
 config :memex, Memex.Application, automigrate: false
 

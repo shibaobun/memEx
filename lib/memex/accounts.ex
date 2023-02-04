@@ -384,7 +384,7 @@ defmodule Memex.Accounts do
   """
   @spec allow_registration?() :: boolean()
   def allow_registration? do
-    Application.get_env(:Memex, MemexWeb.Endpoint)[:registration] == "public" or
+    Application.get_env(:memex, Memex.Accounts)[:registration] == "public" or
       list_users_by_role(:admin) |> Enum.empty?()
   end
 
