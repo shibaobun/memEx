@@ -11,6 +11,8 @@ config :lokal,
   ecto_repos: [Lokal.Repo],
   generators: [binary_id: true]
 
+config :lokal, Lokal.Accounts, registration: System.get_env("REGISTRATION", "invite")
+
 # Configures the endpoint
 config :lokal, LokalWeb.Endpoint,
   url: [scheme: "https", host: System.get_env("HOST") || "localhost", port: "443"],
@@ -18,8 +20,7 @@ config :lokal, LokalWeb.Endpoint,
   secret_key_base: "KH59P0iZixX5gP/u+zkxxG8vAAj6vgt0YqnwEB5JP5K+E567SsqkCz69uWShjE7I",
   render_errors: [view: LokalWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Lokal.PubSub,
-  live_view: [signing_salt: "zOLgd3lr"],
-  registration: System.get_env("REGISTRATION") || "invite"
+  live_view: [signing_salt: "zOLgd3lr"]
 
 config :lokal, Lokal.Application, automigrate: false
 

@@ -384,7 +384,7 @@ defmodule Lokal.Accounts do
   """
   @spec allow_registration?() :: boolean()
   def allow_registration? do
-    Application.get_env(:Lokal, LokalWeb.Endpoint)[:registration] == "public" or
+    Application.get_env(:lokal, Lokal.Accounts)[:registration] == "public" or
       list_users_by_role(:admin) |> Enum.empty?()
   end
 
