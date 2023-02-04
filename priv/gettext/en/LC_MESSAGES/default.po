@@ -31,7 +31,7 @@ msgstr ""
 msgid "Forgot your password?"
 msgstr ""
 
-#: lib/lokal_web/components/invite_card.ex:33
+#: lib/lokal_web/components/invite_card.ex:42
 #, elixir-autogen, elixir-format
 msgid "Invite Disabled"
 msgstr ""
@@ -169,12 +169,7 @@ msgstr ""
 msgid "User was confirmed at%{confirmed_datetime}"
 msgstr ""
 
-#: lib/lokal_web/components/invite_card.ex:23
-#, elixir-autogen, elixir-format, fuzzy
-msgid "Uses Left: %{uses_left}"
-msgstr ""
-
-#: lib/lokal_web/components/invite_card.ex:28
+#: lib/lokal_web/components/invite_card.ex:37
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Uses Left: Unlimited"
 msgstr ""
@@ -277,4 +272,14 @@ msgstr ""
 #: lib/lokal_web/views/layout_view.ex:11
 #, elixir-autogen, elixir-format
 msgid "Lokal | %{title}"
+msgstr ""
+
+#: lib/lokal_web/components/invite_card.ex:32
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Uses Left: %{uses_left_count}"
+msgstr ""
+
+#: lib/lokal_web/components/invite_card.ex:52
+#, elixir-autogen, elixir-format
+msgid "Uses: %{uses_count}"
 msgstr ""

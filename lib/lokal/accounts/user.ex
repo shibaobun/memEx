@@ -6,7 +6,7 @@ defmodule Lokal.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
   import LokalWeb.Gettext
-  alias Ecto.{Changeset, UUID}
+  alias Ecto.{Association, Changeset, UUID}
   alias Lokal.Accounts.{Invite, User}
 
   @derive {Jason.Encoder,
@@ -28,7 +28,9 @@ defmodule Lokal.Accounts.User do
     field :role, Ecto.Enum, values: [:admin, :user], default: :user
     field :locale, :string
 
-    has_many :invites, Invite, on_delete: :delete_all
+    has_many :created_invites, Invite, foreign_key: :created_by_id
+
+    belongs_to :invite, Invite
 
     timestamps()
   end
@@ -41,7 +43,9 @@ defmodule Lokal.Accounts.User do
           confirmed_at: NaiveDateTime.t(),
           role: role(),
           locale: String.t() | nil,
-          invites: [Invite.t()],
+          created_invites: [Invite.t()] | Association.NotLoaded.t(),
+          invite: Invite.t() | nil | Association.NotLoaded.t(),
+          invite_id: Invite.id() | nil,
           inserted_at: NaiveDateTime.t(),
           updated_at: NaiveDateTime.t()
         }
@@ -67,11 +71,12 @@ defmodule Lokal.Accounts.User do
       validations on a LiveView form), this option can be set to `false`.
       Defaults to `true`.
   """
-  @spec registration_changeset(attrs :: map()) :: changeset()
-  @spec registration_changeset(attrs :: map(), opts :: keyword()) :: changeset()
-  def registration_changeset(attrs, opts \\ []) do
+  @spec registration_changeset(attrs :: map(), Invite.t() | nil) :: changeset()
+  @spec registration_changeset(attrs :: map(), Invite.t() | nil, opts :: keyword()) :: changeset()
+  def registration_changeset(attrs, invite, opts \\ []) do
     %User{}
     |> cast(attrs, [:email, :password, :locale])
+    |> put_change(:invite_id, if(invite, do: invite.id))
     |> validate_email()
     |> validate_password(opts)
   end

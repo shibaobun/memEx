@@ -7,7 +7,7 @@ defmodule Lokal.Accounts.Invite do
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias Ecto.{Changeset, UUID}
+  alias Ecto.{Association, Changeset, UUID}
   alias Lokal.Accounts.User
 
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -18,7 +18,9 @@ defmodule Lokal.Accounts.Invite do
     field :uses_left, :integer, default: nil
     field :disabled_at, :naive_datetime
 
-    belongs_to :user, User
+    belongs_to :created_by, User
+
+    has_many :users, User
 
     timestamps()
   end
@@ -29,8 +31,9 @@ defmodule Lokal.Accounts.Invite do
           token: token(),
           uses_left: integer() | nil,
           disabled_at: NaiveDateTime.t(),
-          user: User.t(),
-          user_id: User.id(),
+          created_by: User.t() | nil | Association.NotLoaded.t(),
+          created_by_id: User.id() | nil,
+          users: [User.t()] | Association.NotLoaded.t(),
           inserted_at: NaiveDateTime.t(),
           updated_at: NaiveDateTime.t()
         }
@@ -43,9 +46,9 @@ defmodule Lokal.Accounts.Invite do
   @spec create_changeset(User.t(), token(), attrs :: map()) :: changeset()
   def create_changeset(%User{id: user_id}, token, attrs) do
     %__MODULE__{}
-    |> change(token: token, user_id: user_id)
+    |> change(token: token, created_by_id: user_id)
     |> cast(attrs, [:name, :uses_left, :disabled_at])
-    |> validate_required([:name, :token, :user_id])
+    |> validate_required([:name, :token, :created_by_id])
     |> validate_number(:uses_left, greater_than_or_equal_to: 0)
   end
 

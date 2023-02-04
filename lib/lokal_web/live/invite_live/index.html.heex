@@ -18,7 +18,7 @@
   <% end %>
 
   <div class="w-full flex flex-row flex-wrap justify-center items-center">
-    <.invite_card :for={invite <- @invites} invite={invite}>
+    <.invite_card :for={invite <- @invites} invite={invite} current_user={@current_user}>
       <:code_actions>
         <form phx-submit="copy_to_clipboard">
           <button

@@ -124,16 +124,15 @@ defmodule Lokal.Accounts do
     |> Multi.one(:users_count, from(u in User, select: count(u.id), distinct: true))
     |> Multi.run(:use_invite, fn _changes_so_far, _repo ->
       if allow_registration?() and invite_token |> is_nil() do
-        {:ok, :invite_not_required}
+        {:ok, nil}
       else
         Invites.use_invite(invite_token)
       end
     end)
-    |> Multi.insert(:add_user, fn %{users_count: count} ->
+    |> Multi.insert(:add_user, fn %{users_count: count, use_invite: invite} ->
       # if no registered users, make first user an admin
       role = if count == 0, do: :admin, else: :user
-
-      User.registration_changeset(attrs) |> User.role_changeset(role)
+      User.registration_changeset(attrs, invite) |> User.role_changeset(role)
     end)
     |> Repo.transaction()
     |> case do
@@ -158,7 +157,7 @@ defmodule Lokal.Accounts do
   @spec change_user_registration() :: User.changeset()
   @spec change_user_registration(attrs :: map()) :: User.changeset()
   def change_user_registration(attrs \\ %{}) do
-    User.registration_changeset(attrs, hash_password: false)
+    User.registration_changeset(attrs, nil, hash_password: false)
   end
 
   ## Settings

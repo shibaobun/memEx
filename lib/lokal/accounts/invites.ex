@@ -98,6 +98,15 @@ defmodule Lokal.Accounts.Invites do
     end
   end
 
+  @spec get_use_count(Invite.t(), User.t()) :: non_neg_integer()
+  def get_use_count(%Invite{id: invite_id}, %User{role: :admin}) do
+    Repo.one(
+      from u in User,
+        where: u.invite_id == ^invite_id,
+        select: count(u.id)
+    )
+  end
+
   @spec decrement_invite_changeset(Invite.t()) :: Invite.changeset()
   defp decrement_invite_changeset(%Invite{uses_left: nil} = invite) do
     invite |> Invite.update_changeset(%{})
