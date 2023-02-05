@@ -2,6 +2,7 @@
 - Fix bug with public registration
 - Improve templates
 - Improve invites, record usage
+- Fix padding on more pages when using chrome
 
 # v0.1.7
 - Update dependencies
