@@ -22,6 +22,9 @@ config :lokal, LokalWeb.Endpoint,
 # In test we don't send emails.
 config :lokal, Lokal.Mailer, adapter: Swoosh.Adapters.Test
 
+# Don't require invites for signups
+config :lokal, Lokal.Accounts, registration: "public"
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 

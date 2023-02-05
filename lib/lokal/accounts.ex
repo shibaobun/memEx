@@ -117,6 +117,8 @@ defmodule Lokal.Accounts do
       :passed
 
   """
+  @spec register_user(attrs :: map()) ::
+          {:ok, User.t()} | {:error, :invalid_token | User.changeset()}
   @spec register_user(attrs :: map(), Invite.token() | nil) ::
           {:ok, User.t()} | {:error, :invalid_token | User.changeset()}
   def register_user(attrs, invite_token \\ nil) do
