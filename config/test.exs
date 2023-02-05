@@ -22,6 +22,9 @@ config :memex, MemexWeb.Endpoint,
 # In test we don't send emails.
 config :memex, Memex.Mailer, adapter: Swoosh.Adapters.Test
 
+# Don't require invites for signups
+config :memex, Memex.Accounts, registration: "public"
+
 # Print only warnings and errors during test
 config :logger, level: :warn
 

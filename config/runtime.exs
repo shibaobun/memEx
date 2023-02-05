@@ -42,8 +42,6 @@ config :memex, Memex.Repo,
   pool_size: String.to_integer(System.get_env("POOL_SIZE", "10")),
   socket_options: maybe_ipv6
 
-config :memex, Memex.Accounts, registration: System.get_env("REGISTRATION", "invite")
-
 config :memex, MemexWeb.Endpoint,
   url: [scheme: "https", host: host, port: 443],
   http: [
@@ -53,6 +51,10 @@ config :memex, MemexWeb.Endpoint,
     port: String.to_integer(System.get_env("PORT", "4000"))
   ],
   server: true
+
+if config_env() in [:dev, :prod] do
+  config :memex, Memex.Accounts, registration: System.get_env("REGISTRATION", "invite")
+end
 
 if config_env() == :prod do
   # The secret key base is used to sign/encrypt cookies and other secrets.

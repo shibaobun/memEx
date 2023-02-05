@@ -85,7 +85,9 @@ defmodule Memex.Accounts.Invites do
     end
   end
 
-  @spec get_invite_by_token(Invite.token()) :: {:ok, Invite.t()} | {:error, :invalid_token}
+  @spec get_invite_by_token(Invite.token() | nil) :: {:ok, Invite.t()} | {:error, :invalid_token}
+  defp get_invite_by_token(token) when token in [nil, ""], do: {:error, :invalid_token}
+
   defp get_invite_by_token(token) do
     Repo.one(
       from i in Invite,
