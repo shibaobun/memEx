@@ -4,6 +4,7 @@ defmodule Memex.Application do
   @moduledoc false
 
   use Application
+  alias Memex.ErrorReporter
 
   @impl true
   def start(_type, _args) do
@@ -17,16 +18,24 @@ defmodule Memex.Application do
       # Start the Endpoint (http/https)
       MemexWeb.Endpoint,
       # Add Oban
-      {Oban, oban_config()}
+      {Oban, oban_config()},
+      Memex.Repo.Migrator
       # Start a worker by calling: Memex.Worker.start_link(arg)
       # {Memex.Worker, arg}
     ]
 
-    # Automatically migrate on start in prod
-    children =
-      if Application.get_env(:memex, Memex.Application, automigrate: false)[:automigrate],
-        do: children ++ [Memex.Repo.Migrator],
-        else: children
+    # Oban events logging https://hexdocs.pm/oban/Oban.html#module-reporting-errors
+    :ok =
+      :telemetry.attach_many(
+        "oban-logger",
+        [
+          [:oban, :job, :exception],
+          [:oban, :job, :start],
+          [:oban, :job, :stop]
+        ],
+        &ErrorReporter.handle_event/4,
+        []
+      )
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

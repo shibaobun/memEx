@@ -11,12 +11,15 @@ defmodule Memex.Repo.Migrator do
   end
 
   def init(_opts) do
-    migrate!()
-    {:ok, nil}
+    {:ok, if(automigrate_enabled?(), do: migrate!())}
   end
 
   def migrate! do
     path = Application.app_dir(:memex, "priv/repo/migrations")
     Ecto.Migrator.run(Memex.Repo, path, :up, all: true)
+  end
+
+  defp automigrate_enabled? do
+    Application.get_env(:memex, Memex.Application, automigrate: false)[:automigrate]
   end
 end

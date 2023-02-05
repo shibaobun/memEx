@@ -3,6 +3,7 @@
 - Improve templates
 - Improve invites, record usage
 - Fix padding on more pages when using chrome
+- Add oban metrics to server log and live dashboard
 
 # v0.1.7
 - Update dependencies
