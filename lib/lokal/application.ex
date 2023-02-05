@@ -4,6 +4,7 @@ defmodule Lokal.Application do
   @moduledoc false
 
   use Application
+  alias Lokal.ErrorReporter
 
   @impl true
   def start(_type, _args) do
@@ -17,16 +18,24 @@ defmodule Lokal.Application do
       # Start the Endpoint (http/https)
       LokalWeb.Endpoint,
       # Add Oban
-      {Oban, oban_config()}
+      {Oban, oban_config()},
+      Lokal.Repo.Migrator
       # Start a worker by calling: Lokal.Worker.start_link(arg)
       # {Lokal.Worker, arg}
     ]
 
-    # Automatically migrate on start in prod
-    children =
-      if Application.get_env(:lokal, Lokal.Application, automigrate: false)[:automigrate],
-        do: children ++ [Lokal.Repo.Migrator],
-        else: children
+    # Oban events logging https://hexdocs.pm/oban/Oban.html#module-reporting-errors
+    :ok =
+      :telemetry.attach_many(
+        "oban-logger",
+        [
+          [:oban, :job, :exception],
+          [:oban, :job, :start],
+          [:oban, :job, :stop]
+        ],
+        &ErrorReporter.handle_event/4,
+        []
+      )
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

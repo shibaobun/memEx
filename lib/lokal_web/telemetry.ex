@@ -57,6 +57,30 @@ defmodule LokalWeb.Telemetry do
           "The time the connection spent waiting before being checked out for the query"
       ),
 
+      # Oban Metrics
+      counter("oban.job.exception",
+        tags: [:queue, :worker],
+        event_name: [:oban, :job, :exception],
+        measurement: :duration,
+        description: "Number of oban jobs that raised an exception"
+      ),
+      counter("oban.job.start",
+        tags: [:queue, :worker],
+        event_name: [:oban, :job, :start],
+        measurement: :system_time,
+        description: "Number of oban jobs started"
+      ),
+      summary("oban.job.stop.duration",
+        tags: [:queue, :worker],
+        unit: {:native, :millisecond},
+        description: "Length of time spent processing the oban job"
+      ),
+      summary("oban.job.stop.queue_time",
+        tags: [:queue, :worker],
+        unit: {:native, :millisecond},
+        description: "Time the oban job spent waiting in milliseconds"
+      ),
+
       # VM Metrics
       summary("vm.memory.total", unit: {:byte, :kilobyte}),
       summary("vm.total_run_queue_lengths.total"),
