@@ -4,7 +4,7 @@ defmodule Lokal.Application do
   @moduledoc false
 
   use Application
-  alias Lokal.ErrorReporter
+  alias Lokal.Logger
 
   @impl true
   def start(_type, _args) do
@@ -33,7 +33,7 @@ defmodule Lokal.Application do
           [:oban, :job, :start],
           [:oban, :job, :stop]
         ],
-        &ErrorReporter.handle_event/4,
+        &Logger.handle_event/4,
         []
       )
 
