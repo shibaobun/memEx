@@ -25,7 +25,7 @@ msgstr ""
 msgid "Are you sure you want to delete your account?"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:76
+#: lib/lokal_web/components/topbar.ex:59
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to log out?"
 msgstr ""

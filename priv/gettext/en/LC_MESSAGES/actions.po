@@ -34,7 +34,7 @@ msgstr ""
 msgid "Forgot your password?"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:108
+#: lib/lokal_web/components/topbar.ex:91
 #: lib/lokal_web/templates/user_confirmation/new.html.heex:31
 #: lib/lokal_web/templates/user_registration/new.html.heex:44
 #: lib/lokal_web/templates/user_reset_password/edit.html.heex:45
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:100
+#: lib/lokal_web/components/topbar.ex:83
 #: lib/lokal_web/templates/user_confirmation/new.html.heex:28
 #: lib/lokal_web/templates/user_registration/new.html.heex:3
 #: lib/lokal_web/templates/user_registration/new.html.heex:37

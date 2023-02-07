@@ -36,23 +36,6 @@ defmodule LokalWeb.Components.Topbar do
         <ul class="flex flex-row flex-wrap justify-center items-center
           text-lg text-white text-ellipsis">
           <%= if @current_user do %>
-            <form phx-change="suggest" phx-submit="search">
-              <input
-                type="text"
-                name="q"
-                class="input input-primary"
-                placeholder="Search"
-                list="results"
-                autocomplete="off"
-              />
-              <datalist id="results">
-                <%= for {app, _vsn} <- @results do %>
-                  <option value={app}>
-                    "> <%= app %>
-                  </option>
-                <% end %>
-              </datalist>
-            </form>
             <li :if={@current_user.role == :admin} class="mx-2 my-1">
               <.link
                 navigate={Routes.invite_index_path(Endpoint, :index)}

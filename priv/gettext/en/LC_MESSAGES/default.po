@@ -36,7 +36,7 @@ msgstr ""
 msgid "Invite Disabled"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:61
+#: lib/lokal_web/components/topbar.ex:44
 #: lib/lokal_web/live/invite_live/index.ex:42
 #: lib/lokal_web/live/invite_live/index.html.heex:3
 #, elixir-autogen, elixir-format
