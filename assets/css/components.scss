@@ -11,6 +11,7 @@
   }
 
   .checkbox {
+    @apply bg-primary-900;
     -ms-transform: scale(1.5);
     -moz-transform: scale(1.5);
     -webkit-transform: scale(1.5);
@@ -26,25 +27,31 @@
 
   .btn {
     @apply focus:outline-none px-4 py-2 rounded-lg;
-    @apply shadow-sm focus:shadow-lg;
+    @apply shadow-sm active:shadow-lg;
     @apply border;
     @apply transition-all duration-300 ease-in-out;
   }
 
   .btn-primary {
-    @apply bg-primary-900 focus:bg-primary-900 active:bg-primary-800;
+    @apply bg-primary-900 active:bg-primary-800;
     @apply border-primary-900 hover:border-primary-800 active:border-primary-700;
     @apply text-primary-400;
   }
 
+  .btn-secondary {
+    @apply bg-primary-800 active:bg-primary-700;
+    @apply border-primary-800 hover:border-primary-700 active:border-primary-600;
+    @apply text-primary-400;
+  }
+
   .btn-alert {
-    @apply bg-red-700 focus:bg-red-800 active:bg-red-900;
-    @apply border-red-700 focus:border-red-800 active:border-red-900;
+    @apply bg-red-700 active:bg-red-900;
+    @apply border-red-700 active:border-red-900;
     @apply text-primary-300;
   }
 
   .hr {
-    @apply mx-auto border border-primary-600 w-full max-w-2xl;
+    @apply mx-auto border border-primary-600 w-full max-w-3xl;
   }
 
   .link {

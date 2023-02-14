@@ -19,7 +19,8 @@ defmodule MemexWeb.Components.InviteCard do
       |> assign_new(:code_actions, fn -> [] end)
 
     ~H"""
-    <div class="mx-4 my-2 px-8 py-4 flex flex-col justify-center items-center space-y-4
+    <div class="px-8 py-4 flex flex-col justify-center items-center space-y-4
+      bg-primary-900
       border border-gray-400 rounded-lg shadow-lg hover:shadow-md
       transition-all duration-300 ease-in-out">
       <h1 class="title text-xl">
@@ -55,7 +56,8 @@ defmodule MemexWeb.Components.InviteCard do
       <div class="flex flex-row flex-wrap justify-center items-center">
         <code
           id={"code-#{@invite.id}"}
-          class="mx-2 my-1 text-xs px-4 py-2 rounded-lg text-center break-all text-gray-100 bg-primary-800"
+          class="mx-2 my-1 text-xs px-4 py-2 rounded-lg text-center break-all
+            text-primary-400 bg-primary-800"
           phx-no-format
         ><%= Routes.user_registration_url(Endpoint, :new, invite: @invite.token) %></code>
         <%= render_slot(@code_actions) %>

@@ -10,11 +10,6 @@ msgid ""
 msgstr ""
 "Language: de\n"
 
-#: lib/memex_web/live/invite_live/index.html.heex:29
-#, elixir-autogen, elixir-format
-msgid "Copy to clipboard"
-msgstr ""
-
 #: lib/memex_web/templates/user_confirmation/new.html.heex:3
 #: lib/memex_web/templates/user_confirmation/new.html.heex:15
 #, elixir-autogen, elixir-format
@@ -33,24 +28,24 @@ msgid "Save"
 msgstr ""
 
 #: lib/memex_web/templates/user_settings/edit.html.heex:15
-#: lib/memex_web/templates/user_settings/edit.html.heex:45
+#: lib/memex_web/templates/user_settings/edit.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "change email"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:115
-#: lib/memex_web/templates/user_settings/edit.html.heex:134
+#: lib/memex_web/templates/user_settings/edit.html.heex:111
+#: lib/memex_web/templates/user_settings/edit.html.heex:128
 #, elixir-autogen, elixir-format
 msgid "change language"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:59
-#: lib/memex_web/templates/user_settings/edit.html.heex:101
+#: lib/memex_web/templates/user_settings/edit.html.heex:57
+#: lib/memex_web/templates/user_settings/edit.html.heex:97
 #, elixir-autogen, elixir-format
 msgid "change password"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:16
+#: lib/memex_web/live/invite_live/index.html.heex:82
 #, elixir-autogen, elixir-format
 msgid "create invite"
 msgstr ""
@@ -66,7 +61,7 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:157
+#: lib/memex_web/templates/user_settings/edit.html.heex:151
 #, elixir-autogen, elixir-format
 msgid "delete user"
 msgstr ""
@@ -156,7 +151,12 @@ msgstr ""
 msgid "send instructions to reset password"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:148
+#: lib/memex_web/templates/user_settings/edit.html.heex:142
 #, elixir-autogen, elixir-format
 msgid "export data as json"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.html.heex:25
+#, elixir-autogen, elixir-format
+msgid "copy"
 msgstr ""

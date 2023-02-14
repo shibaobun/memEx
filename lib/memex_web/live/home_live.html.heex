@@ -1,11 +1,9 @@
-<div class="mx-auto flex flex-col justify-center items-stretch space-y-4 max-w-3xl">
-  <h1 class="title text-primary-400 text-2xl text-center">
+<div class="mx-auto flex flex-col justify-center items-stretch space-y-4 max-w-lg">
+  <h1 class="title text-primary-400 text-xl">
     <%= gettext("memEx") %>
   </h1>
 
-  <hr class="hr" />
-
-  <ul class="flex flex-col space-y-4 text-center">
+  <ul class="flex flex-col space-y-4">
     <li class="flex flex-col justify-center items-center space-y-2">
       <b class="whitespace-nowrap">
         <%= gettext("notes:") %>
@@ -33,11 +31,8 @@
       </p>
     </li>
 
-    <li class="flex flex-col justify-center items-center space-y-2">
-      <.link
-        navigate={Routes.live_path(Endpoint, FaqLive)}
-        class="link title text-primary-400 text-lg"
-      >
+    <li class="flex flex-col justify-center items-center text-right space-y-2">
+      <.link navigate={Routes.live_path(Endpoint, FaqLive)} class="btn btn-primary">
         <%= gettext("read more on how to use memEx") %>
       </.link>
     </li>
@@ -45,7 +40,7 @@
 
   <hr class="hr" />
 
-  <ul class="flex flex-col space-y-4 text-center">
+  <ul class="flex flex-col space-y-4">
     <h2 class="title text-primary-400 text-lg">
       <%= gettext("features") %>
     </h2>
@@ -80,31 +75,29 @@
 
   <hr class="hr" />
 
-  <ul class="flex flex-col space-y-4 text-center">
+  <ul class="flex flex-col justify-center space-y-4">
     <h2 class="title text-primary-400 text-lg">
       <%= gettext("instance information") %>
     </h2>
 
-    <li class="flex flex-col justify-center space-x-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <b>
         <%= gettext("admins:") %>
       </b>
-      <p>
+      <p class="flex flex-col justify-center items-center space-y-2">
         <%= if @admins |> Enum.empty?() do %>
           <.link href={Routes.user_registration_path(Endpoint, :new)} class="link">
             <%= dgettext("prompts", "register to setup memEx") %>
           </.link>
         <% else %>
-          <div class="flex flex-wrap justify-center space-x-2">
-            <a :for={%{email: email} <- @admins} class="link" href={"mailto:#{email}"}>
-              <%= email %>
-            </a>
-          </div>
+          <a :for={%{email: email} <- @admins} class="link" href={"mailto:#{email}"}>
+            <%= email %>
+          </a>
         <% end %>
       </p>
     </li>
 
-    <li class="flex flex-row justify-center space-x-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <b><%= gettext("registration:") %></b>
       <p>
         <%= case Application.get_env(:memex, Memex.Accounts)[:registration] do
@@ -114,7 +107,7 @@
       </p>
     </li>
 
-    <li class="flex flex-row justify-center items-center space-x-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <b><%= gettext("version:") %></b>
       <.link
         href="https://gitea.bubbletea.dev/shibao/memEx/src/branch/stable/changelog.md"
@@ -130,12 +123,12 @@
 
   <hr class="hr" />
 
-  <ul class="flex flex-col space-y-2 text-center justify-center">
+  <ul class="flex flex-col space-y-2">
     <h2 class="title text-primary-400 text-lg">
-      <%= gettext("get involved!") %>
+      <%= gettext("get involved") %>
     </h2>
 
-    <li class="flex flex-col justify-center space-x-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <.link
         href="https://gitea.bubbletea.dev/shibao/memEx"
         class="flex flex-row justify-center items-center space-x-2 link"
@@ -146,7 +139,7 @@
         <i class="fas fa-md fa-code"></i>
       </.link>
     </li>
-    <li class="flex flex-col justify-center space-x-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <.link
         href="https://weblate.bubbletea.dev/engage/memEx"
         class="flex flex-row justify-center items-center space-x-2 link"
@@ -157,7 +150,7 @@
         <i class="fas fa-md fa-language"></i>
       </.link>
     </li>
-    <li class="flex flex-col justify-center space-x-2">
+    <li class="flex flex-col justify-center items-center space-y-2">
       <.link
         href="https://gitea.bubbletea.dev/shibao/memEx/issues/new"
         class="flex flex-row justify-center items-center space-x-2 link"

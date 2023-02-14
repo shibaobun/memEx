@@ -21,7 +21,7 @@ msgid "Invalid email or password"
 msgstr ""
 
 #: lib/memex_web/templates/user_reset_password/edit.html.heex:14
-#: lib/memex_web/templates/user_settings/edit.html.heex:67
+#: lib/memex_web/templates/user_settings/edit.html.heex:64
 #, elixir-autogen, elixir-format
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""
@@ -79,8 +79,8 @@ msgstr ""
 msgid "must have the @ sign and no spaces"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:23
-#: lib/memex_web/templates/user_settings/edit.html.heex:123
+#: lib/memex_web/templates/user_settings/edit.html.heex:22
+#: lib/memex_web/templates/user_settings/edit.html.heex:118
 #, elixir-autogen, elixir-format
 msgid "oops, something went wrong! Please check the errors below"
 msgstr ""

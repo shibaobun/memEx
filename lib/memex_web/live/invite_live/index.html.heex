@@ -1,5 +1,5 @@
-<div class="w-full flex flex-col space-y-8 justify-center items-center">
-  <h1 class="title text-2xl title-primary-500">
+<div class="mx-auto flex flex-col justify-center items-stretch space-y-4 max-w-3xl">
+  <h1 class="title text-xl title-primary-500">
     <%= gettext("invites") %>
   </h1>
 
@@ -8,25 +8,21 @@
       <%= gettext("no invites 😔") %>
     </h1>
 
-    <.link patch={Routes.invite_index_path(Endpoint, :new)} class="btn btn-primary">
+    <.link patch={Routes.invite_index_path(Endpoint, :new)} class="btn btn-primary ml-auto">
       <%= dgettext("actions", "invite someone new!") %>
-    </.link>
-  <% else %>
-    <.link patch={Routes.invite_index_path(Endpoint, :new)} class="btn btn-primary">
-      <%= dgettext("actions", "create invite") %>
     </.link>
   <% end %>
 
-  <div class="w-full flex flex-row flex-wrap justify-center items-center">
+  <div class="flex flex-col justify-center items-stretch space-y-4">
     <.invite_card :for={invite <- @invites} invite={invite} current_user={@current_user}>
       <:code_actions>
         <form phx-submit="copy_to_clipboard">
           <button
             type="submit"
-            class="mx-2 my-1 btn btn-primary"
+            class="mx-2 my-1 btn btn-secondary"
             phx-click={JS.dispatch("memex:clipcopy", to: "#code-#{invite.id}")}
           >
-            <%= dgettext("actions", "Copy to clipboard") %>
+            <%= dgettext("actions", "copy") %>
           </button>
         </form>
       </:code_actions>
@@ -55,7 +51,7 @@
 
       <a
         href="#"
-        class="btn btn-primary"
+        class="btn btn-secondary"
         phx-click={if invite.disabled_at, do: "enable_invite", else: "disable_invite"}
         phx-value-id={invite.id}
       >
@@ -65,7 +61,7 @@
       <a
         :if={invite.disabled_at |> is_nil() and not (invite.uses_left |> is_nil())}
         href="#"
-        class="btn btn-primary"
+        class="btn btn-secondary"
         phx-click="set_unlimited"
         phx-value-id={invite.id}
         data-confirm={
@@ -77,16 +73,24 @@
         <%= gettext("set unlimited") %>
       </a>
     </.invite_card>
+
+    <.link
+      :if={@invites != []}
+      patch={Routes.invite_index_path(Endpoint, :new)}
+      class="btn btn-primary ml-auto"
+    >
+      <%= dgettext("actions", "create invite") %>
+    </.link>
   </div>
 
   <%= unless @admins |> Enum.empty?() do %>
     <hr class="hr" />
 
-    <h1 class="title text-2xl text-primary-400">
+    <h1 class="title text-xl text-primary-400">
       <%= gettext("Admins") %>
     </h1>
 
-    <div class="w-full flex flex-row flex-wrap justify-center items-center">
+    <div class="flex flex-col justify-center items-stretch space-y-4">
       <.user_card :for={admin <- @admins} user={admin}>
         <.link
           href="#"
@@ -110,11 +114,11 @@
   <%= unless @users |> Enum.empty?() do %>
     <hr class="hr" />
 
-    <h1 class="title text-2xl text-primary-400">
+    <h1 class="title text-xl text-primary-400">
       <%= gettext("users") %>
     </h1>
 
-    <div class="w-full flex flex-row flex-wrap justify-center items-center">
+    <div class="flex flex-col justify-center items-stretch space-y-4">
       <.user_card :for={user <- @users} user={user}>
         <.link
           href="#"

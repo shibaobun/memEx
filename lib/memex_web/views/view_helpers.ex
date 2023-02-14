@@ -71,7 +71,7 @@ defmodule MemexWeb.ViewHelpers do
     img_data =
       content
       |> EQRCode.encode()
-      |> EQRCode.png(width: width, background_color: <<39, 39, 42>>, color: <<255, 255, 255>>)
+      |> EQRCode.png(width: width, background_color: <<24, 24, 27>>, color: <<255, 255, 255>>)
       |> Base.encode64()
 
     "data:image/png;base64," <> img_data
