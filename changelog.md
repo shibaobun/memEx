@@ -1,3 +1,7 @@
+# v0.1.9
+- Improve server log
+- Style 大一點
+
 # v0.1.8
 - Fix bug with public registration
 - Improve templates
