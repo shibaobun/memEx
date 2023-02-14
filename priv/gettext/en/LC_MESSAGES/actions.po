@@ -11,18 +11,18 @@ msgstr ""
 "Language: en\n"
 
 #: lib/lokal_web/templates/user_settings/edit.html.heex:15
-#: lib/lokal_web/templates/user_settings/edit.html.heex:45
+#: lib/lokal_web/templates/user_settings/edit.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "Change email"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:59
-#: lib/lokal_web/templates/user_settings/edit.html.heex:101
+#: lib/lokal_web/templates/user_settings/edit.html.heex:57
+#: lib/lokal_web/templates/user_settings/edit.html.heex:97
 #, elixir-autogen, elixir-format
 msgid "Change password"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:143
+#: lib/lokal_web/templates/user_settings/edit.html.heex:142
 #, elixir-autogen, elixir-format
 msgid "Delete User"
 msgstr ""
@@ -93,12 +93,12 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:115
+#: lib/lokal_web/templates/user_settings/edit.html.heex:111
 #, elixir-autogen, elixir-format
 msgid "Change Language"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:129
+#: lib/lokal_web/templates/user_settings/edit.html.heex:128
 #, elixir-autogen, elixir-format
 msgid "Change language"
 msgstr ""

@@ -125,9 +125,9 @@ msgstr ""
 
 #: lib/lokal_web/templates/user_registration/new.html.heex:13
 #: lib/lokal_web/templates/user_reset_password/edit.html.heex:13
-#: lib/lokal_web/templates/user_settings/edit.html.heex:23
-#: lib/lokal_web/templates/user_settings/edit.html.heex:67
-#: lib/lokal_web/templates/user_settings/edit.html.heex:119
+#: lib/lokal_web/templates/user_settings/edit.html.heex:22
+#: lib/lokal_web/templates/user_settings/edit.html.heex:64
+#: lib/lokal_web/templates/user_settings/edit.html.heex:118
 #, elixir-autogen, elixir-format
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr ""

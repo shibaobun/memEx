@@ -20,7 +20,7 @@ msgstr ""
 msgid "A link to confirm your email change has been sent to the new address."
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:141
+#: lib/lokal_web/templates/user_settings/edit.html.heex:140
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to delete your account?"
 msgstr ""
@@ -86,7 +86,7 @@ msgstr ""
 msgid "Saving..."
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:131
+#: lib/lokal_web/templates/user_settings/edit.html.heex:130
 #, elixir-autogen, elixir-format
 msgid "Are you sure you want to change your language?"
 msgstr ""

@@ -1,5 +1,5 @@
-<div class="mx-auto pb-8 max-w-2xl flex flex-col justify-center items-center text-center space-y-4">
-  <h1 class="pb-4 title text-primary-600 text-xl">
+<div class="mx-auto pb-8 max-w-2xl flex flex-col justify-center items-center text-right space-y-4">
+  <h1 class="pb-4 title text-primary-600 text-2xl text-center">
     <%= gettext("Settings") %>
   </h1>
 
@@ -11,7 +11,7 @@
     action={Routes.user_settings_path(@conn, :update)}
     class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
   >
-    <h3 class="title text-primary-600 text-lg col-span-3">
+    <h3 class="title text-primary-600 text-lg text-center col-span-3">
       <%= dgettext("actions", "Change email") %>
     </h3>
 
@@ -19,9 +19,7 @@
       :if={@email_changeset.action && not @email_changeset.valid?()}
       class="alert alert-danger col-span-3"
     >
-      <p>
-        <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
-      </p>
+      <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
     </div>
 
     <%= hidden_input(f, :action, name: "action", value: "update_email") %>
@@ -55,7 +53,7 @@
     action={Routes.user_settings_path(@conn, :update)}
     class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
   >
-    <h3 class="title text-primary-600 text-lg col-span-3">
+    <h3 class="title text-primary-600 text-lg text-center col-span-3">
       <%= dgettext("actions", "Change password") %>
     </h3>
 
@@ -63,9 +61,7 @@
       :if={@password_changeset.action && not @password_changeset.valid?()}
       class="alert alert-danger col-span-3"
     >
-      <p>
-        <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
-      </p>
+      <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
     </div>
 
     <%= hidden_input(f, :action, name: "action", value: "update_password") %>
@@ -109,25 +105,28 @@
     :let={f}
     for={@locale_changeset}
     action={Routes.user_settings_path(@conn, :update)}
-    class="flex flex-col space-y-4 justify-center items-center"
+    class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
   >
-    <h3 class="title text-primary-600 text-lg">
+    <h3 class="title text-primary-600 text-lg text-center col-span-3">
       <%= dgettext("actions", "Change Language") %>
     </h3>
 
-    <p :if={@locale_changeset.action && not @locale_changeset.valid?} class="alert alert-danger">
+    <div
+      :if={@locale_changeset.action && not @locale_changeset.valid?}
+      class="alert alert-danger col-span-3"
+    >
       <%= dgettext("errors", "Oops, something went wrong! Please check the errors below.") %>
-    </p>
+    </div>
 
     <%= hidden_input(f, :action, name: "action", value: "update_locale") %>
 
     <%= select(f, :locale, [{gettext("English"), "en_US"}, {"Spanish", "es"}],
-      class: "mx-2 my-1 min-w-md input input-primary"
+      class: "mx-2 my-1 min-w-md input input-primary col-span-3"
     ) %>
-    <%= error_tag(f, :locale) %>
+    <%= error_tag(f, :locale, "col-span-3") %>
 
     <%= submit(dgettext("actions", "Change language"),
-      class: "whitespace-nowrap mx-auto btn btn-primary",
+      class: "whitespace-nowrap mx-auto btn btn-primary col-span-3",
       data: [qa: dgettext("prompts", "Are you sure you want to change your language?")]
     ) %>
   </.form>

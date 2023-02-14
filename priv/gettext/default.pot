@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:80
+#: lib/lokal_web/templates/user_settings/edit.html.heex:76
 #, elixir-autogen, elixir-format
 msgid "Confirm new password"
 msgstr ""
@@ -20,8 +20,8 @@ msgstr ""
 msgid "Confirm your account"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:33
-#: lib/lokal_web/templates/user_settings/edit.html.heex:89
+#: lib/lokal_web/templates/user_settings/edit.html.heex:31
+#: lib/lokal_web/templates/user_settings/edit.html.heex:85
 #, elixir-autogen, elixir-format
 msgid "Current password"
 msgstr ""
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:73
+#: lib/lokal_web/templates/user_settings/edit.html.heex:69
 #, elixir-autogen, elixir-format
 msgid "New password"
 msgstr ""
@@ -135,7 +135,7 @@ msgid "Uses left"
 msgstr ""
 
 #: lib/lokal_web/templates/user_registration/new.html.heex:32
-#: lib/lokal_web/templates/user_settings/edit.html.heex:124
+#: lib/lokal_web/templates/user_settings/edit.html.heex:123
 #, elixir-autogen, elixir-format
 msgid "English"
 msgstr ""
