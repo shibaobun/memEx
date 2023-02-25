@@ -16,9 +16,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with %User{} <- get_user_by_email("foo@example.com"), do: :passed
-      :passed
+      iex> get_user_by_email("foo@example.com")
+      %User{}
 
       iex> get_user_by_email("unknown@example.com")
       nil
@@ -34,9 +33,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with %User{} <- get_user_by_email_and_password("foo@example.com", "valid_password"), do: :passed
-      :passed
+      iex> get_user_by_email_and_password("foo@example.com", "valid_password")
+      %User{}
 
       iex> get_user_by_email_and_password("foo@example.com", "invalid_password")
       nil
@@ -57,15 +55,14 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> get_user!(user.id)
+      iex> get_user!(user_id)
       user
 
-      > get_user!()
+      iex> get_user!()
       ** (Ecto.NoResultsError)
 
   """
-  @spec get_user!(User.t()) :: User.t()
+  @spec get_user!(User.id()) :: User.t()
   def get_user!(id) do
     Repo.get!(User, id)
   end
@@ -75,10 +72,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user1} = register_user(%{email: "foo1@example.com", password: "valid_password"})
-      iex> {:ok, user2} = register_user(%{email: "foo2@example.com", password: "valid_password"})
-      iex> with %{admin: [^user1], user: [^user2]} <- list_all_users_by_role(user1), do: :passed
-      :passed
+      iex> list_all_users_by_role(user1)
+      %{admin: [%User{role: :admin}], user: [%User{role: :user}]}
 
   """
   @spec list_all_users_by_role(User.t()) :: %{User.role() => [User.t()]}
@@ -91,9 +86,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with [^user] <- list_users_by_role(:admin), do: :passed
-      :passed
+      iex> list_users_by_role(:admin)
+      [%User{role: :admin}]
 
   """
   @spec list_users_by_role(:admin) :: [User.t()]
@@ -108,13 +102,11 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> with {:ok, %User{email: "foo@example.com"}} <-
-      ...>        register_user(%{email: "foo@example.com", password: "valid_password"}),
-      ...>      do: :passed
-      :passed
+      iex> register_user(%{email: "foo@example.com", password: "valid_password"})
+      {:ok, %User{email: "foo@example.com"}}
 
-      iex> with {:error, %Changeset{}} <- register_user(%{email: "foo@example"}), do: :passed
-      :passed
+      iex> register_user(%{email: "foo@example"})
+      {:error, %Changeset{}}
 
   """
   @spec register_user(attrs :: map()) ::
@@ -149,11 +141,11 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> with %Changeset{} <- change_user_registration(), do: :passed
-      :passed
+      iex> change_user_registration()
+      %Changeset{}
 
-      iex> with %Changeset{} <- change_user_registration(%{password: "hi"}), do: :passed
-      :passed
+      iex> change_user_registration(%{password: "hi"}
+      %Changeset{}
 
   """
   @spec change_user_registration() :: User.changeset()
@@ -169,8 +161,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> with %Changeset{} <- change_user_email(%User{email: "foo@example.com"}), do: :passed
-      :passed
+      iex> change_user_email(%User{email: "foo@example.com"})
+      %Changeset{}
 
   """
   @spec change_user_email(User.t()) :: User.changeset()
@@ -184,8 +176,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> with %Changeset{} <- change_user_role(%User{}, :user), do: :passed
-      :passed
+      iex> change_user_role(%User{}, :user)
+      %Changeset{}
 
   """
   @spec change_user_role(User.t(), User.role()) :: User.changeset()
@@ -199,17 +191,11 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with {:ok, %User{}} <-
-      ...>        apply_user_email(user, "valid_password", %{email: "new_email@account.com"}),
-      ...>      do: :passed
-      :passed
+      iex> apply_user_email(user, "valid_password", %{email: "new_email@account.com"})
+      {:ok, %User{}}
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with {:error, %Changeset{}} <-
-      ...>        apply_user_email(user, "invalid password", %{email: "new_email@account"}),
-      ...>      do: :passed
-      :passed
+      iex> apply_user_email(user, "invalid password", %{email: "new_email@account"})
+      {:error, %Changeset{}}
 
   """
   @spec apply_user_email(User.t(), email :: String.t(), attrs :: map()) ::
@@ -254,12 +240,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, %{id: user_id} = user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with %Oban.Job{
-      ...>        args: %{email: :update_email, user_id: ^user_id, attrs: %{url: "example url"}}
-      ...>      } <- deliver_update_email_instructions(user, "new_foo@example.com", fn _token -> "example url" end),
-      ...>      do: :passed
-      :passed
+      iex> deliver_update_email_instructions(user, "new_foo@example.com", fn _token -> "example url" end)
+      %Oban.Job{args: %{email: :update_email, user_id: ^user_id, attrs: %{url: "example url"}}}
 
   """
   @spec deliver_update_email_instructions(User.t(), current_email :: String.t(), function) ::
@@ -276,8 +258,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> with %Changeset{} <- change_user_password(%User{}), do: :passed
-      :passed
+      iex> change_user_password(%User{})
+      %Changeset{}
 
   """
   @spec change_user_password(User.t(), attrs :: map()) :: User.changeset()
@@ -290,20 +272,14 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with {:ok, %User{}} <-
-      ...>         reset_user_password(user, %{
-      ...>           password: "new password",
-      ...>           password_confirmation: "new password"
-      ...>         }),
-      ...>      do: :passed
-      :passed
+      iex> reset_user_password(user, %{
+      ...>   password: "new password",
+      ...>   password_confirmation: "new password"
+      ...> })
+      {:ok, %User{}}
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with {:error, %Changeset{}} <-
-      ...>        update_user_password(user, "invalid password", %{password: "123"}),
-      ...>      do: :passed
-      :passed
+      iex> update_user_password(user, "invalid password", %{password: "123"})
+      {:error, %Changeset{}}
 
   """
   @spec update_user_password(User.t(), String.t(), attrs :: map()) ::
@@ -329,8 +305,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> with %Changeset{} <- change_user_locale(%User{}), do: :passed
-      :passed
+      iex> change_user_locale(%User{})
+      %Changeset{}
 
   """
   @spec change_user_locale(User.t()) :: User.changeset()
@@ -343,9 +319,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with {:ok, %User{}} <- update_user_locale(user, "en_US"), do: :passed
-      :passed
+      iex> update_user_locale(user, "en_US")
+      {:ok, %User{}}
 
   """
   @spec update_user_locale(User.t(), locale :: String.t()) ::
@@ -359,13 +334,11 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with %User{} <- delete_user!(user, %User{id: 123, role: :admin}), do: :passed
-      :passed
+      iex> delete_user!(user, %User{id: 123, role: :admin})
+      %User{}
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with %User{} <- delete_user!(user, user), do: :passed
-      :passed
+      iex> delete_user!(user, user)
+      %User{}
 
   """
   @spec delete_user!(user_to_delete :: User.t(), User.t()) :: User.t()
@@ -421,11 +394,10 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> is_admin?(user)
+      iex> is_admin?(%User{role: :admin})
       true
 
-      iex> is_admin?(%User{id: Ecto.UUID.generate()})
+      iex> is_admin?(%User{})
       false
 
   """
@@ -439,8 +411,7 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> is_already_admin?(user)
+      iex> is_already_admin?(%User{role: :admin})
       true
 
       iex> is_already_admin?(%User{})
@@ -458,15 +429,9 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, %{id: user_id} = user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with %Oban.Job{
-      ...>   args: %{email: :welcome, user_id: ^user_id, attrs: %{url: "example url"}}
-      ...> } <- deliver_user_confirmation_instructions(user, fn _token -> "example url" end),
-      ...> do: :passed
-      :passed
+      iex> deliver_user_confirmation_instructions(user, fn _token -> "example url" end)
+      %Oban.Job{args: %{email: :welcome, user_id: ^user_id, attrs: %{url: "example url"}}}
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> user = user |> User.confirm_changeset() |> Repo.update!()
       iex> deliver_user_confirmation_instructions(user, fn _token -> "example url" end)
       {:error, :already_confirmed}
 
@@ -514,12 +479,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, %{id: user_id} = user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with %Oban.Job{args: %{
-      ...>        email: :reset_password, user_id: ^user_id, attrs: %{url: "example url"}}
-      ...>    } <- deliver_user_reset_password_instructions(user, fn _token -> "example url" end),
-      ...>    do: :passed
-      :passed
+      iex> deliver_user_reset_password_instructions(user, fn _token -> "example url" end)
+      %Oban.Job{args: %{email: :reset_password, user_id: ^user_id, attrs: %{url: "example url"}}}
 
   """
   @spec deliver_user_reset_password_instructions(User.t(), function()) :: Job.t()
@@ -535,11 +496,8 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> {encoded_token, user_token} = UserToken.build_email_token(user, "reset_password")
-      iex> Repo.insert!(user_token)
-      iex> with %User{} <- get_user_by_reset_password_token(encoded_token), do: :passed
-      :passed
+      iex> get_user_by_reset_password_token(encoded_token)
+      %User{}
 
       iex> get_user_by_reset_password_token("invalidtoken")
       nil
@@ -560,20 +518,14 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with {:ok, %User{}} <-
-      ...>         reset_user_password(user, %{
-      ...>           password: "new password",
-      ...>           password_confirmation: "new password"
-      ...>         }),
-      ...>      do: :passed
-      :passed
+      iex> reset_user_password(user, %{
+      ...>   password: "new password",
+      ...>   password_confirmation: "new password"
+      ...> })
+      {:ok, %User{}}
 
-      iex> {:ok, user} = register_user(%{email: "foo@example.com", password: "valid_password"})
-      iex> with {:error, %Changeset{}} <-
-      ...>        reset_user_password(user, %{password: "valid", password_confirmation: "not the same"}),
-      ...>      do: :passed
-      :passed
+      iex> reset_user_password(user, %{password: "valid", password_confirmation: "not the same"})
+      {:error, %Changeset{}}
 
   """
   @spec reset_user_password(User.t(), attrs :: map()) ::
