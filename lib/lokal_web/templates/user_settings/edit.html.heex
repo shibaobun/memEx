@@ -24,7 +24,7 @@
 
     <%= hidden_input(f, :action, name: "action", value: "update_email") %>
 
-    <%= label(f, :email, class: "title text-lg text-primary-600") %>
+    <%= label(f, :email, gettext("Email"), class: "title text-lg text-primary-600") %>
     <%= email_input(f, :email, required: true, class: "mx-2 my-1 input input-primary col-span-2") %>
     <%= error_tag(f, :email, "col-span-3") %>
 

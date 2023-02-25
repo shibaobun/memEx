@@ -9,7 +9,7 @@
     action={Routes.user_confirmation_path(@conn, :create)}
     class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
   >
-    <%= label(f, :email, class: "title text-lg text-primary-600") %>
+    <%= label(f, :email, gettext("Email"), class: "title text-lg text-primary-600") %>
     <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
 
     <%= submit(dgettext("actions", "Resend confirmation instructions"),

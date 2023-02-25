@@ -14,10 +14,10 @@
       <%= @error_message %>
     </p>
 
-    <%= label(f, :email, class: "title text-lg text-primary-600") %>
+    <%= label(f, :email, gettext("Email"), class: "title text-lg text-primary-600") %>
     <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
 
-    <%= label(f, :password, class: "title text-lg text-primary-600") %>
+    <%= label(f, :password, gettext("Password"), class: "title text-lg text-primary-600") %>
     <%= password_input(f, :password, required: true, class: "input input-primary col-span-2") %>
 
     <%= label(f, :remember_me, gettext("Keep me logged in for 60 days"),
