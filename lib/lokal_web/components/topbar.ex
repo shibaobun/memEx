@@ -46,7 +46,7 @@ defmodule LokalWeb.Components.Topbar do
             </li>
             <li class="mx-2 my-1">
               <.link
-                navigate={Routes.user_settings_path(Endpoint, :edit)}
+                href={Routes.user_settings_path(Endpoint, :edit)}
                 class="text-white text-white hover:underline truncate"
               >
                 <%= @current_user.email %>
@@ -77,7 +77,7 @@ defmodule LokalWeb.Components.Topbar do
           <% else %>
             <li :if={Accounts.allow_registration?()} class="mx-2 my-1">
               <.link
-                navigate={Routes.user_registration_path(Endpoint, :new)}
+                href={Routes.user_registration_path(Endpoint, :new)}
                 class="text-white text-white hover:underline truncate"
               >
                 <%= dgettext("actions", "Register") %>
@@ -85,7 +85,7 @@ defmodule LokalWeb.Components.Topbar do
             </li>
             <li class="mx-2 my-1">
               <.link
-                navigate={Routes.user_session_path(Endpoint, :new)}
+                href={Routes.user_session_path(Endpoint, :new)}
                 class="text-white text-white hover:underline truncate"
               >
                 <%= dgettext("actions", "Log in") %>
