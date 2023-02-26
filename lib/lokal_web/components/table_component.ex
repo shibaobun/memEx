@@ -6,7 +6,7 @@ defmodule LokalWeb.Components.TableComponent do
     - `:columns`: An array of maps containing the following keys
       - `:label`: A gettext'd or otherwise user-facing string label for the
         column. Can be nil
-      - `:key`: A string key used for sorting
+      - `:key`: An atom key used for sorting
       - `:class`: Extra classes to be applied to the column element, if desired.
         Optional
       - `:sortable`: If false, will prevent the user from sorting with it.
@@ -21,6 +21,7 @@ defmodule LokalWeb.Components.TableComponent do
 
   use LokalWeb, :live_component
   alias Phoenix.LiveView.Socket
+  require Integer
 
   @impl true
   @spec update(
@@ -28,26 +29,50 @@ defmodule LokalWeb.Components.TableComponent do
             required(:columns) =>
               list(%{
                 required(:label) => String.t() | nil,
-                required(:key) => String.t() | nil,
+                required(:key) => atom() | nil,
                 optional(:class) => String.t(),
+                optional(:row_class) => String.t(),
+                optional(:alternate_row_class) => String.t(),
                 optional(:sortable) => false
               }),
             required(:rows) =>
               list(%{
-                (key :: String.t()) => any() | {custom_sort_value :: String.t(), value :: any()}
+                (key :: atom()) => any() | {custom_sort_value :: String.t(), value :: any()}
               }),
+            optional(:inital_key) => atom(),
+            optional(:initial_sort_mode) => atom(),
             optional(any()) => any()
           },
           Socket.t()
         ) :: {:ok, Socket.t()}
   def update(%{columns: columns, rows: rows} = assigns, socket) do
-    initial_key = columns |> List.first() |> Map.get(:key)
-    rows = rows |> Enum.sort_by(fn row -> row |> Map.get(initial_key) end, :asc)
+    initial_key =
+      if assigns |> Map.has_key?(:initial_key) do
+        assigns.initial_key
+      else
+        columns |> List.first(%{}) |> Map.get(:key)
+      end
+
+    initial_sort_mode =
+      if assigns |> Map.has_key?(:initial_sort_mode) do
+        assigns.initial_sort_mode
+      else
+        :asc
+      end
+
+    rows = rows |> sort_by_custom_sort_value_or_value(initial_key, initial_sort_mode)
 
     socket =
       socket
       |> assign(assigns)
-      |> assign(columns: columns, rows: rows, last_sort_key: initial_key, sort_mode: :asc)
+      |> assign(
+        columns: columns,
+        rows: rows,
+        last_sort_key: initial_key,
+        sort_mode: initial_sort_mode
+      )
+      |> assign_new(:row_class, fn -> "bg-white" end)
+      |> assign_new(:alternate_row_class, fn -> "bg-gray-200" end)
 
     {:ok, socket}
   end
@@ -56,20 +81,19 @@ defmodule LokalWeb.Components.TableComponent do
   def handle_event(
         "sort_by",
         %{"sort-key" => key},
-        %{assigns: %{rows: rows, last_sort_key: key, sort_mode: sort_mode}} = socket
+        %{assigns: %{rows: rows, last_sort_key: last_sort_key, sort_mode: sort_mode}} = socket
       ) do
-    sort_mode = if sort_mode == :asc, do: :desc, else: :asc
-    rows = rows |> sort_by_custom_sort_value_or_value(key, sort_mode)
-    {:noreply, socket |> assign(sort_mode: sort_mode, rows: rows)}
-  end
+    key = key |> String.to_existing_atom()
 
-  def handle_event(
-        "sort_by",
-        %{"sort-key" => key},
-        %{assigns: %{rows: rows}} = socket
-      ) do
-    rows = rows |> sort_by_custom_sort_value_or_value(key, :asc)
-    {:noreply, socket |> assign(last_sort_key: key, sort_mode: :asc, rows: rows)}
+    sort_mode =
+      case {key, sort_mode} do
+        {^last_sort_key, :asc} -> :desc
+        {^last_sort_key, :desc} -> :asc
+        {_new_sort_key, _last_sort_mode} -> :asc
+      end
+
+    rows = rows |> sort_by_custom_sort_value_or_value(key, sort_mode)
+    {:noreply, socket |> assign(last_sort_key: key, sort_mode: sort_mode, rows: rows)}
   end
 
   defp sort_by_custom_sort_value_or_value(rows, key, sort_mode) do

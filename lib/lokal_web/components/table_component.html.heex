@@ -1,4 +1,4 @@
-<div class="w-full overflow-x-auto border border-gray-600 rounded-lg shadow-lg bg-black">
+<div id={@id} class="w-full overflow-x-auto border border-gray-600 rounded-lg shadow-lg bg-white">
   <table class="min-w-full table-auto text-center bg-white">
     <thead class="border-b border-primary-600">
       <tr>
@@ -6,26 +6,27 @@
           <%= if column |> Map.get(:sortable, true) do %>
             <th class={["p-2", column[:class]]}>
               <span
-                class="cursor-pointer"
+                class="cursor-pointer flex justify-center items-center space-x-2"
                 phx-click="sort_by"
                 phx-value-sort-key={key}
                 phx-target={@myself}
               >
-                <span class="underline"><%= label %></span>
+                <i class="w-0 float-right fas fa-sm fa-chevron-up opacity-0"></i>
+                <span class={if @last_sort_key == key, do: "underline"}><%= label %></span>
                 <%= if @last_sort_key == key do %>
                   <%= case @sort_mode do %>
                     <% :asc -> %>
-                      <i class="fas fa-sm fa-chevron-down"></i>
+                      <i class="w-0 float-right fas fa-sm fa-chevron-down"></i>
                     <% :desc -> %>
-                      <i class="fas fa-sm fa-chevron-up"></i>
+                      <i class="w-0 float-right fas fa-sm fa-chevron-up"></i>
                   <% end %>
                 <% else %>
-                  <i class="fas fa-sm fa-chevron-up opacity-0"></i>
+                  <i class="w-0 float-right fas fa-sm fa-chevron-up opacity-0"></i>
                 <% end %>
               </span>
             </th>
           <% else %>
-            <th class={["p-2", column[:class]]}>
+            <th class={["p-2 cursor-not-allowed", column[:class]]}>
               <%= label %>
             </th>
           <% end %>
@@ -33,7 +34,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr :for={values <- @rows}>
+      <tr
+        :for={{values, i} <- @rows |> Enum.with_index()}
+        class={if i |> Integer.is_even(), do: @row_class, else: @alternate_row_class}
+      >
         <td :for={%{key: key} = value <- @columns} class={["p-2", value[:class]]}>
           <%= case values |> Map.get(key) do %>
             <% {_custom_sort_value, value} -> %>
