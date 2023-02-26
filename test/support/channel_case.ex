@@ -1,4 +1,4 @@
-defmodule LokalWeb.ChannelCase do
+defmodule MemexWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule LokalWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use LokalWeb.ChannelCase, async: true`, although
+  by setting `use MemexWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,15 +22,15 @@ defmodule LokalWeb.ChannelCase do
     quote do
       # Import conveniences for testing with channels
       import Phoenix.ChannelTest
-      import LokalWeb.ChannelCase
+      import MemexWeb.ChannelCase
 
       # The default endpoint for testing
-      @endpoint LokalWeb.Endpoint
+      @endpoint MemexWeb.Endpoint
     end
   end
 
   setup tags do
-    pid = Sandbox.start_owner!(Lokal.Repo, shared: not tags[:async])
+    pid = Sandbox.start_owner!(Memex.Repo, shared: not tags[:async])
     on_exit(fn -> Sandbox.stop_owner(pid) end)
     :ok
   end

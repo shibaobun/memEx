@@ -1,6 +1,6 @@
-# Lokal
+# Memex
 
-Lokal is a local business aggregation site helping you to shop locally by
+Memex is a local business aggregation site helping you to shop locally by
 providing a one-stop-shop for your local community. Set your profile and start
 shopping today!
 
@@ -17,10 +17,10 @@ shopping today!
 # Installation
 
 1. Install [Docker Compose](https://docs.docker.com/compose/install/) or alternatively [Docker Desktop](https://docs.docker.com/desktop/) on your machine.
-1. Copy the example [docker-compose.yml](https://gitea.bubbletea.dev/shibao/lokal/src/branch/stable/docker-compose.yml). into your local machine where you want.
+1. Copy the example [docker-compose.yml](https://gitea.bubbletea.dev/shibao/memex/src/branch/stable/docker-compose.yml). into your local machine where you want.
    Bind mounts are created in the same directory by default.
 1. Set the configuration variables in `docker-compose.yml`. You'll need to run
-   `docker run -it shibaobun/lokal /app/priv/random.sh` to generate a new
+   `docker run -it shibaobun/memex /app/priv/random.sh` to generate a new
    secret key base.
 1. Use `docker-compose up` or `docker-compose up -d` to start the container!
 
@@ -28,19 +28,19 @@ The first created user will be created as an admin.
 
 # Configuration
 
-You can use the following environment variables to configure Lokal in
-[docker-compose.yml](https://gitea.bubbletea.dev/shibao/lokal/src/branch/stable/docker-compose.yml).
+You can use the following environment variables to configure Memex in
+[docker-compose.yml](https://gitea.bubbletea.dev/shibao/memex/src/branch/stable/docker-compose.yml).
 
 - `HOST`: External url to generate links with. Must be set with your hosted
-  domain name! I.e. `lokal.mywebsite.tld`
+  domain name! I.e. `memex.mywebsite.tld`
 - `PORT`: Internal port to bind to. Defaults to `4000`. Must be reverse proxied!
 - `DATABASE_URL`: Controls the database url to connect to. Defaults to
-  `ecto://postgres:postgres@lokal-db/lokal`.
+  `ecto://postgres:postgres@memex-db/memex`.
 - `ECTO_IPV6`: If set to `true`, Ecto should use ipv6 to connect to PostgreSQL.
   Defaults to `false`.
 - `POOL_SIZE`: Controls the pool size to use with PostgreSQL. Defaults to `10`.
 - `SECRET_KEY_BASE`: Secret key base used to sign cookies. Must be generated
-  with `docker run -it shibaobun/lokal mix phx.gen.secret` and set for server to start.
+  with `docker run -it shibaobun/memex mix phx.gen.secret` and set for server to start.
 - `REGISTRATION`: Controls if user sign-up should be invite only or set to
   public. Set to `public` to enable public registration. Defaults to `invite`.
 - `LOCALE`: Sets a custom default locale. Defaults to `en_US`.
@@ -51,9 +51,9 @@ You can use the following environment variables to configure Lokal in
 - `SMTP_SSL`: Set to `true` to enable SSL for emails. Defaults to `false`.
 - `EMAIL_FROM`: Sets the sender email in sent emails. Defaults to
   `no-reply@HOST` where `HOST` was previously defined.
-- `EMAIL_NAME`: Sets the sender name in sent emails. Defaults to "Lokal".
+- `EMAIL_NAME`: Sets the sender name in sent emails. Defaults to "Memex".
 
 ---
 
 [![Build
-Status](https://drone.bubbletea.dev/api/badges/shibao/lokal/status.svg?ref=refs/heads/dev)](https://drone.bubbletea.dev/shibao/lokal)
+Status](https://drone.bubbletea.dev/api/badges/shibao/memex/status.svg?ref=refs/heads/dev)](https://drone.bubbletea.dev/shibao/memex)

@@ -10,298 +10,298 @@ msgid ""
 msgstr ""
 "Language: en\n"
 
-#: lib/lokal_web/templates/user_reset_password/edit.html.heex:20
-#: lib/lokal_web/templates/user_settings/edit.html.heex:76
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:20
+#: lib/memex_web/templates/user_settings/edit.html.heex:76
 #, elixir-autogen, elixir-format
 msgid "Confirm new password"
 msgstr ""
 
-#: lib/lokal_web/controllers/user_confirmation_controller.ex:8
+#: lib/memex_web/controllers/user_confirmation_controller.ex:8
 #, elixir-autogen, elixir-format
 msgid "Confirm your account"
 msgstr ""
 
-#: lib/lokal_web/templates/user_settings/edit.html.heex:31
-#: lib/lokal_web/templates/user_settings/edit.html.heex:85
+#: lib/memex_web/templates/user_settings/edit.html.heex:31
+#: lib/memex_web/templates/user_settings/edit.html.heex:85
 #, elixir-autogen, elixir-format
 msgid "Current password"
 msgstr ""
 
-#: lib/lokal_web/controllers/user_reset_password_controller.ex:9
+#: lib/memex_web/controllers/user_reset_password_controller.ex:9
 #, elixir-autogen, elixir-format
 msgid "Forgot your password?"
 msgstr ""
 
-#: lib/lokal_web/components/invite_card.ex:42
+#: lib/memex_web/components/invite_card.ex:42
 #, elixir-autogen, elixir-format
 msgid "Invite Disabled"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:44
-#: lib/lokal_web/live/invite_live/index.ex:42
-#: lib/lokal_web/live/invite_live/index.html.heex:3
+#: lib/memex_web/components/topbar.ex:44
+#: lib/memex_web/live/invite_live/index.ex:42
+#: lib/memex_web/live/invite_live/index.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Invites"
 msgstr ""
 
-#: lib/lokal_web/templates/user_session/new.html.heex:23
+#: lib/memex_web/templates/user_session/new.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "Keep me logged in for 60 days"
 msgstr ""
 
-#: lib/lokal_web/controllers/user_session_controller.ex:8
+#: lib/memex_web/controllers/user_session_controller.ex:8
 #, elixir-autogen, elixir-format
 msgid "Log in"
 msgstr ""
 
-#: lib/lokal_web/templates/user_reset_password/edit.html.heex:16
-#: lib/lokal_web/templates/user_settings/edit.html.heex:69
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:16
+#: lib/memex_web/templates/user_settings/edit.html.heex:69
 #, elixir-autogen, elixir-format
 msgid "New password"
 msgstr ""
 
-#: lib/lokal_web/templates/layout/live.html.heex:43
+#: lib/memex_web/templates/layout/live.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "Reconnecting..."
 msgstr ""
 
-#: lib/lokal_web/controllers/user_registration_controller.ex:32
+#: lib/memex_web/controllers/user_registration_controller.ex:32
 #, elixir-autogen, elixir-format
 msgid "Register"
 msgstr ""
 
-#: lib/lokal_web/controllers/user_reset_password_controller.ex:36
+#: lib/memex_web/controllers/user_reset_password_controller.ex:36
 #, elixir-autogen, elixir-format
 msgid "Reset your password"
 msgstr ""
 
-#: lib/lokal_web/controllers/user_settings_controller.ex:10
-#: lib/lokal_web/templates/user_settings/edit.html.heex:3
+#: lib/memex_web/controllers/user_settings_controller.ex:10
+#: lib/memex_web/templates/user_settings/edit.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Settings"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.ex:15
+#: lib/memex_web/live/home_live.ex:15
 #, elixir-autogen, elixir-format
 msgid "Home"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:86
+#: lib/memex_web/live/invite_live/index.html.heex:86
 #, elixir-autogen, elixir-format
 msgid "Admins"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:62
+#: lib/memex_web/live/invite_live/index.html.heex:62
 #, elixir-autogen, elixir-format
 msgid "Disable"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.ex:34
+#: lib/memex_web/live/invite_live/index.ex:34
 #, elixir-autogen, elixir-format
 msgid "Edit Invite"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:62
+#: lib/memex_web/live/invite_live/index.html.heex:62
 #, elixir-autogen, elixir-format
 msgid "Enable"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.html.heex:21
+#: lib/memex_web/live/invite_live/form_component.html.heex:21
 #, elixir-autogen, elixir-format
 msgid "Name"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.ex:38
+#: lib/memex_web/live/invite_live/index.ex:38
 #, elixir-autogen, elixir-format
 msgid "New Invite"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:8
+#: lib/memex_web/live/invite_live/index.html.heex:8
 #, elixir-autogen, elixir-format
 msgid "No invites 😔"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:77
+#: lib/memex_web/live/invite_live/index.html.heex:77
 #, elixir-autogen, elixir-format
 msgid "Set Unlimited"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/index.html.heex:114
+#: lib/memex_web/live/invite_live/index.html.heex:114
 #, elixir-autogen, elixir-format
 msgid "Users"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.html.heex:25
+#: lib/memex_web/live/invite_live/form_component.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "Uses left"
 msgstr ""
 
-#: lib/lokal_web/templates/user_registration/new.html.heex:32
-#: lib/lokal_web/templates/user_settings/edit.html.heex:123
+#: lib/memex_web/templates/user_registration/new.html.heex:32
+#: lib/memex_web/templates/user_settings/edit.html.heex:123
 #, elixir-autogen, elixir-format
 msgid "English"
 msgstr ""
 
-#: lib/lokal_web/templates/user_registration/new.html.heex:28
+#: lib/memex_web/templates/user_registration/new.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "Language"
 msgstr ""
 
-#: lib/lokal_web/components/user_card.ex:33
+#: lib/memex_web/components/user_card.ex:33
 #, elixir-autogen, elixir-format
 msgid "Email unconfirmed"
 msgstr ""
 
-#: lib/lokal_web/components/topbar.ex:23
-#: lib/lokal_web/templates/error/error.html.heex:8
-#: lib/lokal_web/templates/layout/root.html.heex:8
-#: lib/lokal_web/templates/layout/root.html.heex:9
-#: lib/lokal_web/views/layout_view.ex:15
+#: lib/memex_web/components/topbar.ex:23
+#: lib/memex_web/templates/error/error.html.heex:8
+#: lib/memex_web/templates/layout/root.html.heex:8
+#: lib/memex_web/templates/layout/root.html.heex:9
+#: lib/memex_web/views/layout_view.ex:15
 #, elixir-autogen, elixir-format
-msgid "Lokal"
+msgid "Memex"
 msgstr ""
 
-#: lib/lokal_web/components/user_card.ex:38
+#: lib/memex_web/components/user_card.ex:38
 #, elixir-autogen, elixir-format, fuzzy
 msgid "User registered on%{registered_datetime}"
 msgstr ""
 
-#: lib/lokal_web/components/user_card.ex:27
+#: lib/memex_web/components/user_card.ex:27
 #, elixir-autogen, elixir-format
 msgid "User was confirmed at%{confirmed_datetime}"
 msgstr ""
 
-#: lib/lokal_web/components/invite_card.ex:37
+#: lib/memex_web/components/invite_card.ex:37
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Uses Left: Unlimited"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:37
+#: lib/memex_web/live/home_live.html.heex:37
 #, elixir-autogen, elixir-format
 msgid "Access from any internet-capable device"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:51
+#: lib/memex_web/live/home_live.html.heex:51
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Admins:"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:16
+#: lib/memex_web/live/home_live.html.heex:16
 #, elixir-autogen, elixir-format
 msgid "Easy to Use:"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:98
+#: lib/memex_web/live/home_live.html.heex:98
 #, elixir-autogen, elixir-format
 msgid "Get involved!"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:119
+#: lib/memex_web/live/home_live.html.heex:119
 #, elixir-autogen, elixir-format
 msgid "Help translate"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:46
+#: lib/memex_web/live/home_live.html.heex:46
 #, elixir-autogen, elixir-format
 msgid "Instance Information"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:73
+#: lib/memex_web/live/home_live.html.heex:73
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Invite Only"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:72
+#: lib/memex_web/live/home_live.html.heex:72
 #, elixir-autogen, elixir-format
 msgid "Public Signups"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:69
+#: lib/memex_web/live/home_live.html.heex:69
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Registration:"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:130
+#: lib/memex_web/live/home_live.html.heex:130
 #, elixir-autogen, elixir-format
 msgid "Report bugs or request features"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:24
+#: lib/memex_web/live/home_live.html.heex:24
 #, elixir-autogen, elixir-format
 msgid "Secure:"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:27
+#: lib/memex_web/live/home_live.html.heex:27
 #, elixir-autogen, elixir-format
 msgid "Self-host your own instance, or use an instance from someone you trust."
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:34
+#: lib/memex_web/live/home_live.html.heex:34
 #, elixir-autogen, elixir-format
 msgid "Simple:"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:79
+#: lib/memex_web/live/home_live.html.heex:79
 #, elixir-autogen, elixir-format
 msgid "Version:"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:108
+#: lib/memex_web/live/home_live.html.heex:108
 #, elixir-autogen, elixir-format
 msgid "View the source code"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:28
+#: lib/memex_web/live/home_live.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "Your data stays with you, period"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:19
+#: lib/memex_web/live/home_live.html.heex:19
 #, elixir-autogen, elixir-format
-msgid "Lokal lets you easily shop from your local community"
+msgid "Memex lets you easily shop from your local community"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:7
+#: lib/memex_web/live/home_live.html.heex:7
 #, elixir-autogen, elixir-format
 msgid "Shop from your local community"
 msgstr ""
 
-#: lib/lokal_web/live/home_live.html.heex:3
+#: lib/memex_web/live/home_live.html.heex:3
 #, elixir-autogen, elixir-format, fuzzy
-msgid "Welcome to Lokal"
+msgid "Welcome to Memex"
 msgstr ""
 
-#: lib/lokal_web/views/layout_view.ex:11
+#: lib/memex_web/views/layout_view.ex:11
 #, elixir-autogen, elixir-format
-msgid "Lokal | %{title}"
+msgid "Memex | %{title}"
 msgstr ""
 
-#: lib/lokal_web/components/invite_card.ex:32
+#: lib/memex_web/components/invite_card.ex:32
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Uses Left: %{uses_left_count}"
 msgstr ""
 
-#: lib/lokal_web/components/invite_card.ex:52
+#: lib/memex_web/components/invite_card.ex:52
 #, elixir-autogen, elixir-format
 msgid "Uses: %{uses_count}"
 msgstr ""
 
-#: lib/lokal_web/templates/user_confirmation/new.html.heex:12
-#: lib/lokal_web/templates/user_registration/new.html.heex:20
-#: lib/lokal_web/templates/user_reset_password/new.html.heex:12
-#: lib/lokal_web/templates/user_session/new.html.heex:17
-#: lib/lokal_web/templates/user_settings/edit.html.heex:27
+#: lib/memex_web/templates/user_confirmation/new.html.heex:12
+#: lib/memex_web/templates/user_registration/new.html.heex:20
+#: lib/memex_web/templates/user_reset_password/new.html.heex:12
+#: lib/memex_web/templates/user_session/new.html.heex:17
+#: lib/memex_web/templates/user_settings/edit.html.heex:27
 #, elixir-autogen, elixir-format
 msgid "Email"
 msgstr ""
 
-#: lib/lokal_web/templates/user_registration/new.html.heex:24
-#: lib/lokal_web/templates/user_session/new.html.heex:20
+#: lib/memex_web/templates/user_registration/new.html.heex:24
+#: lib/memex_web/templates/user_session/new.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "Password"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.html.heex:29
+#: lib/memex_web/live/invite_live/form_component.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "Leave \"Uses left\" blank to make invite unlimited"
 msgstr ""

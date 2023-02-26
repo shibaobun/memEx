@@ -1,4 +1,4 @@
-defmodule LokalWeb.ConnCase do
+defmodule MemexWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,14 +11,14 @@ defmodule LokalWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use LokalWeb.ConnCase, async: true`, although
+  by setting `use MemexWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
   use ExUnit.CaseTemplate
-  import Lokal.Fixtures
+  import Memex.Fixtures
   alias Ecto.Adapters.SQL.Sandbox
-  alias Lokal.{Accounts, Accounts.User, Repo}
+  alias Memex.{Accounts, Accounts.User, Repo}
 
   using do
     quote do
@@ -26,18 +26,18 @@ defmodule LokalWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
-      import Lokal.Fixtures
-      import LokalWeb.ConnCase
+      import Memex.Fixtures
+      import MemexWeb.ConnCase
 
-      alias LokalWeb.Router.Helpers, as: Routes
+      alias MemexWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint LokalWeb.Endpoint
+      @endpoint MemexWeb.Endpoint
     end
   end
 
   setup tags do
-    pid = Sandbox.start_owner!(Lokal.Repo, shared: not tags[:async])
+    pid = Sandbox.start_owner!(Memex.Repo, shared: not tags[:async])
     on_exit(fn -> Sandbox.stop_owner(pid) end)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
@@ -69,7 +69,7 @@ defmodule LokalWeb.ConnCase do
   It returns an updated `conn`.
   """
   def log_in_user(conn, user) do
-    token = Lokal.Accounts.generate_user_session_token(user)
+    token = Memex.Accounts.generate_user_session_token(user)
 
     conn
     |> Phoenix.ConnTest.init_test_session(%{})

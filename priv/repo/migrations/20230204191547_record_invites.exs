@@ -1,4 +1,4 @@
-defmodule Lokal.Repo.Migrations.RecordInvites do
+defmodule Memex.Repo.Migrations.RecordInvites do
   use Ecto.Migration
 
   def change do

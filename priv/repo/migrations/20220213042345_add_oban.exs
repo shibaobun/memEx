@@ -1,4 +1,4 @@
-defmodule Lokal.Repo.Migrations.AddOban do
+defmodule Memex.Repo.Migrations.AddOban do
   use Ecto.Migration
 
   def up do

@@ -45,10 +45,10 @@ RUN chown nobody:nobody /app
 
 USER nobody:nobody
 
-COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/lokal ./
+COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/memex ./
 COPY --from=build --chown=nobody:nobody /app/priv /app/priv
 RUN chmod +x /app/priv/random.sh
 
 ENV HOME=/app
 
-CMD ["bin/lokal", "start"]
+CMD ["bin/memex", "start"]

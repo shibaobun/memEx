@@ -1,9 +1,9 @@
-defmodule Lokal.MixProject do
+defmodule Memex.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :lokal,
+      app: :memex,
       version: "0.1.0",
       elixir: "1.14.1",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -15,9 +15,9 @@ defmodule Lokal.MixProject do
       consolidate_protocols: Mix.env() not in [:dev, :test],
       preferred_cli_env: ["test.all": :test],
       # ExDoc
-      name: "Lokal",
-      source_url: "https://gitea.bubbletea.dev/shibao/lokal",
-      homepage_url: "https://gitea.bubbletea.dev/shibao/lokal",
+      name: "Memex",
+      source_url: "https://gitea.bubbletea.dev/shibao/memex",
+      homepage_url: "https://gitea.bubbletea.dev/shibao/memex",
       docs: [
         # The main page in the docs
         main: "README.md",
@@ -33,7 +33,7 @@ defmodule Lokal.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Lokal.Application, []},
+      mod: {Memex.Application, []},
       extra_applications: [:logger, :runtime_tools, :os_mon, :crypto]
     ]
   end

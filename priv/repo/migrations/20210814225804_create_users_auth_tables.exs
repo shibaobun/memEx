@@ -1,4 +1,4 @@
-defmodule Lokal.Repo.Migrations.CreateUsersAuthTables do
+defmodule Memex.Repo.Migrations.CreateUsersAuthTables do
   use Ecto.Migration
 
   def change do

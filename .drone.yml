@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: lokal
+name: memex
 
 steps:
 - name: restore-cache
@@ -19,7 +19,7 @@ steps:
 - name: test
   image: elixir:1.14.1-alpine
   environment:
-    TEST_DATABASE_URL: ecto://postgres:postgres@database/lokal_test
+    TEST_DATABASE_URL: ecto://postgres:postgres@database/memex_test
     HOST: testing.example.tld
     MIX_HOME: /drone/src/.mix
     MIX_ARCHIVES: /drone/src/.mix/archives
@@ -39,7 +39,7 @@ steps:
   image: thegeeklab/drone-docker-buildx
   privileged: true
   settings:
-    repo: shibaobun/lokal
+    repo: shibaobun/memex
     purge: true
     compress: true
     platforms: linux/amd64,linux/arm/v7
@@ -56,7 +56,7 @@ steps:
   image: thegeeklab/drone-docker-buildx
   privileged: true
   settings:
-    repo: shibaobun/lokal
+    repo: shibaobun/memex
     purge: true
     compress: true
     platforms: linux/amd64,linux/arm/v7
