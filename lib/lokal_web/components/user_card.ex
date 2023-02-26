@@ -4,6 +4,10 @@ defmodule LokalWeb.Components.UserCard do
   """
 
   use LokalWeb, :component
+  alias Lokal.Accounts.User
+
+  attr :user, User, required: true
+  slot(:inner_block, required: true)
 
   def user_card(assigns) do
     ~H"""

@@ -147,7 +147,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: lib/lokal_web/components/user_card.ex:29
+#: lib/lokal_web/components/user_card.ex:33
 #, elixir-autogen, elixir-format
 msgid "Email unconfirmed"
 msgstr ""
@@ -161,12 +161,12 @@ msgstr ""
 msgid "Lokal"
 msgstr ""
 
-#: lib/lokal_web/components/user_card.ex:34
+#: lib/lokal_web/components/user_card.ex:38
 #, elixir-autogen, elixir-format, fuzzy
 msgid "User registered on%{registered_datetime}"
 msgstr ""
 
-#: lib/lokal_web/components/user_card.ex:23
+#: lib/lokal_web/components/user_card.ex:27
 #, elixir-autogen, elixir-format
 msgid "User was confirmed at%{confirmed_datetime}"
 msgstr ""
