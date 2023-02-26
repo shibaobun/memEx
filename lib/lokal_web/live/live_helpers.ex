@@ -1,6 +1,6 @@
 defmodule LokalWeb.LiveHelpers do
   @moduledoc """
-  Contains resuable methods for all liveviews
+  Contains common helper functions for liveviews
   """
 
   import Phoenix.Component
