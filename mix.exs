@@ -5,7 +5,7 @@ defmodule Memex.MixProject do
     [
       app: :memex,
       version: "0.1.9",
-      elixir: "~> 1.14",
+      elixir: "1.14.1",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,

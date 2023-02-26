@@ -2,6 +2,7 @@ defmodule Memex.Fixtures do
   @moduledoc """
   This module defines test helpers for creating entities
   """
+
   alias Memex.{Accounts, Accounts.User, Email, Repo}
 
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"

@@ -10,19 +10,17 @@
     as="user"
     class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
   >
-    <div :if={@error_message} class="alert alert-danger col-span-3">
-      <p>
-        <%= @error_message %>
-      </p>
-    </div>
+    <p :if={@error_message} class="alert alert-danger col-span-3">
+      <%= @error_message %>
+    </p>
 
-    <%= label(f, :email, class: "title text-lg text-primary-400") %>
+    <%= label(f, :email, gettext("email"), class: "title text-lg text-primary-400") %>
     <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
 
-    <%= label(f, :password, class: "title text-lg text-primary-400") %>
+    <%= label(f, :password, gettext("password"), class: "title text-lg text-primary-400") %>
     <%= password_input(f, :password, required: true, class: "input input-primary col-span-2") %>
 
-    <%= label(f, :remember_me, gettext("Keep me logged in for 60 days"),
+    <%= label(f, :remember_me, gettext("keep me logged in for 60 days"),
       class: "title text-lg text-primary-400"
     ) %>
     <%= checkbox(f, :remember_me, class: "checkbox col-span-2") %>

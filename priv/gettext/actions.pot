@@ -17,12 +17,12 @@ msgid "Resend confirmation instructions"
 msgstr ""
 
 #: lib/memex_web/templates/user_reset_password/edit.html.heex:3
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:31
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "Reset password"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.html.heex:29
+#: lib/memex_web/live/invite_live/form_component.html.heex:32
 #, elixir-autogen, elixir-format
 msgid "Save"
 msgstr ""
@@ -82,13 +82,13 @@ msgstr ""
 msgid "invite someone new!"
 msgstr ""
 
-#: lib/memex_web/components/topbar.ex:124
+#: lib/memex_web/components/topbar.ex:122
 #: lib/memex_web/templates/user_confirmation/new.html.heex:31
 #: lib/memex_web/templates/user_registration/new.html.heex:44
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:47
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:45
 #: lib/memex_web/templates/user_reset_password/new.html.heex:31
 #: lib/memex_web/templates/user_session/new.html.heex:3
-#: lib/memex_web/templates/user_session/new.html.heex:30
+#: lib/memex_web/templates/user_session/new.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "log in"
 msgstr ""
@@ -108,13 +108,13 @@ msgstr ""
 msgid "new pipeline"
 msgstr ""
 
-#: lib/memex_web/components/topbar.ex:115
+#: lib/memex_web/components/topbar.ex:113
 #: lib/memex_web/templates/user_confirmation/new.html.heex:28
 #: lib/memex_web/templates/user_registration/new.html.heex:3
 #: lib/memex_web/templates/user_registration/new.html.heex:37
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:44
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:42
 #: lib/memex_web/templates/user_reset_password/new.html.heex:28
-#: lib/memex_web/templates/user_session/new.html.heex:41
+#: lib/memex_web/templates/user_session/new.html.heex:39
 #, elixir-autogen, elixir-format
 msgid "register"
 msgstr ""
@@ -141,7 +141,7 @@ msgstr ""
 
 #: lib/memex_web/templates/user_registration/new.html.heex:47
 #: lib/memex_web/templates/user_reset_password/new.html.heex:3
-#: lib/memex_web/templates/user_session/new.html.heex:44
+#: lib/memex_web/templates/user_session/new.html.heex:42
 #, elixir-autogen, elixir-format
 msgid "forgot your password?"
 msgstr ""

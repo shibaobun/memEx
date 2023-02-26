@@ -2,7 +2,7 @@ defmodule MemexWeb.UserRegistrationController do
   use MemexWeb, :controller
   import MemexWeb.Gettext
   alias Memex.{Accounts, Accounts.Invites}
-  alias MemexWeb.{Endpoint, HomeLive}
+  alias MemexWeb.HomeLive
 
   def new(conn, %{"invite" => invite_token}) do
     if Invites.valid_invite_token?(invite_token) do

@@ -1,14 +1,15 @@
 ## "msgid"s in this file come from POT (.pot) files.
-##
-## Do not add, change, or remove "msgid"s manually here as
-## they're tied to the ones in the corresponding POT file
-## (with the same domain).
-##
-## Use "mix gettext.extract --merge" or "mix gettext.merge"
-## to merge POT files into PO files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
 msgid ""
 msgstr ""
-"Language: de\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: lib/memex_web/templates/user_confirmation/new.html.heex:3
 #: lib/memex_web/templates/user_confirmation/new.html.heex:15
@@ -142,12 +143,12 @@ msgstr ""
 #: lib/memex_web/templates/user_registration/new.html.heex:47
 #: lib/memex_web/templates/user_reset_password/new.html.heex:3
 #: lib/memex_web/templates/user_session/new.html.heex:42
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "forgot your password?"
 msgstr ""
 
 #: lib/memex_web/templates/user_reset_password/new.html.heex:15
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "send instructions to reset password"
 msgstr ""
 

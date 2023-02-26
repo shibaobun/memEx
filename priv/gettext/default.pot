@@ -10,24 +10,9 @@
 msgid ""
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:90
-#, elixir-autogen, elixir-format
-msgid "Admins"
-msgstr ""
-
 #: lib/memex_web/controllers/user_confirmation_controller.ex:8
 #, elixir-autogen, elixir-format
 msgid "Confirm your account"
-msgstr ""
-
-#: lib/memex_web/templates/user_session/new.html.heex:25
-#, elixir-autogen, elixir-format
-msgid "Keep me logged in for 60 days"
-msgstr ""
-
-#: lib/memex_web/live/invite_live/form_component.html.heex:21
-#, elixir-autogen, elixir-format
-msgid "Name"
 msgstr ""
 
 #: lib/memex_web/templates/layout/live.html.heex:43
@@ -38,11 +23,6 @@ msgstr ""
 #: lib/memex_web/controllers/user_reset_password_controller.ex:36
 #, elixir-autogen, elixir-format
 msgid "Reset your password"
-msgstr ""
-
-#: lib/memex_web/live/invite_live/form_component.html.heex:25
-#, elixir-autogen, elixir-format
-msgid "Uses left"
 msgstr ""
 
 #: lib/memex_web/live/context_live/show.html.heex:19
@@ -67,6 +47,7 @@ msgstr ""
 msgid "built with sharing and collaboration in mind"
 msgstr ""
 
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:20
 #: lib/memex_web/templates/user_settings/edit.html.heex:76
 #, elixir-autogen, elixir-format
 msgid "confirm new password"
@@ -121,12 +102,15 @@ msgstr ""
 msgid "edit invite"
 msgstr ""
 
+#: lib/memex_web/templates/user_registration/new.html.heex:20
+#: lib/memex_web/templates/user_reset_password/new.html.heex:12
+#: lib/memex_web/templates/user_session/new.html.heex:17
 #: lib/memex_web/templates/user_settings/edit.html.heex:27
 #, elixir-autogen, elixir-format
 msgid "email"
 msgstr ""
 
-#: lib/memex_web/components/user_card.ex:30
+#: lib/memex_web/components/user_card.ex:34
 #, elixir-autogen, elixir-format
 msgid "email unconfirmed"
 msgstr ""
@@ -189,6 +173,7 @@ msgstr ""
 msgid "new invite"
 msgstr ""
 
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:16
 #: lib/memex_web/templates/user_settings/edit.html.heex:69
 #, elixir-autogen, elixir-format
 msgid "new password"
@@ -617,12 +602,12 @@ msgstr ""
 msgid "language"
 msgstr ""
 
-#: lib/memex_web/components/user_card.ex:24
+#: lib/memex_web/components/user_card.ex:28
 #, elixir-autogen, elixir-format
 msgid "user confirmed on%{confirmed_datetime}"
 msgstr ""
 
-#: lib/memex_web/components/user_card.ex:35
+#: lib/memex_web/components/user_card.ex:39
 #, elixir-autogen, elixir-format
 msgid "user registered on%{registered_datetime}"
 msgstr ""
@@ -650,4 +635,40 @@ msgstr ""
 #: lib/memex_web/live/home_live.html.heex:128
 #, elixir-autogen, elixir-format
 msgid "get involved"
+msgstr ""
+
+#: lib/memex_web/templates/user_confirmation/new.html.heex:12
+#, elixir-autogen, elixir-format
+msgid "Email"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.html.heex:29
+#, elixir-autogen, elixir-format
+msgid "Leave \"Uses left\" blank to make invite unlimited"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.html.heex:90
+#, elixir-autogen, elixir-format
+msgid "admins"
+msgstr ""
+
+#: lib/memex_web/templates/user_session/new.html.heex:23
+#, elixir-autogen, elixir-format
+msgid "keep me logged in for 60 days"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.html.heex:21
+#, elixir-autogen, elixir-format
+msgid "name"
+msgstr ""
+
+#: lib/memex_web/templates/user_registration/new.html.heex:24
+#: lib/memex_web/templates/user_session/new.html.heex:20
+#, elixir-autogen, elixir-format
+msgid "password"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.html.heex:25
+#, elixir-autogen, elixir-format
+msgid "uses left"
 msgstr ""

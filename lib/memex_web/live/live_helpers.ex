@@ -28,8 +28,8 @@ defmodule MemexWeb.LiveHelpers do
   def modal(assigns) do
     ~H"""
     <.link
-      patch={@return_to}
       id="modal-bg"
+      patch={@return_to}
       class="fade-in fixed z-10 left-0 top-0
         w-full h-full overflow-hidden
         p-8 flex flex-col justify-center items-center cursor-auto"
@@ -42,7 +42,7 @@ defmodule MemexWeb.LiveHelpers do
     <div
       id="modal"
       class="fixed z-10 left-0 top-0 pointer-events-none
-        w-screen h-screen overflow-hidden
+        w-full h-full overflow-hidden
         p-4 sm:p-8 flex flex-col justify-center items-center"
     >
       <div

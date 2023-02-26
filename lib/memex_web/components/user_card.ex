@@ -4,6 +4,10 @@ defmodule MemexWeb.Components.UserCard do
   """
 
   use MemexWeb, :component
+  alias Memex.Accounts.User
+
+  attr :user, User, required: true
+  slot(:inner_block, required: true)
 
   def user_card(assigns) do
     ~H"""

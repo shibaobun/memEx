@@ -82,7 +82,6 @@ defmodule MemexWeb.Components.Topbar do
                 <%= @current_user.email %>
               </.link>
             </li>
-
             <li class="mx-2 my-1">
               <.link
                 href={Routes.user_session_path(Endpoint, :delete)}
@@ -92,7 +91,6 @@ defmodule MemexWeb.Components.Topbar do
                 <i class="fas fa-sign-out-alt"></i>
               </.link>
             </li>
-
             <li
               :if={
                 @current_user.role == :admin and function_exported?(Routes, :live_dashboard_path, 2)
@@ -109,7 +107,7 @@ defmodule MemexWeb.Components.Topbar do
           <% else %>
             <li :if={Accounts.allow_registration?()} class="mx-2 my-1">
               <.link
-                navigate={Routes.user_registration_path(Endpoint, :new)}
+                href={Routes.user_registration_path(Endpoint, :new)}
                 class="text-primary-400 text-primary-400 hover:underline truncate"
               >
                 <%= dgettext("actions", "register") %>
@@ -118,7 +116,7 @@ defmodule MemexWeb.Components.Topbar do
 
             <li class="mx-2 my-1">
               <.link
-                navigate={Routes.user_session_path(Endpoint, :new)}
+                href={Routes.user_session_path(Endpoint, :new)}
                 class="text-primary-400 text-primary-400 hover:underline truncate"
               >
                 <%= dgettext("actions", "log in") %>

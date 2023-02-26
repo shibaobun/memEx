@@ -55,7 +55,7 @@ msgstr ""
 msgid "Password reset successfully."
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.html.heex:31
+#: lib/memex_web/live/invite_live/form_component.html.heex:34
 #, elixir-autogen, elixir-format
 msgid "Saving..."
 msgstr ""
@@ -63,12 +63,6 @@ msgstr ""
 #: lib/memex_web/templates/user_settings/edit.html.heex:130
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to change your language?"
-msgstr ""
-
-#: lib/memex_web/live/invite_live/index.html.heex:101
-#: lib/memex_web/live/invite_live/index.html.heex:129
-#, elixir-autogen, elixir-format
-msgid "are you sure you want to delete %{email}? This action is permanent!"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/index.html.heex:43
@@ -81,7 +75,7 @@ msgstr ""
 msgid "are you sure you want to delete your account?"
 msgstr ""
 
-#: lib/memex_web/components/topbar.ex:90
+#: lib/memex_web/components/topbar.ex:89
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to log out?"
 msgstr ""
@@ -155,4 +149,10 @@ msgstr ""
 #: lib/memex_web/controllers/user_settings_controller.ex:95
 #, elixir-autogen, elixir-format
 msgid "your account has been deleted"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.html.heex:101
+#: lib/memex_web/live/invite_live/index.html.heex:129
+#, elixir-autogen, elixir-format
+msgid "are you sure you want to delete %{email}? this action is permanent!"
 msgstr ""

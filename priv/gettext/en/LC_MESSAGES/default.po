@@ -1,16 +1,15 @@
+## "msgid"s in this file come from POT (.pot) files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 04:49+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: de\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.7.4\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: lib/memex_web/controllers/user_confirmation_controller.ex:8
 #, elixir-autogen, elixir-format
@@ -575,7 +574,7 @@ msgid "memEx | %{title}"
 msgstr ""
 
 #: lib/memex_web/controllers/user_reset_password_controller.ex:9
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "forgot your password?"
 msgstr ""
 
@@ -600,17 +599,17 @@ msgid "while memEx fully supports multiple users, each memEx instance should be 
 msgstr ""
 
 #: lib/memex_web/templates/user_registration/new.html.heex:28
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "language"
 msgstr ""
 
 #: lib/memex_web/components/user_card.ex:28
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "user confirmed on%{confirmed_datetime}"
 msgstr ""
 
 #: lib/memex_web/components/user_card.ex:39
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "user registered on%{registered_datetime}"
 msgstr ""
 
@@ -620,12 +619,12 @@ msgid "uses left: unlimited"
 msgstr ""
 
 #: lib/memex_web/live/home_live.html.heex:36
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "read more on how to use memEx"
 msgstr ""
 
 #: lib/memex_web/components/invite_card.ex:33
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "uses left: %{uses_left_count}"
 msgstr ""
 
@@ -635,12 +634,12 @@ msgid "uses: %{uses_count}"
 msgstr ""
 
 #: lib/memex_web/live/home_live.html.heex:128
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "get involved"
 msgstr ""
 
 #: lib/memex_web/templates/user_confirmation/new.html.heex:12
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "Email"
 msgstr ""
 
@@ -650,27 +649,27 @@ msgid "Leave \"Uses left\" blank to make invite unlimited"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/index.html.heex:90
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "admins"
 msgstr ""
 
 #: lib/memex_web/templates/user_session/new.html.heex:23
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "keep me logged in for 60 days"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/form_component.html.heex:21
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "name"
 msgstr ""
 
 #: lib/memex_web/templates/user_registration/new.html.heex:24
 #: lib/memex_web/templates/user_session/new.html.heex:20
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "password"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/form_component.html.heex:25
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "uses left"
 msgstr ""

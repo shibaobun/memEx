@@ -1,14 +1,15 @@
 ## "msgid"s in this file come from POT (.pot) files.
-##
-## Do not add, change, or remove "msgid"s manually here as
-## they're tied to the ones in the corresponding POT file
-## (with the same domain).
-##
-## Use "mix gettext.extract --merge" or "mix gettext.merge"
-## to merge POT files into PO files.
+###
+### Do not add, change, or remove "msgid"s manually here as
+### they're tied to the ones in the corresponding POT file
+### (with the same domain).
+###
+### Use "mix gettext.extract --merge" or "mix gettext.merge"
+### to merge POT files into PO files.
 msgid ""
 msgstr ""
-"Language: de\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: lib/memex_web/controllers/user_confirmation_controller.ex:38
 #, elixir-autogen, elixir-format
@@ -97,62 +98,62 @@ msgid "are you sure?"
 msgstr ""
 
 #: lib/memex_web/controllers/user_session_controller.ex:23
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "logged out successfully."
 msgstr ""
 
 #: lib/memex_web/controllers/user_settings_controller.ex:65
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "language updated successfully."
 msgstr ""
 
 #: lib/memex_web/live/home_live.html.heex:90
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "register to setup memEx"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/form_component.ex:80
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "%{name} created successfully"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/form_component.ex:62
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "%{name} updated successfully"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/index.ex:128
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "copied to clipboard"
 msgstr ""
 
 #: lib/memex_web/controllers/user_registration_controller.ex:65
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "please check your email to verify your account"
 msgstr ""
 
 #: lib/memex_web/controllers/user_settings_controller.ex:29
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "a link to confirm your email change has been sent to the new address."
 msgstr ""
 
 #: lib/memex_web/controllers/user_settings_controller.ex:77
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "email changed successfully."
 msgstr ""
 
 #: lib/memex_web/controllers/user_settings_controller.ex:49
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "password updated successfully."
 msgstr ""
 
 #: lib/memex_web/controllers/user_settings_controller.ex:95
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "your account has been deleted"
 msgstr ""
 
 #: lib/memex_web/live/invite_live/index.html.heex:101
 #: lib/memex_web/live/invite_live/index.html.heex:129
-#, elixir-autogen, elixir-format, fuzzy
+#, elixir-autogen, elixir-format
 msgid "are you sure you want to delete %{email}? this action is permanent!"
 msgstr ""

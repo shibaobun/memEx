@@ -20,12 +20,6 @@ msgstr ""
 msgid "Invalid email or password"
 msgstr ""
 
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:14
-#: lib/memex_web/templates/user_settings/edit.html.heex:64
-#, elixir-autogen, elixir-format
-msgid "Oops, something went wrong! Please check the errors below."
-msgstr ""
-
 #: lib/memex_web/controllers/user_reset_password_controller.ex:63
 #, elixir-autogen, elixir-format
 msgid "Reset password link is invalid or it has expired."
@@ -79,12 +73,6 @@ msgstr ""
 msgid "must have the @ sign and no spaces"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:22
-#: lib/memex_web/templates/user_settings/edit.html.heex:118
-#, elixir-autogen, elixir-format
-msgid "oops, something went wrong! Please check the errors below"
-msgstr ""
-
 #: lib/memex/contexts/context.ex:58
 #: lib/memex/contexts/context.ex:71
 #: lib/memex/notes/note.ex:57
@@ -123,6 +111,8 @@ msgid "invalid format: only numbers, letters and hyphen are accepted. tags must 
 msgstr ""
 
 #: lib/memex_web/templates/user_registration/new.html.heex:13
+#: lib/memex_web/templates/user_reset_password/edit.html.heex:13
+#: lib/memex_web/templates/user_settings/edit.html.heex:64
 #, elixir-autogen, elixir-format, fuzzy
 msgid "oops, something went wrong! please check the errors below."
 msgstr ""
@@ -145,4 +135,10 @@ msgstr ""
 #: lib/memex_web/controllers/user_settings_controller.ex:99
 #, elixir-autogen, elixir-format, fuzzy
 msgid "unable to delete user"
+msgstr ""
+
+#: lib/memex_web/templates/user_settings/edit.html.heex:22
+#: lib/memex_web/templates/user_settings/edit.html.heex:118
+#, elixir-autogen, elixir-format, fuzzy
+msgid "oops, something went wrong! please check the errors below"
 msgstr ""

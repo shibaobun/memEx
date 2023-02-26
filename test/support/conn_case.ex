@@ -22,13 +22,12 @@ defmodule MemexWeb.ConnCase do
 
   using do
     quote do
-      # Import conveniences for testing with connections
       # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
       import Memex.Fixtures
       import MemexWeb.ConnCase
-      # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
-      import Phoenix.ConnTest
+      # Import conveniences for testing with connections
       import Plug.Conn
+      import Phoenix.ConnTest
 
       alias MemexWeb.Router.Helpers, as: Routes
 

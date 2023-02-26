@@ -93,7 +93,7 @@ defmodule MemexWeb do
       # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
       use Phoenix.HTML
 
-      # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
+      # Import LiveView and .heex helpers (live_render, link, <.form>, etc)
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.{Component, View}
       import MemexWeb.{ErrorHelpers, Gettext, LiveHelpers, ViewHelpers}

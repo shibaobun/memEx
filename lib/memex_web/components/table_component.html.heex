@@ -11,7 +11,8 @@
                 phx-value-sort-key={key}
                 phx-target={@myself}
               >
-                <span><%= label %></span>
+                <i class="w-0 float-right fas fa-sm fa-chevron-up opacity-0"></i>
+                <span class={if @last_sort_key == key, do: "underline"}><%= label %></span>
                 <%= if @last_sort_key == key do %>
                   <%= case @sort_mode do %>
                     <% :asc -> %>
@@ -25,7 +26,7 @@
               </span>
             </th>
           <% else %>
-            <th class={["p-2", column[:class]]}>
+            <th class={["p-2 cursor-not-allowed", column[:class]]}>
               <%= label %>
             </th>
           <% end %>
