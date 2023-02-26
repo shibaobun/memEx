@@ -11,6 +11,8 @@ shopping today!
 - Automatic migrations in `MIX_ENV=prod` or Docker image
 - JS linting with [standard.js](https://standardjs.com), HEEx linting with
   [heex_formatter](https://github.com/feliperenan/heex_formatter)
+- Customizable invite tokens or public registration via `REGISTRATION`
+  environment variable.
 
 # Installation
 
