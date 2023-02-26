@@ -81,7 +81,7 @@ msgstr ""
 msgid "Copied to clipboard"
 msgstr ""
 
-#: lib/lokal_web/live/invite_live/form_component.html.heex:31
+#: lib/lokal_web/live/invite_live/form_component.html.heex:34
 #, elixir-autogen, elixir-format
 msgid "Saving..."
 msgstr ""

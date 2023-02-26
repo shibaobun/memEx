@@ -17,7 +17,7 @@
     </.link>
   <% end %>
 
-  <div class="w-full flex flex-row flex-wrap justify-center items-center">
+  <div class="w-full flex flex-row flex-wrap justify-center items-stretch">
     <.invite_card :for={invite <- @invites} invite={invite} current_user={@current_user}>
       <:code_actions>
         <form phx-submit="copy_to_clipboard">
@@ -86,7 +86,7 @@
       <%= gettext("Admins") %>
     </h1>
 
-    <div class="w-full flex flex-row flex-wrap justify-center items-center">
+    <div class="w-full flex flex-row flex-wrap justify-center items-stretch">
       <.user_card :for={admin <- @admins} user={admin}>
         <.link
           href="#"
@@ -114,7 +114,7 @@
       <%= gettext("Users") %>
     </h1>
 
-    <div class="w-full flex flex-row flex-wrap justify-center items-center">
+    <div class="w-full flex flex-row flex-wrap justify-center items-stretch">
       <.user_card :for={user <- @users} user={user}>
         <.link
           href="#"

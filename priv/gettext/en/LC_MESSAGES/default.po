@@ -300,3 +300,8 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "Password"
 msgstr ""
+
+#: lib/lokal_web/live/invite_live/form_component.html.heex:29
+#, elixir-autogen, elixir-format
+msgid "Leave \"Uses left\" blank to make invite unlimited"
+msgstr ""

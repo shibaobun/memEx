@@ -25,6 +25,9 @@
     <%= label(f, :uses_left, gettext("Uses left"), class: "title text-lg text-primary-600") %>
     <%= number_input(f, :uses_left, min: 0, class: "input input-primary col-span-2") %>
     <%= error_tag(f, :uses_left, "col-span-3") %>
+    <span class="col-span-3 text-primary-400 italic text-center">
+      <%= gettext(~s/Leave "Uses left" blank to make invite unlimited/) %>
+    </span>
 
     <%= submit(dgettext("actions", "Save"),
       class: "mx-auto btn btn-primary col-span-3",
