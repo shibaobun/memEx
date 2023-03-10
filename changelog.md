@@ -1,6 +1,7 @@
 # v0.1.9
 - Improve server log
 - Style 大一點
+- Various minor improvements
 
 # v0.1.8
 - Fix bug with public registration
