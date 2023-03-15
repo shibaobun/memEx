@@ -3,8 +3,11 @@ defmodule MemexWeb.LiveHelpers do
   Contains common helper functions for liveviews
   """
 
-  import Phoenix.Component
+  use Phoenix.Component
   alias Phoenix.LiveView.JS
+
+  attr :return_to, :string, required: true
+  slot(:inner_block)
 
   @doc """
   Renders a live component inside a modal.
@@ -78,6 +81,11 @@ defmodule MemexWeb.LiveHelpers do
     |> JS.hide(to: "#modal-content", transition: "fade-out-scale")
   end
 
+  attr :action, :string, required: true
+  attr :value, :boolean, required: true
+  attr :id, :string
+  slot(:inner_block)
+
   @doc """
   A toggle button element that can be directed to a liveview or a
   live_component's `handle_event/3`.
@@ -102,6 +110,7 @@ defmodule MemexWeb.LiveHelpers do
         value={@value}
         checked={@value}
         class="sr-only peer"
+        aria-labelledby={"#{@id}-label"}
         {
           if assigns |> Map.has_key?(:target),
             do: %{"phx-click": @action, "phx-value-value": @value, "phx-target": @target},
@@ -117,7 +126,7 @@ defmodule MemexWeb.LiveHelpers do
         after:transition-all after:duration-250 after:ease-in-out
         transition-colors duration-250 ease-in-out">
       </div>
-      <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+      <span id={"#{@id}-label"} class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
         <%= render_slot(@inner_block) %>
       </span>
     </label>
