@@ -55,7 +55,9 @@ defmodule MemexWeb.InviteLiveTest do
     test "updates invite in listing", %{conn: conn, invite: invite} do
       {:ok, index_live, _html} = live(conn, Routes.invite_index_path(conn, :index))
 
-      assert index_live |> element("[data-qa=\"edit-#{invite.id}\"]") |> render_click() =~
+      assert index_live
+             |> element(~s/a[aria-label="edit invite for #{invite.name}"]/)
+             |> render_click() =~
                gettext("edit invite")
 
       assert_patch(index_live, Routes.invite_index_path(conn, :edit, invite))
@@ -81,7 +83,10 @@ defmodule MemexWeb.InviteLiveTest do
     test "deletes invite in listing", %{conn: conn, invite: invite} do
       {:ok, index_live, _html} = live(conn, Routes.invite_index_path(conn, :index))
 
-      assert index_live |> element("[data-qa=\"delete-#{invite.id}\"]") |> render_click()
+      assert index_live
+             |> element(~s/a[aria-label="delete invite for #{invite.name}"]/)
+             |> render_click()
+
       refute has_element?(index_live, "#invite-#{invite.id}")
     end
   end

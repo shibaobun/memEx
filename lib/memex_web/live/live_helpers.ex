@@ -102,7 +102,6 @@ defmodule MemexWeb.LiveHelpers do
         value={@value}
         checked={@value}
         class="sr-only peer"
-        data-qa={@id}
         {
           if assigns |> Map.has_key?(:target),
             do: %{"phx-click": @action, "phx-value-value": @value, "phx-target": @target},

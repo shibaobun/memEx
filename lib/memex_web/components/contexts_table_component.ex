@@ -92,11 +92,7 @@ defmodule MemexWeb.Components.ContextsTableComponent do
     assigns = %{slug: slug}
 
     slug_block = ~H"""
-    <.link
-      navigate={Routes.context_show_path(Endpoint, :show, @slug)}
-      class="link"
-      data-qa={"context-show-#{@slug}"}
-    >
+    <.link navigate={Routes.context_show_path(Endpoint, :show, @slug)} class="link">
       <%= @slug %>
     </.link>
     """

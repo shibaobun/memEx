@@ -81,7 +81,7 @@ defmodule MemexWeb.PipelineLiveTest do
     test "updates pipeline in listing", %{conn: conn, pipeline: pipeline} do
       {:ok, index_live, _html} = live(conn, Routes.pipeline_index_path(conn, :index))
 
-      assert index_live |> element("[data-qa=\"pipeline-edit-#{pipeline.id}\"]") |> render_click() =~
+      assert index_live |> element(~s/a[aria-label="edit #{pipeline.slug}"]/) |> render_click() =~
                "edit"
 
       assert_patch(index_live, Routes.pipeline_index_path(conn, :edit, pipeline.slug))
@@ -104,7 +104,7 @@ defmodule MemexWeb.PipelineLiveTest do
       {:ok, index_live, _html} = live(conn, Routes.pipeline_index_path(conn, :index))
 
       assert index_live
-             |> element("[data-qa=\"delete-pipeline-#{pipeline.id}\"]")
+             |> element(~s/a[aria-label="delete #{pipeline.slug}"]/)
              |> render_click()
 
       refute has_element?(index_live, "#pipeline-#{pipeline.id}")
@@ -151,7 +151,7 @@ defmodule MemexWeb.PipelineLiveTest do
 
       {:ok, index_live, _html} =
         show_live
-        |> element("[data-qa=\"delete-pipeline-#{pipeline.id}\"]")
+        |> element(~s/button[aria-label="delete #{pipeline.slug}"]/)
         |> render_click()
         |> follow_redirect(conn, Routes.pipeline_index_path(conn, :index))
 
@@ -161,9 +161,7 @@ defmodule MemexWeb.PipelineLiveTest do
     test "creates a step", %{conn: conn, pipeline: pipeline} do
       {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
 
-      show_live
-      |> element("[data-qa=\"add-step-#{pipeline.id}\"]")
-      |> render_click()
+      show_live |> element("a", "add step") |> render_click()
 
       assert_patch(show_live, Routes.pipeline_show_path(conn, :add_step, pipeline.slug))
 
@@ -199,7 +197,7 @@ defmodule MemexWeb.PipelineLiveTest do
       {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
 
       show_live
-      |> element("[data-qa=\"edit-step-#{step.id}\"]")
+      |> element(~s/a[aria-label="edit #{step.title}"]/)
       |> render_click()
 
       assert_patch(show_live, Routes.pipeline_show_path(conn, :edit_step, pipeline.slug, step.id))
@@ -223,7 +221,7 @@ defmodule MemexWeb.PipelineLiveTest do
 
       html =
         show_live
-        |> element("[data-qa=\"delete-step-#{step.id}\"]")
+        |> element(~s/button[aria-label="delete #{step.title}"]/)
         |> render_click()
 
       assert_patch(show_live, Routes.pipeline_show_path(conn, :show, pipeline.slug))
@@ -250,25 +248,25 @@ defmodule MemexWeb.PipelineLiveTest do
 
       html =
         show_live
-        |> element("[data-qa=\"move-step-up-#{second_step.id}\"]")
+        |> element(~s/button[aria-label="move #{second_step.title} up"]/)
         |> render_click()
 
       assert html =~ "1. second step"
       assert html =~ "2. first step"
       assert html =~ "3. third step"
 
-      refute has_element?(show_live, "[data-qa=\"move-step-up-#{second_step.id}\"]")
+      refute has_element?(show_live, ~s/button[aria-label="move #{second_step.title} up"]/)
 
       html =
         show_live
-        |> element("[data-qa=\"move-step-down-#{first_step.id}\"]")
+        |> element(~s/button[aria-label="move #{first_step.title} down"]/)
         |> render_click()
 
       assert html =~ "1. second step"
       assert html =~ "2. third step"
       assert html =~ "3. first step"
 
-      refute has_element?(show_live, "[data-qa=\"move-step-down-#{first_step.id}\"]")
+      refute has_element?(show_live, ~s/button[aria-label="move #{first_step.title} down"]/)
     end
   end
 end

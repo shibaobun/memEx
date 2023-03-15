@@ -92,11 +92,7 @@ defmodule MemexWeb.Components.NotesTableComponent do
     assigns = %{slug: slug}
 
     slug_block = ~H"""
-    <.link
-      navigate={Routes.note_show_path(Endpoint, :show, @slug)}
-      class="link"
-      data-qa={"note-show-#{@slug}"}
-    >
+    <.link navigate={Routes.note_show_path(Endpoint, :show, @slug)} class="link">
       <%= @slug %>
     </.link>
     """

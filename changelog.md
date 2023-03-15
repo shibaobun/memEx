@@ -1,3 +1,6 @@
+# v0.1.10
+- Improve accessibility
+
 # v0.1.9
 - Improve server log
 - Style 大一點

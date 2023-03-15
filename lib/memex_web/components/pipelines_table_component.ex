@@ -93,11 +93,7 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
     assigns = %{slug: slug}
 
     slug_block = ~H"""
-    <.link
-      navigate={Routes.pipeline_show_path(Endpoint, :show, @slug)}
-      class="link"
-      data-qa={"pipeline-show-#{@slug}"}
-    >
+    <.link navigate={Routes.pipeline_show_path(Endpoint, :show, @slug)} class="link">
       <%= @slug %>
     </.link>
     """

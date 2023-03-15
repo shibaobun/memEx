@@ -44,7 +44,7 @@
       class="btn btn-primary"
       phx-click="delete"
       data-confirm={dgettext("prompts", "are you sure?")}
-      data-qa={"delete-pipeline-#{@pipeline.id}"}
+      aria-label={gettext("delete %{pipeline_slug}", pipeline_slug: @pipeline.slug)}
     >
       <%= dgettext("actions", "delete") %>
     </button>
@@ -78,7 +78,7 @@
                 phx-click="reorder_step"
                 phx-value-direction="up"
                 phx-value-step-id={step_id}
-                data-qa={"move-step-up-#{step_id}"}
+                aria-label={gettext("move %{step_title} up", step_title: step.title)}
               >
                 <i class="fas text-xl fa-chevron-up"></i>
               </button>
@@ -93,7 +93,7 @@
                 phx-click="reorder_step"
                 phx-value-direction="down"
                 phx-value-step-id={step_id}
-                data-qa={"move-step-down-#{step_id}"}
+                aria-label={gettext("move %{step_title} down", step_title: step.title)}
               >
                 <i class="fas text-xl fa-chevron-down"></i>
               </button>
@@ -102,7 +102,7 @@
             <.link
               class="self-end btn btn-primary"
               patch={Routes.pipeline_show_path(@socket, :edit_step, @pipeline.slug, step_id)}
-              data-qa={"edit-step-#{step_id}"}
+              aria-label={gettext("edit %{step_title}", step_title: step.title)}
             >
               <%= dgettext("actions", "edit") %>
             </.link>
@@ -113,7 +113,7 @@
               phx-click="delete_step"
               phx-value-step-id={step_id}
               data-confirm={dgettext("prompts", "are you sure?")}
-              data-qa={"delete-step-#{step_id}"}
+              aria-label={gettext("delete %{step_title}", step_title: step.title)}
             >
               <%= dgettext("actions", "delete") %>
             </button>
@@ -129,7 +129,6 @@
     :if={is_owner?(@pipeline, @current_user)}
     class="self-end btn btn-primary"
     patch={Routes.pipeline_show_path(@socket, :add_step, @pipeline.slug)}
-    data-qa={"add-step-#{@pipeline.id}"}
   >
     <%= dgettext("actions", "add step") %>
   </.link>

@@ -75,7 +75,7 @@ defmodule MemexWeb.NoteLiveTest do
     test "updates note in listing", %{conn: conn, note: note} do
       {:ok, index_live, _html} = live(conn, Routes.note_index_path(conn, :index))
 
-      assert index_live |> element("[data-qa=\"note-edit-#{note.id}\"]") |> render_click() =~
+      assert index_live |> element(~s/a[aria-label="edit #{note.slug}"]/) |> render_click() =~
                "edit"
 
       assert_patch(index_live, Routes.note_index_path(conn, :edit, note.slug))
@@ -97,7 +97,7 @@ defmodule MemexWeb.NoteLiveTest do
     test "deletes note in listing", %{conn: conn, note: note} do
       {:ok, index_live, _html} = live(conn, Routes.note_index_path(conn, :index))
 
-      assert index_live |> element("[data-qa=\"delete-note-#{note.id}\"]") |> render_click()
+      assert index_live |> element(~s/a[aria-label="delete #{note.slug}"]/) |> render_click()
       refute has_element?(index_live, "#note-#{note.id}")
     end
   end
@@ -138,7 +138,7 @@ defmodule MemexWeb.NoteLiveTest do
 
       {:ok, index_live, _html} =
         show_live
-        |> element("[data-qa=\"delete-note-#{note.id}\"]")
+        |> element(~s/button[aria-label="delete #{note.slug}"]/)
         |> render_click()
         |> follow_redirect(conn, Routes.note_index_path(conn, :index))
 
@@ -177,7 +177,7 @@ defmodule MemexWeb.NoteLiveTest do
 
       assert html =~ "context"
       assert html =~ Routes.note_show_path(Endpoint, :show, note_slug)
-      assert has_element?(show_live, "[data-qa=\"note-link-#{note_slug}\"]")
+      assert has_element?(show_live, "a", note_slug)
     end
   end
 end

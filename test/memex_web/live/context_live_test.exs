@@ -70,7 +70,7 @@ defmodule MemexWeb.ContextLiveTest do
     test "updates context in listing", %{conn: conn, context: context} do
       {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
 
-      assert index_live |> element("[data-qa=\"context-edit-#{context.id}\"]") |> render_click() =~
+      assert index_live |> element(~s/a[aria-label="edit #{context.slug}"]/) |> render_click() =~
                "edit"
 
       assert_patch(index_live, Routes.context_index_path(conn, :edit, context.slug))
@@ -92,7 +92,7 @@ defmodule MemexWeb.ContextLiveTest do
     test "deletes context in listing", %{conn: conn, context: context} do
       {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
 
-      assert index_live |> element("[data-qa=\"delete-context-#{context.id}\"]") |> render_click()
+      assert index_live |> element(~s/a[aria-label="delete #{context.slug}"]/) |> render_click()
       refute has_element?(index_live, "#context-#{context.id}")
     end
   end
@@ -137,7 +137,7 @@ defmodule MemexWeb.ContextLiveTest do
 
       {:ok, index_live, _html} =
         show_live
-        |> element("[data-qa=\"delete-context-#{context.id}\"]")
+        |> element(~s/button[aria-label="delete #{context.slug}"]/)
         |> render_click()
         |> follow_redirect(conn, Routes.context_index_path(conn, :index))
 
@@ -174,7 +174,7 @@ defmodule MemexWeb.ContextLiveTest do
 
       assert html =~ "context"
       assert html =~ Routes.note_show_path(Endpoint, :show, note_slug)
-      assert has_element?(show_live, "[data-qa=\"context-note-#{note_slug}\"]")
+      assert has_element?(show_live, "a", note_slug)
     end
   end
 end

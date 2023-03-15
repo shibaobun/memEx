@@ -33,7 +33,7 @@
         <.link
           :if={is_owner?(pipeline, @current_user)}
           patch={Routes.pipeline_index_path(@socket, :edit, pipeline.slug)}
-          data-qa={"pipeline-edit-#{pipeline.id}"}
+          aria-label={gettext("edit %{pipeline_slug}", pipeline_slug: pipeline.slug)}
         >
           <%= dgettext("actions", "edit") %>
         </.link>
@@ -43,7 +43,7 @@
           phx-click="delete"
           phx-value-id={pipeline.id}
           data-confirm={dgettext("prompts", "are you sure?")}
-          data-qa={"delete-pipeline-#{pipeline.id}"}
+          aria-label={gettext("delete %{pipeline_slug}", pipeline_slug: pipeline.slug)}
         >
           <%= dgettext("actions", "delete") %>
         </.link>

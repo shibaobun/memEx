@@ -33,7 +33,7 @@
         <.link
           :if={is_owner?(note, @current_user)}
           patch={Routes.note_index_path(@socket, :edit, note.slug)}
-          data-qa={"note-edit-#{note.id}"}
+          aria-label={gettext("edit %{note_slug}", note_slug: note.slug)}
         >
           <%= dgettext("actions", "edit") %>
         </.link>
@@ -43,7 +43,7 @@
           phx-click="delete"
           phx-value-id={note.id}
           data-confirm={dgettext("prompts", "are you sure?")}
-          data-qa={"delete-note-#{note.id}"}
+          aria-label={gettext("delete %{note_slug}", note_slug: note.slug)}
         >
           <%= dgettext("actions", "delete") %>
         </.link>

@@ -45,7 +45,7 @@ msgstr ""
 msgid "change password"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:82
+#: lib/memex_web/live/invite_live/index.html.heex:83
 #, elixir-autogen, elixir-format
 msgid "create invite"
 msgstr ""
@@ -134,7 +134,7 @@ msgstr ""
 msgid "back"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:134
+#: lib/memex_web/live/pipeline_live/show.html.heex:133
 #, elixir-autogen, elixir-format
 msgid "add step"
 msgstr ""
@@ -156,7 +156,7 @@ msgstr ""
 msgid "export data as json"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:25
+#: lib/memex_web/live/invite_live/index.html.heex:26
 #, elixir-autogen, elixir-format
 msgid "copy"
 msgstr ""
