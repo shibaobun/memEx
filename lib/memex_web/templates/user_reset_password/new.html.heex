@@ -5,7 +5,8 @@
 
   <.form
     :let={f}
-    for={:user}
+    for={%{}}
+    as={:user}
     action={Routes.user_reset_password_path(@conn, :create)}
     class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
   >

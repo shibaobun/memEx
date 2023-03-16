@@ -47,13 +47,13 @@ defmodule Memex.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bcrypt_elixir, "~> 2.0"},
+      {:bcrypt_elixir, "~> 3.0"},
       {:phoenix, "~> 1.6.0"},
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.18.0"},
-      {:phoenix_view, "~> 1.1"},
+      {:phoenix_view, "~> 2.0"},
       {:phoenix_live_dashboard, "~> 0.6"},
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},

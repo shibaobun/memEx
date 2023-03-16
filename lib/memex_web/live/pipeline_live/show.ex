@@ -1,6 +1,5 @@
 defmodule MemexWeb.PipelineLive.Show do
   use MemexWeb, :live_view
-  import MemexWeb.Components.StepContent
   alias Memex.{Accounts.User, Pipelines}
   alias Memex.Pipelines.{Pipeline, Steps, Steps.Step}
 

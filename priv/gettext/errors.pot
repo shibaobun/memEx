@@ -88,17 +88,17 @@ msgstr ""
 msgid "go back home"
 msgstr ""
 
-#: lib/memex_web/views/error_view.ex:11
+#: lib/memex_web/views/error_view.ex:10
 #, elixir-autogen, elixir-format
 msgid "internal server error"
 msgstr ""
 
-#: lib/memex_web/views/error_view.ex:9
+#: lib/memex_web/views/error_view.ex:8
 #, elixir-autogen, elixir-format
 msgid "not found"
 msgstr ""
 
-#: lib/memex_web/views/error_view.ex:10
+#: lib/memex_web/views/error_view.ex:9
 #, elixir-autogen, elixir-format
 msgid "unauthorized"
 msgstr ""
@@ -122,7 +122,7 @@ msgstr ""
 msgid "sorry, this invite was not found or expired"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:19
+#: lib/memex_web/live/invite_live/index.ex:18
 #, elixir-autogen, elixir-format
 msgid "you are not authorized to view this page"
 msgstr ""

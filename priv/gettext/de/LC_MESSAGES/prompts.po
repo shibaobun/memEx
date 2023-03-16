@@ -15,27 +15,27 @@ msgstr ""
 msgid "%{email} confirmed successfully."
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:54
+#: lib/memex_web/live/invite_live/index.ex:53
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} deleted succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:115
+#: lib/memex_web/live/invite_live/index.ex:114
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} disabled succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:91
+#: lib/memex_web/live/invite_live/index.ex:90
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} enabled succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:69
+#: lib/memex_web/live/invite_live/index.ex:68
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} updated succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:138
+#: lib/memex_web/live/invite_live/index.ex:137
 #, elixir-autogen, elixir-format
 msgid "%{user_email} deleted succesfully"
 msgstr ""
@@ -75,7 +75,7 @@ msgstr ""
 msgid "are you sure you want to delete your account?"
 msgstr ""
 
-#: lib/memex_web/components/topbar.ex:89
+#: lib/memex_web/components/core_components/topbar.html.heex:74
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to log out?"
 msgstr ""
@@ -85,11 +85,11 @@ msgstr ""
 msgid "are you sure you want to make %{invite_name} unlimited?"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:45
+#: lib/memex_web/live/context_live/index.html.heex:46
 #: lib/memex_web/live/context_live/show.html.heex:38
-#: lib/memex_web/live/note_live/index.html.heex:45
+#: lib/memex_web/live/note_live/index.html.heex:46
 #: lib/memex_web/live/note_live/show.html.heex:38
-#: lib/memex_web/live/pipeline_live/index.html.heex:45
+#: lib/memex_web/live/pipeline_live/index.html.heex:46
 #: lib/memex_web/live/pipeline_live/show.html.heex:46
 #: lib/memex_web/live/pipeline_live/show.html.heex:115
 #, elixir-autogen, elixir-format
@@ -121,7 +121,7 @@ msgstr ""
 msgid "%{name} updated successfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:127
+#: lib/memex_web/live/invite_live/index.ex:126
 #, elixir-autogen, elixir-format, fuzzy
 msgid "copied to clipboard"
 msgstr ""

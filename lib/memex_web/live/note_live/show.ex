@@ -1,6 +1,5 @@
 defmodule MemexWeb.NoteLive.Show do
   use MemexWeb, :live_view
-  import MemexWeb.Components.NoteContent
   alias Memex.{Accounts.User, Notes, Notes.Note}
 
   @impl true

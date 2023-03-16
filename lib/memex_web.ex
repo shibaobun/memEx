@@ -45,8 +45,7 @@ defmodule MemexWeb do
 
   def live_view do
     quote do
-      use Phoenix.LiveView,
-        layout: {MemexWeb.LayoutView, "live.html"}
+      use Phoenix.LiveView, layout: {MemexWeb.LayoutView, :live}
 
       on_mount MemexWeb.InitAssigns
       unquote(view_helpers())
@@ -96,7 +95,7 @@ defmodule MemexWeb do
       # Import LiveView and .heex helpers (live_render, link, <.form>, etc)
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.{Component, View}
-      import MemexWeb.{ErrorHelpers, Gettext, LiveHelpers, ViewHelpers}
+      import MemexWeb.{ErrorHelpers, Gettext, CoreComponents, ViewHelpers}
 
       # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
       alias MemexWeb.Endpoint

@@ -4,7 +4,6 @@ defmodule MemexWeb.InviteLive.Index do
   """
 
   use MemexWeb, :live_view
-  import MemexWeb.Components.{InviteCard, UserCard}
   alias Memex.Accounts
   alias Memex.Accounts.{Invite, Invites}
   alias MemexWeb.HomeLive
