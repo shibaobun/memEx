@@ -35,7 +35,7 @@ msgstr ""
 msgid "%{invite_name} updated succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:140
+#: lib/memex_web/live/invite_live/index.ex:138
 #, elixir-autogen, elixir-format
 msgid "%{user_email} deleted succesfully"
 msgstr ""
@@ -121,7 +121,7 @@ msgstr ""
 msgid "%{name} updated successfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:128
+#: lib/memex_web/live/invite_live/index.ex:127
 #, elixir-autogen, elixir-format, fuzzy
 msgid "copied to clipboard"
 msgstr ""

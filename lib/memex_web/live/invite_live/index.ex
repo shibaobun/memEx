@@ -123,13 +123,11 @@ defmodule MemexWeb.InviteLive.Index do
     {:noreply, socket}
   end
 
-  @impl true
   def handle_event("copy_to_clipboard", _params, socket) do
     prompt = dgettext("prompts", "copied to clipboard")
     {:noreply, socket |> put_flash(:info, prompt)}
   end
 
-  @impl true
   def handle_event(
         "delete_user",
         %{"id" => id},

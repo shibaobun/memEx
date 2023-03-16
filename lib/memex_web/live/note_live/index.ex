@@ -59,7 +59,6 @@ defmodule MemexWeb.NoteLive.Index do
     {:noreply, socket}
   end
 
-  @impl true
   def handle_event("search", %{"search" => %{"search_term" => ""}}, socket) do
     {:noreply, socket |> push_patch(to: Routes.note_index_path(Endpoint, :index))}
   end

@@ -379,7 +379,7 @@ msgstr ""
 #: lib/memex_web/live/note_live/index.ex:23
 #: lib/memex_web/live/note_live/show.ex:48
 #: lib/memex_web/live/pipeline_live/index.ex:23
-#: lib/memex_web/live/pipeline_live/show.ex:125
+#: lib/memex_web/live/pipeline_live/show.ex:123
 #, elixir-autogen, elixir-format
 msgid "edit %{slug}"
 msgstr ""
@@ -442,7 +442,7 @@ msgstr ""
 msgid "%{title} created"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.ex:96
+#: lib/memex_web/live/pipeline_live/show.ex:95
 #, elixir-autogen, elixir-format
 msgid "%{title} deleted"
 msgstr ""
@@ -452,7 +452,7 @@ msgstr ""
 msgid "%{title} saved"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.ex:127
+#: lib/memex_web/live/pipeline_live/show.ex:125
 #, elixir-autogen, elixir-format
 msgid "add step to %{slug}"
 msgstr ""

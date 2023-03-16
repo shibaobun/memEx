@@ -80,7 +80,6 @@ defmodule MemexWeb.PipelineLive.Show do
     {:noreply, socket}
   end
 
-  @impl true
   def handle_event(
         "delete_step",
         %{"step-id" => step_id},
@@ -99,7 +98,6 @@ defmodule MemexWeb.PipelineLive.Show do
     {:noreply, socket}
   end
 
-  @impl true
   def handle_event(
         "reorder_step",
         %{"step-id" => step_id, "direction" => direction},
