@@ -1,5 +1,6 @@
 # v0.1.10
 - Improve accessibility
+- Code quality improvements
 
 # v0.1.9
 - Improve server log

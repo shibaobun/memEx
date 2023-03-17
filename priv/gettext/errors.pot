@@ -73,12 +73,12 @@ msgstr ""
 msgid "must have the @ sign and no spaces"
 msgstr ""
 
-#: lib/memex/contexts/context.ex:58
-#: lib/memex/contexts/context.ex:71
-#: lib/memex/notes/note.ex:57
-#: lib/memex/notes/note.ex:70
-#: lib/memex/pipelines/pipeline.ex:60
-#: lib/memex/pipelines/pipeline.ex:73
+#: lib/memex/contexts/context.ex:57
+#: lib/memex/contexts/context.ex:70
+#: lib/memex/notes/note.ex:56
+#: lib/memex/notes/note.ex:69
+#: lib/memex/pipelines/pipeline.ex:59
+#: lib/memex/pipelines/pipeline.ex:72
 #, elixir-autogen, elixir-format
 msgid "invalid format: only numbers, letters and hyphen are accepted"
 msgstr ""
@@ -103,9 +103,9 @@ msgstr ""
 msgid "unauthorized"
 msgstr ""
 
-#: lib/memex/contexts/context.ex:84
-#: lib/memex/notes/note.ex:83
-#: lib/memex/pipelines/pipeline.ex:86
+#: lib/memex/contexts/context.ex:83
+#: lib/memex/notes/note.ex:82
+#: lib/memex/pipelines/pipeline.ex:85
 #, elixir-autogen, elixir-format
 msgid "invalid format: only numbers, letters and hyphen are accepted. tags must be comma-delimited"
 msgstr ""

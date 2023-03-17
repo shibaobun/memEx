@@ -27,7 +27,7 @@ defmodule Memex.Pipelines.Pipeline do
     field :tags_string, :string, virtual: true
     field :visibility, Ecto.Enum, values: [:public, :private, :unlisted]
 
-    belongs_to :user, User
+    field :user_id, :binary_id
 
     has_many :steps, Step, preload_order: [asc: :position]
 
@@ -40,7 +40,6 @@ defmodule Memex.Pipelines.Pipeline do
           tags: [String.t()] | nil,
           tags_string: String.t() | nil,
           visibility: :public | :private | :unlisted,
-          user: User.t() | Ecto.Association.NotLoaded.t(),
           user_id: User.id(),
           inserted_at: NaiveDateTime.t(),
           updated_at: NaiveDateTime.t()

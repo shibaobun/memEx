@@ -23,7 +23,7 @@ defmodule Memex.Pipelines.Steps.Step do
     field :position, :integer
 
     belongs_to :pipeline, Pipeline
-    belongs_to :user, User
+    field :user_id, :binary_id
 
     timestamps()
   end
@@ -34,7 +34,6 @@ defmodule Memex.Pipelines.Steps.Step do
           position: non_neg_integer(),
           pipeline: Pipeline.t() | Ecto.Association.NotLoaded.t(),
           pipeline_id: Pipeline.id(),
-          user: User.t() | Ecto.Association.NotLoaded.t(),
           user_id: User.id(),
           inserted_at: NaiveDateTime.t(),
           updated_at: NaiveDateTime.t()
