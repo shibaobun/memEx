@@ -33,7 +33,8 @@ defmodule MemexWeb.Components.TableComponent do
                 optional(:class) => String.t(),
                 optional(:row_class) => String.t(),
                 optional(:alternate_row_class) => String.t(),
-                optional(:sortable) => false
+                optional(:sortable) => false,
+                optional(:type) => module()
               }),
             required(:rows) =>
               list(%{
@@ -60,7 +61,8 @@ defmodule MemexWeb.Components.TableComponent do
         :asc
       end
 
-    rows = rows |> sort_by_custom_sort_value_or_value(initial_key, initial_sort_mode)
+    type = columns |> Enum.find(%{}, fn %{key: key} -> key == initial_key end) |> Map.get(:type)
+    rows = rows |> sort_by_custom_sort_value_or_value(initial_key, initial_sort_mode, type)
 
     socket =
       socket
@@ -68,6 +70,7 @@ defmodule MemexWeb.Components.TableComponent do
       |> assign(
         columns: columns,
         rows: rows,
+        key: initial_key,
         last_sort_key: initial_key,
         sort_mode: initial_sort_mode
       )
@@ -81,7 +84,14 @@ defmodule MemexWeb.Components.TableComponent do
   def handle_event(
         "sort_by",
         %{"sort-key" => key},
-        %{assigns: %{rows: rows, last_sort_key: last_sort_key, sort_mode: sort_mode}} = socket
+        %{
+          assigns: %{
+            columns: columns,
+            rows: rows,
+            last_sort_key: last_sort_key,
+            sort_mode: sort_mode
+          }
+        } = socket
       ) do
     key = key |> String.to_existing_atom()
 
@@ -92,11 +102,28 @@ defmodule MemexWeb.Components.TableComponent do
         {_new_sort_key, _last_sort_mode} -> :asc
       end
 
-    rows = rows |> sort_by_custom_sort_value_or_value(key, sort_mode)
+    type =
+      columns |> Enum.find(%{}, fn %{key: column_key} -> column_key == key end) |> Map.get(:type)
+
+    rows = rows |> sort_by_custom_sort_value_or_value(key, sort_mode, type)
     {:noreply, socket |> assign(last_sort_key: key, sort_mode: sort_mode, rows: rows)}
   end
 
-  defp sort_by_custom_sort_value_or_value(rows, key, sort_mode) do
+  defp sort_by_custom_sort_value_or_value(rows, key, sort_mode, type)
+       when type in [Date, DateTime] do
+    rows
+    |> Enum.sort_by(
+      fn row ->
+        case row |> Map.get(key) do
+          {custom_sort_key, _value} -> custom_sort_key
+          value -> value
+        end
+      end,
+      {sort_mode, type}
+    )
+  end
+
+  defp sort_by_custom_sort_value_or_value(rows, key, sort_mode, _type) do
     rows
     |> Enum.sort_by(
       fn row ->
