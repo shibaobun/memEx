@@ -100,9 +100,9 @@
     <li class="flex flex-col justify-center items-center space-y-2">
       <b><%= gettext("registration:") %></b>
       <p>
-        <%= case Application.get_env(:memex, Memex.Accounts)[:registration] do
-          "public" -> gettext("public signups")
-          _ -> gettext("invite only")
+        <%= case Accounts.registration_mode() do
+          :public -> gettext("public signups")
+          :invite_only -> gettext("invite only")
         end %>
       </p>
     </li>

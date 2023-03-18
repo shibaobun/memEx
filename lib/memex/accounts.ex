@@ -390,6 +390,17 @@ defmodule Memex.Accounts do
   end
 
   @doc """
+  Returns an atom representing the current configured registration mode
+  """
+  @spec registration_mode() :: :public | :invite_only
+  def registration_mode do
+    case Application.get_env(:memex, Memex.Accounts)[:registration] do
+      "public" -> :public
+      _other -> :invite_only
+    end
+  end
+
+  @doc """
   Checks if user is an admin
 
   ## Examples
