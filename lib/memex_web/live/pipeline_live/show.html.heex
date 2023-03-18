@@ -44,7 +44,7 @@
       class="btn btn-primary"
       phx-click="delete"
       data-confirm={dgettext("prompts", "are you sure?")}
-      aria-label={gettext("delete %{pipeline_slug}", pipeline_slug: @pipeline.slug)}
+      aria-label={dgettext("actions", "delete %{pipeline_slug}", pipeline_slug: @pipeline.slug)}
     >
       <%= dgettext("actions", "delete") %>
     </button>
@@ -78,7 +78,7 @@
                 phx-click="reorder_step"
                 phx-value-direction="up"
                 phx-value-step-id={step_id}
-                aria-label={gettext("move %{step_title} up", step_title: step.title)}
+                aria-label={dgettext("actions", "move %{step_title} up", step_title: step.title)}
               >
                 <i class="fas text-xl fa-chevron-up"></i>
               </button>
@@ -93,7 +93,9 @@
                 phx-click="reorder_step"
                 phx-value-direction="down"
                 phx-value-step-id={step_id}
-                aria-label={gettext("move %{step_title} down", step_title: step.title)}
+                aria-label={
+                  dgettext("actions", "move %{step_title} down", step_title: step.title)
+                }
               >
                 <i class="fas text-xl fa-chevron-down"></i>
               </button>
@@ -102,7 +104,7 @@
             <.link
               class="self-end btn btn-primary"
               patch={Routes.pipeline_show_path(@socket, :edit_step, @pipeline.slug, step_id)}
-              aria-label={gettext("edit %{step_title}", step_title: step.title)}
+              aria-label={dgettext("actions", "edit %{step_title}", step_title: step.title)}
             >
               <%= dgettext("actions", "edit") %>
             </.link>
@@ -113,7 +115,7 @@
               phx-click="delete_step"
               phx-value-step-id={step_id}
               data-confirm={dgettext("prompts", "are you sure?")}
-              aria-label={gettext("delete %{step_title}", step_title: step.title)}
+              aria-label={dgettext("actions", "delete %{step_title}", step_title: step.title)}
             >
               <%= dgettext("actions", "delete") %>
             </button>

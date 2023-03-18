@@ -21,7 +21,9 @@
             type="submit"
             class="mx-2 my-1 btn btn-secondary"
             phx-click={JS.dispatch("memex:clipcopy", to: "#code-#{invite.id}")}
-            aria-label={gettext("copy invite link for %{invite_name}", invite_name: invite.name)}
+            aria-label={
+              dgettext("actions", "copy invite link for %{invite_name}", invite_name: invite.name)
+            }
           >
             <%= dgettext("actions", "copy") %>
           </button>
@@ -30,7 +32,9 @@
       <.link
         patch={Routes.invite_index_path(Endpoint, :edit, invite)}
         class="text-primary-400 link"
-        aria-label={gettext("edit invite for %{invite_name}", invite_name: invite.name)}
+        aria-label={
+          dgettext("actions", "edit invite for %{invite_name}", invite_name: invite.name)
+        }
       >
         <i class="fa-fw fa-lg fas fa-edit"></i>
       </.link>
@@ -45,7 +49,9 @@
             invite_name: invite.name
           )
         }
-        aria-label={gettext("delete invite for %{invite_name}", invite_name: invite.name)}
+        aria-label={
+          dgettext("actions", "delete invite for %{invite_name}", invite_name: invite.name)
+        }
       >
         <i class="fa-fw fa-lg fas fa-trash"></i>
       </.link>

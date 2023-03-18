@@ -34,7 +34,7 @@
         <.link
           :if={is_owner?(context, @current_user)}
           patch={Routes.context_index_path(@socket, :edit, context.slug)}
-          aria-label={gettext("edit %{context_slug}", context_slug: context.slug)}
+          aria-label={dgettext("actions", "edit %{context_slug}", context_slug: context.slug)}
         >
           <%= dgettext("actions", "edit") %>
         </.link>
@@ -44,7 +44,7 @@
           phx-click="delete"
           phx-value-id={context.id}
           data-confirm={dgettext("prompts", "are you sure?")}
-          aria-label={gettext("delete %{context_slug}", context_slug: context.slug)}
+          aria-label={dgettext("actions", "delete %{context_slug}", context_slug: context.slug)}
         >
           <%= dgettext("actions", "delete") %>
         </.link>
