@@ -136,6 +136,39 @@ defmodule MemexWeb.CoreComponents do
     """
   end
 
+  attr :datetime, :any, required: true, doc: "A `DateTime` struct or nil"
+
+  @doc """
+  Phoenix.Component for a <time> element that renders the naivedatetime in the
+  user's local timezone with Alpine.js
+  """
+  def datetime(assigns)
+
+  @spec cast_datetime(NaiveDateTime.t() | nil) :: String.t()
+  defp cast_datetime(%NaiveDateTime{} = datetime) do
+    datetime |> DateTime.from_naive!("Etc/UTC") |> DateTime.to_iso8601(:extended)
+  end
+
+  defp cast_datetime(_datetime), do: ""
+
+  attr :date, :any, required: true, doc: "A `Date` struct or nil"
+
+  @doc """
+  Phoenix.Component for a <date> element that renders the Date in the user's
+  local timezone with Alpine.js
+  """
+  def date(assigns)
+
+  attr :content, :string, required: true
+  attr :filename, :string, default: "qrcode", doc: "filename without .png extension"
+  attr :image_class, :string, default: "w-64 h-max"
+  attr :width, :integer, default: 384, doc: "width of png to generate"
+
+  @doc """
+  Creates a downloadable QR Code element
+  """
+  def qr_code(assigns)
+
   attr :note, Note, required: true
 
   def note_content(assigns) do

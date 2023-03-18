@@ -1,0 +1,7 @@
+<time :if={@date} datetime={@date |> Date.to_iso8601(:extended)} x-data={~s<{
+    date:
+      Intl.DateTimeFormat([], {timeZone: 'Etc/UTC', dateStyle: 'short'})
+        .format(new Date("#{Date.to_iso8601(@date, :extended)}"))
+  }>} x-text="date">
+  <%= @date |> Date.to_iso8601(:extended) %>
+</time>
