@@ -1,4 +1,4 @@
-<time :if={@datetime} datetime={cast_datetime(@datetime)} x-data={~s/{
+<time :if={@datetime} id={@id} datetime={cast_datetime(@datetime)} x-data={~s/{
     datetime:
       Intl.DateTimeFormat([], {dateStyle: 'short', timeStyle: 'long'})
         .format(new Date("#{cast_datetime(@datetime)}"))

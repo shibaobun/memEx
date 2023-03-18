@@ -16,7 +16,7 @@
           "user confirmed on%{confirmed_datetime}",
           confirmed_datetime: ""
         ) %>
-        <.datetime datetime={@user.confirmed_at} />
+        <.datetime id={"#{@user.id}-confirmed-at"} datetime={@user.confirmed_at} />
       <% else %>
         <%= gettext("email unconfirmed") %>
       <% end %>
@@ -27,7 +27,7 @@
         "user registered on%{registered_datetime}",
         registered_datetime: ""
       ) %>
-      <.datetime datetime={@user.inserted_at} />
+      <.datetime id={"#{@user.id}-inserted-at"} datetime={@user.inserted_at} />
     </p>
   </h3>
 

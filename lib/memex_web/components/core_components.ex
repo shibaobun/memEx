@@ -136,6 +136,7 @@ defmodule MemexWeb.CoreComponents do
     """
   end
 
+  attr :id, :string, required: true
   attr :datetime, :any, required: true, doc: "A `DateTime` struct or nil"
 
   @doc """
@@ -151,6 +152,7 @@ defmodule MemexWeb.CoreComponents do
 
   defp cast_datetime(_datetime), do: ""
 
+  attr :id, :string, required: true
   attr :date, :any, required: true, doc: "A `Date` struct or nil"
 
   @doc """
