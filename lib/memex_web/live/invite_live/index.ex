@@ -148,7 +148,9 @@ defmodule MemexWeb.InviteLive.Index do
       |> Map.get(:admin, [])
       |> Enum.reject(fn %{id: user_id} -> user_id == current_user.id end)
 
+    use_counts = invites |> Invites.get_use_counts(current_user)
     users = all_users |> Map.get(:user, [])
-    socket |> assign(invites: invites, admins: admins, users: users)
+
+    socket |> assign(invites: invites, use_counts: use_counts, admins: admins, users: users)
   end
 end

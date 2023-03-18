@@ -45,7 +45,7 @@ msgstr ""
 msgid "change password"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:89
+#: lib/memex_web/live/invite_live/index.html.heex:94
 #, elixir-autogen, elixir-format
 msgid "create invite"
 msgstr ""
@@ -156,12 +156,12 @@ msgstr ""
 msgid "export data as json"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:28
+#: lib/memex_web/live/invite_live/index.html.heex:33
 #, elixir-autogen, elixir-format
 msgid "copy"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:25
+#: lib/memex_web/live/invite_live/index.html.heex:30
 #, elixir-autogen, elixir-format
 msgid "copy invite link for %{invite_name}"
 msgstr ""
@@ -189,7 +189,7 @@ msgstr ""
 msgid "delete %{step_title}"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:53
+#: lib/memex_web/live/invite_live/index.html.heex:58
 #, elixir-autogen, elixir-format
 msgid "delete invite for %{invite_name}"
 msgstr ""
@@ -214,7 +214,7 @@ msgstr ""
 msgid "edit %{step_title}"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:36
+#: lib/memex_web/live/invite_live/index.html.heex:41
 #, elixir-autogen, elixir-format
 msgid "edit invite for %{invite_name}"
 msgstr ""

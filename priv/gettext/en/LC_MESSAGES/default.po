@@ -83,7 +83,7 @@ msgstr ""
 msgid "current password"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:65
+#: lib/memex_web/live/invite_live/index.html.heex:70
 #, elixir-autogen, elixir-format
 msgid "disable"
 msgstr ""
@@ -116,7 +116,7 @@ msgstr ""
 msgid "email unconfirmed"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:65
+#: lib/memex_web/live/invite_live/index.html.heex:70
 #, elixir-autogen, elixir-format
 msgid "enable"
 msgstr ""
@@ -142,7 +142,7 @@ msgstr ""
 msgid "instance information"
 msgstr ""
 
-#: lib/memex_web/components/core_components.ex:109
+#: lib/memex_web/components/core_components/invite_card.html.heex:22
 #, elixir-autogen, elixir-format
 msgid "invite disabled"
 msgstr ""
@@ -266,7 +266,7 @@ msgstr ""
 msgid "select privacy"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:80
+#: lib/memex_web/live/invite_live/index.html.heex:85
 #, elixir-autogen, elixir-format
 msgid "set unlimited"
 msgstr ""
@@ -291,7 +291,7 @@ msgstr ""
 msgid "tags"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:125
+#: lib/memex_web/live/invite_live/index.html.heex:130
 #, elixir-autogen, elixir-format
 msgid "users"
 msgstr ""
@@ -613,7 +613,7 @@ msgstr ""
 msgid "user registered on%{registered_datetime}"
 msgstr ""
 
-#: lib/memex_web/components/core_components.ex:104
+#: lib/memex_web/components/core_components/invite_card.html.heex:17
 #, elixir-autogen, elixir-format
 msgid "uses left: unlimited"
 msgstr ""
@@ -623,12 +623,12 @@ msgstr ""
 msgid "read more on how to use memEx"
 msgstr ""
 
-#: lib/memex_web/components/core_components.ex:99
+#: lib/memex_web/components/core_components/invite_card.html.heex:12
 #, elixir-autogen, elixir-format
 msgid "uses left: %{uses_left_count}"
 msgstr ""
 
-#: lib/memex_web/components/core_components.ex:119
+#: lib/memex_web/components/core_components/invite_card.html.heex:32
 #, elixir-autogen, elixir-format
 msgid "uses: %{uses_count}"
 msgstr ""
@@ -648,7 +648,7 @@ msgstr ""
 msgid "Leave \"Uses left\" blank to make invite unlimited"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:97
+#: lib/memex_web/live/invite_live/index.html.heex:102
 #, elixir-autogen, elixir-format
 msgid "admins"
 msgstr ""

@@ -14,7 +14,12 @@
   <% end %>
 
   <div class="flex flex-col justify-center items-stretch space-y-4">
-    <.invite_card :for={invite <- @invites} invite={invite} current_user={@current_user}>
+    <.invite_card
+      :for={invite <- @invites}
+      invite={invite}
+      current_user={@current_user}
+      use_count={Map.get(@use_counts, invite.id)}
+    >
       <:code_actions>
         <form phx-submit="copy_to_clipboard">
           <button

@@ -53,7 +53,7 @@ defmodule Memex.InvitesTest do
 
     test "get_use_count/2 returns the correct invite usage",
          %{invite: %{token: token} = invite, current_user: current_user} do
-      assert 0 == Invites.get_use_count(invite, current_user)
+      assert Invites.get_use_count(invite, current_user) |> is_nil()
 
       assert {:ok, _user} =
                Accounts.register_user(
@@ -70,6 +70,40 @@ defmodule Memex.InvitesTest do
                )
 
       assert 2 == Invites.get_use_count(invite, current_user)
+    end
+
+    test "get_use_counts/2 returns the correct invite usage",
+         %{invite: %{id: invite_id, token: token} = invite, current_user: current_user} do
+      {:ok, %{id: another_invite_id, token: another_token} = another_invite} =
+        Invites.create_invite(current_user, @valid_attrs)
+
+      assert [invite, another_invite] |> Invites.get_use_counts(current_user) == %{}
+
+      assert {:ok, _user} =
+               Accounts.register_user(
+                 %{"email" => unique_user_email(), "password" => valid_user_password()},
+                 token
+               )
+
+      assert {:ok, _user} =
+               Accounts.register_user(
+                 %{"email" => unique_user_email(), "password" => valid_user_password()},
+                 another_token
+               )
+
+      use_counts = [invite, another_invite] |> Invites.get_use_counts(current_user)
+      assert %{^invite_id => 1} = use_counts
+      assert %{^another_invite_id => 1} = use_counts
+
+      assert {:ok, _user} =
+               Accounts.register_user(
+                 %{"email" => unique_user_email(), "password" => valid_user_password()},
+                 token
+               )
+
+      use_counts = [invite, another_invite] |> Invites.get_use_counts(current_user)
+      assert %{^invite_id => 2} = use_counts
+      assert %{^another_invite_id => 1} = use_counts
     end
 
     test "use_invite/1 successfully uses an unlimited invite",

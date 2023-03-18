@@ -66,7 +66,7 @@ msgstr ""
 msgid "are you sure you want to change your language?"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:48
+#: lib/memex_web/live/invite_live/index.html.heex:53
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to delete the invite for %{invite_name}?"
 msgstr ""
@@ -81,7 +81,7 @@ msgstr ""
 msgid "are you sure you want to log out?"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:75
+#: lib/memex_web/live/invite_live/index.html.heex:80
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to make %{invite_name} unlimited?"
 msgstr ""
@@ -152,8 +152,8 @@ msgstr ""
 msgid "your account has been deleted"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:108
-#: lib/memex_web/live/invite_live/index.html.heex:136
+#: lib/memex_web/live/invite_live/index.html.heex:113
+#: lib/memex_web/live/invite_live/index.html.heex:141
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to delete %{email}? this action is permanent!"
 msgstr ""

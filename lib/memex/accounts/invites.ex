@@ -100,13 +100,23 @@ defmodule Memex.Accounts.Invites do
     end
   end
 
-  @spec get_use_count(Invite.t(), User.t()) :: non_neg_integer()
-  def get_use_count(%Invite{id: invite_id}, %User{role: :admin}) do
-    Repo.one(
+  @spec get_use_count(Invite.t(), User.t()) :: non_neg_integer() | nil
+  def get_use_count(%Invite{id: invite_id} = invite, user) do
+    [invite] |> get_use_counts(user) |> Map.get(invite_id)
+  end
+
+  @spec get_use_counts([Invite.t()], User.t()) ::
+          %{optional(Invite.id()) => non_neg_integer()}
+  def get_use_counts(invites, %User{role: :admin}) do
+    invite_ids = invites |> Enum.map(fn %{id: invite_id} -> invite_id end)
+
+    Repo.all(
       from u in User,
-        where: u.invite_id == ^invite_id,
-        select: count(u.id)
+        where: u.invite_id in ^invite_ids,
+        group_by: u.invite_id,
+        select: {u.invite_id, count(u.id)}
     )
+    |> Map.new()
   end
 
   @spec decrement_invite_changeset(Invite.t()) :: Invite.changeset()
