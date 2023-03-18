@@ -90,9 +90,9 @@
             <%= dgettext("prompts", "register to setup memEx") %>
           </.link>
         <% else %>
-          <a :for={%{email: email} <- @admins} class="link" href={"mailto:#{email}"}>
+          <.link :for={%{email: email} <- @admins} class="link" href={"mailto:#{email}"}>
             <%= email %>
-          </a>
+          </.link>
         <% end %>
       </p>
     </li>

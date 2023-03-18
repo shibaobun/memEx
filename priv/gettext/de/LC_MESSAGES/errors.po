@@ -83,7 +83,7 @@ msgstr ""
 msgid "invalid format: only numbers, letters and hyphen are accepted"
 msgstr ""
 
-#: lib/memex_web/templates/error/error.html.heex:28
+#: lib/memex_web/templates/error/error.html.heex:31
 #, elixir-autogen, elixir-format
 msgid "go back home"
 msgstr ""

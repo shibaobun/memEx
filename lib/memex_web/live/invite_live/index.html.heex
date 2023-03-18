@@ -56,16 +56,16 @@
         <i class="fa-fw fa-lg fas fa-trash"></i>
       </.link>
 
-      <a
+      <.link
         href="#"
         class="btn btn-secondary"
         phx-click={if invite.disabled_at, do: "enable_invite", else: "disable_invite"}
         phx-value-id={invite.id}
       >
         <%= if invite.disabled_at, do: gettext("enable"), else: gettext("disable") %>
-      </a>
+      </.link>
 
-      <a
+      <.link
         :if={invite.disabled_at |> is_nil() and not (invite.uses_left |> is_nil())}
         href="#"
         class="btn btn-secondary"
@@ -78,7 +78,7 @@
         }
       >
         <%= gettext("set unlimited") %>
-      </a>
+      </.link>
     </.invite_card>
 
     <.link
