@@ -32,14 +32,14 @@
     >
       <:actions :let={pipeline}>
         <.link
-          :if={is_owner?(pipeline, @current_user)}
+          :if={Pipelines.is_owner?(pipeline, @current_user)}
           patch={Routes.pipeline_index_path(@socket, :edit, pipeline.slug)}
           aria-label={dgettext("actions", "edit %{pipeline_slug}", pipeline_slug: pipeline.slug)}
         >
           <%= dgettext("actions", "edit") %>
         </.link>
         <.link
-          :if={is_owner_or_admin?(pipeline, @current_user)}
+          :if={Pipelines.is_owner_or_admin?(pipeline, @current_user)}
           href="#"
           phx-click="delete"
           phx-value-id={pipeline.id}

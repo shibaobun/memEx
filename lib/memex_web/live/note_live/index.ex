@@ -1,6 +1,6 @@
 defmodule MemexWeb.NoteLive.Index do
   use MemexWeb, :live_view
-  alias Memex.{Accounts.User, Notes, Notes.Note}
+  alias Memex.{Notes, Notes.Note}
 
   @impl true
   def mount(%{"search" => search}, _session, socket) do
@@ -75,13 +75,4 @@ defmodule MemexWeb.NoteLive.Index do
   defp display_notes(%{assigns: %{search: search}} = socket) do
     socket |> assign(notes: Notes.list_public_notes(search))
   end
-
-  @spec is_owner_or_admin?(Note.t(), User.t()) :: boolean()
-  defp is_owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true
-  defp is_owner_or_admin?(_context, %{role: :admin}), do: true
-  defp is_owner_or_admin?(_context, _other_user), do: false
-
-  @spec is_owner?(Note.t(), User.t()) :: boolean()
-  defp is_owner?(%{user_id: user_id}, %{id: user_id}), do: true
-  defp is_owner?(_context, _other_user), do: false
 end

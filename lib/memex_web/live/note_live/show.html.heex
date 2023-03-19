@@ -24,14 +24,14 @@
       <%= dgettext("actions", "back") %>
     </.link>
     <.link
-      :if={is_owner?(@note, @current_user)}
+      :if={Notes.is_owner?(@note, @current_user)}
       class="btn btn-primary"
       patch={Routes.note_show_path(@socket, :edit, @note.slug)}
     >
       <%= dgettext("actions", "edit") %>
     </.link>
     <button
-      :if={is_owner_or_admin?(@note, @current_user)}
+      :if={Notes.is_owner_or_admin?(@note, @current_user)}
       type="button"
       class="btn btn-primary"
       phx-click="delete"

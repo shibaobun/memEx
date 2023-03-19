@@ -32,14 +32,14 @@
       <%= dgettext("actions", "back") %>
     </.link>
     <.link
-      :if={is_owner?(@pipeline, @current_user)}
+      :if={Pipelines.is_owner?(@pipeline, @current_user)}
       class="btn btn-primary"
       patch={Routes.pipeline_show_path(@socket, :edit, @pipeline.slug)}
     >
       <%= dgettext("actions", "edit") %>
     </.link>
     <button
-      :if={is_owner_or_admin?(@pipeline, @current_user)}
+      :if={Pipelines.is_owner_or_admin?(@pipeline, @current_user)}
       type="button"
       class="btn btn-primary"
       phx-click="delete"
@@ -67,7 +67,7 @@
           <%= gettext("%{position}. %{title}", position: position + 1, title: title) %>
         </h3>
 
-        <%= if is_owner?(@pipeline, @current_user) do %>
+        <%= if Pipelines.is_owner?(@pipeline, @current_user) do %>
           <div class="flex justify-between items-center space-x-4">
             <%= if position <= 0 do %>
               <i class="fas text-xl fa-chevron-up cursor-not-allowed opacity-25"></i>
@@ -128,7 +128,7 @@
   <% end %>
 
   <.link
-    :if={is_owner?(@pipeline, @current_user)}
+    :if={Pipelines.is_owner?(@pipeline, @current_user)}
     class="self-end btn btn-primary"
     patch={Routes.pipeline_show_path(@socket, :add_step, @pipeline.slug)}
   >

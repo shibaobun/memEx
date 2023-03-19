@@ -228,4 +228,13 @@ defmodule Memex.Notes do
   def change_note(%Note{} = note, attrs \\ %{}, user) do
     note |> Note.update_changeset(attrs, user)
   end
+
+  @spec is_owner_or_admin?(Note.t(), User.t()) :: boolean()
+  def is_owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true
+  def is_owner_or_admin?(_context, %{role: :admin}), do: true
+  def is_owner_or_admin?(_context, _other_user), do: false
+
+  @spec is_owner?(Note.t(), User.t()) :: boolean()
+  def is_owner?(%{user_id: user_id}, %{id: user_id}), do: true
+  def is_owner?(_context, _other_user), do: false
 end

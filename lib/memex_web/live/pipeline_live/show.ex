@@ -1,7 +1,6 @@
 defmodule MemexWeb.PipelineLive.Show do
   use MemexWeb, :live_view
-  alias Memex.{Accounts.User, Pipelines}
-  alias Memex.Pipelines.{Pipeline, Steps, Steps.Step}
+  alias Memex.{Pipelines, Pipelines.Steps, Pipelines.Steps.Step}
 
   @impl true
   def mount(_params, _session, socket) do
@@ -122,13 +121,4 @@ defmodule MemexWeb.PipelineLive.Show do
     do: gettext("edit %{slug}", slug: slug)
 
   defp page_title(:add_step, %{slug: slug}), do: gettext("add step to %{slug}", slug: slug)
-
-  @spec is_owner_or_admin?(Pipeline.t(), User.t()) :: boolean()
-  defp is_owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true
-  defp is_owner_or_admin?(_context, %{role: :admin}), do: true
-  defp is_owner_or_admin?(_context, _other_user), do: false
-
-  @spec is_owner?(Pipeline.t(), User.t()) :: boolean()
-  defp is_owner?(%{user_id: user_id}, %{id: user_id}), do: true
-  defp is_owner?(_context, _other_user), do: false
 end

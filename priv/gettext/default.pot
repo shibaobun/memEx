@@ -362,7 +362,7 @@ msgstr ""
 #: lib/memex_web/live/note_live/index.ex:57
 #: lib/memex_web/live/note_live/show.ex:40
 #: lib/memex_web/live/pipeline_live/index.ex:57
-#: lib/memex_web/live/pipeline_live/show.ex:76
+#: lib/memex_web/live/pipeline_live/show.ex:75
 #, elixir-autogen, elixir-format
 msgid "%{slug} deleted"
 msgstr ""
@@ -379,7 +379,7 @@ msgstr ""
 #: lib/memex_web/live/note_live/index.ex:23
 #: lib/memex_web/live/note_live/show.ex:47
 #: lib/memex_web/live/pipeline_live/index.ex:23
-#: lib/memex_web/live/pipeline_live/show.ex:122
+#: lib/memex_web/live/pipeline_live/show.ex:121
 #, elixir-autogen, elixir-format
 msgid "edit %{slug}"
 msgstr ""
@@ -396,7 +396,7 @@ msgstr ""
 
 #: lib/memex_web/live/context_live/show.ex:18
 #: lib/memex_web/live/note_live/show.ex:18
-#: lib/memex_web/live/pipeline_live/show.ex:19
+#: lib/memex_web/live/pipeline_live/show.ex:18
 #, elixir-autogen, elixir-format
 msgid "%{slug} could not be found"
 msgstr ""
@@ -442,7 +442,7 @@ msgstr ""
 msgid "%{title} created"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.ex:94
+#: lib/memex_web/live/pipeline_live/show.ex:93
 #, elixir-autogen, elixir-format
 msgid "%{title} deleted"
 msgstr ""
@@ -452,7 +452,7 @@ msgstr ""
 msgid "%{title} saved"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.ex:124
+#: lib/memex_web/live/pipeline_live/show.ex:123
 #, elixir-autogen, elixir-format
 msgid "add step to %{slug}"
 msgstr ""

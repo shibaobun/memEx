@@ -32,14 +32,14 @@
     >
       <:actions :let={context}>
         <.link
-          :if={is_owner?(context, @current_user)}
+          :if={Contexts.is_owner?(context, @current_user)}
           patch={Routes.context_index_path(@socket, :edit, context.slug)}
           aria-label={dgettext("actions", "edit %{context_slug}", context_slug: context.slug)}
         >
           <%= dgettext("actions", "edit") %>
         </.link>
         <.link
-          :if={is_owner_or_admin?(context, @current_user)}
+          :if={Contexts.is_owner_or_admin?(context, @current_user)}
           href="#"
           phx-click="delete"
           phx-value-id={context.id}

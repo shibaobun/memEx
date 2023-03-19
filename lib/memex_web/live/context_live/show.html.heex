@@ -24,14 +24,14 @@
       <%= dgettext("actions", "back") %>
     </.link>
     <.link
-      :if={is_owner?(@context, @current_user)}
+      :if={Contexts.is_owner?(@context, @current_user)}
       class="btn btn-primary"
       patch={Routes.context_show_path(@socket, :edit, @context.slug)}
     >
       <%= dgettext("actions", "edit") %>
     </.link>
     <button
-      :if={is_owner_or_admin?(@context, @current_user)}
+      :if={Contexts.is_owner_or_admin?(@context, @current_user)}
       type="button"
       class="btn btn-primary"
       phx-click="delete"
