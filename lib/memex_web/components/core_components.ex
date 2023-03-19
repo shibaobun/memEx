@@ -89,7 +89,7 @@ defmodule MemexWeb.CoreComponents do
 
   @doc """
   Phoenix.Component for a <time> element that renders the naivedatetime in the
-  user's local timezone with Alpine.js
+  user's local timezone
   """
   def datetime(assigns)
 
@@ -105,7 +105,7 @@ defmodule MemexWeb.CoreComponents do
 
   @doc """
   Phoenix.Component for a <date> element that renders the Date in the user's
-  local timezone with Alpine.js
+  local timezone
   """
   def date(assigns)
 

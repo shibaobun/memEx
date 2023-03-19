@@ -1,7 +1,3 @@
-<time :if={@datetime} id={@id} datetime={cast_datetime(@datetime)} x-data={~s/{
-    datetime:
-      Intl.DateTimeFormat([], {dateStyle: 'short', timeStyle: 'long'})
-        .format(new Date("#{cast_datetime(@datetime)}"))
-  }/} x-text="datetime">
+<time :if={@datetime} id={@id} datetime={cast_datetime(@datetime)} phx-hook="DateTime">
   <%= cast_datetime(@datetime) %>
 </time>

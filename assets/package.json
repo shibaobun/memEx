@@ -4,7 +4,7 @@
   "license": "MIT",
   "engines": {
     "node": "v18.9.1",
-    "npm": "8.10.0"
+    "npm": "8.19.1"
   },
   "scripts": {
     "deploy": "NODE_ENV=production webpack --mode production",
@@ -15,7 +15,6 @@
   "dependencies": {
     "@fontsource/nunito-sans": "^4.5.8",
     "@fortawesome/fontawesome-free": "^6.1.1",
-    "alpinejs": "^3.10.2",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
     "phoenix_live_view": "file:../deps/phoenix_live_view",

@@ -1,6 +1,7 @@
 # v0.1.10
 - Improve accessibility
 - Code quality improvements
+- Fix dates displaying incorrectly
 
 # v0.1.9
 - Improve server log
