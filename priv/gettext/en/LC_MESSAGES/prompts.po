@@ -81,11 +81,11 @@ msgstr ""
 msgid "are you sure you want to make %{invite_name} unlimited?"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:46
+#: lib/memex_web/live/context_live/index.html.heex:47
 #: lib/memex_web/live/context_live/show.html.heex:35
-#: lib/memex_web/live/note_live/index.html.heex:46
+#: lib/memex_web/live/note_live/index.html.heex:47
 #: lib/memex_web/live/note_live/show.html.heex:35
-#: lib/memex_web/live/pipeline_live/index.html.heex:46
+#: lib/memex_web/live/pipeline_live/index.html.heex:47
 #: lib/memex_web/live/pipeline_live/show.html.heex:43
 #: lib/memex_web/live/pipeline_live/show.html.heex:114
 #, elixir-autogen, elixir-format

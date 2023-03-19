@@ -53,7 +53,8 @@ msgstr ""
 msgid "confirm new password"
 msgstr ""
 
-#: lib/memex_web/live/note_live/form_component.html.heex:23
+#: lib/memex_web/live/note_live/form_component.html.heex:24
+#: lib/memex_web/live/note_live/form_component.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "content"
 msgstr ""
@@ -184,7 +185,7 @@ msgstr ""
 msgid "no invites 😔"
 msgstr ""
 
-#: lib/memex_web/live/note_live/index.html.heex:24
+#: lib/memex_web/live/note_live/index.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "no notes found"
 msgstr ""
@@ -250,17 +251,20 @@ msgstr ""
 msgid "report bugs or request features"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:41
-#: lib/memex_web/live/note_live/form_component.html.heex:41
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:41
-#: lib/memex_web/live/step_live/form_component.html.heex:29
+#: lib/memex_web/live/context_live/form_component.html.heex:45
+#: lib/memex_web/live/note_live/form_component.html.heex:45
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:45
+#: lib/memex_web/live/step_live/form_component.html.heex:31
 #, elixir-autogen, elixir-format
 msgid "saving..."
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:37
-#: lib/memex_web/live/note_live/form_component.html.heex:37
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:37
+#: lib/memex_web/live/context_live/form_component.html.heex:40
+#: lib/memex_web/live/context_live/form_component.html.heex:41
+#: lib/memex_web/live/note_live/form_component.html.heex:40
+#: lib/memex_web/live/note_live/form_component.html.heex:41
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:40
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:41
 #, elixir-autogen, elixir-format
 msgid "select privacy"
 msgstr ""
@@ -276,9 +280,12 @@ msgstr ""
 msgid "settings"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:30
-#: lib/memex_web/live/note_live/form_component.html.heex:30
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:30
+#: lib/memex_web/live/context_live/form_component.html.heex:32
+#: lib/memex_web/live/context_live/form_component.html.heex:33
+#: lib/memex_web/live/note_live/form_component.html.heex:32
+#: lib/memex_web/live/note_live/form_component.html.heex:33
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:32
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:33
 #, elixir-autogen, elixir-format
 msgid "tag1,tag2"
 msgstr ""
@@ -317,9 +324,9 @@ msgstr ""
 msgid "new note"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:18
-#: lib/memex_web/live/note_live/index.html.heex:18
-#: lib/memex_web/live/pipeline_live/index.html.heex:18
+#: lib/memex_web/live/context_live/index.html.heex:19
+#: lib/memex_web/live/note_live/index.html.heex:19
+#: lib/memex_web/live/pipeline_live/index.html.heex:19
 #, elixir-autogen, elixir-format
 msgid "search"
 msgstr ""
@@ -329,13 +336,14 @@ msgstr ""
 msgid "new context"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:24
+#: lib/memex_web/live/context_live/index.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "no contexts found"
 msgstr ""
 
 #: lib/memex_web/components/pipelines_table_component.ex:48
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:23
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:24
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "description"
 msgstr ""
@@ -345,7 +353,7 @@ msgstr ""
 msgid "new pipeline"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/index.html.heex:24
+#: lib/memex_web/live/pipeline_live/index.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "no pipelines found"
 msgstr ""
@@ -388,8 +396,11 @@ msgstr ""
 #: lib/memex_web/components/notes_table_component.ex:47
 #: lib/memex_web/components/pipelines_table_component.ex:47
 #: lib/memex_web/live/context_live/form_component.html.heex:14
+#: lib/memex_web/live/context_live/form_component.html.heex:15
 #: lib/memex_web/live/note_live/form_component.html.heex:14
+#: lib/memex_web/live/note_live/form_component.html.heex:15
 #: lib/memex_web/live/pipeline_live/form_component.html.heex:14
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:15
 #, elixir-autogen, elixir-format
 msgid "slug"
 msgstr ""
@@ -406,7 +417,8 @@ msgstr ""
 msgid "home"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:23
+#: lib/memex_web/live/context_live/form_component.html.heex:24
+#: lib/memex_web/live/context_live/form_component.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "use [[note-slug]] to link to a note"
 msgstr ""
@@ -468,11 +480,13 @@ msgid "steps:"
 msgstr ""
 
 #: lib/memex_web/live/step_live/form_component.html.heex:14
+#: lib/memex_web/live/step_live/form_component.html.heex:15
 #, elixir-autogen, elixir-format
 msgid "title"
 msgstr ""
 
-#: lib/memex_web/live/step_live/form_component.html.heex:23
+#: lib/memex_web/live/step_live/form_component.html.heex:24
+#: lib/memex_web/live/step_live/form_component.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "use [[context-slug]] to link to a context"
 msgstr ""
@@ -671,4 +685,27 @@ msgstr ""
 #: lib/memex_web/live/invite_live/form_component.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "leave \"uses left\" blank to make invite unlimited"
+msgstr ""
+
+#: lib/memex_web/components/contexts_table_component.ex:43
+#: lib/memex_web/components/notes_table_component.ex:43
+#: lib/memex_web/components/pipelines_table_component.ex:43
+#, elixir-autogen, elixir-format
+msgid "actions"
+msgstr ""
+
+#: lib/memex_web/components/core_components/modal.html.heex:9
+#: lib/memex_web/components/core_components/modal.html.heex:34
+#, elixir-autogen, elixir-format
+msgid "close modal"
+msgstr ""
+
+#: lib/memex_web/components/core_components/topbar.html.heex:89
+#, elixir-autogen, elixir-format
+msgid "live dashboard"
+msgstr ""
+
+#: lib/memex_web/components/core_components/topbar.html.heex:75
+#, elixir-autogen, elixir-format
+msgid "log out"
 msgstr ""

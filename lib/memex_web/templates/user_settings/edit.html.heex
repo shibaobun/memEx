@@ -107,9 +107,9 @@
     action={Routes.user_settings_path(@conn, :update)}
     class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
   >
-    <h3 class="title text-primary-400 text-lg text-center col-span-3">
-      <%= dgettext("actions", "change language") %>
-    </h3>
+    <%= label(f, :locale, dgettext("actions", "change language"),
+      class: "title text-primary-400 text-lg text-center col-span-3"
+    ) %>
 
     <div
       :if={@locale_changeset.action && not @locale_changeset.valid?()}

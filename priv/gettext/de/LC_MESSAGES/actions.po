@@ -28,7 +28,7 @@ msgstr ""
 msgid "change email"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:111
+#: lib/memex_web/templates/user_settings/edit.html.heex:110
 #: lib/memex_web/templates/user_settings/edit.html.heex:128
 #, elixir-autogen, elixir-format
 msgid "change language"
@@ -45,11 +45,11 @@ msgstr ""
 msgid "create invite"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:49
+#: lib/memex_web/live/context_live/index.html.heex:50
 #: lib/memex_web/live/context_live/show.html.heex:38
-#: lib/memex_web/live/note_live/index.html.heex:49
+#: lib/memex_web/live/note_live/index.html.heex:50
 #: lib/memex_web/live/note_live/show.html.heex:38
-#: lib/memex_web/live/pipeline_live/index.html.heex:51
+#: lib/memex_web/live/pipeline_live/index.html.heex:52
 #: lib/memex_web/live/pipeline_live/show.html.heex:46
 #: lib/memex_web/live/pipeline_live/show.html.heex:117
 #, elixir-autogen, elixir-format
@@ -61,11 +61,11 @@ msgstr ""
 msgid "delete user"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:39
+#: lib/memex_web/live/context_live/index.html.heex:40
 #: lib/memex_web/live/context_live/show.html.heex:28
-#: lib/memex_web/live/note_live/index.html.heex:39
+#: lib/memex_web/live/note_live/index.html.heex:40
 #: lib/memex_web/live/note_live/show.html.heex:28
-#: lib/memex_web/live/pipeline_live/index.html.heex:39
+#: lib/memex_web/live/pipeline_live/index.html.heex:40
 #: lib/memex_web/live/pipeline_live/show.html.heex:36
 #: lib/memex_web/live/pipeline_live/show.html.heex:106
 #, elixir-autogen, elixir-format
@@ -77,7 +77,7 @@ msgstr ""
 msgid "invite someone new!"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:107
+#: lib/memex_web/components/core_components/topbar.html.heex:109
 #: lib/memex_web/templates/user_confirmation/new.html.heex:32
 #: lib/memex_web/templates/user_registration/new.html.heex:44
 #: lib/memex_web/templates/user_reset_password/edit.html.heex:45
@@ -88,22 +88,22 @@ msgstr ""
 msgid "log in"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:60
+#: lib/memex_web/live/context_live/index.html.heex:61
 #, elixir-autogen, elixir-format
 msgid "new context"
 msgstr ""
 
-#: lib/memex_web/live/note_live/index.html.heex:60
+#: lib/memex_web/live/note_live/index.html.heex:61
 #, elixir-autogen, elixir-format
 msgid "new note"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/index.html.heex:62
+#: lib/memex_web/live/pipeline_live/index.html.heex:63
 #, elixir-autogen, elixir-format
 msgid "new pipeline"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:98
+#: lib/memex_web/components/core_components/topbar.html.heex:100
 #: lib/memex_web/templates/user_confirmation/new.html.heex:29
 #: lib/memex_web/templates/user_registration/new.html.heex:3
 #: lib/memex_web/templates/user_registration/new.html.heex:37
@@ -114,11 +114,11 @@ msgstr ""
 msgid "register"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:40
+#: lib/memex_web/live/context_live/form_component.html.heex:44
 #: lib/memex_web/live/invite_live/form_component.html.heex:32
-#: lib/memex_web/live/note_live/form_component.html.heex:40
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:40
-#: lib/memex_web/live/step_live/form_component.html.heex:28
+#: lib/memex_web/live/note_live/form_component.html.heex:44
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:44
+#: lib/memex_web/live/step_live/form_component.html.heex:30
 #, elixir-autogen, elixir-format
 msgid "save"
 msgstr ""
@@ -155,19 +155,19 @@ msgstr ""
 msgid "copy invite link for %{invite_name}"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:47
+#: lib/memex_web/live/context_live/index.html.heex:48
 #: lib/memex_web/live/context_live/show.html.heex:36
 #, elixir-autogen, elixir-format
 msgid "delete %{context_slug}"
 msgstr ""
 
-#: lib/memex_web/live/note_live/index.html.heex:47
+#: lib/memex_web/live/note_live/index.html.heex:48
 #: lib/memex_web/live/note_live/show.html.heex:36
 #, elixir-autogen, elixir-format
 msgid "delete %{note_slug}"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/index.html.heex:48
+#: lib/memex_web/live/pipeline_live/index.html.heex:49
 #: lib/memex_web/live/pipeline_live/show.html.heex:44
 #, elixir-autogen, elixir-format
 msgid "delete %{pipeline_slug}"
@@ -183,17 +183,17 @@ msgstr ""
 msgid "delete invite for %{invite_name}"
 msgstr ""
 
-#: lib/memex_web/live/context_live/index.html.heex:37
+#: lib/memex_web/live/context_live/index.html.heex:38
 #, elixir-autogen, elixir-format
 msgid "edit %{context_slug}"
 msgstr ""
 
-#: lib/memex_web/live/note_live/index.html.heex:37
+#: lib/memex_web/live/note_live/index.html.heex:38
 #, elixir-autogen, elixir-format
 msgid "edit %{note_slug}"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/index.html.heex:37
+#: lib/memex_web/live/pipeline_live/index.html.heex:38
 #, elixir-autogen, elixir-format
 msgid "edit %{pipeline_slug}"
 msgstr ""

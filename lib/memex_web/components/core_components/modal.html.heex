@@ -6,6 +6,7 @@
     p-8 flex flex-col justify-center items-center cursor-auto"
   style="background-color: rgba(0,0,0,0.4);"
   phx-remove={hide_modal()}
+  aria-label={gettext("close modal")}
 >
   <span class="hidden"></span>
 </.link>
@@ -30,6 +31,7 @@
         text-gray-500 hover:text-gray-800
         transition-all duration-500 ease-in-out"
       phx-remove={hide_modal()}
+      aria-label={gettext("close modal")}
     >
       <i class="fa-fw fa-lg fas fa-times"></i>
     </.link>

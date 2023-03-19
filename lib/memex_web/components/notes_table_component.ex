@@ -40,7 +40,7 @@ defmodule MemexWeb.Components.NotesTableComponent do
       if actions == [] or current_user |> is_nil() do
         []
       else
-        [%{label: nil, key: :actions, sortable: false}]
+        [%{label: gettext("actions"), key: :actions, sortable: false}]
       end
 
     columns = [
