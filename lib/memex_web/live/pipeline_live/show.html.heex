@@ -28,9 +28,6 @@
   </p>
 
   <div class="pb-4 self-end flex space-x-4">
-    <.link class="btn btn-primary" navigate={Routes.pipeline_index_path(@socket, :index)}>
-      <%= dgettext("actions", "back") %>
-    </.link>
     <.link
       :if={Pipelines.is_owner?(@pipeline, @current_user)}
       class="btn btn-primary"
