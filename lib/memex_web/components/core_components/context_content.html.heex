@@ -1,0 +1,8 @@
+<div
+  id={"show-context-content-#{@context.id}"}
+  class="input input-primary h-128 min-h-128 inline-block whitespace-pre-wrap overflow-x-hidden overflow-y-auto"
+  phx-hook="MaintainAttrs"
+  phx-update="ignore"
+  readonly
+  phx-no-format
+><p class="inline"><%= add_links_to_content(@context.content, "context-note") %></p></div>

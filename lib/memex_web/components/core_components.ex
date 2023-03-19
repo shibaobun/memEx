@@ -121,67 +121,63 @@ defmodule MemexWeb.CoreComponents do
 
   attr :note, Note, required: true
 
-  def note_content(assigns) do
-    ~H"""
-    <div
-      id={"show-note-content-#{@note.id}"}
-      class="input input-primary h-128 min-h-128 inline-block whitespace-pre-wrap overflow-x-hidden overflow-y-auto"
-      phx-hook="MaintainAttrs"
-      phx-update="ignore"
-      readonly
-      phx-no-format
-    ><p class="inline"><%= add_links_to_content(@note.content, "note-link") %></p></div>
-    """
-  end
+  def note_content(assigns)
 
   attr :context, Context, required: true
 
-  def context_content(assigns) do
-    ~H"""
-    <div
-      id={"show-context-content-#{@context.id}"}
-      class="input input-primary h-128 min-h-128 inline-block whitespace-pre-wrap overflow-x-hidden overflow-y-auto"
-      phx-hook="MaintainAttrs"
-      phx-update="ignore"
-      readonly
-      phx-no-format
-    ><p class="inline"><%= add_links_to_content(@context.content, "context-note") %></p></div>
-    """
-  end
+  def context_content(assigns)
 
   attr :step, Step, required: true
 
-  def step_content(assigns) do
-    ~H"""
-    <div
-      id={"show-step-content-#{@step.id}"}
-      class="input input-primary h-32 min-h-32 inline-block whitespace-pre-wrap overflow-x-hidden overflow-y-auto"
-      phx-hook="MaintainAttrs"
-      phx-update="ignore"
-      readonly
-      phx-no-format
-    ><p class="inline"><%= add_links_to_content(@step.content, "step-context") %></p></div>
-    """
-  end
+  def step_content(assigns)
 
   defp add_links_to_content(content, data_qa_prefix) do
-    Regex.replace(
-      ~r/\[\[([\p{L}\p{N}\-]+)\]\]/,
-      content,
-      fn _whole_match, slug ->
-        link =
-          HTML.Link.link(
-            "[[#{slug}]]",
-            to: Routes.note_show_path(Endpoint, :show, slug),
-            class: "link inline",
-            data: [qa: "#{data_qa_prefix}-#{slug}"]
-          )
-          |> HTML.Safe.to_iodata()
-          |> IO.iodata_to_binary()
+    # replace links
 
-        "</p>#{link}<p class=\"inline\">"
-      end
-    )
-    |> HTML.raw()
+    # link regex from
+    # https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
+    # and modified with additional schemes from
+    # https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
+
+    content =
+      Regex.replace(
+        ~r<((file|git|https?|ipfs|ipns|irc|jabber|magnet|mailto|mumble|tel|udp|xmpp):\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))>,
+        content,
+        fn _whole_match, link ->
+          link =
+            HTML.Link.link(
+              link,
+              to: link,
+              class: "link inline",
+              target: "_blank",
+              rel: "noopener noreferrer"
+            )
+            |> HTML.Safe.to_iodata()
+            |> IO.iodata_to_binary()
+
+          "</p>#{link}<p class=\"inline\">"
+        end
+      )
+
+    content =
+      Regex.replace(
+        ~r/\[\[([\p{L}\p{N}\-]+)\]\]/,
+        content,
+        fn _whole_match, slug ->
+          link =
+            HTML.Link.link(
+              "[[#{slug}]]",
+              to: Routes.note_show_path(Endpoint, :show, slug),
+              class: "link inline",
+              data: [qa: "#{data_qa_prefix}-#{slug}"]
+            )
+            |> HTML.Safe.to_iodata()
+            |> IO.iodata_to_binary()
+
+          "</p>#{link}<p class=\"inline\">"
+        end
+      )
+
+    content |> HTML.raw()
   end
 end
