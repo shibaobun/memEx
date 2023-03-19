@@ -54,6 +54,33 @@ You can use the following environment variables to configure memEx in
   `no-reply@HOST` where `HOST` was previously defined.
 - `EMAIL_NAME`: Sets the sender name in sent emails. Defaults to "memEx".
 
+# Contribution
+
+Contributions are greatly appreciated, no ability to code needed! You can browse
+the [Contribution
+Guide](https://gitea.bubbletea.dev/shibao/memex/src/branch/stable/contributing.md)
+to learn more.
+
+I can be contacted at [shibao@bubbletea.dev](mailto:shibao@bubbletea.dev), or on
+the fediverse at
+[@shibao@misskey.bubbletea.dev](https://misskey.bubbletea.dev/@shibao). Thank
+you!
+
+# License
+
+memEx is licensed under AGPLv3 or later. A copy of the latest version of the
+license can be found at
+[license.md](https://gitea.bubbletea.dev/shibao/memex/src/branch/stable/license.md).
+
+# Links
+
+- [Gitea](https://gitea.bubbletea.dev/shibao/memex): Main repo, feature
+  requests and bug reports
+- [Github](https://github.com/shibaobun/memex): Source code mirror, please
+  don't open pull requests to this repository
+- [Weblate](https://weblate.bubbletea.dev/engage/memex): Contribute to
+  translations!
+
 ---
 
 [![Build

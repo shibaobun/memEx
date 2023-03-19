@@ -2,6 +2,8 @@
 - Improve accessibility
 - Code quality improvements
 - Fix dates displaying incorrectly
+- Add links to readme for github mirror
+- Add license (whoops)
 
 # v0.1.9
 - Improve server log
