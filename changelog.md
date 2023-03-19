@@ -4,6 +4,7 @@
 - Fix dates displaying incorrectly
 - Add links to readme for github mirror
 - Add license (whoops)
+- Display links in note/context/step contents
 
 # v0.1.9
 - Improve server log
