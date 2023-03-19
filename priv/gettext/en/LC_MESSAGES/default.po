@@ -98,7 +98,7 @@ msgstr ""
 msgid "document your processes, attaching contexts to each step"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:33
+#: lib/memex_web/live/invite_live/index.ex:23
 #, elixir-autogen, elixir-format
 msgid "edit invite"
 msgstr ""
@@ -153,7 +153,7 @@ msgid "invite only"
 msgstr ""
 
 #: lib/memex_web/components/core_components/topbar.html.heex:58
-#: lib/memex_web/live/invite_live/index.ex:41
+#: lib/memex_web/live/invite_live/index.ex:31
 #: lib/memex_web/live/invite_live/index.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "invites"
@@ -169,7 +169,7 @@ msgstr ""
 msgid "multi-user:"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:37
+#: lib/memex_web/live/invite_live/index.ex:27
 #, elixir-autogen, elixir-format
 msgid "new invite"
 msgstr ""

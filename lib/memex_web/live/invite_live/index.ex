@@ -6,21 +6,11 @@ defmodule MemexWeb.InviteLive.Index do
   use MemexWeb, :live_view
   alias Memex.Accounts
   alias Memex.Accounts.{Invite, Invites}
-  alias MemexWeb.HomeLive
   alias Phoenix.LiveView.JS
 
   @impl true
-  def mount(_params, _session, %{assigns: %{current_user: current_user}} = socket) do
-    socket =
-      if current_user |> Map.get(:role) == :admin do
-        socket |> display_invites()
-      else
-        prompt = dgettext("errors", "you are not authorized to view this page")
-        return_to = Routes.live_path(Endpoint, HomeLive)
-        socket |> put_flash(:error, prompt) |> push_redirect(to: return_to)
-      end
-
-    {:ok, socket}
+  def mount(_params, _session, socket) do
+    {:ok, socket |> display_invites()}
   end
 
   @impl true

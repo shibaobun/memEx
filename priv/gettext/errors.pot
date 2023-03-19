@@ -122,11 +122,6 @@ msgstr ""
 msgid "sorry, this invite was not found or expired"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:18
-#, elixir-autogen, elixir-format
-msgid "you are not authorized to view this page"
-msgstr ""
-
 #: lib/memex_web/controllers/user_settings_controller.ex:84
 #, elixir-autogen, elixir-format
 msgid "email change link is invalid or it has expired."

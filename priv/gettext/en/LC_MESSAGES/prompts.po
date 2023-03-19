@@ -16,27 +16,27 @@ msgstr ""
 msgid "%{email} confirmed successfully."
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:53
+#: lib/memex_web/live/invite_live/index.ex:43
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} deleted succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:114
+#: lib/memex_web/live/invite_live/index.ex:104
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} disabled succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:90
+#: lib/memex_web/live/invite_live/index.ex:80
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} enabled succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:68
+#: lib/memex_web/live/invite_live/index.ex:58
 #, elixir-autogen, elixir-format
 msgid "%{invite_name} updated succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:136
+#: lib/memex_web/live/invite_live/index.ex:126
 #, elixir-autogen, elixir-format
 msgid "%{user_email} deleted succesfully"
 msgstr ""
@@ -117,7 +117,7 @@ msgstr ""
 msgid "%{name} updated successfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:126
+#: lib/memex_web/live/invite_live/index.ex:116
 #, elixir-autogen, elixir-format
 msgid "copied to clipboard"
 msgstr ""
