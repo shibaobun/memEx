@@ -36,7 +36,7 @@ msgstr ""
 msgid "%{invite_name} updated succesfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.ex:137
+#: lib/memex_web/live/invite_live/index.ex:136
 #, elixir-autogen, elixir-format
 msgid "%{user_email} deleted succesfully"
 msgstr ""
@@ -54,11 +54,6 @@ msgstr ""
 #: lib/memex_web/controllers/user_reset_password_controller.ex:46
 #, elixir-autogen, elixir-format
 msgid "Password reset successfully."
-msgstr ""
-
-#: lib/memex_web/live/invite_live/form_component.html.heex:34
-#, elixir-autogen, elixir-format
-msgid "Saving..."
 msgstr ""
 
 #: lib/memex_web/templates/user_settings/edit.html.heex:130
@@ -112,12 +107,12 @@ msgstr ""
 msgid "register to setup memEx"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.ex:80
+#: lib/memex_web/live/invite_live/form_component.ex:81
 #, elixir-autogen, elixir-format
 msgid "%{name} created successfully"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.ex:62
+#: lib/memex_web/live/invite_live/form_component.ex:63
 #, elixir-autogen, elixir-format
 msgid "%{name} updated successfully"
 msgstr ""
@@ -156,4 +151,9 @@ msgstr ""
 #: lib/memex_web/live/invite_live/index.html.heex:141
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to delete %{email}? this action is permanent!"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/form_component.html.heex:34
+#, elixir-autogen, elixir-format, fuzzy
+msgid "saving..."
 msgstr ""

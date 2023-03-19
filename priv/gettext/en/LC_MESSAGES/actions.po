@@ -23,11 +23,6 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.html.heex:32
-#, elixir-autogen, elixir-format
-msgid "Save"
-msgstr ""
-
 #: lib/memex_web/templates/user_settings/edit.html.heex:15
 #: lib/memex_web/templates/user_settings/edit.html.heex:43
 #, elixir-autogen, elixir-format
@@ -121,6 +116,7 @@ msgid "register"
 msgstr ""
 
 #: lib/memex_web/live/context_live/form_component.html.heex:40
+#: lib/memex_web/live/invite_live/form_component.html.heex:32
 #: lib/memex_web/live/note_live/form_component.html.heex:40
 #: lib/memex_web/live/pipeline_live/form_component.html.heex:40
 #: lib/memex_web/live/step_live/form_component.html.heex:28

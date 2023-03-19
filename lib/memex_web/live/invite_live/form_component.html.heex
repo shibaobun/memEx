@@ -26,12 +26,12 @@
     <%= number_input(f, :uses_left, min: 0, class: "input input-primary col-span-2") %>
     <%= error_tag(f, :uses_left, "col-span-3") %>
     <span class="col-span-3 text-primary-500 italic text-center">
-      <%= gettext(~s/Leave "Uses left" blank to make invite unlimited/) %>
+      <%= gettext(~s/leave "uses left" blank to make invite unlimited/) %>
     </span>
 
-    <%= submit(dgettext("actions", "Save"),
+    <%= submit(dgettext("actions", "save"),
       class: "mx-auto btn btn-primary col-span-3",
-      phx_disable_with: dgettext("prompts", "Saving...")
+      phx_disable_with: dgettext("prompts", "saving...")
     ) %>
   </.form>
 </div>

@@ -1,16 +1,18 @@
 defmodule MemexWeb.ContextLive.FormComponent do
   use MemexWeb, :live_component
-
+  alias Ecto.Changeset
   alias Memex.Contexts
 
   @impl true
   def update(%{context: context, current_user: current_user} = assigns, socket) do
     changeset = Contexts.change_context(context, current_user)
 
-    {:ok,
-     socket
-     |> assign(assigns)
-     |> assign(:changeset, changeset)}
+    socket =
+      socket
+      |> assign(assigns)
+      |> assign(:changeset, changeset)
+
+    {:ok, socket}
   end
 
   @impl true
@@ -19,10 +21,13 @@ defmodule MemexWeb.ContextLive.FormComponent do
         %{"context" => context_params},
         %{assigns: %{context: context, current_user: current_user}} = socket
       ) do
+    changeset = context |> Contexts.change_context(context_params, current_user)
+
     changeset =
-      context
-      |> Contexts.change_context(context_params, current_user)
-      |> Map.put(:action, :validate)
+      case changeset |> Changeset.apply_action(:validate) do
+        {:ok, _data} -> changeset
+        {:error, changeset} -> changeset
+      end
 
     {:noreply, assign(socket, :changeset, changeset)}
   end
@@ -37,16 +42,18 @@ defmodule MemexWeb.ContextLive.FormComponent do
          :edit,
          context_params
        ) do
-    case Contexts.update_context(context, context_params, current_user) do
-      {:ok, %{slug: slug}} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, gettext("%{slug} saved", slug: slug))
-         |> push_navigate(to: return_to)}
+    socket =
+      case Contexts.update_context(context, context_params, current_user) do
+        {:ok, %{slug: slug}} ->
+          socket
+          |> put_flash(:info, gettext("%{slug} saved", slug: slug))
+          |> push_navigate(to: return_to)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, :changeset, changeset)}
-    end
+        {:error, %Changeset{} = changeset} ->
+          assign(socket, :changeset, changeset)
+      end
+
+    {:noreply, socket}
   end
 
   defp save_context(
@@ -54,15 +61,17 @@ defmodule MemexWeb.ContextLive.FormComponent do
          :new,
          context_params
        ) do
-    case Contexts.create_context(context_params, current_user) do
-      {:ok, %{slug: slug}} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, gettext("%{slug} created", slug: slug))
-         |> push_navigate(to: return_to)}
+    socket =
+      case Contexts.create_context(context_params, current_user) do
+        {:ok, %{slug: slug}} ->
+          socket
+          |> put_flash(:info, gettext("%{slug} created", slug: slug))
+          |> push_navigate(to: return_to)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, changeset: changeset)}
-    end
+        {:error, %Changeset{} = changeset} ->
+          assign(socket, changeset: changeset)
+      end
+
+    {:noreply, socket}
   end
 end

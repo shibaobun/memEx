@@ -133,9 +133,7 @@ defmodule MemexWeb.InviteLive.Index do
         %{assigns: %{current_user: current_user}} = socket
       ) do
     %{email: user_email} = Accounts.get_user!(id) |> Accounts.delete_user!(current_user)
-
     prompt = dgettext("prompts", "%{user_email} deleted succesfully", user_email: user_email)
-
     {:noreply, socket |> put_flash(:info, prompt) |> display_invites()}
   end
 
@@ -150,7 +148,6 @@ defmodule MemexWeb.InviteLive.Index do
 
     use_counts = invites |> Invites.get_use_counts(current_user)
     users = all_users |> Map.get(:user, [])
-
     socket |> assign(invites: invites, use_counts: use_counts, admins: admins, users: users)
   end
 end

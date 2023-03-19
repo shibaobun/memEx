@@ -19,7 +19,7 @@ defmodule MemexWeb.InviteLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"invite" => invite_params}, socket) do
-    {:noreply, socket |> assign_changeset(invite_params)}
+    {:noreply, socket |> assign_changeset(invite_params, :validate)}
   end
 
   def handle_event("save", %{"invite" => invite_params}, %{assigns: %{action: action}} = socket) do
@@ -28,22 +28,23 @@ defmodule MemexWeb.InviteLive.FormComponent do
 
   defp assign_changeset(
          %{assigns: %{action: action, current_user: user, invite: invite}} = socket,
-         invite_params
+         invite_params,
+         changeset_action \\ nil
        ) do
-    changeset_action =
+    default_action =
       case action do
         :new -> :insert
         :edit -> :update
       end
 
     changeset =
-      case action do
-        :new -> Invite.create_changeset(user, "example_token", invite_params)
-        :edit -> invite |> Invite.update_changeset(invite_params)
+      case default_action do
+        :insert -> Invite.create_changeset(user, "example_token", invite_params)
+        :update -> invite |> Invite.update_changeset(invite_params)
       end
 
     changeset =
-      case changeset |> Changeset.apply_action(changeset_action) do
+      case changeset |> Changeset.apply_action(changeset_action || default_action) do
         {:ok, _data} -> changeset
         {:error, changeset} -> changeset
       end

@@ -1,16 +1,18 @@
 defmodule MemexWeb.StepLive.FormComponent do
   use MemexWeb, :live_component
-
+  alias Ecto.Changeset
   alias Memex.Pipelines.Steps
 
   @impl true
   def update(%{step: step, current_user: current_user, pipeline: _pipeline} = assigns, socket) do
     changeset = Steps.change_step(step, current_user)
 
-    {:ok,
-     socket
-     |> assign(assigns)
-     |> assign(:changeset, changeset)}
+    socket =
+      socket
+      |> assign(assigns)
+      |> assign(:changeset, changeset)
+
+    {:ok, socket}
   end
 
   @impl true
@@ -19,10 +21,13 @@ defmodule MemexWeb.StepLive.FormComponent do
         %{"step" => step_params},
         %{assigns: %{step: step, current_user: current_user}} = socket
       ) do
+    changeset = step |> Steps.change_step(step_params, current_user)
+
     changeset =
-      step
-      |> Steps.change_step(step_params, current_user)
-      |> Map.put(:action, :validate)
+      case changeset |> Changeset.apply_action(:validate) do
+        {:ok, _data} -> changeset
+        {:error, changeset} -> changeset
+      end
 
     {:noreply, assign(socket, :changeset, changeset)}
   end
@@ -36,16 +41,18 @@ defmodule MemexWeb.StepLive.FormComponent do
          :edit_step,
          step_params
        ) do
-    case Steps.update_step(step, step_params, current_user) do
-      {:ok, %{title: title}} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, gettext("%{title} saved", title: title))
-         |> push_navigate(to: return_to)}
+    socket =
+      case Steps.update_step(step, step_params, current_user) do
+        {:ok, %{title: title}} ->
+          socket
+          |> put_flash(:info, gettext("%{title} saved", title: title))
+          |> push_navigate(to: return_to)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, :changeset, changeset)}
-    end
+        {:error, %Changeset{} = changeset} ->
+          assign(socket, :changeset, changeset)
+      end
+
+    {:noreply, socket}
   end
 
   defp save_step(
@@ -60,15 +67,17 @@ defmodule MemexWeb.StepLive.FormComponent do
          :add_step,
          step_params
        ) do
-    case Steps.create_step(step_params, position, pipeline, current_user) do
-      {:ok, %{title: title}} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, gettext("%{title} created", title: title))
-         |> push_navigate(to: return_to)}
+    socket =
+      case Steps.create_step(step_params, position, pipeline, current_user) do
+        {:ok, %{title: title}} ->
+          socket
+          |> put_flash(:info, gettext("%{title} created", title: title))
+          |> push_navigate(to: return_to)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, changeset: changeset)}
-    end
+        {:error, %Changeset{} = changeset} ->
+          assign(socket, changeset: changeset)
+      end
+
+    {:noreply, socket}
   end
 end

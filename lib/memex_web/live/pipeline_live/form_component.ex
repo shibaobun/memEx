@@ -1,16 +1,18 @@
 defmodule MemexWeb.PipelineLive.FormComponent do
   use MemexWeb, :live_component
-
+  alias Ecto.Changeset
   alias Memex.Pipelines
 
   @impl true
   def update(%{pipeline: pipeline, current_user: current_user} = assigns, socket) do
     changeset = Pipelines.change_pipeline(pipeline, current_user)
 
-    {:ok,
-     socket
-     |> assign(assigns)
-     |> assign(:changeset, changeset)}
+    socket =
+      socket
+      |> assign(assigns)
+      |> assign(:changeset, changeset)
+
+    {:ok, socket}
   end
 
   @impl true
@@ -19,10 +21,13 @@ defmodule MemexWeb.PipelineLive.FormComponent do
         %{"pipeline" => pipeline_params},
         %{assigns: %{pipeline: pipeline, current_user: current_user}} = socket
       ) do
+    changeset = pipeline |> Pipelines.change_pipeline(pipeline_params, current_user)
+
     changeset =
-      pipeline
-      |> Pipelines.change_pipeline(pipeline_params, current_user)
-      |> Map.put(:action, :validate)
+      case changeset |> Changeset.apply_action(:validate) do
+        {:ok, _data} -> changeset
+        {:error, changeset} -> changeset
+      end
 
     {:noreply, assign(socket, :changeset, changeset)}
   end
@@ -41,16 +46,18 @@ defmodule MemexWeb.PipelineLive.FormComponent do
          :edit,
          pipeline_params
        ) do
-    case Pipelines.update_pipeline(pipeline, pipeline_params, current_user) do
-      {:ok, %{slug: slug}} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, gettext("%{slug} saved", slug: slug))
-         |> push_navigate(to: return_to)}
+    socket =
+      case Pipelines.update_pipeline(pipeline, pipeline_params, current_user) do
+        {:ok, %{slug: slug}} ->
+          socket
+          |> put_flash(:info, gettext("%{slug} saved", slug: slug))
+          |> push_navigate(to: return_to)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, :changeset, changeset)}
-    end
+        {:error, %Changeset{} = changeset} ->
+          assign(socket, :changeset, changeset)
+      end
+
+    {:noreply, socket}
   end
 
   defp save_pipeline(
@@ -58,15 +65,17 @@ defmodule MemexWeb.PipelineLive.FormComponent do
          :new,
          pipeline_params
        ) do
-    case Pipelines.create_pipeline(pipeline_params, current_user) do
-      {:ok, %{slug: slug}} ->
-        {:noreply,
-         socket
-         |> put_flash(:info, gettext("%{slug} created", slug: slug))
-         |> push_navigate(to: return_to)}
+    socket =
+      case Pipelines.create_pipeline(pipeline_params, current_user) do
+        {:ok, %{slug: slug}} ->
+          socket
+          |> put_flash(:info, gettext("%{slug} created", slug: slug))
+          |> push_navigate(to: return_to)
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        {:noreply, assign(socket, changeset: changeset)}
-    end
+        {:error, %Changeset{} = changeset} ->
+          assign(socket, changeset: changeset)
+      end
+
+    {:noreply, socket}
   end
 end
