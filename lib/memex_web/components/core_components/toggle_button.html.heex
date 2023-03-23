@@ -1,4 +1,4 @@
-<label for={@id || @action} class="inline-flex relative items-center cursor-pointer">
+<label for={@id || @action} class="relative inline-flex items-center cursor-pointer">
   <input
     id={@id || @action}
     type="checkbox"
@@ -23,7 +23,7 @@
   </div>
   <span
     id={"#{@id || @action}-label"}
-    class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+    class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300 whitespace-nowrap"
   >
     <%= render_slot(@inner_block) %>
   </span>

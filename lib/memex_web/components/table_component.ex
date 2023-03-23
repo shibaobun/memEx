@@ -135,4 +135,25 @@ defmodule MemexWeb.Components.TableComponent do
       sort_mode
     )
   end
+
+  @doc """
+  Conditionally composes elements into the columns list, supports maps and
+  lists. Works tail to front in order for efficiency
+
+      iex> []
+      ...> |> maybe_compose_columns(%{label: "Column 3"}, true)
+      ...> |> maybe_compose_columns(%{label: "Column 2"}, false)
+      ...> |> maybe_compose_columns(%{label: "Column 1"})
+      [%{label: "Column 1"}, %{label: "Column 3"}]
+
+  """
+  @spec maybe_compose_columns(list(), element_to_add :: list() | map()) :: list()
+  @spec maybe_compose_columns(list(), element_to_add :: list() | map(), boolean()) :: list()
+  def maybe_compose_columns(columns, element_or_elements, add? \\ true)
+
+  def maybe_compose_columns(columns, elements, true) when is_list(elements),
+    do: Enum.concat(elements, columns)
+
+  def maybe_compose_columns(columns, element, true) when is_map(element), do: [element | columns]
+  def maybe_compose_columns(columns, _element_or_elements, false), do: columns
 end
