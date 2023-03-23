@@ -4,7 +4,7 @@ defmodule MemexWeb.ExportControllerTest do
   """
 
   use MemexWeb.ConnCase
-  import Memex.{ContextsFixtures, NotesFixtures, PipelinesFixtures, StepsFixtures}
+  import Memex.Fixtures
 
   @moduletag :export_controller_test
 

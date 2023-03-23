@@ -1,6 +1,6 @@
 defmodule Memex.StepsTest do
   use Memex.DataCase
-  import Memex.{PipelinesFixtures, StepsFixtures}
+  import Memex.Fixtures
   alias Memex.Pipelines.{Steps, Steps.Step}
   @moduletag :steps_test
   @invalid_attrs %{content: nil, title: nil}
@@ -37,8 +37,8 @@ defmodule Memex.StepsTest do
 
     test "create_step/4 with valid data creates a step", %{pipeline: pipeline, user: user} do
       valid_attrs = %{
-        "content" => "some content",
-        "title" => "some title"
+        content: "some content",
+        title: "some title"
       }
 
       assert {:ok, %Step{} = step} = Steps.create_step(valid_attrs, 0, pipeline, user)
@@ -55,8 +55,8 @@ defmodule Memex.StepsTest do
       step = step_fixture(0, pipeline, user)
 
       update_attrs = %{
-        "content" => "some updated content",
-        "title" => "some updated title"
+        content: "some updated content",
+        title: "some updated title"
       }
 
       assert {:ok, %Step{} = step} = Steps.update_step(step, update_attrs, user)

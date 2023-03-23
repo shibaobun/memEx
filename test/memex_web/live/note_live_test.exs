@@ -2,26 +2,26 @@ defmodule MemexWeb.NoteLiveTest do
   use MemexWeb.ConnCase
 
   import Phoenix.LiveViewTest
-  import Memex.NotesFixtures
+  import Memex.Fixtures
   alias MemexWeb.Endpoint
 
   @create_attrs %{
-    "content" => "some content",
-    "tags_string" => "tag1",
-    "slug" => "some-slug",
-    "visibility" => :public
+    content: "some content",
+    tags_string: "tag1",
+    slug: "some-slug",
+    visibility: :public
   }
   @update_attrs %{
-    "content" => "some updated content",
-    "tags_string" => "tag1,tag2",
-    "slug" => "some-updated-slug",
-    "visibility" => :private
+    content: "some updated content",
+    tags_string: "tag1,tag2",
+    slug: "some-updated-slug",
+    visibility: :private
   }
   @invalid_attrs %{
-    "content" => nil,
-    "tags_string" => " ",
-    "slug" => nil,
-    "visibility" => nil
+    content: nil,
+    tags_string: " ",
+    slug: nil,
+    visibility: nil
   }
 
   defp create_note(%{current_user: current_user}) do
@@ -38,38 +38,35 @@ defmodule MemexWeb.NoteLiveTest do
       assert html =~ note.slug
     end
 
-    test "searches by tag", %{conn: conn} do
+    test "searches by tag", %{conn: conn, note: %{tags: [tag]}} do
       {:ok, index_live, html} = live(conn, Routes.note_index_path(conn, :index))
 
-      assert html =~ "example-tag"
-      assert index_live |> element("a", "example-tag") |> render_click()
-      assert_patch(index_live, Routes.note_index_path(conn, :search, "example-tag"))
+      assert html =~ tag
+      assert index_live |> element("a", tag) |> render_click()
+      assert_patch(index_live, Routes.note_index_path(conn, :search, tag))
     end
 
     test "saves new note", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.note_index_path(conn, :index))
-
-      assert index_live |> element("a", "new note") |> render_click() =~
-               "new note"
-
+      assert index_live |> element("a", "new note") |> render_click() =~ "new note"
       assert_patch(index_live, Routes.note_index_path(conn, :new))
 
       html =
         index_live
-        |> form("#note-form", note: @invalid_attrs)
-        |> render_change()
+        |> form("#note-form")
+        |> render_change(note: @invalid_attrs)
 
       assert html =~ "can&#39;t be blank"
       assert html =~ "tags must be comma-delimited"
 
       {:ok, _live, html} =
         index_live
-        |> form("#note-form", note: @create_attrs)
-        |> render_submit()
+        |> form("#note-form")
+        |> render_submit(note: @create_attrs)
         |> follow_redirect(conn, Routes.note_index_path(conn, :index))
 
-      assert html =~ "#{@create_attrs |> Map.get("slug")} created"
-      assert html =~ "some-slug"
+      assert html =~ "#{@create_attrs.slug} created"
+      assert html =~ @create_attrs.slug
     end
 
     test "updates note in listing", %{conn: conn, note: note} do
@@ -81,17 +78,17 @@ defmodule MemexWeb.NoteLiveTest do
       assert_patch(index_live, Routes.note_index_path(conn, :edit, note.slug))
 
       assert index_live
-             |> form("#note-form", note: @invalid_attrs)
-             |> render_change() =~ "can&#39;t be blank"
+             |> form("#note-form")
+             |> render_change(note: @invalid_attrs) =~ "can&#39;t be blank"
 
       {:ok, _live, html} =
         index_live
-        |> form("#note-form", note: @update_attrs)
-        |> render_submit()
+        |> form("#note-form")
+        |> render_submit(note: @update_attrs)
         |> follow_redirect(conn, Routes.note_index_path(conn, :index))
 
-      assert html =~ "#{@update_attrs |> Map.get("slug")} saved"
-      assert html =~ "some-updated-slug"
+      assert html =~ "#{@update_attrs.slug} saved"
+      assert html =~ @update_attrs.slug
     end
 
     test "deletes note in listing", %{conn: conn, note: note} do
@@ -114,23 +111,21 @@ defmodule MemexWeb.NoteLiveTest do
 
     test "updates note within modal", %{conn: conn, note: note} do
       {:ok, show_live, _html} = live(conn, Routes.note_show_path(conn, :show, note.slug))
-
       assert show_live |> element("a", "edit") |> render_click() =~ "edit"
-
       assert_patch(show_live, Routes.note_show_path(conn, :edit, note.slug))
 
       assert show_live
-             |> form("#note-form", note: @invalid_attrs)
-             |> render_change() =~ "can&#39;t be blank"
+             |> form("#note-form")
+             |> render_change(note: @invalid_attrs) =~ "can&#39;t be blank"
 
       {:ok, _live, html} =
         show_live
-        |> form("#note-form", note: Map.put(@update_attrs, "slug", note.slug))
-        |> render_submit()
+        |> form("#note-form")
+        |> render_submit(note: @update_attrs |> Map.put(:slug, note.slug))
         |> follow_redirect(conn, Routes.note_show_path(conn, :show, note.slug))
 
       assert html =~ "#{note.slug} saved"
-      assert html =~ "tag2"
+      assert html =~ note.slug
     end
 
     test "deletes note", %{conn: conn, note: note} do
@@ -159,12 +154,12 @@ defmodule MemexWeb.NoteLiveTest do
       ]
     end
 
-    test "searches by tag", %{conn: conn, note: note} do
+    test "searches by tag", %{conn: conn, note: %{tags: [tag]} = note} do
       {:ok, show_live, html} = live(conn, Routes.note_show_path(conn, :show, note.slug))
 
-      assert html =~ "example-tag"
-      assert show_live |> element("a", "example-tag") |> render_click()
-      assert_redirect(show_live, Routes.note_index_path(conn, :search, "example-tag"))
+      assert html =~ tag
+      assert show_live |> element("a", tag) |> render_click()
+      assert_redirect(show_live, Routes.note_index_path(conn, :search, tag))
     end
 
     test "displays context", %{

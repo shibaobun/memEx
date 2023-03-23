@@ -4,7 +4,6 @@ defmodule MemexWeb.UserSessionControllerTest do
   """
 
   use MemexWeb.ConnCase, async: true
-  import MemexWeb.Gettext
 
   @moduletag :user_session_controller_test
 
@@ -16,7 +15,7 @@ defmodule MemexWeb.UserSessionControllerTest do
     test "renders log in page", %{conn: conn} do
       conn = get(conn, Routes.user_session_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ dgettext("actions", "log in")
+      assert response =~ "log in"
     end
 
     test "redirects if already logged in", %{conn: conn, current_user: current_user} do
@@ -29,7 +28,7 @@ defmodule MemexWeb.UserSessionControllerTest do
     test "logs the user in", %{conn: conn, current_user: current_user} do
       conn =
         post(conn, Routes.user_session_path(conn, :create), %{
-          "user" => %{"email" => current_user.email, "password" => valid_user_password()}
+          user: %{email: current_user.email, password: valid_user_password()}
         })
 
       assert get_session(conn, :user_token)
@@ -39,16 +38,16 @@ defmodule MemexWeb.UserSessionControllerTest do
       conn = get(conn, "/")
       response = html_response(conn, 200)
       assert response =~ current_user.email
-      assert response =~ dgettext("prompts", "are you sure you want to log out?")
+      assert response =~ "are you sure you want to log out?"
     end
 
     test "logs the user in with remember me", %{conn: conn, current_user: current_user} do
       conn =
         post(conn, Routes.user_session_path(conn, :create), %{
-          "user" => %{
-            "email" => current_user.email,
-            "password" => valid_user_password(),
-            "remember_me" => "true"
+          user: %{
+            email: current_user.email,
+            password: valid_user_password(),
+            remember_me: "true"
           }
         })
 
@@ -61,9 +60,9 @@ defmodule MemexWeb.UserSessionControllerTest do
         conn
         |> init_test_session(user_return_to: "/foo/bar")
         |> post(Routes.user_session_path(conn, :create), %{
-          "user" => %{
-            "email" => current_user.email,
-            "password" => valid_user_password()
+          user: %{
+            email: current_user.email,
+            password: valid_user_password()
           }
         })
 
@@ -74,12 +73,12 @@ defmodule MemexWeb.UserSessionControllerTest do
          %{conn: conn, current_user: current_user} do
       conn =
         post(conn, Routes.user_session_path(conn, :create), %{
-          "user" => %{"email" => current_user.email, "password" => "bad"}
+          user: %{email: current_user.email, password: "bad"}
         })
 
       response = html_response(conn, 200)
-      assert response =~ dgettext("actions", "log in")
-      assert response =~ dgettext("errors", "Invalid email or password")
+      assert response =~ "log in"
+      assert response =~ "Invalid email or password"
     end
   end
 
@@ -88,14 +87,14 @@ defmodule MemexWeb.UserSessionControllerTest do
       conn = conn |> log_in_user(current_user) |> delete(Routes.user_session_path(conn, :delete))
       assert redirected_to(conn) == "/"
       refute get_session(conn, :user_token)
-      assert get_flash(conn, :info) =~ gettext("logged out successfully")
+      assert get_flash(conn, :info) =~ "logged out successfully"
     end
 
     test "succeeds even if the user is not logged in", %{conn: conn} do
       conn = delete(conn, Routes.user_session_path(conn, :delete))
       assert redirected_to(conn) == "/"
       refute get_session(conn, :user_token)
-      assert get_flash(conn, :info) =~ gettext("logged out successfully")
+      assert get_flash(conn, :info) =~ "logged out successfully"
     end
   end
 end

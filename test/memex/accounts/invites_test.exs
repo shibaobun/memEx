@@ -11,11 +11,11 @@ defmodule Memex.InvitesTest do
   @moduletag :invites_test
 
   @valid_attrs %{
-    "name" => "some name"
+    name: "some name"
   }
   @invalid_attrs %{
-    "name" => nil,
-    "token" => nil
+    name: nil,
+    token: nil
   }
 
   describe "invites" do
@@ -57,7 +57,7 @@ defmodule Memex.InvitesTest do
 
       assert {:ok, _user} =
                Accounts.register_user(
-                 %{"email" => unique_user_email(), "password" => valid_user_password()},
+                 %{email: unique_user_email(), password: valid_user_password()},
                  token
                )
 
@@ -65,7 +65,7 @@ defmodule Memex.InvitesTest do
 
       assert {:ok, _user} =
                Accounts.register_user(
-                 %{"email" => unique_user_email(), "password" => valid_user_password()},
+                 %{email: unique_user_email(), password: valid_user_password()},
                  token
                )
 
@@ -81,13 +81,13 @@ defmodule Memex.InvitesTest do
 
       assert {:ok, _user} =
                Accounts.register_user(
-                 %{"email" => unique_user_email(), "password" => valid_user_password()},
+                 %{email: unique_user_email(), password: valid_user_password()},
                  token
                )
 
       assert {:ok, _user} =
                Accounts.register_user(
-                 %{"email" => unique_user_email(), "password" => valid_user_password()},
+                 %{email: unique_user_email(), password: valid_user_password()},
                  another_token
                )
 
@@ -97,7 +97,7 @@ defmodule Memex.InvitesTest do
 
       assert {:ok, _user} =
                Accounts.register_user(
-                 %{"email" => unique_user_email(), "password" => valid_user_password()},
+                 %{email: unique_user_email(), password: valid_user_password()},
                  token
                )
 
@@ -138,10 +138,7 @@ defmodule Memex.InvitesTest do
 
     test "create_invite/1 with valid data creates an unlimited invite",
          %{current_user: current_user} do
-      assert {:ok, %Invite{} = invite} =
-               Invites.create_invite(current_user, %{
-                 "name" => "some name"
-               })
+      assert {:ok, %Invite{} = invite} = Invites.create_invite(current_user, %{name: "some name"})
 
       assert invite.name == "some name"
     end
@@ -149,10 +146,7 @@ defmodule Memex.InvitesTest do
     test "create_invite/1 with valid data creates a limited invite",
          %{current_user: current_user} do
       assert {:ok, %Invite{} = invite} =
-               Invites.create_invite(current_user, %{
-                 "name" => "some name",
-                 "uses_left" => 10
-               })
+               Invites.create_invite(current_user, %{name: "some name", uses_left: 10})
 
       assert invite.name == "some name"
       assert invite.uses_left == 10
@@ -168,7 +162,7 @@ defmodule Memex.InvitesTest do
       assert {:ok, %Invite{} = new_invite} =
                Invites.update_invite(
                  invite,
-                 %{"name" => "some updated name", "uses_left" => 5},
+                 %{name: "some updated name", uses_left: 5},
                  current_user
                )
 
@@ -183,7 +177,7 @@ defmodule Memex.InvitesTest do
       assert {:ok, %Invite{} = new_invite} =
                Invites.update_invite(
                  invite,
-                 %{"name" => "some updated name", "uses_left" => nil},
+                 %{name: "some updated name", uses_left: nil},
                  current_user
                )
 

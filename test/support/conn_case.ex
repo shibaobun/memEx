@@ -23,7 +23,7 @@ defmodule MemexWeb.ConnCase do
   using do
     quote do
       # credo:disable-for-next-line Credo.Check.Consistency.MultiAliasImportRequireUse
-      import Memex.Fixtures
+      import Memex.{DataCase, Fixtures}
       import MemexWeb.ConnCase
       # Import conveniences for testing with connections
       import Plug.Conn

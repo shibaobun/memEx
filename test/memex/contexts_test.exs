@@ -1,6 +1,6 @@
 defmodule Memex.ContextsTest do
   use Memex.DataCase
-  import Memex.ContextsFixtures
+  import Memex.Fixtures
   alias Memex.{Contexts, Contexts.Context}
   @moduletag :contexts_test
   @invalid_attrs %{content: nil, tag: nil, slug: nil, visibility: nil}
@@ -152,10 +152,10 @@ defmodule Memex.ContextsTest do
 
     test "create_context/1 with valid data creates a context", %{user: user} do
       valid_attrs = %{
-        "content" => "some content",
-        "tags_string" => "tag1,tag2",
-        "slug" => "some-slug",
-        "visibility" => :public
+        content: "some content",
+        tags_string: "tag1,tag2",
+        slug: "some-slug",
+        visibility: :public
       }
 
       assert {:ok, %Context{} = context} = Contexts.create_context(valid_attrs, user)
@@ -173,10 +173,10 @@ defmodule Memex.ContextsTest do
       context = context_fixture(user)
 
       update_attrs = %{
-        "content" => "some updated content",
-        "tags_string" => "tag1,tag2",
-        "slug" => "some-updated-slug",
-        "visibility" => :private
+        content: "some updated content",
+        tags_string: "tag1,tag2",
+        slug: "some-updated-slug",
+        visibility: :private
       }
 
       assert {:ok, %Context{} = context} = Contexts.update_context(context, update_attrs, user)

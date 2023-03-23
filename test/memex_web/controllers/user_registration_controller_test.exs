@@ -4,7 +4,6 @@ defmodule MemexWeb.UserRegistrationControllerTest do
   """
 
   use MemexWeb.ConnCase, async: true
-  import MemexWeb.Gettext
 
   @moduletag :user_registration_controller_test
 
@@ -12,8 +11,8 @@ defmodule MemexWeb.UserRegistrationControllerTest do
     test "renders registration page", %{conn: conn} do
       conn = get(conn, Routes.user_registration_path(conn, :new))
       response = html_response(conn, 200)
-      assert response =~ dgettext("actions", "register")
-      assert response =~ dgettext("actions", "log in")
+      assert response =~ "register"
+      assert response =~ "log in"
     end
 
     test "redirects if already logged in", %{conn: conn} do
@@ -29,11 +28,11 @@ defmodule MemexWeb.UserRegistrationControllerTest do
 
       conn =
         post(conn, Routes.user_registration_path(conn, :create), %{
-          "user" => valid_user_attributes(email: email)
+          user: valid_user_attributes(email: email)
         })
 
       assert get_session(conn, :phoenix_flash) == %{
-               "info" => dgettext("prompts", "please check your email to verify your account")
+               "info" => "please check your email to verify your account"
              }
 
       assert redirected_to(conn) =~ "/"
@@ -42,11 +41,11 @@ defmodule MemexWeb.UserRegistrationControllerTest do
     test "render errors for invalid data", %{conn: conn} do
       conn =
         post(conn, Routes.user_registration_path(conn, :create), %{
-          "user" => %{"email" => "with spaces", "password" => "too short"}
+          user: %{email: "with spaces", password: "too short"}
         })
 
       response = html_response(conn, 200)
-      assert response =~ gettext("register")
+      assert response =~ "register"
       assert response =~ "must have the @ sign and no spaces"
       assert response =~ "should be at least 12 character"
     end

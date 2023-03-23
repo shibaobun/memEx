@@ -1,6 +1,6 @@
 defmodule Memex.PipelinesTest do
   use Memex.DataCase
-  import Memex.PipelinesFixtures
+  import Memex.Fixtures
   alias Memex.{Pipelines, Pipelines.Pipeline}
   @moduletag :pipelines_test
   @invalid_attrs %{description: nil, tag: nil, slug: nil, visibility: nil}
@@ -154,10 +154,10 @@ defmodule Memex.PipelinesTest do
 
     test "create_pipeline/1 with valid data creates a pipeline", %{user: user} do
       valid_attrs = %{
-        "description" => "some description",
-        "tags_string" => "tag1,tag2",
-        "slug" => "some-slug",
-        "visibility" => :public
+        description: "some description",
+        tags_string: "tag1,tag2",
+        slug: "some-slug",
+        visibility: :public
       }
 
       assert {:ok, %Pipeline{} = pipeline} = Pipelines.create_pipeline(valid_attrs, user)
@@ -175,10 +175,10 @@ defmodule Memex.PipelinesTest do
       pipeline = pipeline_fixture(user)
 
       update_attrs = %{
-        "description" => "some updated description",
-        "tags_string" => "tag1,tag2",
-        "slug" => "some-updated-slug",
-        "visibility" => :private
+        description: "some updated description",
+        tags_string: "tag1,tag2",
+        slug: "some-updated-slug",
+        visibility: :private
       }
 
       assert {:ok, %Pipeline{} = pipeline} =

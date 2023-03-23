@@ -48,4 +48,24 @@ defmodule Memex.DataCase do
       end)
     end)
   end
+
+  @doc """
+  Generates a random string of any length, default of 12
+  """
+  @spec random_string(length :: non_neg_integer()) :: String.t()
+  def random_string(length \\ 12) do
+    :crypto.strong_rand_bytes(length) |> Base.url_encode64() |> binary_part(0, length)
+  end
+
+  def unique_user_email, do: "user#{System.unique_integer()}@example.com"
+  def valid_user_password, do: "hello world!"
+
+  def random_slug(length \\ 20) do
+    symbols = '0123456789abcdef-'
+    symbol_count = Enum.count(symbols)
+
+    for _ <- Range.new(1, length),
+        into: "",
+        do: <<Enum.at(symbols, :rand.uniform(symbol_count - 1))>>
+  end
 end

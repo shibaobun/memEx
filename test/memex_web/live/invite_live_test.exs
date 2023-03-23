@@ -5,12 +5,11 @@ defmodule MemexWeb.InviteLiveTest do
 
   use MemexWeb.ConnCase
   import Phoenix.LiveViewTest
-  import MemexWeb.Gettext
   alias Memex.Accounts.Invites
 
   @moduletag :invite_live_test
-  @create_attrs %{"name" => "some name"}
-  @update_attrs %{"name" => "some updated name"}
+  @create_attrs %{name: "some name"}
+  @update_attrs %{name: "some updated name"}
   # @invalid_attrs %{"name" => nil}
 
   describe "Index" do
@@ -24,32 +23,26 @@ defmodule MemexWeb.InviteLiveTest do
     test "lists all invites", %{conn: conn, invite: invite} do
       {:ok, _index_live, html} = live(conn, Routes.invite_index_path(conn, :index))
 
-      assert html =~ gettext("invites")
+      assert html =~ "invites"
       assert html =~ invite.name
     end
 
     test "saves new invite", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.invite_index_path(conn, :index))
-
-      assert index_live |> element("a", dgettext("actions", "create invite")) |> render_click() =~
-               gettext("new invite")
-
+      assert index_live |> element("a", "create invite") |> render_click() =~ "new invite"
       assert_patch(index_live, Routes.invite_index_path(conn, :new))
 
       # assert index_live
-      #        |> form("#invite-form", invite: @invalid_attrs)
-      #        |> render_change() =~ dgettext("errors", "can't be blank")
+      #        |> form("#invite-form")
+      #        |> render_change(invite: @invalid_attrs) =~ "can't be blank"
 
       {:ok, _live, html} =
         index_live
-        |> form("#invite-form", invite: @create_attrs)
-        |> render_submit()
+        |> form("#invite-form")
+        |> render_submit(invite: @create_attrs)
         |> follow_redirect(conn, Routes.invite_index_path(conn, :index))
 
-      assert html =~
-               dgettext("prompts", "%{invite_name} created successfully", invite_name: "some name")
-
-      assert html =~ "some name"
+      assert html =~ "some name created successfully"
     end
 
     test "updates invite in listing", %{conn: conn, invite: invite} do
@@ -57,27 +50,21 @@ defmodule MemexWeb.InviteLiveTest do
 
       assert index_live
              |> element(~s/a[aria-label="edit invite for #{invite.name}"]/)
-             |> render_click() =~
-               gettext("edit invite")
+             |> render_click() =~ "edit invite"
 
       assert_patch(index_live, Routes.invite_index_path(conn, :edit, invite))
 
       # assert index_live
-      #        |> form("#invite-form", invite: @invalid_attrs)
-      #        |> render_change() =~ dgettext("errors", "can't be blank")
+      #        |> form("#invite-form")
+      #        |> render_change(invite: @invalid_attrs) =~ "can't be blank"
 
       {:ok, _live, html} =
         index_live
-        |> form("#invite-form", invite: @update_attrs)
-        |> render_submit()
+        |> form("#invite-form")
+        |> render_submit(invite: @update_attrs)
         |> follow_redirect(conn, Routes.invite_index_path(conn, :index))
 
-      assert html =~
-               dgettext("prompts", "%{invite_name} updated successfully",
-                 invite_name: "some updated name"
-               )
-
-      assert html =~ "some updated name"
+      assert html =~ "some updated name updated successfully"
     end
 
     test "deletes invite in listing", %{conn: conn, invite: invite} do

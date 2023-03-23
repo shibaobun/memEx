@@ -1,6 +1,6 @@
 defmodule Memex.NotesTest do
   use Memex.DataCase
-  import Memex.NotesFixtures
+  import Memex.Fixtures
   alias Memex.{Notes, Notes.Note}
   @moduletag :notes_test
   @invalid_attrs %{content: nil, tag: nil, slug: nil, visibility: nil}
@@ -154,10 +154,10 @@ defmodule Memex.NotesTest do
 
     test "create_note/1 with valid data creates a note", %{user: user} do
       valid_attrs = %{
-        "content" => "some content",
-        "tags_string" => "tag1,tag2",
-        "slug" => "some-slug",
-        "visibility" => :public
+        content: "some content",
+        tags_string: "tag1,tag2",
+        slug: "some-slug",
+        visibility: :public
       }
 
       assert {:ok, %Note{} = note} = Notes.create_note(valid_attrs, user)
@@ -175,10 +175,10 @@ defmodule Memex.NotesTest do
       note = note_fixture(user)
 
       update_attrs = %{
-        "content" => "some updated content",
-        "tags_string" => "tag1,tag2",
-        "slug" => "some-updated-slug",
-        "visibility" => :private
+        content: "some updated content",
+        tags_string: "tag1,tag2",
+        slug: "some-updated-slug",
+        visibility: :private
       }
 
       assert {:ok, %Note{} = note} = Notes.update_note(note, update_attrs, user)

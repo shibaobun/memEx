@@ -1,26 +1,26 @@
 defmodule MemexWeb.ContextLiveTest do
   use MemexWeb.ConnCase
   import Phoenix.LiveViewTest
-  import Memex.{ContextsFixtures, NotesFixtures}
+  import Memex.Fixtures
   alias MemexWeb.Endpoint
 
   @create_attrs %{
-    "content" => "some content",
-    "tags_string" => "tag1",
-    "slug" => "some-slug",
-    "visibility" => :public
+    content: "some content",
+    tags_string: "tag1",
+    slug: "some-slug",
+    visibility: :public
   }
   @update_attrs %{
-    "content" => "some updated content",
-    "tags_string" => "tag1,tag2",
-    "slug" => "some-updated-slug",
-    "visibility" => :private
+    content: "some updated content",
+    tags_string: "tag1,tag2",
+    slug: "some-updated-slug",
+    visibility: :private
   }
   @invalid_attrs %{
-    "content" => nil,
-    "tags_string" => " ",
-    "slug" => nil,
-    "visibility" => nil
+    content: nil,
+    tags_string: " ",
+    slug: nil,
+    visibility: nil
   }
 
   defp create_context(%{current_user: current_user}) do
@@ -37,34 +37,31 @@ defmodule MemexWeb.ContextLiveTest do
       assert html =~ context.slug
     end
 
-    test "searches by tag", %{conn: conn} do
+    test "searches by tag", %{conn: conn, context: %{tags: [tag]}} do
       {:ok, index_live, html} = live(conn, Routes.context_index_path(conn, :index))
 
-      assert html =~ "example-tag"
-      assert index_live |> element("a", "example-tag") |> render_click()
-      assert_patch(index_live, Routes.context_index_path(conn, :search, "example-tag"))
+      assert html =~ tag
+      assert index_live |> element("a", tag) |> render_click()
+      assert_patch(index_live, Routes.context_index_path(conn, :search, tag))
     end
 
     test "saves new context", %{conn: conn} do
       {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
-
-      assert index_live |> element("a", "new context") |> render_click() =~
-               "new context"
-
+      assert index_live |> element("a", "new context") |> render_click() =~ "new context"
       assert_patch(index_live, Routes.context_index_path(conn, :new))
 
       assert index_live
-             |> form("#context-form", context: @invalid_attrs)
-             |> render_change() =~ "can&#39;t be blank"
+             |> form("#context-form")
+             |> render_change(context: @invalid_attrs) =~ "can&#39;t be blank"
 
       {:ok, _live, html} =
         index_live
-        |> form("#context-form", context: @create_attrs)
-        |> render_submit()
+        |> form("#context-form")
+        |> render_submit(context: @create_attrs)
         |> follow_redirect(conn, Routes.context_index_path(conn, :index))
 
-      assert html =~ "#{@create_attrs |> Map.get("slug")} created"
-      assert html =~ "some-slug"
+      assert html =~ "#{@create_attrs.slug} created"
+      assert html =~ @create_attrs.slug
     end
 
     test "updates context in listing", %{conn: conn, context: context} do
@@ -76,16 +73,16 @@ defmodule MemexWeb.ContextLiveTest do
       assert_patch(index_live, Routes.context_index_path(conn, :edit, context.slug))
 
       assert index_live
-             |> form("#context-form", context: @invalid_attrs)
-             |> render_change() =~ "can&#39;t be blank"
+             |> form("#context-form")
+             |> render_change(context: @invalid_attrs) =~ "can&#39;t be blank"
 
       {:ok, _live, html} =
         index_live
-        |> form("#context-form", context: @update_attrs)
-        |> render_submit()
+        |> form("#context-form")
+        |> render_submit(context: @update_attrs)
         |> follow_redirect(conn, Routes.context_index_path(conn, :index))
 
-      assert html =~ "#{@update_attrs |> Map.get("slug")} saved"
+      assert html =~ "#{@update_attrs.slug} saved"
       assert html =~ "some-updated-slug"
     end
 
@@ -109,23 +106,21 @@ defmodule MemexWeb.ContextLiveTest do
 
     test "updates context within modal", %{conn: conn, context: context} do
       {:ok, show_live, _html} = live(conn, Routes.context_show_path(conn, :show, context.slug))
-
       assert show_live |> element("a", "edit") |> render_click() =~ "edit"
-
       assert_patch(show_live, Routes.context_show_path(conn, :edit, context.slug))
 
       html =
         show_live
-        |> form("#context-form", context: @invalid_attrs)
-        |> render_change()
+        |> form("#context-form")
+        |> render_change(context: @invalid_attrs)
 
       assert html =~ "can&#39;t be blank"
       assert html =~ "tags must be comma-delimited"
 
       {:ok, _live, html} =
         show_live
-        |> form("#context-form", context: Map.put(@update_attrs, "slug", context.slug))
-        |> render_submit()
+        |> form("#context-form")
+        |> render_submit(context: Map.put(@update_attrs, "slug", context.slug))
         |> follow_redirect(conn, Routes.context_show_path(conn, :show, context.slug))
 
       assert html =~ "#{context.slug} saved"
@@ -161,12 +156,12 @@ defmodule MemexWeb.ContextLiveTest do
       ]
     end
 
-    test "searches by tag", %{conn: conn, context: context} do
+    test "searches by tag", %{conn: conn, context: %{tags: [tag]} = context} do
       {:ok, show_live, html} = live(conn, Routes.context_show_path(conn, :show, context.slug))
 
-      assert html =~ "example-tag"
-      assert show_live |> element("a", "example-tag") |> render_click()
-      assert_redirect(show_live, Routes.context_index_path(conn, :search, "example-tag"))
+      assert html =~ tag
+      assert show_live |> element("a", tag) |> render_click()
+      assert_redirect(show_live, Routes.context_index_path(conn, :search, tag))
     end
 
     test "displays context", %{conn: conn, context: context, note: %{slug: note_slug}} do

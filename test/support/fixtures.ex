@@ -3,18 +3,19 @@ defmodule Memex.Fixtures do
   This module defines test helpers for creating entities
   """
 
+  import Memex.DataCase
   alias Memex.{Accounts, Accounts.User, Email, Repo}
-
-  def unique_user_email, do: "user#{System.unique_integer()}@example.com"
-  def valid_user_password, do: "hello world!"
+  alias Memex.{Contexts, Contexts.Context}
+  alias Memex.{Notes, Notes.Note}
+  alias Memex.{Pipelines, Pipelines.Pipeline, Pipelines.Steps}
 
   @spec user_fixture() :: User.t()
   @spec user_fixture(attrs :: map()) :: User.t()
   def user_fixture(attrs \\ %{}) do
     attrs
     |> Enum.into(%{
-      "email" => unique_user_email(),
-      "password" => valid_user_password()
+      email: unique_user_email(),
+      password: valid_user_password()
     })
     |> Accounts.register_user()
     |> unwrap_ok_tuple()
@@ -25,8 +26,8 @@ defmodule Memex.Fixtures do
   def admin_fixture(attrs \\ %{}) do
     attrs
     |> Enum.into(%{
-      "email" => unique_user_email(),
-      "password" => valid_user_password()
+      email: unique_user_email(),
+      password: valid_user_password()
     })
     |> Accounts.register_user()
     |> unwrap_ok_tuple()
@@ -57,13 +58,76 @@ defmodule Memex.Fixtures do
     })
   end
 
-  def random_slug(length \\ 20) do
-    symbols = '0123456789abcdef-'
-    symbol_count = Enum.count(symbols)
+  @doc """
+  Generate a step.
+  """
+  def step_fixture(attrs \\ %{}, position, pipeline, user) do
+    {:ok, step} =
+      attrs
+      |> Enum.into(%{
+        content: random_string(),
+        title: random_string()
+      })
+      |> Steps.create_step(position, pipeline, user)
 
-    for _ <- Range.new(1, length),
-        into: "",
-        do: <<Enum.at(symbols, :rand.uniform(symbol_count - 1))>>
+    step
+  end
+
+  @doc """
+  Generate a pipeline.
+  """
+  @spec pipeline_fixture(User.t()) :: Pipeline.t()
+  @spec pipeline_fixture(attrs :: map(), User.t()) :: Pipeline.t()
+  def pipeline_fixture(attrs \\ %{}, user) do
+    {:ok, pipeline} =
+      attrs
+      |> Enum.into(%{
+        description: random_string(),
+        tags: [random_slug()],
+        slug: random_slug(),
+        visibility: :private
+      })
+      |> Pipelines.create_pipeline(user)
+
+    %{pipeline | tags_string: nil}
+  end
+
+  @doc """
+  Generate a note.
+  """
+  @spec note_fixture(User.t()) :: Note.t()
+  @spec note_fixture(attrs :: map(), User.t()) :: Note.t()
+  def note_fixture(attrs \\ %{}, user) do
+    {:ok, note} =
+      attrs
+      |> Enum.into(%{
+        content: random_string(),
+        tags: [random_slug()],
+        slug: random_slug(),
+        visibility: :private
+      })
+      |> Notes.create_note(user)
+
+    %{note | tags_string: nil}
+  end
+
+  @doc """
+  Generate a context.
+  """
+  @spec context_fixture(User.t()) :: Context.t()
+  @spec context_fixture(attrs :: map(), User.t()) :: Context.t()
+  def context_fixture(attrs \\ %{}, user) do
+    {:ok, context} =
+      attrs
+      |> Enum.into(%{
+        content: random_string(),
+        tags: [random_slug()],
+        slug: random_slug(),
+        visibility: :private
+      })
+      |> Contexts.create_context(user)
+
+    %{context | tags_string: nil}
   end
 
   defp unwrap_ok_tuple({:ok, value}), do: value
