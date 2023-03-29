@@ -10,7 +10,7 @@ defmodule MemexWeb.InviteLiveTest do
   @moduletag :invite_live_test
   @create_attrs %{name: "some name"}
   @update_attrs %{name: "some updated name"}
-  # @invalid_attrs %{"name" => nil}
+  @invalid_attrs %{name: nil}
 
   describe "Index" do
     setup [:register_and_log_in_user]
@@ -32,9 +32,9 @@ defmodule MemexWeb.InviteLiveTest do
       assert index_live |> element("a", "create invite") |> render_click() =~ "new invite"
       assert_patch(index_live, Routes.invite_index_path(conn, :new))
 
-      # assert index_live
-      #        |> form("#invite-form")
-      #        |> render_change(invite: @invalid_attrs) =~ "can't be blank"
+      assert index_live
+             |> form("#invite-form")
+             |> render_change(invite: @invalid_attrs) =~ "can&#39;t be blank"
 
       {:ok, _live, html} =
         index_live
@@ -54,9 +54,9 @@ defmodule MemexWeb.InviteLiveTest do
 
       assert_patch(index_live, Routes.invite_index_path(conn, :edit, invite))
 
-      # assert index_live
-      #        |> form("#invite-form")
-      #        |> render_change(invite: @invalid_attrs) =~ "can't be blank"
+      assert index_live
+             |> form("#invite-form")
+             |> render_change(invite: @invalid_attrs) =~ "can&#39;t be blank"
 
       {:ok, _live, html} =
         index_live
