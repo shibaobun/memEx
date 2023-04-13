@@ -17,7 +17,7 @@ steps:
       - .mix
 
 - name: test
-  image: elixir:1.14.1-alpine
+  image: elixir:1.14.4-alpine
   environment:
     TEST_DATABASE_URL: ecto://postgres:postgres@database/memex_test
     HOST: testing.example.tld
