@@ -4,7 +4,7 @@ defmodule Memex.MixProject do
   def project do
     [
       app: :memex,
-      version: "0.1.10",
+      version: "0.1.11",
       elixir: "1.14.1",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
@@ -48,7 +48,7 @@ defmodule Memex.MixProject do
   defp deps do
     [
       {:bcrypt_elixir, "~> 3.0"},
-      {:phoenix, "~> 1.6.0"},
+      {:phoenix, "~> 1.7.0"},
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},

@@ -1,3 +1,6 @@
+# v0.1.11
+- Update dependencies
+
 # v0.1.10
 - Improve accessibility
 - Code quality improvements
