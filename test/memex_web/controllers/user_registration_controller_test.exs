@@ -17,7 +17,7 @@ defmodule MemexWeb.UserRegistrationControllerTest do
 
     test "redirects if already logged in", %{conn: conn} do
       conn = conn |> log_in_user(user_fixture()) |> get(~p"/users/register")
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == ~p"/"
     end
   end
 
@@ -35,7 +35,7 @@ defmodule MemexWeb.UserRegistrationControllerTest do
                "info" => "please check your email to verify your account"
              }
 
-      assert redirected_to(conn) =~ "/"
+      assert redirected_to(conn) =~ ~p"/"
     end
 
     test "render errors for invalid data", %{conn: conn} do

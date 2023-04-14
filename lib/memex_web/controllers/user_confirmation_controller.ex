@@ -25,7 +25,7 @@ defmodule MemexWeb.UserConfirmationController do
         "if your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
       )
     )
-    |> redirect(to: "/")
+    |> redirect(to: ~p"/")
   end
 
   # Do not log in the user after confirmation to avoid a
@@ -35,7 +35,7 @@ defmodule MemexWeb.UserConfirmationController do
       {:ok, %{email: email}} ->
         conn
         |> put_flash(:info, dgettext("prompts", "%{email} confirmed successfully.", email: email))
-        |> redirect(to: "/")
+        |> redirect(to: ~p"/")
 
       :error ->
         # If there is a current user and the account was already confirmed,
@@ -44,7 +44,7 @@ defmodule MemexWeb.UserConfirmationController do
         # a warning message.
         case conn.assigns do
           %{current_user: %{confirmed_at: confirmed_at}} when not is_nil(confirmed_at) ->
-            redirect(conn, to: "/")
+            redirect(conn, to: ~p"/")
 
           %{} ->
             conn
@@ -52,7 +52,7 @@ defmodule MemexWeb.UserConfirmationController do
               :error,
               dgettext("errors", "user confirmation link is invalid or it has expired.")
             )
-            |> redirect(to: "/")
+            |> redirect(to: ~p"/")
         end
     end
   end

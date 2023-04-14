@@ -20,7 +20,7 @@ defmodule MemexWeb.UserSessionControllerTest do
 
     test "redirects if already logged in", %{conn: conn, current_user: current_user} do
       conn = conn |> log_in_user(current_user) |> get(~p"/users/log_in")
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == ~p"/"
     end
   end
 
@@ -32,10 +32,10 @@ defmodule MemexWeb.UserSessionControllerTest do
         })
 
       assert get_session(conn, :user_token)
-      assert redirected_to(conn) =~ "/"
+      assert redirected_to(conn) =~ ~p"/"
 
       # Now do a logged in request and assert on the menu
-      conn = get(conn, "/")
+      conn = get(conn, ~p"/")
       response = html_response(conn, 200)
       assert response =~ current_user.email
       assert response =~ "are you sure you want to log out?"
@@ -52,7 +52,7 @@ defmodule MemexWeb.UserSessionControllerTest do
         })
 
       assert conn.resp_cookies["_memex_web_user_remember_me"]
-      assert redirected_to(conn) =~ "/"
+      assert redirected_to(conn) =~ ~p"/"
     end
 
     test "logs the user in with return to", %{conn: conn, current_user: current_user} do
@@ -78,21 +78,21 @@ defmodule MemexWeb.UserSessionControllerTest do
 
       response = html_response(conn, 200)
       assert response =~ "log in"
-      assert response =~ "Invalid email or password"
+      assert response =~ "invalid email or password"
     end
   end
 
   describe "DELETE /users/log_out" do
     test "logs the user out", %{conn: conn, current_user: current_user} do
       conn = conn |> log_in_user(current_user) |> delete(~p"/users/log_out")
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == ~p"/"
       refute get_session(conn, :user_token)
       conn.assigns.flash["info"] =~ "logged out successfully"
     end
 
     test "succeeds even if the user is not logged in", %{conn: conn} do
       conn = delete(conn, ~p"/users/log_out")
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == ~p"/"
       refute get_session(conn, :user_token)
       conn.assigns.flash["info"] =~ "logged out successfully"
     end

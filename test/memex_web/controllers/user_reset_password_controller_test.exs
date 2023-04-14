@@ -28,7 +28,7 @@ defmodule MemexWeb.UserResetPasswordControllerTest do
           user: %{email: user.email}
         })
 
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == ~p"/"
 
       conn.assigns.flash["info"] =~
         "If your email is in our system, you will receive instructions to reset your password shortly."
@@ -42,7 +42,7 @@ defmodule MemexWeb.UserResetPasswordControllerTest do
           user: %{email: "unknown@example.com"}
         })
 
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == ~p"/"
 
       conn.assigns.flash["info"] =~
         "If your email is in our system, you will receive instructions to reset your password shortly."
@@ -68,7 +68,7 @@ defmodule MemexWeb.UserResetPasswordControllerTest do
 
     test "does not render reset password with invalid token", %{conn: conn} do
       conn = get(conn, ~p"/users/reset_password/#{"oops"}")
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == ~p"/"
       conn.assigns.flash["error"] =~ "Reset password link is invalid or it has expired"
     end
   end
@@ -115,7 +115,7 @@ defmodule MemexWeb.UserResetPasswordControllerTest do
 
     test "does not reset password with invalid token", %{conn: conn} do
       conn = put(conn, ~p"/users/reset_password/#{"oops"}")
-      assert redirected_to(conn) == "/"
+      assert redirected_to(conn) == ~p"/"
       conn.assigns.flash["error"] =~ "Reset password link is invalid or it has expired"
     end
   end

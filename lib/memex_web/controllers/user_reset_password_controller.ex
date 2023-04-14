@@ -26,7 +26,7 @@ defmodule MemexWeb.UserResetPasswordController do
         "if your email is in our system, you will receive instructions to reset your password shortly."
       )
     )
-    |> redirect(to: "/")
+    |> redirect(to: ~p"/")
   end
 
   def edit(conn, _params) do
@@ -61,7 +61,7 @@ defmodule MemexWeb.UserResetPasswordController do
         :error,
         dgettext("errors", "reset password link is invalid or it has expired.")
       )
-      |> redirect(to: "/")
+      |> redirect(to: ~p"/")
       |> halt()
     end
   end
