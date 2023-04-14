@@ -3,8 +3,8 @@ defmodule Memex.Email do
   Emails that can be sent using Swoosh.
 
   You can find the base email templates at
-  `lib/memex_web/templates/layout/email.html.heex` for html emails and
-  `lib/memex_web/templates/layout/email.txt.heex` for text emails.
+  `lib/memex_web/components/layouts/email_html.html.heex` for html emails and
+  `lib/memex_web/components/layouts/email_text.txt.eex` for text emails.
   """
 
   import Swoosh.Email
