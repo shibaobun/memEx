@@ -11,58 +11,58 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: lib/memex_web/controllers/email_html/confirm_email_html.html.heex:3
-#: lib/memex_web/controllers/email_html/confirm_email_text.txt.eex:2
-#: lib/memex_web/controllers/email_html/reset_password_html.html.heex:3
-#: lib/memex_web/controllers/email_html/reset_password_text.txt.eex:2
-#: lib/memex_web/controllers/email_html/update_email_html.html.heex:3
-#: lib/memex_web/controllers/email_html/update_email_text.txt.eex:2
+#: lib/memex_web/controllers/email_html/confirm_email.html.heex:3
+#: lib/memex_web/controllers/email_html/confirm_email.txt.eex:2
+#: lib/memex_web/controllers/email_html/reset_password.html.heex:3
+#: lib/memex_web/controllers/email_html/reset_password.txt.eex:2
+#: lib/memex_web/controllers/email_html/update_email.html.heex:3
+#: lib/memex_web/controllers/email_html/update_email.txt.eex:2
 #, elixir-autogen, elixir-format
 msgid "Hi %{email},"
 msgstr ""
 
-#: lib/memex_web/controllers/email_html/confirm_email_text.txt.eex:10
+#: lib/memex_web/controllers/email_html/confirm_email.txt.eex:10
 #, elixir-autogen, elixir-format
 msgid "If you didn't create an account at %{url}, please ignore this."
 msgstr ""
 
-#: lib/memex_web/controllers/email_html/reset_password_text.txt.eex:8
-#: lib/memex_web/controllers/email_html/update_email_text.txt.eex:8
+#: lib/memex_web/controllers/email_html/reset_password.txt.eex:8
+#: lib/memex_web/controllers/email_html/update_email.txt.eex:8
 #, elixir-autogen, elixir-format
 msgid "If you didn't request this change from %{url}, please ignore this."
 msgstr ""
 
-#: lib/memex_web/controllers/email_html/update_email_html.html.heex:8
-#: lib/memex_web/controllers/email_html/update_email_text.txt.eex:4
+#: lib/memex_web/controllers/email_html/update_email.html.heex:8
+#: lib/memex_web/controllers/email_html/update_email.txt.eex:4
 #, elixir-autogen, elixir-format
 msgid "You can change your email by visiting the URL below:"
 msgstr ""
 
-#: lib/memex_web/controllers/email_html/confirm_email_html.html.heex:14
-#: lib/memex_web/controllers/email_html/confirm_email_text.txt.eex:6
+#: lib/memex_web/controllers/email_html/confirm_email.html.heex:14
+#: lib/memex_web/controllers/email_html/confirm_email.txt.eex:6
 #, elixir-autogen, elixir-format
 msgid "You can confirm your account by visiting the URL below:"
 msgstr ""
 
-#: lib/memex_web/controllers/email_html/reset_password_html.html.heex:8
-#: lib/memex_web/controllers/email_html/reset_password_text.txt.eex:4
+#: lib/memex_web/controllers/email_html/reset_password.html.heex:8
+#: lib/memex_web/controllers/email_html/reset_password.txt.eex:4
 #, elixir-autogen, elixir-format
 msgid "You can reset your password by visiting the URL below:"
 msgstr ""
 
-#: lib/memex_web/controllers/email_html/confirm_email_html.html.heex:22
+#: lib/memex_web/controllers/email_html/confirm_email.html.heex:22
 #, elixir-autogen, elixir-format
 msgid "If you didn't create an account at memEx, please ignore this."
 msgstr ""
 
-#: lib/memex_web/controllers/email_html/reset_password_html.html.heex:16
-#: lib/memex_web/controllers/email_html/update_email_html.html.heex:16
+#: lib/memex_web/controllers/email_html/reset_password.html.heex:16
+#: lib/memex_web/controllers/email_html/update_email.html.heex:16
 #, elixir-autogen, elixir-format
 msgid "If you didn't request this change from memEx, please ignore this."
 msgstr ""
 
-#: lib/memex_web/controllers/email_html/confirm_email_html.html.heex:9
-#: lib/memex_web/controllers/email_html/confirm_email_text.txt.eex:4
+#: lib/memex_web/controllers/email_html/confirm_email.html.heex:9
+#: lib/memex_web/controllers/email_html/confirm_email.txt.eex:4
 #, elixir-autogen, elixir-format
 msgid "Welcome to memEx"
 msgstr ""

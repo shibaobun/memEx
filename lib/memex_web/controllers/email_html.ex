@@ -5,5 +5,6 @@ defmodule MemexWeb.EmailHTML do
 
   use MemexWeb, :html
 
-  embed_templates "email_html/*"
+  embed_templates "email_html/*.html", suffix: "_html"
+  embed_templates "email_html/*.txt", suffix: "_text"
 end
