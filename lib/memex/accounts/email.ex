@@ -28,21 +28,21 @@ defmodule Memex.Email do
   @spec generate_email(key :: String.t(), User.t(), attrs :: map()) :: t()
   def generate_email("welcome", user, %{"url" => url}) do
     user
-    |> base_email(dgettext("emails", "Confirm your Memex account"))
+    |> base_email(dgettext("emails", "confirm your memEx account"))
     |> html_email(:confirm_email_html, %{user: user, url: url})
     |> text_email(:confirm_email_text, %{user: user, url: url})
   end
 
   def generate_email("reset_password", user, %{"url" => url}) do
     user
-    |> base_email(dgettext("emails", "Reset your Memex password"))
+    |> base_email(dgettext("emails", "reset your memEx password"))
     |> html_email(:reset_password_html, %{user: user, url: url})
     |> text_email(:reset_password_text, %{user: user, url: url})
   end
 
   def generate_email("update_email", user, %{"url" => url}) do
     user
-    |> base_email(dgettext("emails", "Update your Memex email"))
+    |> base_email(dgettext("emails", "update your memEx email"))
     |> html_email(:update_email_html, %{user: user, url: url})
     |> text_email(:update_email_text, %{user: user, url: url})
   end

@@ -6,4 +6,4 @@
 
 =====================
 
-<%= dgettext("emails", "This email was sent from memEx at %{url}", url: ~p"/") %>
+<%= dgettext("emails", "this email was sent from memEx at %{url}", url: ~p"/") %>

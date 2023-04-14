@@ -10,11 +10,6 @@
 msgid ""
 msgstr ""
 
-#: lib/memex/accounts/email.ex:31
-#, elixir-autogen, elixir-format
-msgid "Confirm your Memex account"
-msgstr ""
-
 #: lib/memex_web/controllers/email_html/confirm_email_html.html.heex:3
 #: lib/memex_web/controllers/email_html/confirm_email_text.txt.eex:2
 #: lib/memex_web/controllers/email_html/reset_password_html.html.heex:3
@@ -36,16 +31,6 @@ msgstr ""
 msgid "If you didn't request this change from %{url}, please ignore this."
 msgstr ""
 
-#: lib/memex/accounts/email.ex:38
-#, elixir-autogen, elixir-format
-msgid "Reset your Memex password"
-msgstr ""
-
-#: lib/memex/accounts/email.ex:45
-#, elixir-autogen, elixir-format
-msgid "Update your Memex email"
-msgstr ""
-
 #: lib/memex_web/controllers/email_html/update_email_html.html.heex:8
 #: lib/memex_web/controllers/email_html/update_email_text.txt.eex:4
 #, elixir-autogen, elixir-format
@@ -64,16 +49,6 @@ msgstr ""
 msgid "You can reset your password by visiting the URL below:"
 msgstr ""
 
-#: lib/memex_web/components/layouts/email_html.html.heex:13
-#, elixir-autogen, elixir-format
-msgid "This email was sent from memEx"
-msgstr ""
-
-#: lib/memex_web/components/layouts/email_text.txt.eex:9
-#, elixir-autogen, elixir-format
-msgid "This email was sent from memEx at %{url}"
-msgstr ""
-
 #: lib/memex_web/controllers/email_html/confirm_email_html.html.heex:22
 #, elixir-autogen, elixir-format
 msgid "If you didn't create an account at memEx, please ignore this."
@@ -89,4 +64,29 @@ msgstr ""
 #: lib/memex_web/controllers/email_html/confirm_email_text.txt.eex:4
 #, elixir-autogen, elixir-format
 msgid "Welcome to memEx"
+msgstr ""
+
+#: lib/memex/accounts/email.ex:31
+#, elixir-autogen, elixir-format
+msgid "confirm your memEx account"
+msgstr ""
+
+#: lib/memex/accounts/email.ex:38
+#, elixir-autogen, elixir-format
+msgid "reset your memEx password"
+msgstr ""
+
+#: lib/memex_web/components/layouts/email_html.html.heex:13
+#, elixir-autogen, elixir-format
+msgid "this email was sent from memEx"
+msgstr ""
+
+#: lib/memex_web/components/layouts/email_text.txt.eex:9
+#, elixir-autogen, elixir-format
+msgid "this email was sent from memEx at %{url}"
+msgstr ""
+
+#: lib/memex/accounts/email.ex:45
+#, elixir-autogen, elixir-format
+msgid "update your memEx email"
 msgstr ""
