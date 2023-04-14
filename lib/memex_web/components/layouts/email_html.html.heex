@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>
+      <%= @email.subject %>
+    </title>
+  </head>
+  <body style="padding: 2em; color: rgb(161, 161, 170); background-color: rgb(39, 39, 42); font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; text-align: center;">
+    <%= @inner_content %>
+
+    <hr style="margin: 2em auto; border-width: 1px; border-color: rgb(161, 161, 170); width: 100%; max-width: 42rem;" />
+
+    <a style="color: rgb(161, 161, 170);" href={~p"/"}>
+      <%= dgettext("emails", "This email was sent from memEx") %>
+    </a>
+  </body>
+</html>

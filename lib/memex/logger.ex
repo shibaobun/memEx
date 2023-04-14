@@ -14,17 +14,17 @@ defmodule Memex.Logger do
       |> Map.put(:stacktrace, Exception.format_stacktrace(stacktrace))
       |> pretty_encode()
 
-    Logger.error(meta.reason, data: data)
+    Logger.error("#{meta.reason} #{data}")
   end
 
   def handle_event([:oban, :job, :start], measure, meta, _config) do
     data = get_oban_job_data(meta, measure) |> pretty_encode()
-    Logger.info("Started oban job", data: data)
+    Logger.info("Started oban job: #{data}")
   end
 
   def handle_event([:oban, :job, :stop], measure, meta, _config) do
     data = get_oban_job_data(meta, measure) |> pretty_encode()
-    Logger.info("Finished oban job", data: data)
+    Logger.info("Finished oban job: #{data}")
   end
 
   def handle_event([:oban, :job, unhandled_event], measure, meta, _config) do
@@ -33,7 +33,7 @@ defmodule Memex.Logger do
       |> Map.put(:event, unhandled_event)
       |> pretty_encode()
 
-    Logger.warning("Unhandled oban job event", data: data)
+    Logger.warning("Unhandled oban job event: #{data}")
   end
 
   def handle_event(unhandled_event, measure, meta, config) do
@@ -45,7 +45,7 @@ defmodule Memex.Logger do
         config: config
       })
 
-    Logger.warning("Unhandled telemetry event", data: data)
+    Logger.warning("Unhandled telemetry event: #{data}")
   end
 
   defp get_oban_job_data(%{job: job}, measure) do

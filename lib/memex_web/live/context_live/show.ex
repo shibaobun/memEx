@@ -38,7 +38,7 @@ defmodule MemexWeb.ContextLive.Show do
     socket =
       socket
       |> put_flash(:info, gettext("%{slug} deleted", slug: slug))
-      |> push_navigate(to: Routes.context_index_path(Endpoint, :index))
+      |> push_navigate(to: ~p"/contexts")
 
     {:noreply, socket}
   end

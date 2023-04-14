@@ -2,12 +2,12 @@ defmodule MemexWeb.UserSettingsController do
   use MemexWeb, :controller
   import MemexWeb.Gettext
   alias Memex.Accounts
-  alias MemexWeb.{HomeLive, UserAuth}
+  alias MemexWeb.UserAuth
 
   plug :assign_email_and_password_changesets
 
   def edit(conn, _params) do
-    render(conn, "edit.html", page_title: gettext("settings"))
+    render(conn, :edit, page_title: gettext("settings"))
   end
 
   def update(%{assigns: %{current_user: user}} = conn, %{
@@ -20,7 +20,7 @@ defmodule MemexWeb.UserSettingsController do
         Accounts.deliver_update_email_instructions(
           applied_user,
           user.email,
-          &Routes.user_settings_url(conn, :confirm_email, &1)
+          fn token -> url(MemexWeb.Endpoint, ~p"/users/settings/confirm_email/#{token}") end
         )
 
         conn
@@ -31,10 +31,10 @@ defmodule MemexWeb.UserSettingsController do
             "a link to confirm your email change has been sent to the new address."
           )
         )
-        |> redirect(to: Routes.user_settings_path(conn, :edit))
+        |> redirect(to: ~p"/users/settings")
 
       {:error, changeset} ->
-        conn |> render("edit.html", email_changeset: changeset)
+        conn |> render(:edit, email_changeset: changeset)
     end
   end
 
@@ -47,11 +47,11 @@ defmodule MemexWeb.UserSettingsController do
       {:ok, user} ->
         conn
         |> put_flash(:info, dgettext("prompts", "password updated successfully."))
-        |> put_session(:user_return_to, Routes.user_settings_path(conn, :edit))
+        |> put_session(:user_return_to, ~p"/users/settings")
         |> UserAuth.log_in_user(user)
 
       {:error, changeset} ->
-        conn |> render("edit.html", password_changeset: changeset)
+        conn |> render(:edit, password_changeset: changeset)
     end
   end
 
@@ -63,10 +63,10 @@ defmodule MemexWeb.UserSettingsController do
       {:ok, _user} ->
         conn
         |> put_flash(:info, dgettext("prompts", "language updated successfully."))
-        |> redirect(to: Routes.user_settings_path(conn, :edit))
+        |> redirect(to: ~p"/users/settings")
 
       {:error, changeset} ->
-        conn |> render("edit.html", locale_changeset: changeset)
+        conn |> render(:edit, locale_changeset: changeset)
     end
   end
 
@@ -75,7 +75,7 @@ defmodule MemexWeb.UserSettingsController do
       :ok ->
         conn
         |> put_flash(:info, dgettext("prompts", "email changed successfully."))
-        |> redirect(to: Routes.user_settings_path(conn, :edit))
+        |> redirect(to: ~p"/users/settings")
 
       :error ->
         conn
@@ -83,7 +83,7 @@ defmodule MemexWeb.UserSettingsController do
           :error,
           dgettext("errors", "email change link is invalid or it has expired.")
         )
-        |> redirect(to: Routes.user_settings_path(conn, :edit))
+        |> redirect(to: ~p"/users/settings")
     end
   end
 
@@ -93,11 +93,11 @@ defmodule MemexWeb.UserSettingsController do
 
       conn
       |> put_flash(:error, dgettext("prompts", "your account has been deleted"))
-      |> redirect(to: Routes.live_path(conn, HomeLive))
+      |> redirect(to: ~p"/")
     else
       conn
       |> put_flash(:error, dgettext("errors", "unable to delete user"))
-      |> redirect(to: Routes.user_settings_path(conn, :edit))
+      |> redirect(to: ~p"/users/settings")
     end
   end
 

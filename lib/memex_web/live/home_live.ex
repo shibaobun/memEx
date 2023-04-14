@@ -5,7 +5,6 @@ defmodule MemexWeb.HomeLive do
 
   use MemexWeb, :live_view
   alias Memex.Accounts
-  alias MemexWeb.FaqLive
 
   @version Mix.Project.config()[:version]
 

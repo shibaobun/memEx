@@ -32,7 +32,7 @@
     </li>
 
     <li class="flex flex-col justify-center items-center text-right space-y-2">
-      <.link navigate={Routes.live_path(Endpoint, FaqLive)} class="btn btn-primary">
+      <.link navigate={~p"/faq"} class="btn btn-primary">
         <%= gettext("read more on how to use memEx") %>
       </.link>
     </li>
@@ -86,7 +86,7 @@
       </b>
       <p class="flex flex-col justify-center items-center space-y-2">
         <%= if @admins |> Enum.empty?() do %>
-          <.link href={Routes.user_registration_path(Endpoint, :new)} class="link">
+          <.link href={~p"/users/register"} class="link">
             <%= dgettext("prompts", "register to setup memEx") %>
           </.link>
         <% else %>

@@ -17,7 +17,7 @@ defmodule MemexWeb.PipelineLiveTest do
   }
   @invalid_attrs %{
     description: nil,
-    tags_string: " ",
+    tags_string: "invalid tags",
     slug: nil,
     visibility: nil
   }
@@ -42,25 +42,25 @@ defmodule MemexWeb.PipelineLiveTest do
     setup [:register_and_log_in_user, :create_pipeline]
 
     test "lists all pipelines", %{conn: conn, pipeline: pipeline} do
-      {:ok, _index_live, html} = live(conn, Routes.pipeline_index_path(conn, :index))
+      {:ok, _index_live, html} = live(conn, ~p"/pipelines")
 
       assert html =~ "pipelines"
       assert html =~ pipeline.description
     end
 
     test "searches by tag", %{conn: conn, pipeline: %{tags: [tag]}} do
-      {:ok, index_live, html} = live(conn, Routes.pipeline_index_path(conn, :index))
+      {:ok, index_live, html} = live(conn, ~p"/pipelines")
 
       assert html =~ tag
       assert index_live |> element("a", tag) |> render_click()
-      assert_patch(index_live, Routes.pipeline_index_path(conn, :search, tag))
+      assert_patch(index_live, ~p"/pipelines/#{tag}")
     end
 
     test "saves new pipeline", %{conn: conn} do
-      {:ok, index_live, _html} = live(conn, Routes.pipeline_index_path(conn, :index))
+      {:ok, index_live, _html} = live(conn, ~p"/pipelines")
 
       assert index_live |> element("a", "new pipeline") |> render_click() =~ "new pipeline"
-      assert_patch(index_live, Routes.pipeline_index_path(conn, :new))
+      assert_patch(index_live, ~p"/pipelines/new")
 
       assert index_live
              |> form("#pipeline-form")
@@ -70,19 +70,19 @@ defmodule MemexWeb.PipelineLiveTest do
         index_live
         |> form("#pipeline-form")
         |> render_submit(pipeline: @create_attrs)
-        |> follow_redirect(conn, Routes.pipeline_index_path(conn, :index))
+        |> follow_redirect(conn, ~p"/pipelines")
 
       assert html =~ "#{@create_attrs.slug} created"
       assert html =~ @create_attrs.description
     end
 
     test "updates pipeline in listing", %{conn: conn, pipeline: pipeline} do
-      {:ok, index_live, _html} = live(conn, Routes.pipeline_index_path(conn, :index))
+      {:ok, index_live, _html} = live(conn, ~p"/pipelines")
 
       assert index_live |> element(~s/a[aria-label="edit #{pipeline.slug}"]/) |> render_click() =~
                "edit"
 
-      assert_patch(index_live, Routes.pipeline_index_path(conn, :edit, pipeline.slug))
+      assert_patch(index_live, ~p"/pipelines/#{pipeline}/edit")
 
       assert index_live
              |> form("#pipeline-form")
@@ -92,14 +92,14 @@ defmodule MemexWeb.PipelineLiveTest do
         index_live
         |> form("#pipeline-form")
         |> render_submit(pipeline: @update_attrs)
-        |> follow_redirect(conn, Routes.pipeline_index_path(conn, :index))
+        |> follow_redirect(conn, ~p"/pipelines")
 
       assert html =~ "#{@update_attrs.slug} saved"
       assert html =~ @update_attrs.description
     end
 
     test "deletes pipeline in listing", %{conn: conn, pipeline: pipeline} do
-      {:ok, index_live, _html} = live(conn, Routes.pipeline_index_path(conn, :index))
+      {:ok, index_live, _html} = live(conn, ~p"/pipelines")
 
       assert index_live
              |> element(~s/a[aria-label="delete #{pipeline.slug}"]/)
@@ -113,16 +113,16 @@ defmodule MemexWeb.PipelineLiveTest do
     setup [:register_and_log_in_user, :create_pipeline]
 
     test "displays pipeline", %{conn: conn, pipeline: pipeline} do
-      {:ok, _show_live, html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+      {:ok, _show_live, html} = live(conn, ~p"/pipeline/#{pipeline}")
 
       assert html =~ "pipeline"
       assert html =~ pipeline.description
     end
 
     test "updates pipeline within modal", %{conn: conn, pipeline: pipeline} do
-      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+      {:ok, show_live, _html} = live(conn, ~p"/pipeline/#{pipeline}")
       assert show_live |> element("a", "edit") |> render_click() =~ "edit"
-      assert_patch(show_live, Routes.pipeline_show_path(conn, :edit, pipeline.slug))
+      assert_patch(show_live, ~p"/pipeline/#{pipeline}/edit")
 
       html =
         show_live
@@ -136,34 +136,34 @@ defmodule MemexWeb.PipelineLiveTest do
         show_live
         |> form("#pipeline-form")
         |> render_submit(pipeline: @update_attrs |> Map.put(:slug, pipeline.slug))
-        |> follow_redirect(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+        |> follow_redirect(conn, ~p"/pipeline/#{pipeline}")
 
       assert html =~ "#{pipeline.slug} saved"
       assert html =~ @update_attrs.description
     end
 
     test "deletes pipeline", %{conn: conn, pipeline: pipeline} do
-      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+      {:ok, show_live, _html} = live(conn, ~p"/pipeline/#{pipeline}")
 
       {:ok, index_live, _html} =
         show_live
         |> element(~s/button[aria-label="delete #{pipeline.slug}"]/)
         |> render_click()
-        |> follow_redirect(conn, Routes.pipeline_index_path(conn, :index))
+        |> follow_redirect(conn, ~p"/pipelines")
 
       refute has_element?(index_live, "#pipeline-#{pipeline.id}")
     end
 
     test "creates a step", %{conn: conn, pipeline: pipeline} do
-      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+      {:ok, show_live, _html} = live(conn, ~p"/pipeline/#{pipeline}")
       show_live |> element("a", "add step") |> render_click()
-      assert_patch(show_live, Routes.pipeline_show_path(conn, :add_step, pipeline.slug))
+      assert_patch(show_live, ~p"/pipeline/#{pipeline}/add_step")
 
       {:ok, _show_live, html} =
         show_live
         |> form("#step-form")
         |> render_submit(step: @step_create_attrs)
-        |> follow_redirect(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+        |> follow_redirect(conn, ~p"/pipeline/#{pipeline}")
 
       assert html =~ @step_create_attrs.title
       assert html =~ @step_create_attrs.content
@@ -180,21 +180,21 @@ defmodule MemexWeb.PipelineLiveTest do
     end
 
     test "searches by tag", %{conn: conn, pipeline: %{tags: [tag]} = pipeline} do
-      {:ok, show_live, html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+      {:ok, show_live, html} = live(conn, ~p"/pipeline/#{pipeline}")
 
       assert html =~ tag
       assert show_live |> element("a", tag) |> render_click()
-      assert_redirect(show_live, Routes.pipeline_index_path(conn, :search, tag))
+      assert_redirect(show_live, ~p"/pipelines/#{tag}")
     end
 
     test "updates a step", %{conn: conn, pipeline: pipeline, step: step} do
-      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+      {:ok, show_live, _html} = live(conn, ~p"/pipeline/#{pipeline}")
 
       show_live
       |> element(~s/a[aria-label="edit #{step.title}"]/)
       |> render_click()
 
-      assert_patch(show_live, Routes.pipeline_show_path(conn, :edit_step, pipeline.slug, step.id))
+      assert_patch(show_live, ~p"/pipeline/#{pipeline}/#{step.id}")
 
       assert show_live
              |> form("#step-form")
@@ -204,21 +204,21 @@ defmodule MemexWeb.PipelineLiveTest do
         show_live
         |> form("#step-form")
         |> render_submit(step: @step_update_attrs)
-        |> follow_redirect(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+        |> follow_redirect(conn, ~p"/pipeline/#{pipeline}")
 
       assert html =~ @step_update_attrs.title
       assert html =~ @step_update_attrs.content
     end
 
     test "deletes a step", %{conn: conn, pipeline: pipeline, step: step} do
-      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+      {:ok, show_live, _html} = live(conn, ~p"/pipeline/#{pipeline}")
 
       html =
         show_live
         |> element(~s/button[aria-label="delete #{step.title}"]/)
         |> render_click()
 
-      assert_patch(show_live, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+      assert_patch(show_live, ~p"/pipeline/#{pipeline}")
 
       assert html =~ "#{step.title} deleted"
       refute html =~ step.content
@@ -238,7 +238,7 @@ defmodule MemexWeb.PipelineLiveTest do
 
     test "reorders a step",
          %{conn: conn, pipeline: pipeline, first_step: first_step, second_step: second_step} do
-      {:ok, show_live, _html} = live(conn, Routes.pipeline_show_path(conn, :show, pipeline.slug))
+      {:ok, show_live, _html} = live(conn, ~p"/pipeline/#{pipeline}")
 
       html =
         show_live

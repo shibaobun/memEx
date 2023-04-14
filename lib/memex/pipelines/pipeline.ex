@@ -8,6 +8,7 @@ defmodule Memex.Pipelines.Pipeline do
   alias Ecto.{Changeset, UUID}
   alias Memex.{Accounts.User, Pipelines.Steps.Step, Repo}
 
+  @derive {Phoenix.Param, key: :slug}
   @derive {Jason.Encoder,
            only: [
              :slug,

@@ -34,7 +34,7 @@
       <:actions :let={pipeline}>
         <.link
           :if={Pipelines.is_owner?(pipeline, @current_user)}
-          patch={Routes.pipeline_index_path(@socket, :edit, pipeline.slug)}
+          patch={~p"/pipelines/#{pipeline}/edit"}
           aria-label={dgettext("actions", "edit %{pipeline_slug}", pipeline_slug: pipeline.slug)}
         >
           <%= dgettext("actions", "edit") %>
@@ -55,19 +55,12 @@
     </.live_component>
   <% end %>
 
-  <.link
-    :if={@current_user}
-    patch={Routes.pipeline_index_path(@socket, :new)}
-    class="self-end btn btn-primary"
-  >
+  <.link :if={@current_user} patch={~p"/pipelines/new"} class="self-end btn btn-primary">
     <%= dgettext("actions", "new pipeline") %>
   </.link>
 </div>
 
-<.modal
-  :if={@live_action in [:new, :edit]}
-  return_to={Routes.pipeline_index_path(@socket, :index)}
->
+<.modal :if={@live_action in [:new, :edit]} return_to={~p"/pipelines"}>
   <.live_component
     module={MemexWeb.PipelineLive.FormComponent}
     id={@pipeline.id || :new}
@@ -75,6 +68,6 @@
     title={@page_title}
     action={@live_action}
     pipeline={@pipeline}
-    return_to={Routes.pipeline_index_path(@socket, :index)}
+    return_to={~p"/pipelines"}
   />
 </.modal>

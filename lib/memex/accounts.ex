@@ -374,8 +374,8 @@ defmodule Memex.Accounts do
   @doc """
   Deletes the signed token with the given context.
   """
-  @spec delete_session_token(token :: String.t()) :: :ok
-  def delete_session_token(token) do
+  @spec delete_user_session_token(token :: String.t()) :: :ok
+  def delete_user_session_token(token) do
     UserToken.token_and_context_query(token, "session") |> Repo.delete_all()
     :ok
   end

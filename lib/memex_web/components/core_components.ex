@@ -3,13 +3,13 @@ defmodule MemexWeb.CoreComponents do
   Provides core UI components.
   """
   use Phoenix.Component
-  import MemexWeb.{Gettext, ViewHelpers}
+  use MemexWeb, :verified_routes
+
+  import MemexWeb.{Gettext, HTMLHelpers}
   alias Memex.{Accounts, Accounts.Invite, Accounts.User}
   alias Memex.Contexts.Context
   alias Memex.Notes.Note
   alias Memex.Pipelines.Steps.Step
-  alias MemexWeb.{Endpoint, HomeLive}
-  alias MemexWeb.Router.Helpers, as: Routes
   alias Phoenix.HTML
   alias Phoenix.LiveView.JS
 
@@ -31,13 +31,13 @@ defmodule MemexWeb.CoreComponents do
 
   ## Examples
 
-      <.modal return_to={Routes.<%= schema.singular %>_index_path(Endpoint, :index)}>
+      <.modal return_to={~p"/\#{<%= schema.plural %>}"}>
         <.live_component
           module={<%= inspect context.web_module %>.<%= inspect Module.concat(schema.web_namespace, schema.alias) %>Live.FormComponent}
           id={@<%= schema.singular %>.id || :new}
           title={@page_title}
           action={@live_action}
-          return_to={Routes.<%= schema.singular %>_index_path(Endpoint, :index)}
+          return_to={~p"/\#{<%= schema.singular %>}"}
           <%= schema.singular %>: @<%= schema.singular %>
         />
       </.modal>
@@ -167,7 +167,7 @@ defmodule MemexWeb.CoreComponents do
           link =
             HTML.Link.link(
               "[[#{slug}]]",
-              to: Routes.note_show_path(Endpoint, :show, slug),
+              to: ~p"/note/#{slug}",
               class: "link inline",
               data: [qa: "#{data_qa_prefix}-#{slug}"]
             )

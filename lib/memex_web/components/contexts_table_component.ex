@@ -88,11 +88,9 @@ defmodule MemexWeb.Components.ContextsTableComponent do
 
   @spec get_value_for_key(atom(), Context.t(), additional_data :: map()) ::
           any() | {any(), Rendered.t()}
-  defp get_value_for_key(:slug, %{slug: slug}, _additional_data) do
-    assigns = %{slug: slug}
-
+  defp get_value_for_key(:slug, %{slug: slug} = assigns, _additional_data) do
     slug_block = ~H"""
-    <.link navigate={Routes.context_show_path(Endpoint, :show, @slug)} class="link">
+    <.link navigate={~p"/context/#{@slug}"} class="link">
       <%= @slug %>
     </.link>
     """
@@ -100,16 +98,10 @@ defmodule MemexWeb.Components.ContextsTableComponent do
     {slug, slug_block}
   end
 
-  defp get_value_for_key(:tags, %{tags: tags}, _additional_data) do
-    assigns = %{tags: tags}
-
+  defp get_value_for_key(:tags, assigns, _additional_data) do
     ~H"""
     <div class="flex flex-wrap justify-center space-x-1">
-      <.link
-        :for={tag <- @tags}
-        patch={Routes.context_index_path(Endpoint, :search, tag)}
-        class="link"
-      >
+      <.link :for={tag <- @tags} patch={~p"/contexts/#{tag}"} class="link">
         <%= tag %>
       </.link>
     </div>

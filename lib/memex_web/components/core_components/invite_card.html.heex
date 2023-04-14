@@ -24,7 +24,7 @@
   <% end %>
 
   <.qr_code
-    content={Routes.user_registration_url(Endpoint, :new, invite: @invite.token)}
+    content={url(MemexWeb.Endpoint, ~p"/users/register?invite=#{@invite.token}")}
     filename={@invite.name}
   />
 
@@ -38,7 +38,7 @@
       class="mx-2 my-1 text-xs px-4 py-2 rounded-lg text-center break-all
         text-primary-400 bg-primary-800"
       phx-no-format
-    ><%= Routes.user_registration_url(Endpoint, :new, invite: @invite.token) %></code>
+    ><%= url(MemexWeb.Endpoint, ~p"/users/register?invite=#{@invite.token}") %></code>
     <%= if @code_actions, do: render_slot(@code_actions) %>
   </div>
 

@@ -4,11 +4,7 @@
   </h1>
 
   <div class="flex flex-wrap space-x-1">
-    <.link
-      :for={tag <- @context.tags}
-      navigate={Routes.context_index_path(Endpoint, :search, tag)}
-      class="link"
-    >
+    <.link :for={tag <- @context.tags} navigate={~p"/contexts/#{tag}"} class="link">
       <%= tag %>
     </.link>
   </div>
@@ -23,7 +19,7 @@
     <.link
       :if={Contexts.is_owner?(@context, @current_user)}
       class="btn btn-primary"
-      patch={Routes.context_show_path(@socket, :edit, @context.slug)}
+      patch={~p"/context/#{@context}/edit"}
     >
       <%= dgettext("actions", "edit") %>
     </.link>
@@ -40,10 +36,7 @@
   </div>
 </div>
 
-<.modal
-  :if={@live_action == :edit}
-  return_to={Routes.context_show_path(@socket, :show, @context.slug)}
->
+<.modal :if={@live_action == :edit} return_to={~p"/context/#{@context}"}>
   <.live_component
     module={MemexWeb.ContextLive.FormComponent}
     id={@context.id}
@@ -51,6 +44,6 @@
     title={@page_title}
     action={@live_action}
     context={@context}
-    return_to={Routes.context_show_path(@socket, :show, @context.slug)}
+    return_to={~p"/context/#{@context}"}
   />
 </.modal>

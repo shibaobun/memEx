@@ -16,7 +16,7 @@ msgstr ""
 msgid "Confirm your account"
 msgstr ""
 
-#: lib/memex_web/templates/layout/live.html.heex:43
+#: lib/memex_web/components/layouts/live.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "Reconnecting..."
 msgstr ""
@@ -26,9 +26,9 @@ msgstr ""
 msgid "Reset your password"
 msgstr ""
 
-#: lib/memex_web/live/context_live/show.html.heex:19
-#: lib/memex_web/live/note_live/show.html.heex:19
-#: lib/memex_web/live/pipeline_live/show.html.heex:27
+#: lib/memex_web/live/context_live/show.html.heex:15
+#: lib/memex_web/live/note_live/show.html.heex:15
+#: lib/memex_web/live/pipeline_live/show.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "Visibility: %{visibility}"
 msgstr ""
@@ -48,8 +48,8 @@ msgstr ""
 msgid "built with sharing and collaboration in mind"
 msgstr ""
 
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:20
-#: lib/memex_web/templates/user_settings/edit.html.heex:76
+#: lib/memex_web/controllers/user_reset_password_html/edit.html.heex:20
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:76
 #, elixir-autogen, elixir-format
 msgid "confirm new password"
 msgstr ""
@@ -60,7 +60,7 @@ msgstr ""
 msgid "content"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:37
+#: lib/memex_web/components/core_components/topbar.html.heex:28
 #: lib/memex_web/live/context_live/index.ex:35
 #: lib/memex_web/live/context_live/index.ex:43
 #: lib/memex_web/live/context_live/index.html.heex:3
@@ -78,8 +78,8 @@ msgstr ""
 msgid "convenient:"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:31
-#: lib/memex_web/templates/user_settings/edit.html.heex:85
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:31
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:85
 #, elixir-autogen, elixir-format
 msgid "current password"
 msgstr ""
@@ -104,10 +104,10 @@ msgstr ""
 msgid "edit invite"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:20
-#: lib/memex_web/templates/user_reset_password/new.html.heex:13
-#: lib/memex_web/templates/user_session/new.html.heex:17
-#: lib/memex_web/templates/user_settings/edit.html.heex:27
+#: lib/memex_web/controllers/user_registration_html/new.html.heex:20
+#: lib/memex_web/controllers/user_reset_password_html/new.html.heex:13
+#: lib/memex_web/controllers/user_session_html/new.html.heex:17
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:27
 #, elixir-autogen, elixir-format
 msgid "email"
 msgstr ""
@@ -122,8 +122,8 @@ msgstr ""
 msgid "enable"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:32
-#: lib/memex_web/templates/user_settings/edit.html.heex:123
+#: lib/memex_web/controllers/user_registration_html/new.html.heex:32
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:123
 #, elixir-autogen, elixir-format
 msgid "english"
 msgstr ""
@@ -153,7 +153,7 @@ msgstr ""
 msgid "invite only"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:58
+#: lib/memex_web/components/core_components/topbar.html.heex:43
 #: lib/memex_web/live/invite_live/index.ex:31
 #: lib/memex_web/live/invite_live/index.html.heex:3
 #, elixir-autogen, elixir-format
@@ -175,8 +175,8 @@ msgstr ""
 msgid "new invite"
 msgstr ""
 
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:16
-#: lib/memex_web/templates/user_settings/edit.html.heex:69
+#: lib/memex_web/controllers/user_reset_password_html/edit.html.heex:16
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:69
 #, elixir-autogen, elixir-format
 msgid "new password"
 msgstr ""
@@ -191,7 +191,7 @@ msgstr ""
 msgid "no notes found"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:28
+#: lib/memex_web/components/core_components/topbar.html.heex:22
 #: lib/memex_web/live/note_live/index.ex:35
 #: lib/memex_web/live/note_live/index.ex:43
 #: lib/memex_web/live/note_live/index.html.heex:3
@@ -204,7 +204,7 @@ msgstr ""
 msgid "notes:"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:46
+#: lib/memex_web/components/core_components/topbar.html.heex:34
 #: lib/memex_web/live/pipeline_live/index.ex:35
 #: lib/memex_web/live/pipeline_live/index.ex:43
 #: lib/memex_web/live/pipeline_live/index.html.heex:3
@@ -237,7 +237,7 @@ msgstr ""
 msgid "public signups"
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:32
+#: lib/memex_web/controllers/user_registration_controller.ex:31
 #, elixir-autogen, elixir-format
 msgid "register"
 msgstr ""
@@ -276,7 +276,7 @@ msgid "set unlimited"
 msgstr ""
 
 #: lib/memex_web/controllers/user_settings_controller.ex:10
-#: lib/memex_web/templates/user_settings/edit.html.heex:3
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "settings"
 msgstr ""
@@ -298,7 +298,7 @@ msgstr ""
 msgid "tags"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:130
+#: lib/memex_web/live/invite_live/index.html.heex:126
 #, elixir-autogen, elixir-format
 msgid "users"
 msgstr ""
@@ -413,7 +413,7 @@ msgstr ""
 msgid "%{slug} could not be found"
 msgstr ""
 
-#: lib/memex_web/live/home_live.ex:15
+#: lib/memex_web/live/home_live.ex:14
 #, elixir-autogen, elixir-format
 msgid "home"
 msgstr ""
@@ -430,12 +430,12 @@ msgstr ""
 msgid "faq"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:8
+#: lib/memex_web/components/core_components/topbar.html.heex:5
+#: lib/memex_web/components/layouts.ex:15
+#: lib/memex_web/components/layouts/root.html.heex:8
+#: lib/memex_web/components/layouts/root.html.heex:9
+#: lib/memex_web/controllers/error_html/error.html.heex:8
 #: lib/memex_web/live/home_live.html.heex:3
-#: lib/memex_web/templates/error/error.html.heex:8
-#: lib/memex_web/templates/layout/root.html.heex:8
-#: lib/memex_web/templates/layout/root.html.heex:9
-#: lib/memex_web/views/layout_view.ex:14
 #, elixir-autogen, elixir-format
 msgid "memEx"
 msgstr ""
@@ -445,7 +445,7 @@ msgstr ""
 msgid "what is this?"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:64
+#: lib/memex_web/live/pipeline_live/show.html.heex:60
 #, elixir-autogen, elixir-format
 msgid "%{position}. %{title}"
 msgstr ""
@@ -470,12 +470,12 @@ msgstr ""
 msgid "add step to %{slug}"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:58
+#: lib/memex_web/live/pipeline_live/show.html.heex:54
 #, elixir-autogen, elixir-format
 msgid "no steps"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:53
+#: lib/memex_web/live/pipeline_live/show.html.heex:49
 #, elixir-autogen, elixir-format
 msgid "steps:"
 msgstr ""
@@ -582,7 +582,7 @@ msgstr ""
 msgid "zettelkasten"
 msgstr ""
 
-#: lib/memex_web/views/layout_view.ex:10
+#: lib/memex_web/components/layouts.ex:11
 #, elixir-autogen, elixir-format
 msgid "memEx | %{title}"
 msgstr ""
@@ -612,7 +612,7 @@ msgstr ""
 msgid "while memEx fully supports multiple users, each memEx instance should be treated as a single cohesive and collaborative document."
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:28
+#: lib/memex_web/controllers/user_registration_html/new.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "language"
 msgstr ""
@@ -652,17 +652,17 @@ msgstr ""
 msgid "get involved"
 msgstr ""
 
-#: lib/memex_web/templates/user_confirmation/new.html.heex:13
+#: lib/memex_web/controllers/user_confirmation_html/new.html.heex:13
 #, elixir-autogen, elixir-format
 msgid "Email"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:102
+#: lib/memex_web/live/invite_live/index.html.heex:98
 #, elixir-autogen, elixir-format
 msgid "admins"
 msgstr ""
 
-#: lib/memex_web/templates/user_session/new.html.heex:23
+#: lib/memex_web/controllers/user_session_html/new.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "keep me logged in for 60 days"
 msgstr ""
@@ -672,8 +672,8 @@ msgstr ""
 msgid "name"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:24
-#: lib/memex_web/templates/user_session/new.html.heex:20
+#: lib/memex_web/controllers/user_registration_html/new.html.heex:24
+#: lib/memex_web/controllers/user_session_html/new.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "password"
 msgstr ""
@@ -701,12 +701,12 @@ msgstr ""
 msgid "close modal"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:89
+#: lib/memex_web/components/core_components/topbar.html.heex:71
 #, elixir-autogen, elixir-format
 msgid "live dashboard"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:75
+#: lib/memex_web/components/core_components/topbar.html.heex:57
 #, elixir-autogen, elixir-format
 msgid "log out"
 msgstr ""

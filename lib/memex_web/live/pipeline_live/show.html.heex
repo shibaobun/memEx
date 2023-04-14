@@ -4,11 +4,7 @@
   </h1>
 
   <div class="flex flex-wrap space-x-1">
-    <.link
-      :for={tag <- @pipeline.tags}
-      navigate={Routes.pipeline_index_path(Endpoint, :search, tag)}
-      class="link"
-    >
+    <.link :for={tag <- @pipeline.tags} navigate={~p"/pipelines/#{tag}"} class="link">
       <%= tag %>
     </.link>
   </div>
@@ -31,7 +27,7 @@
     <.link
       :if={Pipelines.is_owner?(@pipeline, @current_user)}
       class="btn btn-primary"
-      patch={Routes.pipeline_show_path(@socket, :edit, @pipeline.slug)}
+      patch={~p"/pipeline/#{@pipeline}/edit"}
     >
       <%= dgettext("actions", "edit") %>
     </.link>
@@ -100,7 +96,7 @@
 
             <.link
               class="self-end btn btn-primary"
-              patch={Routes.pipeline_show_path(@socket, :edit_step, @pipeline.slug, step_id)}
+              patch={~p"/pipeline/#{@pipeline}/#{step_id}"}
               aria-label={dgettext("actions", "edit %{step_title}", step_title: step.title)}
             >
               <%= dgettext("actions", "edit") %>
@@ -127,7 +123,7 @@
   <.link
     :if={Pipelines.is_owner?(@pipeline, @current_user)}
     class="self-end btn btn-primary"
-    patch={Routes.pipeline_show_path(@socket, :add_step, @pipeline.slug)}
+    patch={~p"/pipeline/#{@pipeline}/add_step"}
   >
     <%= dgettext("actions", "add step") %>
   </.link>
@@ -135,7 +131,7 @@
 
 <%= case @live_action do %>
   <% :edit -> %>
-    <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}>
+    <.modal return_to={~p"/pipeline/#{@pipeline}"}>
       <.live_component
         module={MemexWeb.PipelineLive.FormComponent}
         id={@pipeline.id}
@@ -143,11 +139,11 @@
         title={@page_title}
         action={@live_action}
         pipeline={@pipeline}
-        return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}
+        return_to={~p"/pipeline/#{@pipeline}"}
       />
     </.modal>
   <% action when action in [:add_step, :edit_step] -> %>
-    <.modal return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}>
+    <.modal return_to={~p"/pipeline/#{@pipeline}"}>
       <.live_component
         module={MemexWeb.StepLive.FormComponent}
         id={@pipeline.id || :new}
@@ -156,7 +152,7 @@
         action={@live_action}
         pipeline={@pipeline}
         step={@step}
-        return_to={Routes.pipeline_show_path(@socket, :show, @pipeline.slug)}
+        return_to={~p"/pipeline/#{@pipeline}"}
       />
     </.modal>
   <% _ -> %>

@@ -6,7 +6,8 @@ defmodule MemexWeb.EmailController do
   use MemexWeb, :controller
   alias Memex.Accounts.User
 
-  plug :put_layout, {MemexWeb.LayoutView, :email}
+  plug :put_root_layout, html: {MemexWeb.Layouts, :email_html}
+  plug :put_layout, false
 
   @sample_assigns %{
     email: %{subject: "Example subject"},
@@ -18,6 +19,6 @@ defmodule MemexWeb.EmailController do
   Debug route used to preview emails
   """
   def preview(conn, %{"id" => template}) do
-    render(conn, "#{template |> to_string()}.html", @sample_assigns)
+    render(conn, String.to_existing_atom(template), @sample_assigns)
   end
 end

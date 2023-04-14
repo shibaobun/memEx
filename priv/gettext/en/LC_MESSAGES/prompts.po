@@ -56,7 +56,7 @@ msgstr ""
 msgid "Password reset successfully."
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:130
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:130
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to change your language?"
 msgstr ""
@@ -66,12 +66,12 @@ msgstr ""
 msgid "are you sure you want to delete the invite for %{invite_name}?"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:149
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:145
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to delete your account?"
 msgstr ""
 
-#: lib/memex_web/components/core_components/topbar.html.heex:74
+#: lib/memex_web/components/core_components/topbar.html.heex:56
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to log out?"
 msgstr ""
@@ -82,12 +82,12 @@ msgid "are you sure you want to make %{invite_name} unlimited?"
 msgstr ""
 
 #: lib/memex_web/live/context_live/index.html.heex:47
-#: lib/memex_web/live/context_live/show.html.heex:35
+#: lib/memex_web/live/context_live/show.html.heex:31
 #: lib/memex_web/live/note_live/index.html.heex:47
-#: lib/memex_web/live/note_live/show.html.heex:35
+#: lib/memex_web/live/note_live/show.html.heex:31
 #: lib/memex_web/live/pipeline_live/index.html.heex:47
-#: lib/memex_web/live/pipeline_live/show.html.heex:43
-#: lib/memex_web/live/pipeline_live/show.html.heex:114
+#: lib/memex_web/live/pipeline_live/show.html.heex:39
+#: lib/memex_web/live/pipeline_live/show.html.heex:110
 #, elixir-autogen, elixir-format
 msgid "are you sure?"
 msgstr ""
@@ -122,7 +122,7 @@ msgstr ""
 msgid "copied to clipboard"
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:65
+#: lib/memex_web/controllers/user_registration_controller.ex:64
 #, elixir-autogen, elixir-format
 msgid "please check your email to verify your account"
 msgstr ""
@@ -147,8 +147,8 @@ msgstr ""
 msgid "your account has been deleted"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:113
-#: lib/memex_web/live/invite_live/index.html.heex:141
+#: lib/memex_web/live/invite_live/index.html.heex:109
+#: lib/memex_web/live/invite_live/index.html.heex:137
 #, elixir-autogen, elixir-format
 msgid "are you sure you want to delete %{email}? this action is permanent!"
 msgstr ""

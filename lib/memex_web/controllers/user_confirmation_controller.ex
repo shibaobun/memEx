@@ -5,14 +5,14 @@ defmodule MemexWeb.UserConfirmationController do
   alias Memex.Accounts
 
   def new(conn, _params) do
-    render(conn, "new.html", page_title: gettext("Confirm your account"))
+    render(conn, :new, page_title: gettext("Confirm your account"))
   end
 
   def create(conn, %{"user" => %{"email" => email}}) do
     if user = Accounts.get_user_by_email(email) do
       Accounts.deliver_user_confirmation_instructions(
         user,
-        &Routes.user_confirmation_url(conn, :confirm, &1)
+        fn token -> url(MemexWeb.Endpoint, ~p"/users/confirm/#{token}") end
       )
     end
 

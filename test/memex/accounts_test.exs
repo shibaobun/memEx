@@ -368,11 +368,11 @@ defmodule Memex.AccountsTest do
     end
   end
 
-  describe "delete_session_token/1" do
+  describe "delete_user_session_token/1" do
     test "deletes the token" do
       user = user_fixture()
       token = Accounts.generate_user_session_token(user)
-      assert Accounts.delete_session_token(token) == :ok
+      assert Accounts.delete_user_session_token(token) == :ok
       refute Accounts.get_user_by_session_token(token)
     end
   end

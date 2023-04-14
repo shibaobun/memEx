@@ -34,7 +34,7 @@
       <:actions :let={note}>
         <.link
           :if={Notes.is_owner?(note, @current_user)}
-          patch={Routes.note_index_path(@socket, :edit, note.slug)}
+          patch={~p"/notes/#{note}/edit"}
           aria-label={dgettext("actions", "edit %{note_slug}", note_slug: note.slug)}
         >
           <%= dgettext("actions", "edit") %>
@@ -53,16 +53,12 @@
     </.live_component>
   <% end %>
 
-  <.link
-    :if={@current_user}
-    patch={Routes.note_index_path(@socket, :new)}
-    class="self-end btn btn-primary"
-  >
+  <.link :if={@current_user} patch={~p"/notes/new"} class="self-end btn btn-primary">
     <%= dgettext("actions", "new note") %>
   </.link>
 </div>
 
-<.modal :if={@live_action in [:new, :edit]} return_to={Routes.note_index_path(@socket, :index)}>
+<.modal :if={@live_action in [:new, :edit]} return_to={~p"/notes"}>
   <.live_component
     module={MemexWeb.NoteLive.FormComponent}
     id={@note.id || :new}
@@ -70,6 +66,6 @@
     title={@page_title}
     action={@live_action}
     note={@note}
-    return_to={Routes.note_index_path(@socket, :index)}
+    return_to={~p"/notes"}
   />
 </.modal>

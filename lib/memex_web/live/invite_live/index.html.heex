@@ -8,7 +8,7 @@
       <%= gettext("no invites 😔") %>
     </h1>
 
-    <.link patch={Routes.invite_index_path(Endpoint, :new)} class="btn btn-primary">
+    <.link patch={~p"/invites"} class="btn btn-primary">
       <%= dgettext("actions", "invite someone new!") %>
     </.link>
   <% end %>
@@ -35,7 +35,7 @@
         </form>
       </:code_actions>
       <.link
-        patch={Routes.invite_index_path(Endpoint, :edit, invite)}
+        patch={~p"/invites/#{invite}/edit"}
         class="text-primary-400 link"
         aria-label={
           dgettext("actions", "edit invite for %{invite_name}", invite_name: invite.name)
@@ -86,11 +86,7 @@
       </.link>
     </.invite_card>
 
-    <.link
-      :if={@invites != []}
-      patch={Routes.invite_index_path(Endpoint, :new)}
-      class="btn btn-primary ml-auto"
-    >
+    <.link :if={@invites != []} patch={~p"/invites/new"} class="btn btn-primary ml-auto">
       <%= dgettext("actions", "create invite") %>
     </.link>
   </div>
@@ -152,14 +148,14 @@
   <% end %>
 </div>
 
-<.modal :if={@live_action in [:new, :edit]} return_to={Routes.invite_index_path(Endpoint, :index)}>
+<.modal :if={@live_action in [:new, :edit]} return_to={~p"/invites"}>
   <.live_component
     module={MemexWeb.InviteLive.FormComponent}
     id={@invite.id || :new}
     title={@page_title}
     action={@live_action}
     invite={@invite}
-    return_to={Routes.invite_index_path(Endpoint, :index)}
+    return_to={~p"/invites"}
     current_user={@current_user}
   />
 </.modal>

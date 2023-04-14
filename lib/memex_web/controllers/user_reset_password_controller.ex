@@ -6,14 +6,14 @@ defmodule MemexWeb.UserResetPasswordController do
   plug :get_user_by_reset_password_token when action in [:edit, :update]
 
   def new(conn, _params) do
-    render(conn, "new.html", page_title: gettext("forgot your password?"))
+    render(conn, :new, page_title: gettext("forgot your password?"))
   end
 
   def create(conn, %{"user" => %{"email" => email}}) do
     if user = Accounts.get_user_by_email(email) do
       Accounts.deliver_user_reset_password_instructions(
         user,
-        &Routes.user_reset_password_url(conn, :edit, &1)
+        fn token -> url(MemexWeb.Endpoint, ~p"/users/reset_password/#{token}") end
       )
     end
 
@@ -31,7 +31,7 @@ defmodule MemexWeb.UserResetPasswordController do
   end
 
   def edit(conn, _params) do
-    render(conn, "edit.html",
+    render(conn, :edit,
       changeset: Accounts.change_user_password(conn.assigns.user),
       page_title: gettext("Reset your password")
     )
@@ -44,10 +44,10 @@ defmodule MemexWeb.UserResetPasswordController do
       {:ok, _} ->
         conn
         |> put_flash(:info, dgettext("prompts", "Password reset successfully."))
-        |> redirect(to: Routes.user_session_path(conn, :new))
+        |> redirect(to: ~p"/users/log_in")
 
       {:error, changeset} ->
-        render(conn, "edit.html", changeset: changeset)
+        render(conn, :edit, changeset: changeset)
     end
   end
 

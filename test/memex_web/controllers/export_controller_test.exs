@@ -35,7 +35,7 @@ defmodule MemexWeb.ExportControllerTest do
       pipeline: pipeline,
       step: step
     } do
-      conn = get(conn, Routes.export_path(conn, :export, :json))
+      conn = get(conn, ~p"/export/json")
 
       ideal_note = %{
         "slug" => note.slug,

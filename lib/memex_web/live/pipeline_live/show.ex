@@ -73,7 +73,7 @@ defmodule MemexWeb.PipelineLive.Show do
     socket =
       socket
       |> put_flash(:info, gettext("%{slug} deleted", slug: slug))
-      |> push_navigate(to: Routes.pipeline_index_path(Endpoint, :index))
+      |> push_navigate(to: ~p"/pipelines")
 
     {:noreply, socket}
   end
@@ -91,7 +91,7 @@ defmodule MemexWeb.PipelineLive.Show do
     socket =
       socket
       |> put_flash(:info, gettext("%{title} deleted", title: title))
-      |> push_patch(to: Routes.pipeline_show_path(Endpoint, :show, pipeline_slug))
+      |> push_patch(to: ~p"/pipeline/#{pipeline_slug}")
 
     {:noreply, socket}
   end
@@ -110,7 +110,7 @@ defmodule MemexWeb.PipelineLive.Show do
 
     socket =
       socket
-      |> push_patch(to: Routes.pipeline_show_path(Endpoint, :show, pipeline_slug))
+      |> push_patch(to: ~p"/pipeline/#{pipeline_slug}")
 
     {:noreply, socket}
   end

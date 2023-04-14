@@ -1,0 +1,9 @@
+<%= @email.subject %>
+
+====================
+
+<%= @inner_content %>
+
+=====================
+
+<%= dgettext("emails", "This email was sent from memEx at %{url}", url: ~p"/") %>

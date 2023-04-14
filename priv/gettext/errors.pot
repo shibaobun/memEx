@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 
-#: lib/memex_web/templates/error/error.html.heex:8
+#: lib/memex_web/controllers/error_html/error.html.heex:8
 #, elixir-autogen, elixir-format
 msgid "Error"
 msgstr ""
@@ -25,14 +25,14 @@ msgstr ""
 msgid "Reset password link is invalid or it has expired."
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:22
-#: lib/memex_web/controllers/user_registration_controller.ex:51
+#: lib/memex_web/controllers/user_registration_controller.ex:21
+#: lib/memex_web/controllers/user_registration_controller.ex:50
 #, elixir-autogen, elixir-format
 msgid "Sorry, public registration is disabled"
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:12
-#: lib/memex_web/controllers/user_registration_controller.ex:41
+#: lib/memex_web/controllers/user_registration_controller.ex:11
+#: lib/memex_web/controllers/user_registration_controller.ex:40
 #, elixir-autogen, elixir-format
 msgid "Sorry, this invite was not found or expired"
 msgstr ""
@@ -42,13 +42,13 @@ msgstr ""
 msgid "User confirmation link is invalid or it has expired."
 msgstr ""
 
-#: lib/memex_web/controllers/user_auth.ex:177
+#: lib/memex_web/controllers/user_auth.ex:266
 #, elixir-autogen, elixir-format
 msgid "You are not authorized to view this page."
 msgstr ""
 
-#: lib/memex_web/controllers/user_auth.ex:39
-#: lib/memex_web/controllers/user_auth.ex:161
+#: lib/memex_web/controllers/user_auth.ex:38
+#: lib/memex_web/controllers/user_auth.ex:250
 #, elixir-autogen, elixir-format
 msgid "You must confirm your account and log in to access this page."
 msgstr ""
@@ -73,51 +73,54 @@ msgstr ""
 msgid "must have the @ sign and no spaces"
 msgstr ""
 
-#: lib/memex/contexts/context.ex:57
-#: lib/memex/contexts/context.ex:70
-#: lib/memex/notes/note.ex:56
-#: lib/memex/notes/note.ex:69
-#: lib/memex/pipelines/pipeline.ex:59
-#: lib/memex/pipelines/pipeline.ex:72
+#: lib/memex/contexts/context.ex:58
+#: lib/memex/contexts/context.ex:71
+#: lib/memex/notes/note.ex:57
+#: lib/memex/notes/note.ex:70
+#: lib/memex/pipelines/pipeline.ex:60
+#: lib/memex/pipelines/pipeline.ex:73
 #, elixir-autogen, elixir-format
 msgid "invalid format: only numbers, letters and hyphen are accepted"
 msgstr ""
 
-#: lib/memex_web/templates/error/error.html.heex:31
+#: lib/memex_web/controllers/error_html/error.html.heex:28
 #, elixir-autogen, elixir-format
 msgid "go back home"
 msgstr ""
 
-#: lib/memex_web/views/error_view.ex:10
+#: lib/memex_web/controllers/error_html.ex:11
+#: lib/memex_web/controllers/error_json.ex:9
 #, elixir-autogen, elixir-format
 msgid "internal server error"
 msgstr ""
 
-#: lib/memex_web/views/error_view.ex:8
+#: lib/memex_web/controllers/error_html.ex:9
+#: lib/memex_web/controllers/error_json.ex:7
 #, elixir-autogen, elixir-format
 msgid "not found"
 msgstr ""
 
-#: lib/memex_web/views/error_view.ex:9
+#: lib/memex_web/controllers/error_html.ex:10
+#: lib/memex_web/controllers/error_json.ex:8
 #, elixir-autogen, elixir-format
 msgid "unauthorized"
 msgstr ""
 
-#: lib/memex/contexts/context.ex:83
-#: lib/memex/notes/note.ex:82
-#: lib/memex/pipelines/pipeline.ex:85
+#: lib/memex/contexts/context.ex:84
+#: lib/memex/notes/note.ex:83
+#: lib/memex/pipelines/pipeline.ex:86
 #, elixir-autogen, elixir-format
 msgid "invalid format: only numbers, letters and hyphen are accepted. tags must be comma-delimited"
 msgstr ""
 
-#: lib/memex_web/templates/user_registration/new.html.heex:13
-#: lib/memex_web/templates/user_reset_password/edit.html.heex:13
-#: lib/memex_web/templates/user_settings/edit.html.heex:64
+#: lib/memex_web/controllers/user_registration_html/new.html.heex:13
+#: lib/memex_web/controllers/user_reset_password_html/edit.html.heex:13
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:64
 #, elixir-autogen, elixir-format
 msgid "oops, something went wrong! please check the errors below."
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:70
+#: lib/memex_web/controllers/user_registration_controller.ex:69
 #, elixir-autogen, elixir-format
 msgid "sorry, this invite was not found or expired"
 msgstr ""
@@ -132,8 +135,18 @@ msgstr ""
 msgid "unable to delete user"
 msgstr ""
 
-#: lib/memex_web/templates/user_settings/edit.html.heex:22
-#: lib/memex_web/templates/user_settings/edit.html.heex:118
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:22
+#: lib/memex_web/controllers/user_settings_html/edit.html.heex:118
 #, elixir-autogen, elixir-format
 msgid "oops, something went wrong! please check the errors below"
+msgstr ""
+
+#: lib/memex_web/controllers/user_auth.ex:195
+#, elixir-autogen, elixir-format
+msgid "You must log in as an administrator to access this page."
+msgstr ""
+
+#: lib/memex_web/controllers/user_auth.ex:178
+#, elixir-autogen, elixir-format
+msgid "You must log in to access this page."
 msgstr ""

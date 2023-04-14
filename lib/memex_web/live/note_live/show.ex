@@ -38,7 +38,7 @@ defmodule MemexWeb.NoteLive.Show do
     socket =
       socket
       |> put_flash(:info, gettext("%{slug} deleted", slug: slug))
-      |> push_navigate(to: Routes.note_index_path(Endpoint, :index))
+      |> push_navigate(to: ~p"/notes")
 
     {:noreply, socket}
   end

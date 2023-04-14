@@ -1,10 +1,7 @@
 <nav role="navigation" class="mb-8 px-8 py-4 w-full bg-primary-900 text-primary-400">
   <div class="flex flex-col sm:flex-row justify-between items-center">
     <div class="mb-4 sm:mb-0 sm:mr-8 flex flex-row justify-start items-center space-x-2">
-      <.link
-        navigate={Routes.live_path(Endpoint, HomeLive)}
-        class="mx-2 my-1 leading-5 text-xl text-primary-400 hover:underline"
-      >
+      <.link navigate={~p"/"} class="mx-2 my-1 leading-5 text-xl text-primary-400 hover:underline">
         <%= gettext("memEx") %>
       </.link>
 
@@ -21,28 +18,19 @@
     <ul class="flex flex-row flex-wrap justify-center items-center
       text-lg text-primary-400 text-ellipsis">
       <li class="mx-2 my-1">
-        <.link
-          navigate={Routes.note_index_path(Endpoint, :index)}
-          class="text-primary-400 hover:underline truncate"
-        >
+        <.link navigate={~p"/notes"} class="text-primary-400 hover:underline truncate">
           <%= gettext("notes") %>
         </.link>
       </li>
 
       <li class="mx-2 my-1">
-        <.link
-          navigate={Routes.context_index_path(Endpoint, :index)}
-          class="text-primary-400 hover:underline truncate"
-        >
+        <.link navigate={~p"/contexts"} class="text-primary-400 hover:underline truncate">
           <%= gettext("contexts") %>
         </.link>
       </li>
 
       <li class="mx-2 my-1">
-        <.link
-          navigate={Routes.pipeline_index_path(Endpoint, :index)}
-          class="text-primary-400 hover:underline truncate"
-        >
+        <.link navigate={~p"/pipelines"} class="text-primary-400 hover:underline truncate">
           <%= gettext("pipelines") %>
         </.link>
       </li>
@@ -51,25 +39,19 @@
 
       <%= if @current_user do %>
         <li :if={@current_user |> Accounts.is_already_admin?()} class="mx-2 my-1">
-          <.link
-            navigate={Routes.invite_index_path(Endpoint, :index)}
-            class="text-primary-400 hover:underline"
-          >
+          <.link navigate={~p"/invites"} class="text-primary-400 hover:underline">
             <%= gettext("invites") %>
           </.link>
         </li>
 
         <li class="mx-2 my-1">
-          <.link
-            navigate={Routes.user_settings_path(Endpoint, :edit)}
-            class="text-primary-400 hover:underline truncate"
-          >
+          <.link navigate={~p"/users/settings"} class="text-primary-400 hover:underline truncate">
             <%= @current_user.email %>
           </.link>
         </li>
         <li class="mx-2 my-1">
           <.link
-            href={Routes.user_session_path(Endpoint, :delete)}
+            href={~p"/users/log_out"}
             method="delete"
             data-confirm={dgettext("prompts", "are you sure you want to log out?")}
             aria-label={gettext("log out")}
@@ -84,7 +66,7 @@
           class="mx-2 my-1"
         >
           <.link
-            navigate={Routes.live_dashboard_path(Endpoint, :home)}
+            navigate={~p"/dashboard"}
             class="text-primary-400 hover:underline"
             aria-label={gettext("live dashboard")}
           >
@@ -93,19 +75,13 @@
         </li>
       <% else %>
         <li :if={Accounts.allow_registration?()} class="mx-2 my-1">
-          <.link
-            href={Routes.user_registration_path(Endpoint, :new)}
-            class="text-primary-400 hover:underline truncate"
-          >
+          <.link href={~p"/users/register"} class="text-primary-400 hover:underline truncate">
             <%= dgettext("actions", "register") %>
           </.link>
         </li>
 
         <li class="mx-2 my-1">
-          <.link
-            href={Routes.user_session_path(Endpoint, :new)}
-            class="text-primary-400 hover:underline truncate"
-          >
+          <.link href={~p"/users/log_in"} class="text-primary-400 hover:underline truncate">
             <%= dgettext("actions", "log in") %>
           </.link>
         </li>

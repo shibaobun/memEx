@@ -29,7 +29,7 @@ defmodule MemexWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
 
-      alias MemexWeb.Router.Helpers, as: Routes
+      use MemexWeb, :verified_routes
 
       # The default endpoint for testing
       @endpoint MemexWeb.Endpoint

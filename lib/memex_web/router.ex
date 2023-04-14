@@ -7,23 +7,11 @@ defmodule MemexWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {MemexWeb.LayoutView, :root}
+    plug :put_root_layout, {MemexWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
     plug :put_user_locale
-  end
-
-  defp put_user_locale(%{assigns: %{current_user: %{locale: locale}}} = conn, _opts) do
-    default = Application.fetch_env!(:gettext, :default_locale)
-    Gettext.put_locale(locale || default)
-    conn |> put_session(:locale, locale || default)
-  end
-
-  defp put_user_locale(conn, _opts) do
-    default = Application.fetch_env!(:gettext, :default_locale)
-    Gettext.put_locale(default)
-    conn |> put_session(:locale, default)
   end
 
   pipeline :require_admin do
@@ -32,13 +20,6 @@ defmodule MemexWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-  end
-
-  scope "/", MemexWeb do
-    pipe_through :browser
-
-    live "/", HomeLive
-    live "/faq", FaqLive
   end
 
   ## Authentication routes
@@ -56,10 +37,10 @@ defmodule MemexWeb.Router do
     put "/users/reset_password/:token", UserResetPasswordController, :update
   end
 
-  live_session :default do
-    scope "/", MemexWeb do
-      pipe_through [:browser, :require_authenticated_user]
+  scope "/", MemexWeb do
+    pipe_through [:browser, :require_authenticated_user]
 
+    live_session :default, on_mount: [{MemexWeb.UserAuth, :ensure_authenticated}] do
       live "/notes/new", NoteLive.Index, :new
       live "/notes/:slug/edit", NoteLive.Index, :edit
       live "/note/:slug/edit", NoteLive.Show, :edit
@@ -73,16 +54,21 @@ defmodule MemexWeb.Router do
       live "/pipeline/:slug/edit", PipelineLive.Show, :edit
       live "/pipeline/:slug/add_step", PipelineLive.Show, :add_step
       live "/pipeline/:slug/:step_id", PipelineLive.Show, :edit_step
-
-      get "/users/settings", UserSettingsController, :edit
-      put "/users/settings", UserSettingsController, :update
-      delete "/users/settings/:id", UserSettingsController, :delete
-      get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
-      get "/export/:mode", ExportController, :export
     end
 
-    scope "/", MemexWeb do
-      pipe_through [:browser]
+    get "/users/settings", UserSettingsController, :edit
+    put "/users/settings", UserSettingsController, :update
+    delete "/users/settings/:id", UserSettingsController, :delete
+    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+    get "/export/:mode", ExportController, :export
+  end
+
+  scope "/", MemexWeb do
+    pipe_through [:browser]
+
+    live_session :public, on_mount: [{MemexWeb.UserAuth, :mount_current_user}] do
+      live "/", HomeLive
+      live "/faq", FaqLive
 
       live "/notes", NoteLive.Index, :index
       live "/notes/:search", NoteLive.Index, :search
@@ -98,10 +84,10 @@ defmodule MemexWeb.Router do
     end
   end
 
-  live_session :admin do
-    scope "/", MemexWeb do
-      pipe_through [:browser, :require_authenticated_user, :require_admin]
+  scope "/", MemexWeb do
+    pipe_through [:browser, :require_authenticated_user, :require_admin]
 
+    live_session :admin, on_mount: [{MemexWeb.UserAuth, :ensure_admin}] do
       live "/invites", InviteLive.Index, :index
       live "/invites/new", InviteLive.Index, :new
       live "/invites/:id/edit", InviteLive.Index, :edit
@@ -132,9 +118,6 @@ defmodule MemexWeb.Router do
       pipe_through :browser
 
       forward "/mailbox", Plug.Swoosh.MailboxPreview
-    end
-
-    scope "/dev" do
       get "/preview/:id", MemexWeb.EmailController, :preview
     end
   end

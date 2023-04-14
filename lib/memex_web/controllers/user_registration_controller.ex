@@ -2,7 +2,6 @@ defmodule MemexWeb.UserRegistrationController do
   use MemexWeb, :controller
   import MemexWeb.Gettext
   alias Memex.{Accounts, Accounts.Invites}
-  alias MemexWeb.HomeLive
 
   def new(conn, %{"invite" => invite_token}) do
     if Invites.valid_invite_token?(invite_token) do
@@ -10,7 +9,7 @@ defmodule MemexWeb.UserRegistrationController do
     else
       conn
       |> put_flash(:error, dgettext("errors", "Sorry, this invite was not found or expired"))
-      |> redirect(to: Routes.live_path(Endpoint, HomeLive))
+      |> redirect(to: ~p"/")
     end
   end
 
@@ -20,13 +19,13 @@ defmodule MemexWeb.UserRegistrationController do
     else
       conn
       |> put_flash(:error, dgettext("errors", "Sorry, public registration is disabled"))
-      |> redirect(to: Routes.live_path(Endpoint, HomeLive))
+      |> redirect(to: ~p"/")
     end
   end
 
   # renders new user registration page
   defp render_new(conn, invite_token \\ nil) do
-    render(conn, "new.html",
+    render(conn, :new,
       changeset: Accounts.change_user_registration(),
       invite_token: invite_token,
       page_title: gettext("register")
@@ -39,7 +38,7 @@ defmodule MemexWeb.UserRegistrationController do
     else
       conn
       |> put_flash(:error, dgettext("errors", "Sorry, this invite was not found or expired"))
-      |> redirect(to: Routes.live_path(Endpoint, HomeLive))
+      |> redirect(to: ~p"/")
     end
   end
 
@@ -49,7 +48,7 @@ defmodule MemexWeb.UserRegistrationController do
     else
       conn
       |> put_flash(:error, dgettext("errors", "Sorry, public registration is disabled"))
-      |> redirect(to: Routes.live_path(Endpoint, HomeLive))
+      |> redirect(to: ~p"/")
     end
   end
 
@@ -58,17 +57,17 @@ defmodule MemexWeb.UserRegistrationController do
       {:ok, user} ->
         Accounts.deliver_user_confirmation_instructions(
           user,
-          &Routes.user_confirmation_url(conn, :confirm, &1)
+          fn token -> url(MemexWeb.Endpoint, ~p"/users/confirm/#{token}") end
         )
 
         conn
         |> put_flash(:info, dgettext("prompts", "please check your email to verify your account"))
-        |> redirect(to: Routes.user_session_path(Endpoint, :new))
+        |> redirect(to: ~p"/users/log_in")
 
       {:error, :invalid_token} ->
         conn
         |> put_flash(:error, dgettext("errors", "sorry, this invite was not found or expired"))
-        |> redirect(to: Routes.live_path(Endpoint, HomeLive))
+        |> redirect(to: ~p"/")
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn |> render("new.html", changeset: changeset, invite_token: invite_token)

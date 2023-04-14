@@ -9,6 +9,7 @@ defmodule Memex.Contexts.Context do
   alias Ecto.{Changeset, UUID}
   alias Memex.{Accounts.User, Repo}
 
+  @derive {Phoenix.Param, key: :slug}
   @derive {Jason.Encoder,
            only: [
              :slug,

@@ -1,0 +1,50 @@
+<div class="mx-auto pb-8 max-w-2xl flex flex-col justify-center items-center space-y-4">
+  <h1 class="title text-primary-400 text-xl">
+    <%= dgettext("actions", "register") %>
+  </h1>
+
+  <.form
+    :let={f}
+    for={@changeset}
+    action={~p"/users/register"}
+    class="flex flex-col space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4 justify-center items-center"
+  >
+    <p :if={@changeset.action && not @changeset.valid?()} class="alert alert-danger col-span-3">
+      <%= dgettext("errors", "oops, something went wrong! please check the errors below.") %>
+    </p>
+
+    <%= if @invite_token do %>
+      <%= hidden_input(f, :invite_token, value: @invite_token) %>
+    <% end %>
+
+    <%= label(f, :email, gettext("email"), class: "title text-lg text-primary-400") %>
+    <%= email_input(f, :email, required: true, class: "input input-primary col-span-2") %>
+    <%= error_tag(f, :email, "col-span-3") %>
+
+    <%= label(f, :password, gettext("password"), class: "title text-lg text-primary-400") %>
+    <%= password_input(f, :password, required: true, class: "input input-primary col-span-2") %>
+    <%= error_tag(f, :password, "col-span-3") %>
+
+    <%= label(f, :locale, gettext("language"), class: "title text-lg text-primary-400") %>
+    <%= select(
+      f,
+      :locale,
+      [{gettext("english"), "en_US"}],
+      class: "input input-primary col-span-2"
+    ) %>
+    <%= error_tag(f, :locale) %>
+
+    <%= submit(dgettext("actions", "register"), class: "mx-auto btn btn-primary col-span-3") %>
+  </.form>
+
+  <hr class="hr" />
+
+  <div class="flex flex-row justify-center items-center space-x-4">
+    <.link href={~p"/users/log_in"} class="btn btn-primary">
+      <%= dgettext("actions", "log in") %>
+    </.link>
+    <.link href={~p"/users/reset_password"} class="btn btn-primary">
+      <%= dgettext("actions", "forgot your password?") %>
+    </.link>
+  </div>
+</div>

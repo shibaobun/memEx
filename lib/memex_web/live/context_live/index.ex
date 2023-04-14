@@ -60,11 +60,11 @@ defmodule MemexWeb.ContextLive.Index do
   end
 
   def handle_event("search", %{"search" => %{"search_term" => ""}}, socket) do
-    {:noreply, socket |> push_patch(to: Routes.context_index_path(Endpoint, :index))}
+    {:noreply, socket |> push_patch(to: ~p"/contexts")}
   end
 
   def handle_event("search", %{"search" => %{"search_term" => search_term}}, socket) do
-    redirect_to = Routes.context_index_path(Endpoint, :search, search_term)
+    redirect_to = ~p"/contexts/#{search_term}"
     {:noreply, socket |> push_patch(to: redirect_to)}
   end
 

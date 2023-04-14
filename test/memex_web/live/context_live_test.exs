@@ -2,7 +2,6 @@ defmodule MemexWeb.ContextLiveTest do
   use MemexWeb.ConnCase
   import Phoenix.LiveViewTest
   import Memex.Fixtures
-  alias MemexWeb.Endpoint
 
   @create_attrs %{
     content: "some content",
@@ -18,7 +17,7 @@ defmodule MemexWeb.ContextLiveTest do
   }
   @invalid_attrs %{
     content: nil,
-    tags_string: " ",
+    tags_string: "invalid tags",
     slug: nil,
     visibility: nil
   }
@@ -31,24 +30,24 @@ defmodule MemexWeb.ContextLiveTest do
     setup [:register_and_log_in_user, :create_context]
 
     test "lists all contexts", %{conn: conn, context: context} do
-      {:ok, _index_live, html} = live(conn, Routes.context_index_path(conn, :index))
+      {:ok, _index_live, html} = live(conn, ~p"/contexts")
 
       assert html =~ "contexts"
       assert html =~ context.slug
     end
 
     test "searches by tag", %{conn: conn, context: %{tags: [tag]}} do
-      {:ok, index_live, html} = live(conn, Routes.context_index_path(conn, :index))
+      {:ok, index_live, html} = live(conn, ~p"/contexts")
 
       assert html =~ tag
       assert index_live |> element("a", tag) |> render_click()
-      assert_patch(index_live, Routes.context_index_path(conn, :search, tag))
+      assert_patch(index_live, ~p"/contexts/#{tag}")
     end
 
     test "saves new context", %{conn: conn} do
-      {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
+      {:ok, index_live, _html} = live(conn, ~p"/contexts")
       assert index_live |> element("a", "new context") |> render_click() =~ "new context"
-      assert_patch(index_live, Routes.context_index_path(conn, :new))
+      assert_patch(index_live, ~p"/contexts/new")
 
       assert index_live
              |> form("#context-form")
@@ -58,19 +57,19 @@ defmodule MemexWeb.ContextLiveTest do
         index_live
         |> form("#context-form")
         |> render_submit(context: @create_attrs)
-        |> follow_redirect(conn, Routes.context_index_path(conn, :index))
+        |> follow_redirect(conn, ~p"/contexts")
 
       assert html =~ "#{@create_attrs.slug} created"
       assert html =~ @create_attrs.slug
     end
 
     test "updates context in listing", %{conn: conn, context: context} do
-      {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
+      {:ok, index_live, _html} = live(conn, ~p"/contexts")
 
       assert index_live |> element(~s/a[aria-label="edit #{context.slug}"]/) |> render_click() =~
                "edit"
 
-      assert_patch(index_live, Routes.context_index_path(conn, :edit, context.slug))
+      assert_patch(index_live, ~p"/contexts/#{context}/edit")
 
       assert index_live
              |> form("#context-form")
@@ -80,14 +79,14 @@ defmodule MemexWeb.ContextLiveTest do
         index_live
         |> form("#context-form")
         |> render_submit(context: @update_attrs)
-        |> follow_redirect(conn, Routes.context_index_path(conn, :index))
+        |> follow_redirect(conn, ~p"/contexts")
 
       assert html =~ "#{@update_attrs.slug} saved"
       assert html =~ "some-updated-slug"
     end
 
     test "deletes context in listing", %{conn: conn, context: context} do
-      {:ok, index_live, _html} = live(conn, Routes.context_index_path(conn, :index))
+      {:ok, index_live, _html} = live(conn, ~p"/contexts")
 
       assert index_live |> element(~s/a[aria-label="delete #{context.slug}"]/) |> render_click()
       refute has_element?(index_live, "#context-#{context.id}")
@@ -98,16 +97,16 @@ defmodule MemexWeb.ContextLiveTest do
     setup [:register_and_log_in_user, :create_context]
 
     test "displays context", %{conn: conn, context: context} do
-      {:ok, _show_live, html} = live(conn, Routes.context_show_path(conn, :show, context.slug))
+      {:ok, _show_live, html} = live(conn, ~p"/context/#{context}")
 
       assert html =~ "context"
       assert html =~ context.slug
     end
 
     test "updates context within modal", %{conn: conn, context: context} do
-      {:ok, show_live, _html} = live(conn, Routes.context_show_path(conn, :show, context.slug))
+      {:ok, show_live, _html} = live(conn, ~p"/context/#{context}")
       assert show_live |> element("a", "edit") |> render_click() =~ "edit"
-      assert_patch(show_live, Routes.context_show_path(conn, :edit, context.slug))
+      assert_patch(show_live, ~p"/context/#{context}/edit")
 
       html =
         show_live
@@ -121,20 +120,20 @@ defmodule MemexWeb.ContextLiveTest do
         show_live
         |> form("#context-form")
         |> render_submit(context: Map.put(@update_attrs, "slug", context.slug))
-        |> follow_redirect(conn, Routes.context_show_path(conn, :show, context.slug))
+        |> follow_redirect(conn, ~p"/context/#{context}")
 
       assert html =~ "#{context.slug} saved"
       assert html =~ "tag2"
     end
 
     test "deletes context", %{conn: conn, context: context} do
-      {:ok, show_live, _html} = live(conn, Routes.context_show_path(conn, :show, context.slug))
+      {:ok, show_live, _html} = live(conn, ~p"/context/#{context}")
 
       {:ok, index_live, _html} =
         show_live
         |> element(~s/button[aria-label="delete #{context.slug}"]/)
         |> render_click()
-        |> follow_redirect(conn, Routes.context_index_path(conn, :index))
+        |> follow_redirect(conn, ~p"/contexts")
 
       refute has_element?(index_live, "#context-#{context.id}")
     end
@@ -157,18 +156,18 @@ defmodule MemexWeb.ContextLiveTest do
     end
 
     test "searches by tag", %{conn: conn, context: %{tags: [tag]} = context} do
-      {:ok, show_live, html} = live(conn, Routes.context_show_path(conn, :show, context.slug))
+      {:ok, show_live, html} = live(conn, ~p"/context/#{context}")
 
       assert html =~ tag
       assert show_live |> element("a", tag) |> render_click()
-      assert_redirect(show_live, Routes.context_index_path(conn, :search, tag))
+      assert_redirect(show_live, ~p"/contexts/#{tag}")
     end
 
     test "displays context", %{conn: conn, context: context, note: %{slug: note_slug}} do
-      {:ok, show_live, html} = live(conn, Routes.context_show_path(conn, :show, context.slug))
+      {:ok, show_live, html} = live(conn, ~p"/context/#{context}")
 
       assert html =~ "context"
-      assert html =~ Routes.note_show_path(Endpoint, :show, note_slug)
+      assert html =~ ~p"/note/#{note_slug}"
       assert has_element?(show_live, "a", note_slug)
     end
   end

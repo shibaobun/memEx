@@ -60,11 +60,11 @@ defmodule MemexWeb.NoteLive.Index do
   end
 
   def handle_event("search", %{"search" => %{"search_term" => ""}}, socket) do
-    {:noreply, socket |> push_patch(to: Routes.note_index_path(Endpoint, :index))}
+    {:noreply, socket |> push_patch(to: ~p"/notes")}
   end
 
   def handle_event("search", %{"search" => %{"search_term" => search_term}}, socket) do
-    {:noreply, socket |> push_patch(to: Routes.note_index_path(Endpoint, :search, search_term))}
+    {:noreply, socket |> push_patch(to: ~p"/notes/#{search_term}")}
   end
 
   defp display_notes(%{assigns: %{current_user: current_user, search: search}} = socket)

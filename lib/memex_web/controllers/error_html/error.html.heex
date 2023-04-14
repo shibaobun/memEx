@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" class="m-0 p-0 w-full h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      <%= dgettext("errors", "Error") %> | <%= gettext("memEx") %>
+    </title>
+    <link rel="stylesheet" href="/css/app.css" />
+    <script defer type="text/javascript" src="/js/app.js">
+    </script>
+  </head>
+  <body class="pb-8 m-0 p-0 w-full h-full bg-primary-800 text-primary-400 subpixel-antialiased">
+    <header>
+      <.topbar current_user={assigns[:current_user]} />
+    </header>
+
+    <div class="pb-8 w-full flex flex-col justify-center items-center text-center">
+      <div class="p-8 sm:p-16 w-full flex flex-col justify-center items-center space-y-4 max-w-3xl">
+        <h1 class="title text-primary-400 text-3xl">
+          <%= @error_string %>
+        </h1>
+
+        <hr class="w-full hr" />
+
+        <.link href={~p"/"} class="link title text-primary-400 text-lg">
+          <%= dgettext("errors", "go back home") %>
+        </.link>
+      </div>
+    </div>
+  </body>
+</html>

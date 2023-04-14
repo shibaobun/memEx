@@ -93,7 +93,7 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
     assigns = %{slug: slug}
 
     slug_block = ~H"""
-    <.link navigate={Routes.pipeline_show_path(Endpoint, :show, @slug)} class="link">
+    <.link navigate={~p"/pipeline/#{@slug}"} class="link">
       <%= @slug %>
     </.link>
     """
@@ -118,11 +118,7 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
 
     ~H"""
     <div class="flex flex-wrap justify-center space-x-1">
-      <.link
-        :for={tag <- @tags}
-        patch={Routes.pipeline_index_path(Endpoint, :search, tag)}
-        class="link"
-      >
+      <.link :for={tag <- @tags} patch={~p"/pipelines/#{tag}"} class="link">
         <%= tag %>
       </.link>
     </div>

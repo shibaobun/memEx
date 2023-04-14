@@ -34,7 +34,7 @@
       <:actions :let={context}>
         <.link
           :if={Contexts.is_owner?(context, @current_user)}
-          patch={Routes.context_index_path(@socket, :edit, context.slug)}
+          patch={~p"/contexts/#{context}/edit"}
           aria-label={dgettext("actions", "edit %{context_slug}", context_slug: context.slug)}
         >
           <%= dgettext("actions", "edit") %>
@@ -53,16 +53,12 @@
     </.live_component>
   <% end %>
 
-  <.link
-    :if={@current_user}
-    patch={Routes.context_index_path(@socket, :new)}
-    class="self-end btn btn-primary"
-  >
+  <.link :if={@current_user} patch={~p"/contexts/new"} class="self-end btn btn-primary">
     <%= dgettext("actions", "new context") %>
   </.link>
 </div>
 
-<.modal :if={@live_action in [:new, :edit]} return_to={Routes.context_index_path(@socket, :index)}>
+<.modal :if={@live_action in [:new, :edit]} return_to={~p"/contexts"}>
   <.live_component
     module={MemexWeb.ContextLive.FormComponent}
     id={@context.id || :new}
@@ -70,6 +66,6 @@
     title={@page_title}
     action={@live_action}
     context={@context}
-    return_to={Routes.context_index_path(@socket, :index)}
+    return_to={~p"/contexts"}
   />
 </.modal>

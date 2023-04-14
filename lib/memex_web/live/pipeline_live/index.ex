@@ -60,12 +60,11 @@ defmodule MemexWeb.PipelineLive.Index do
   end
 
   def handle_event("search", %{"search" => %{"search_term" => ""}}, socket) do
-    {:noreply, socket |> push_patch(to: Routes.pipeline_index_path(Endpoint, :index))}
+    {:noreply, socket |> push_patch(to: ~p"/pipelines")}
   end
 
   def handle_event("search", %{"search" => %{"search_term" => search_term}}, socket) do
-    redirect_to = Routes.pipeline_index_path(Endpoint, :search, search_term)
-    {:noreply, socket |> push_patch(to: redirect_to)}
+    {:noreply, socket |> push_patch(to: ~p"/pipelines/#{search_term}")}
   end
 
   defp display_pipelines(%{assigns: %{current_user: current_user, search: search}} = socket)
