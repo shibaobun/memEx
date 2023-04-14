@@ -22,8 +22,6 @@ defmodule MemexWeb.Router do
     plug :accepts, ["json"]
   end
 
-  ## Authentication routes
-
   scope "/", MemexWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
@@ -40,6 +38,12 @@ defmodule MemexWeb.Router do
   scope "/", MemexWeb do
     pipe_through [:browser, :require_authenticated_user]
 
+    get "/users/settings", UserSettingsController, :edit
+    put "/users/settings", UserSettingsController, :update
+    delete "/users/settings/:id", UserSettingsController, :delete
+    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+    get "/export/:mode", ExportController, :export
+
     live_session :default, on_mount: [{MemexWeb.UserAuth, :ensure_authenticated}] do
       live "/notes/new", NoteLive.Index, :new
       live "/notes/:slug/edit", NoteLive.Index, :edit
@@ -55,16 +59,15 @@ defmodule MemexWeb.Router do
       live "/pipeline/:slug/add_step", PipelineLive.Show, :add_step
       live "/pipeline/:slug/:step_id", PipelineLive.Show, :edit_step
     end
-
-    get "/users/settings", UserSettingsController, :edit
-    put "/users/settings", UserSettingsController, :update
-    delete "/users/settings/:id", UserSettingsController, :delete
-    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
-    get "/export/:mode", ExportController, :export
   end
 
   scope "/", MemexWeb do
     pipe_through [:browser]
+
+    delete "/users/log_out", UserSessionController, :delete
+    get "/users/confirm", UserConfirmationController, :new
+    post "/users/confirm", UserConfirmationController, :create
+    get "/users/confirm/:token", UserConfirmationController, :confirm
 
     live_session :public, on_mount: [{MemexWeb.UserAuth, :mount_current_user}] do
       live "/", HomeLive
@@ -87,26 +90,13 @@ defmodule MemexWeb.Router do
   scope "/", MemexWeb do
     pipe_through [:browser, :require_authenticated_user, :require_admin]
 
+    live_dashboard "/dashboard", metrics: MemexWeb.Telemetry, ecto_repos: [Memex.Repo]
+
     live_session :admin, on_mount: [{MemexWeb.UserAuth, :ensure_admin}] do
       live "/invites", InviteLive.Index, :index
       live "/invites/new", InviteLive.Index, :new
       live "/invites/:id/edit", InviteLive.Index, :edit
     end
-  end
-
-  scope "/", MemexWeb do
-    pipe_through [:browser, :require_authenticated_user, :require_admin]
-
-    live_dashboard "/dashboard", metrics: MemexWeb.Telemetry, ecto_repos: [Memex.Repo]
-  end
-
-  scope "/", MemexWeb do
-    pipe_through [:browser]
-
-    delete "/users/log_out", UserSessionController, :delete
-    get "/users/confirm", UserConfirmationController, :new
-    post "/users/confirm", UserConfirmationController, :create
-    get "/users/confirm/:token", UserConfirmationController, :confirm
   end
 
   # Enables the Swoosh mailbox preview in development.
