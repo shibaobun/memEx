@@ -29,33 +29,28 @@ defmodule Memex.Email do
   def generate_email("welcome", user, %{"url" => url}) do
     user
     |> base_email(dgettext("emails", "confirm your memEx account"))
-    |> html_email(:confirm_email_html, %{user: user, url: url})
-    |> text_email(:confirm_email_text, %{user: user, url: url})
+    |> render_body(:confirm_email, %{user: user, url: url})
   end
 
   def generate_email("reset_password", user, %{"url" => url}) do
     user
     |> base_email(dgettext("emails", "reset your memEx password"))
-    |> html_email(:reset_password_html, %{user: user, url: url})
-    |> text_email(:reset_password_text, %{user: user, url: url})
+    |> render_body(:reset_password, %{user: user, url: url})
   end
 
   def generate_email("update_email", user, %{"url" => url}) do
     user
     |> base_email(dgettext("emails", "update your memEx email"))
-    |> html_email(:update_email_html, %{user: user, url: url})
-    |> text_email(:update_email_text, %{user: user, url: url})
+    |> render_body(:update_email, %{user: user, url: url})
   end
 
-  defp html_email(email, atom, assigns) do
-    heex = apply(EmailHTML, atom, [assigns])
-    html = render_to_string(Layouts, "email_html", "html", email: email, inner_content: heex)
-    email |> html_body(html)
-  end
+  defp render_body(email, template, assigns) do
+    html_heex = apply(EmailHTML, String.to_existing_atom("#{template}_html"), [assigns])
+    html = render_to_string(Layouts, "email_html", "html", email: email, inner_content: html_heex)
 
-  defp text_email(email, atom, assigns) do
-    heex = apply(EmailHTML, atom, [assigns])
-    text = render_to_string(Layouts, "email_text", "text", email: email, inner_content: heex)
-    email |> text_body(text)
+    text_heex = apply(EmailHTML, String.to_existing_atom("#{template}_text"), [assigns])
+    text = render_to_string(Layouts, "email_text", "text", email: email, inner_content: text_heex)
+
+    email |> html_body(html) |> text_body(text)
   end
 end

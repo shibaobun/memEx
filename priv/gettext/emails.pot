@@ -71,7 +71,7 @@ msgstr ""
 msgid "confirm your memEx account"
 msgstr ""
 
-#: lib/memex/accounts/email.ex:38
+#: lib/memex/accounts/email.ex:37
 #, elixir-autogen, elixir-format
 msgid "reset your memEx password"
 msgstr ""
@@ -86,7 +86,7 @@ msgstr ""
 msgid "this email was sent from memEx at %{url}"
 msgstr ""
 
-#: lib/memex/accounts/email.ex:45
+#: lib/memex/accounts/email.ex:43
 #, elixir-autogen, elixir-format
 msgid "update your memEx email"
 msgstr ""
