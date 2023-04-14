@@ -5,7 +5,7 @@ defmodule MemexWeb.UserConfirmationController do
   alias Memex.Accounts
 
   def new(conn, _params) do
-    render(conn, :new, page_title: gettext("Confirm your account"))
+    render(conn, :new, page_title: gettext("confirm your account"))
   end
 
   def create(conn, %{"user" => %{"email" => email}}) do
@@ -22,8 +22,7 @@ defmodule MemexWeb.UserConfirmationController do
       :info,
       dgettext(
         "prompts",
-        "If your email is in our system and it has not been confirmed yet, " <>
-          "you will receive an email with instructions shortly."
+        "if your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
       )
     )
     |> redirect(to: "/")
@@ -51,7 +50,7 @@ defmodule MemexWeb.UserConfirmationController do
             conn
             |> put_flash(
               :error,
-              dgettext("errors", "User confirmation link is invalid or it has expired.")
+              dgettext("errors", "user confirmation link is invalid or it has expired.")
             )
             |> redirect(to: "/")
         end

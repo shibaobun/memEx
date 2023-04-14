@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 
-#: lib/memex_web/controllers/user_confirmation_controller.ex:38
+#: lib/memex_web/controllers/user_confirmation_controller.ex:37
 #, elixir-autogen, elixir-format
 msgid "%{email} confirmed successfully."
 msgstr ""
@@ -38,21 +38,6 @@ msgstr ""
 #: lib/memex_web/live/invite_live/index.ex:126
 #, elixir-autogen, elixir-format
 msgid "%{user_email} deleted succesfully"
-msgstr ""
-
-#: lib/memex_web/controllers/user_confirmation_controller.ex:23
-#, elixir-autogen, elixir-format
-msgid "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
-msgstr ""
-
-#: lib/memex_web/controllers/user_reset_password_controller.ex:24
-#, elixir-autogen, elixir-format
-msgid "If your email is in our system, you will receive instructions to reset your password shortly."
-msgstr ""
-
-#: lib/memex_web/controllers/user_reset_password_controller.ex:46
-#, elixir-autogen, elixir-format
-msgid "Password reset successfully."
 msgstr ""
 
 #: lib/memex_web/controllers/user_settings_html/edit.html.heex:130
@@ -155,4 +140,19 @@ msgstr ""
 #: lib/memex_web/live/invite_live/form_component.html.heex:34
 #, elixir-autogen, elixir-format
 msgid "saving..."
+msgstr ""
+
+#: lib/memex_web/controllers/user_confirmation_controller.ex:23
+#, elixir-autogen, elixir-format
+msgid "if your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
+msgstr ""
+
+#: lib/memex_web/controllers/user_reset_password_controller.ex:24
+#, elixir-autogen, elixir-format
+msgid "if your email is in our system, you will receive instructions to reset your password shortly."
+msgstr ""
+
+#: lib/memex_web/controllers/user_reset_password_controller.ex:45
+#, elixir-autogen, elixir-format
+msgid "password reset successfully."
 msgstr ""

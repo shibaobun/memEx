@@ -8,7 +8,7 @@ defmodule MemexWeb.UserRegistrationController do
       conn |> render_new(invite_token)
     else
       conn
-      |> put_flash(:error, dgettext("errors", "Sorry, this invite was not found or expired"))
+      |> put_flash(:error, dgettext("errors", "sorry, this invite was not found or expired"))
       |> redirect(to: ~p"/")
     end
   end
@@ -18,7 +18,7 @@ defmodule MemexWeb.UserRegistrationController do
       conn |> render_new()
     else
       conn
-      |> put_flash(:error, dgettext("errors", "Sorry, public registration is disabled"))
+      |> put_flash(:error, dgettext("errors", "sorry, public registration is disabled"))
       |> redirect(to: ~p"/")
     end
   end
@@ -37,7 +37,7 @@ defmodule MemexWeb.UserRegistrationController do
       conn |> create_user(attrs, invite_token)
     else
       conn
-      |> put_flash(:error, dgettext("errors", "Sorry, this invite was not found or expired"))
+      |> put_flash(:error, dgettext("errors", "sorry, this invite was not found or expired"))
       |> redirect(to: ~p"/")
     end
   end
@@ -47,7 +47,7 @@ defmodule MemexWeb.UserRegistrationController do
       conn |> create_user(attrs)
     else
       conn
-      |> put_flash(:error, dgettext("errors", "Sorry, public registration is disabled"))
+      |> put_flash(:error, dgettext("errors", "sorry, public registration is disabled"))
       |> redirect(to: ~p"/")
     end
   end

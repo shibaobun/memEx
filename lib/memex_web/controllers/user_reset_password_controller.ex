@@ -23,8 +23,7 @@ defmodule MemexWeb.UserResetPasswordController do
       :info,
       dgettext(
         "prompts",
-        "If your email is in our system, you will receive instructions to " <>
-          "reset your password shortly."
+        "if your email is in our system, you will receive instructions to reset your password shortly."
       )
     )
     |> redirect(to: "/")
@@ -33,7 +32,7 @@ defmodule MemexWeb.UserResetPasswordController do
   def edit(conn, _params) do
     render(conn, :edit,
       changeset: Accounts.change_user_password(conn.assigns.user),
-      page_title: gettext("Reset your password")
+      page_title: gettext("reset your password")
     )
   end
 
@@ -43,7 +42,7 @@ defmodule MemexWeb.UserResetPasswordController do
     case Accounts.reset_user_password(conn.assigns.user, user_params) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, dgettext("prompts", "Password reset successfully."))
+        |> put_flash(:info, dgettext("prompts", "password reset successfully."))
         |> redirect(to: ~p"/users/log_in")
 
       {:error, changeset} ->
@@ -60,7 +59,7 @@ defmodule MemexWeb.UserResetPasswordController do
       conn
       |> put_flash(
         :error,
-        dgettext("errors", "Reset password link is invalid or it has expired.")
+        dgettext("errors", "reset password link is invalid or it has expired.")
       )
       |> redirect(to: "/")
       |> halt()

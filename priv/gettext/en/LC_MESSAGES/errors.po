@@ -16,33 +16,6 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: lib/memex_web/controllers/user_session_controller.ex:17
-#, elixir-autogen, elixir-format
-msgid "Invalid email or password"
-msgstr ""
-
-#: lib/memex_web/controllers/user_reset_password_controller.ex:63
-#, elixir-autogen, elixir-format
-msgid "Reset password link is invalid or it has expired."
-msgstr ""
-
-#: lib/memex_web/controllers/user_registration_controller.ex:21
-#: lib/memex_web/controllers/user_registration_controller.ex:50
-#, elixir-autogen, elixir-format
-msgid "Sorry, public registration is disabled"
-msgstr ""
-
-#: lib/memex_web/controllers/user_registration_controller.ex:11
-#: lib/memex_web/controllers/user_registration_controller.ex:40
-#, elixir-autogen, elixir-format
-msgid "Sorry, this invite was not found or expired"
-msgstr ""
-
-#: lib/memex_web/controllers/user_confirmation_controller.ex:54
-#, elixir-autogen, elixir-format
-msgid "User confirmation link is invalid or it has expired."
-msgstr ""
-
 #: lib/memex_web/controllers/user_auth.ex:266
 #, elixir-autogen, elixir-format
 msgid "You are not authorized to view this page."
@@ -121,6 +94,8 @@ msgstr ""
 msgid "oops, something went wrong! please check the errors below."
 msgstr ""
 
+#: lib/memex_web/controllers/user_registration_controller.ex:11
+#: lib/memex_web/controllers/user_registration_controller.ex:40
 #: lib/memex_web/controllers/user_registration_controller.ex:69
 #, elixir-autogen, elixir-format
 msgid "sorry, this invite was not found or expired"
@@ -150,4 +125,25 @@ msgstr ""
 #: lib/memex_web/controllers/user_auth.ex:178
 #, elixir-autogen, elixir-format
 msgid "You must log in to access this page."
+msgstr ""
+
+#: lib/memex_web/controllers/user_session_controller.ex:17
+#, elixir-autogen, elixir-format, fuzzy
+msgid "invalid email or password"
+msgstr ""
+
+#: lib/memex_web/controllers/user_reset_password_controller.ex:62
+#, elixir-autogen, elixir-format, fuzzy
+msgid "reset password link is invalid or it has expired."
+msgstr ""
+
+#: lib/memex_web/controllers/user_registration_controller.ex:21
+#: lib/memex_web/controllers/user_registration_controller.ex:50
+#, elixir-autogen, elixir-format, fuzzy
+msgid "sorry, public registration is disabled"
+msgstr ""
+
+#: lib/memex_web/controllers/user_confirmation_controller.ex:53
+#, elixir-autogen, elixir-format, fuzzy
+msgid "user confirmation link is invalid or it has expired."
 msgstr ""

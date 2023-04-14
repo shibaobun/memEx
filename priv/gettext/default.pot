@@ -10,19 +10,9 @@
 msgid ""
 msgstr ""
 
-#: lib/memex_web/controllers/user_confirmation_controller.ex:8
-#, elixir-autogen, elixir-format
-msgid "Confirm your account"
-msgstr ""
-
 #: lib/memex_web/components/layouts/live.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "Reconnecting..."
-msgstr ""
-
-#: lib/memex_web/controllers/user_reset_password_controller.ex:36
-#, elixir-autogen, elixir-format
-msgid "Reset your password"
 msgstr ""
 
 #: lib/memex_web/live/context_live/show.html.heex:15
@@ -708,4 +698,14 @@ msgstr ""
 #: lib/memex_web/components/core_components/topbar.html.heex:57
 #, elixir-autogen, elixir-format
 msgid "log out"
+msgstr ""
+
+#: lib/memex_web/controllers/user_confirmation_controller.ex:8
+#, elixir-autogen, elixir-format
+msgid "confirm your account"
+msgstr ""
+
+#: lib/memex_web/controllers/user_reset_password_controller.ex:35
+#, elixir-autogen, elixir-format
+msgid "reset your password"
 msgstr ""
