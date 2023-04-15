@@ -23,11 +23,7 @@ defmodule MemexWeb.UserResetPasswordControllerTest do
   describe "POST /users/reset_password" do
     @tag :capture_log
     test "sends a new reset password token", %{conn: conn, user: user} do
-      conn =
-        post(conn, ~p"/users/reset_password", %{
-          user: %{email: user.email}
-        })
-
+      conn = post(conn, ~p"/users/reset_password", %{user: %{email: user.email}})
       assert redirected_to(conn) == ~p"/"
 
       conn.assigns.flash["info"] =~
@@ -37,11 +33,7 @@ defmodule MemexWeb.UserResetPasswordControllerTest do
     end
 
     test "does not send reset password token if email is invalid", %{conn: conn} do
-      conn =
-        post(conn, ~p"/users/reset_password", %{
-          user: %{email: "unknown@example.com"}
-        })
-
+      conn = post(conn, ~p"/users/reset_password", %{user: %{email: "unknown@example.com"}})
       assert redirected_to(conn) == ~p"/"
 
       conn.assigns.flash["info"] =~

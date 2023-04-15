@@ -25,11 +25,7 @@ defmodule MemexWeb.UserRegistrationControllerTest do
     @tag :capture_log
     test "creates account and logs the user in", %{conn: conn} do
       email = unique_user_email()
-
-      conn =
-        post(conn, ~p"/users/register", %{
-          user: valid_user_attributes(email: email)
-        })
+      conn = post(conn, ~p"/users/register", %{user: valid_user_attributes(email: email)})
 
       assert get_session(conn, :phoenix_flash) == %{
                "info" => "please check your email to verify your account"
@@ -40,9 +36,7 @@ defmodule MemexWeb.UserRegistrationControllerTest do
 
     test "render errors for invalid data", %{conn: conn} do
       conn =
-        post(conn, ~p"/users/register", %{
-          user: %{email: "with spaces", password: "too short"}
-        })
+        post(conn, ~p"/users/register", %{user: %{email: "with spaces", password: "too short"}})
 
       response = html_response(conn, 200)
       assert response =~ "register"

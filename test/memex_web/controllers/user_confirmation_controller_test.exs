@@ -23,11 +23,7 @@ defmodule MemexWeb.UserConfirmationControllerTest do
   describe "POST /users/confirm" do
     @tag :capture_log
     test "sends a new confirmation token", %{conn: conn, user: user} do
-      conn =
-        post(conn, ~p"/users/confirm", %{
-          user: %{email: user.email}
-        })
-
+      conn = post(conn, ~p"/users/confirm", %{user: %{email: user.email}})
       assert redirected_to(conn) == ~p"/"
 
       conn.assigns.flash["info"] =~
@@ -39,11 +35,7 @@ defmodule MemexWeb.UserConfirmationControllerTest do
     test "does not send confirmation token if User is confirmed", %{conn: conn, user: user} do
       Repo.update!(Accounts.User.confirm_changeset(user))
 
-      conn =
-        post(conn, ~p"/users/confirm", %{
-          user: %{email: user.email}
-        })
-
+      conn = post(conn, ~p"/users/confirm", %{user: %{email: user.email}})
       assert redirected_to(conn) == ~p"/"
 
       conn.assigns.flash["info"] =~
@@ -51,11 +43,7 @@ defmodule MemexWeb.UserConfirmationControllerTest do
     end
 
     test "does not send confirmation token if email is invalid", %{conn: conn} do
-      conn =
-        post(conn, ~p"/users/confirm", %{
-          user: %{email: "unknown@example.com"}
-        })
-
+      conn = post(conn, ~p"/users/confirm", %{user: %{email: "unknown@example.com"}})
       assert redirected_to(conn) == ~p"/"
 
       conn.assigns.flash["info"] =~

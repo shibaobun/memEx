@@ -71,11 +71,7 @@ defmodule MemexWeb.UserSessionControllerTest do
 
     test "emits error message with invalid credentials",
          %{conn: conn, current_user: current_user} do
-      conn =
-        post(conn, ~p"/users/log_in", %{
-          user: %{email: current_user.email, password: "bad"}
-        })
-
+      conn = post(conn, ~p"/users/log_in", %{user: %{email: current_user.email, password: "bad"}})
       response = html_response(conn, 200)
       assert response =~ "log in"
       assert response =~ "invalid email or password"
