@@ -1,5 +1,5 @@
 defmodule Memex.NotesTest do
-  use Memex.DataCase
+  use Memex.DataCase, async: true
   import Memex.Fixtures
   alias Memex.{Notes, Notes.Note}
   @moduletag :notes_test

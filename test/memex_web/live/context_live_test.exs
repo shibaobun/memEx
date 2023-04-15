@@ -1,5 +1,5 @@
 defmodule MemexWeb.ContextLiveTest do
-  use MemexWeb.ConnCase
+  use MemexWeb.ConnCase, async: true
   import Phoenix.LiveViewTest
   import Memex.Fixtures
 

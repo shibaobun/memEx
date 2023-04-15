@@ -3,7 +3,7 @@ defmodule MemexWeb.ExportControllerTest do
   Tests the export function
   """
 
-  use MemexWeb.ConnCase
+  use MemexWeb.ConnCase, async: true
   import Memex.Fixtures
 
   @moduletag :export_controller_test

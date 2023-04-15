@@ -1,6 +1,5 @@
 defmodule MemexWeb.HomeLiveTest do
-  use MemexWeb.ConnCase
-
+  use MemexWeb.ConnCase, async: true
   import Phoenix.LiveViewTest
 
   test "disconnected and connected render", %{conn: conn} do

@@ -1,5 +1,5 @@
 defmodule Memex.StepsTest do
-  use Memex.DataCase
+  use Memex.DataCase, async: true
   import Memex.Fixtures
   alias Memex.Pipelines.{Steps, Steps.Step}
   @moduletag :steps_test

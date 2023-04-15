@@ -3,7 +3,7 @@ defmodule Memex.AccountsTest do
   This tests the accounts module
   """
 
-  use Memex.DataCase
+  use Memex.DataCase, async: true
   alias Ecto.Changeset
   alias Memex.Accounts
   alias Memex.Accounts.{Invites, User, UserToken}

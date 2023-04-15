@@ -1,5 +1,5 @@
 defmodule Memex.ContextsTest do
-  use Memex.DataCase
+  use Memex.DataCase, async: true
   import Memex.Fixtures
   alias Memex.{Contexts, Contexts.Context}
   @moduletag :contexts_test

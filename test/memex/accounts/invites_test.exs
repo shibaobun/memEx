@@ -3,7 +3,7 @@ defmodule Memex.InvitesTest do
   This module tests the Memex.Accounts.Invites context
   """
 
-  use Memex.DataCase
+  use Memex.DataCase, async: true
   alias Ecto.Changeset
   alias Memex.Accounts
   alias Memex.Accounts.{Invite, Invites}

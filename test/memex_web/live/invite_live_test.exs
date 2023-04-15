@@ -3,7 +3,7 @@ defmodule MemexWeb.InviteLiveTest do
   Tests the invite liveview
   """
 
-  use MemexWeb.ConnCase
+  use MemexWeb.ConnCase, async: true
   import Phoenix.LiveViewTest
   alias Memex.Accounts.Invites
 

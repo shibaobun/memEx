@@ -1,5 +1,5 @@
 defmodule Memex.PipelinesTest do
-  use Memex.DataCase
+  use Memex.DataCase, async: true
   import Memex.Fixtures
   alias Memex.{Pipelines, Pipelines.Pipeline}
   @moduletag :pipelines_test
