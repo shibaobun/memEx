@@ -89,9 +89,7 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
 
   @spec get_value_for_key(atom(), Pipeline.t(), additional_data :: map()) ::
           any() | {any(), Rendered.t()}
-  defp get_value_for_key(:slug, %{slug: slug}, _additional_data) do
-    assigns = %{slug: slug}
-
+  defp get_value_for_key(:slug, %{slug: slug} = assigns, _additional_data) do
     slug_block = ~H"""
     <.link navigate={~p"/pipeline/#{@slug}"} class="link">
       <%= @slug %>
@@ -101,9 +99,7 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
     {slug, slug_block}
   end
 
-  defp get_value_for_key(:description, %{description: description}, _additional_data) do
-    assigns = %{description: description}
-
+  defp get_value_for_key(:description, %{description: description} = assigns, _additional_data) do
     description_block = ~H"""
     <div class="truncate max-w-sm">
       <%= @description %>
@@ -113,9 +109,7 @@ defmodule MemexWeb.Components.PipelinesTableComponent do
     {description, description_block}
   end
 
-  defp get_value_for_key(:tags, %{tags: tags}, _additional_data) do
-    assigns = %{tags: tags}
-
+  defp get_value_for_key(:tags, assigns, _additional_data) do
     ~H"""
     <div class="flex flex-wrap justify-center space-x-1">
       <.link :for={tag <- @tags} patch={~p"/pipelines/#{tag}"} class="link">
