@@ -51,7 +51,7 @@ defmodule MemexWeb.InviteLiveTest do
              |> element(~s/a[aria-label="edit invite for #{invite.name}"]/)
              |> render_click() =~ "edit invite"
 
-      assert_patch(index_live, ~p"/invites/#{invite}/edit")
+      assert_patch(index_live, ~p"/invites/edit/#{invite}")
 
       assert index_live
              |> form("#invite-form")

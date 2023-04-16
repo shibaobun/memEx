@@ -1,6 +1,7 @@
 # v0.1.12
 - ee cummings even more
 - Improve tests
+- Change invite path slightly
 # v0.1.11
 - Update dependencies
 

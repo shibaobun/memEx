@@ -35,7 +35,7 @@
         </form>
       </:code_actions>
       <.link
-        patch={~p"/invites/#{invite}/edit"}
+        patch={~p"/invites/edit/#{invite}"}
         class="text-primary-400 link"
         aria-label={
           dgettext("actions", "edit invite for %{invite_name}", invite_name: invite.name)

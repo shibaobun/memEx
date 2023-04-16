@@ -95,7 +95,7 @@ defmodule MemexWeb.Router do
     live_session :admin, on_mount: [{MemexWeb.UserAuth, :ensure_admin}] do
       live "/invites", InviteLive.Index, :index
       live "/invites/new", InviteLive.Index, :new
-      live "/invites/:id/edit", InviteLive.Index, :edit
+      live "/invites/edit/:id", InviteLive.Index, :edit
     end
   end
 
