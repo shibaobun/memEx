@@ -17,12 +17,6 @@ msgstr ""
 msgid "Resend confirmation instructions"
 msgstr ""
 
-#: lib/memex_web/controllers/user_reset_password_html/edit.html.heex:3
-#: lib/memex_web/controllers/user_reset_password_html/edit.html.heex:29
-#, elixir-autogen, elixir-format
-msgid "Reset password"
-msgstr ""
-
 #: lib/memex_web/controllers/user_settings_html/edit.html.heex:15
 #: lib/memex_web/controllers/user_settings_html/edit.html.heex:43
 #, elixir-autogen, elixir-format
@@ -217,4 +211,10 @@ msgstr ""
 #: lib/memex_web/live/pipeline_live/show.html.heex:74
 #, elixir-autogen, elixir-format
 msgid "move %{step_title} up"
+msgstr ""
+
+#: lib/memex_web/controllers/user_reset_password_html/edit.html.heex:3
+#: lib/memex_web/controllers/user_reset_password_html/edit.html.heex:29
+#, elixir-autogen, elixir-format, fuzzy
+msgid "reset password"
 msgstr ""
