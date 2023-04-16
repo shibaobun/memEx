@@ -22,7 +22,6 @@ defmodule MemexWeb.InviteLiveTest do
 
     test "lists all invites", %{conn: conn, invite: invite} do
       {:ok, _index_live, html} = live(conn, ~p"/invites")
-
       assert html =~ "invites"
       assert html =~ invite.name
     end

@@ -1,3 +1,6 @@
+# v0.1.12
+- ee cummings even more
+- Improve tests
 # v0.1.11
 - Update dependencies
 

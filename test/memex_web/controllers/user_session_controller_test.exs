@@ -83,14 +83,14 @@ defmodule MemexWeb.UserSessionControllerTest do
       conn = conn |> log_in_user(current_user) |> delete(~p"/users/log_out")
       assert redirected_to(conn) == ~p"/"
       refute get_session(conn, :user_token)
-      conn.assigns.flash["info"] =~ "logged out successfully"
+      assert conn.assigns.flash["info"] =~ "logged out successfully"
     end
 
     test "succeeds even if the user is not logged in", %{conn: conn} do
       conn = delete(conn, ~p"/users/log_out")
       assert redirected_to(conn) == ~p"/"
       refute get_session(conn, :user_token)
-      conn.assigns.flash["info"] =~ "logged out successfully"
+      assert conn.assigns.flash["info"] =~ "logged out successfully"
     end
   end
 end

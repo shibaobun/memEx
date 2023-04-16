@@ -39,8 +39,7 @@ defmodule MemexWeb.UserSettingsControllerTest do
 
       assert redirected_to(new_password_conn) == ~p"/users/settings"
       assert get_session(new_password_conn, :user_token) != get_session(conn, :user_token)
-      new_password_conn.assigns.flash["info"] =~ "password updated successfully"
-
+      assert new_password_conn.assigns.flash["info"] =~ "password updated successfully"
       assert Accounts.get_user_by_email_and_password(current_user.email, "new valid password")
     end
 
@@ -60,7 +59,6 @@ defmodule MemexWeb.UserSettingsControllerTest do
       assert response =~ "should be at least 12 character(s)"
       assert response =~ "does not match password"
       assert response =~ "is not valid"
-
       assert get_session(old_password_conn, :user_token) == get_session(conn, :user_token)
     end
   end
@@ -72,13 +70,13 @@ defmodule MemexWeb.UserSettingsControllerTest do
         put(conn, ~p"/users/settings", %{
           action: "update_email",
           current_password: valid_user_password(),
-          user: %{"email" => unique_user_email()}
+          user: %{email: unique_user_email()}
         })
 
       assert redirected_to(conn) == ~p"/users/settings"
 
-      conn.assigns.flash["info"] =~
-        "a link to confirm your email change has been sent to the new address."
+      assert conn.assigns.flash["info"] =~
+               "a link to confirm your email change has been sent to the new address."
 
       assert Accounts.get_user_by_email(current_user.email)
     end
@@ -86,9 +84,9 @@ defmodule MemexWeb.UserSettingsControllerTest do
     test "does not update email on invalid data", %{conn: conn} do
       conn =
         put(conn, ~p"/users/settings", %{
-          "action" => "update_email",
-          "current_password" => "invalid",
-          "user" => %{"email" => "with spaces"}
+          action: "update_email",
+          current_password: "invalid",
+          user: %{email: "with spaces"}
         })
 
       response = html_response(conn, 200)
@@ -118,19 +116,19 @@ defmodule MemexWeb.UserSettingsControllerTest do
          %{conn: conn, current_user: current_user, token: token, email: email} do
       conn = get(conn, ~p"/users/settings/confirm_email/#{token}")
       assert redirected_to(conn) == ~p"/users/settings"
-      conn.assigns.flash["info"] =~ "email changed successfully"
+      assert conn.assigns.flash["info"] =~ "email changed successfully"
       refute Accounts.get_user_by_email(current_user.email)
       assert Accounts.get_user_by_email(email)
 
       conn = get(conn, ~p"/users/settings/confirm_email/#{token}")
       assert redirected_to(conn) == ~p"/users/settings"
-      conn.assigns.flash["error"] =~ "email change link is invalid or it has expired"
+      assert conn.assigns.flash["error"] =~ "email change link is invalid or it has expired"
     end
 
     test "does not update email with invalid token", %{conn: conn, current_user: current_user} do
-      conn = get(conn, ~p"/users/settings/confirm_email/#{"oops"}")
+      conn = get(conn, ~p"/users/settings/confirm_email/oops")
       assert redirected_to(conn) == ~p"/users/settings"
-      conn.assigns.flash["error"] =~ "email change link is invalid or it has expired"
+      assert conn.assigns.flash["error"] =~ "email change link is invalid or it has expired"
       assert Accounts.get_user_by_email(current_user.email)
     end
 

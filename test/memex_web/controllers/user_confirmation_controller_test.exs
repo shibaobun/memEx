@@ -26,8 +26,8 @@ defmodule MemexWeb.UserConfirmationControllerTest do
       conn = post(conn, ~p"/users/confirm", %{user: %{email: user.email}})
       assert redirected_to(conn) == ~p"/"
 
-      conn.assigns.flash["info"] =~
-        "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
+      assert conn.assigns.flash["info"] =~
+               "if your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
 
       assert Repo.get_by!(Accounts.UserToken, user_id: user.id).context == "confirm"
     end
@@ -38,16 +38,16 @@ defmodule MemexWeb.UserConfirmationControllerTest do
       conn = post(conn, ~p"/users/confirm", %{user: %{email: user.email}})
       assert redirected_to(conn) == ~p"/"
 
-      conn.assigns.flash["info"] =~
-        "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
+      assert conn.assigns.flash["info"] =~
+               "if your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
     end
 
     test "does not send confirmation token if email is invalid", %{conn: conn} do
       conn = post(conn, ~p"/users/confirm", %{user: %{email: "unknown@example.com"}})
       assert redirected_to(conn) == ~p"/"
 
-      conn.assigns.flash["info"] =~
-        "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
+      assert conn.assigns.flash["info"] =~
+               "if your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
 
       assert Repo.all(Accounts.UserToken) == []
     end
@@ -62,9 +62,7 @@ defmodule MemexWeb.UserConfirmationControllerTest do
 
       conn = get(conn, ~p"/users/confirm/#{token}")
       assert redirected_to(conn) == ~p"/"
-
-      conn.assigns.flash["info"] =~ "#{user.email} confirmed successfully"
-
+      assert conn.assigns.flash["info"] =~ "#{user.email} confirmed successfully"
       assert Accounts.get_user!(user.id).confirmed_at
       refute get_session(conn, :user_token)
       assert Repo.all(Accounts.UserToken) == []
@@ -72,7 +70,7 @@ defmodule MemexWeb.UserConfirmationControllerTest do
       # When not logged in
       conn = get(conn, ~p"/users/confirm/#{token}")
       assert redirected_to(conn) == ~p"/"
-      conn.assigns.flash["error"] =~ "User confirmation link is invalid or it has expired"
+      assert conn.assigns.flash["error"] =~ "user confirmation link is invalid or it has expired"
 
       # When logged in
       conn =
@@ -85,10 +83,9 @@ defmodule MemexWeb.UserConfirmationControllerTest do
     end
 
     test "does not confirm email with invalid token", %{conn: conn, user: user} do
-      conn = get(conn, ~p"/users/confirm/#{"oops"}")
+      conn = get(conn, ~p"/users/confirm/oops")
       assert redirected_to(conn) == ~p"/"
-      conn.assigns.flash["error"] =~ "User confirmation link is invalid or it has expired"
-
+      assert conn.assigns.flash["error"] =~ "user confirmation link is invalid or it has expired"
       refute Accounts.get_user!(user.id).confirmed_at
     end
   end

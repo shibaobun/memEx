@@ -4,7 +4,6 @@ defmodule MemexWeb.CoreComponents do
   """
   use Phoenix.Component
   use MemexWeb, :verified_routes
-
   import MemexWeb.{Gettext, HTMLHelpers}
   alias Memex.{Accounts, Accounts.Invite, Accounts.User}
   alias Memex.Contexts.Context
