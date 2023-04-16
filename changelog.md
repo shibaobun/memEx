@@ -1,9 +1,9 @@
-# v0.1.12
+# v0.1.11
+- Update dependencies
 - ee cummings even more
 - Improve tests
 - Change invite path slightly
-# v0.1.11
-- Update dependencies
+- Build in arm64 and amd64
 
 # v0.1.10
 - Improve accessibility

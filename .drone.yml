@@ -42,7 +42,9 @@ steps:
     repo: shibaobun/memex
     purge: true
     compress: true
-    platforms: linux/amd64,linux/arm/v7
+    platforms:
+      - linux/amd64
+      - linux/arm64
     username:
       from_secret: docker_username
     password:
@@ -59,7 +61,9 @@ steps:
     repo: shibaobun/memex
     purge: true
     compress: true
-    platforms: linux/amd64,linux/arm/v7
+    platforms:
+      - linux/amd64
+      - linux/arm64
     username:
       from_secret: docker_username
     password:
