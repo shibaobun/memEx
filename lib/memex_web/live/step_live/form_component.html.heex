@@ -19,7 +19,6 @@
     <%= textarea(f, :content,
       id: "step-form-content",
       class: "input input-primary h-64 min-h-64",
-      phx_hook: "MaintainAttrs",
       phx_update: "ignore",
       placeholder: gettext("use [[context-slug]] to link to a context"),
       aria_label: gettext("use [[context-slug]] to link to a context")

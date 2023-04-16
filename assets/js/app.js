@@ -28,14 +28,13 @@ import { LiveSocket } from 'phoenix_live_view'
 import topbar from 'topbar'
 import Date from './date'
 import DateTime from './datetime'
-import MaintainAttrs from './maintain_attrs'
 
 const csrfTokenElement = document.querySelector("meta[name='csrf-token']")
 let csrfToken
 if (csrfTokenElement) { csrfToken = csrfTokenElement.getAttribute('content') }
 const liveSocket = new LiveSocket('/live', Socket, {
   params: { _csrf_token: csrfToken },
-  hooks: { Date, DateTime, MaintainAttrs }
+  hooks: { Date, DateTime }
 })
 
 // Show progress bar on live navigation and form submits
