@@ -3,7 +3,7 @@
 - ee cummings even more
 - Improve tests
 - Change invite path slightly
-- Build in arm64 and amd64
+- Disable arm builds since ci fails to build
 
 # v0.1.10
 - Improve accessibility
