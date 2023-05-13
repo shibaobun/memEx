@@ -1,3 +1,6 @@
+# v0.1.12
+- Fix error/404 pages not rendering properly
+
 # v0.1.11
 - Update dependencies
 - ee cummings even more
