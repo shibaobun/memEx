@@ -226,7 +226,7 @@ msgstr ""
 msgid "public signups"
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:31
+#: lib/memex_web/controllers/user_registration_controller.ex:32
 #, elixir-autogen, elixir-format
 msgid "register"
 msgstr ""

@@ -1,6 +1,7 @@
 defmodule MemexWeb.UserRegistrationController do
   use MemexWeb, :controller
   import MemexWeb.Gettext
+  alias Ecto.Changeset
   alias Memex.{Accounts, Accounts.Invites}
 
   def new(conn, %{"invite" => invite_token}) do
@@ -69,8 +70,8 @@ defmodule MemexWeb.UserRegistrationController do
         |> put_flash(:error, dgettext("errors", "sorry, this invite was not found or expired"))
         |> redirect(to: ~p"/")
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        conn |> render("new.html", changeset: changeset, invite_token: invite_token)
+      {:error, %Changeset{} = changeset} ->
+        conn |> render(:new, changeset: changeset, invite_token: invite_token)
     end
   end
 end

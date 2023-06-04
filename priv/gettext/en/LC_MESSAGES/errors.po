@@ -94,9 +94,9 @@ msgstr ""
 msgid "oops, something went wrong! please check the errors below."
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:11
-#: lib/memex_web/controllers/user_registration_controller.ex:40
-#: lib/memex_web/controllers/user_registration_controller.ex:69
+#: lib/memex_web/controllers/user_registration_controller.ex:12
+#: lib/memex_web/controllers/user_registration_controller.ex:41
+#: lib/memex_web/controllers/user_registration_controller.ex:70
 #, elixir-autogen, elixir-format
 msgid "sorry, this invite was not found or expired"
 msgstr ""
@@ -137,8 +137,8 @@ msgstr ""
 msgid "reset password link is invalid or it has expired."
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:21
-#: lib/memex_web/controllers/user_registration_controller.ex:50
+#: lib/memex_web/controllers/user_registration_controller.ex:22
+#: lib/memex_web/controllers/user_registration_controller.ex:51
 #, elixir-autogen, elixir-format, fuzzy
 msgid "sorry, public registration is disabled"
 msgstr ""

@@ -106,7 +106,7 @@ msgstr ""
 msgid "copied to clipboard"
 msgstr ""
 
-#: lib/memex_web/controllers/user_registration_controller.ex:64
+#: lib/memex_web/controllers/user_registration_controller.ex:65
 #, elixir-autogen, elixir-format
 msgid "please check your email to verify your account"
 msgstr ""

@@ -1,4 +1,5 @@
 # v0.1.12
+- Code quality fixes
 - Fix error/404 pages not rendering properly
 
 # v0.1.11
