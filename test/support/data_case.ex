@@ -61,7 +61,7 @@ defmodule Memex.DataCase do
   def valid_user_password, do: "hello world!"
 
   def random_slug(length \\ 20) do
-    symbols = '0123456789abcdef-'
+    symbols = ~c"0123456789abcdef-"
     symbol_count = Enum.count(symbols)
 
     for _ <- Range.new(1, length),
