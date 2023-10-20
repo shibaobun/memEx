@@ -1,3 +1,6 @@
+# v0.1.13
+- Update dependencies
+
 # v0.1.12
 - Code quality fixes
 - Fix error/404 pages not rendering properly
