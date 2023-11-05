@@ -5,6 +5,8 @@
 - Add bottom padding to page
 - Make pipeline step not require content
 - Make content previews resizable
+- Fix live flashes not dismissable by click
+- Fix disconnection modal not displaying
 
 # v0.1.12
 - Code quality fixes

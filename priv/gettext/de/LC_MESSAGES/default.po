@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 3.7.4\n"
 
-#: lib/memex_web/components/layouts/live.html.heex:43
+#: lib/memex_web/components/layouts/app.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "Reconnecting..."
 msgstr ""

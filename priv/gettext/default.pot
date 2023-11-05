@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 
-#: lib/memex_web/components/layouts/live.html.heex:43
+#: lib/memex_web/components/layouts/app.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "Reconnecting..."
 msgstr ""
