@@ -50,7 +50,7 @@ defmodule Memex.Pipelines.Steps.Step do
     %__MODULE__{}
     |> cast(attrs, [:title, :content])
     |> change(pipeline_id: pipeline_id, user_id: user_id, position: position)
-    |> validate_required([:title, :content, :user_id, :position])
+    |> validate_required([:title, :user_id, :position])
   end
 
   @spec update_changeset(t(), attrs :: map(), User.t()) ::
@@ -62,7 +62,7 @@ defmodule Memex.Pipelines.Steps.Step do
       ) do
     step
     |> cast(attrs, [:title, :content])
-    |> validate_required([:title, :content, :user_id, :position])
+    |> validate_required([:title, :user_id, :position])
   end
 
   @spec position_changeset(t(), position :: non_neg_integer(), User.t()) :: changeset()
@@ -73,6 +73,6 @@ defmodule Memex.Pipelines.Steps.Step do
       ) do
     step
     |> change(position: position)
-    |> validate_required([:title, :content, :user_id, :position])
+    |> validate_required([:title, :user_id, :position])
   end
 end

@@ -3,6 +3,7 @@
 - Fix debounces
 - Allow space as delimiter for tags
 - Add bottom padding to page
+- Make pipeline step not require content
 
 # v0.1.12
 - Code quality fixes
