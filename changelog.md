@@ -2,6 +2,7 @@
 - Update dependencies
 - Fix debounces
 - Allow space as delimiter for tags
+- Add bottom padding to page
 
 # v0.1.12
 - Code quality fixes
