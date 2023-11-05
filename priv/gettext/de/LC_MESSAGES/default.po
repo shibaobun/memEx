@@ -19,7 +19,7 @@ msgstr ""
 
 #: lib/memex_web/live/context_live/show.html.heex:15
 #: lib/memex_web/live/note_live/show.html.heex:15
-#: lib/memex_web/live/pipeline_live/show.html.heex:22
+#: lib/memex_web/live/pipeline_live/show.html.heex:15
 #, elixir-autogen, elixir-format
 msgid "Visibility: %{visibility}"
 msgstr ""
@@ -43,12 +43,6 @@ msgstr ""
 #: lib/memex_web/controllers/user_settings_html/edit.html.heex:76
 #, elixir-autogen, elixir-format
 msgid "confirm new password"
-msgstr ""
-
-#: lib/memex_web/live/note_live/form_component.html.heex:24
-#: lib/memex_web/live/note_live/form_component.html.heex:25
-#, elixir-autogen, elixir-format
-msgid "content"
 msgstr ""
 
 #: lib/memex_web/components/core_components/topbar.html.heex:28
@@ -243,20 +237,20 @@ msgstr ""
 msgid "report bugs or request features"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:48
+#: lib/memex_web/live/context_live/form_component.html.heex:50
 #: lib/memex_web/live/note_live/form_component.html.heex:48
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:48
-#: lib/memex_web/live/step_live/form_component.html.heex:32
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:54
+#: lib/memex_web/live/step_live/form_component.html.heex:38
 #, elixir-autogen, elixir-format
 msgid "saving..."
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:42
-#: lib/memex_web/live/context_live/form_component.html.heex:43
+#: lib/memex_web/live/context_live/form_component.html.heex:44
+#: lib/memex_web/live/context_live/form_component.html.heex:45
 #: lib/memex_web/live/note_live/form_component.html.heex:42
 #: lib/memex_web/live/note_live/form_component.html.heex:43
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:42
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:43
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:48
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:49
 #, elixir-autogen, elixir-format
 msgid "select privacy"
 msgstr ""
@@ -272,12 +266,12 @@ msgstr ""
 msgid "settings"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:33
-#: lib/memex_web/live/context_live/form_component.html.heex:34
+#: lib/memex_web/live/context_live/form_component.html.heex:35
+#: lib/memex_web/live/context_live/form_component.html.heex:36
 #: lib/memex_web/live/note_live/form_component.html.heex:33
 #: lib/memex_web/live/note_live/form_component.html.heex:34
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:33
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:34
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:39
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:40
 #, elixir-autogen, elixir-format
 msgid "tag1,tag2"
 msgstr ""
@@ -334,8 +328,6 @@ msgid "no contexts found"
 msgstr ""
 
 #: lib/memex_web/components/pipelines_table_component.ex:48
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:24
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:25
 #, elixir-autogen, elixir-format
 msgid "description"
 msgstr ""
@@ -409,12 +401,6 @@ msgstr ""
 msgid "home"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:24
-#: lib/memex_web/live/context_live/form_component.html.heex:25
-#, elixir-autogen, elixir-format
-msgid "use [[note-slug]] to link to a note"
-msgstr ""
-
 #: lib/memex_web/live/faq_live.ex:10
 #: lib/memex_web/live/faq_live.html.heex:3
 #, elixir-autogen, elixir-format
@@ -436,7 +422,7 @@ msgstr ""
 msgid "what is this?"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:59
+#: lib/memex_web/live/pipeline_live/show.html.heex:52
 #, elixir-autogen, elixir-format
 msgid "%{position}. %{title}"
 msgstr ""
@@ -461,12 +447,12 @@ msgstr ""
 msgid "add step to %{slug}"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:53
+#: lib/memex_web/live/pipeline_live/show.html.heex:46
 #, elixir-autogen, elixir-format
 msgid "no steps"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:48
+#: lib/memex_web/live/pipeline_live/show.html.heex:41
 #, elixir-autogen, elixir-format
 msgid "steps:"
 msgstr ""
@@ -475,12 +461,6 @@ msgstr ""
 #: lib/memex_web/live/step_live/form_component.html.heex:15
 #, elixir-autogen, elixir-format
 msgid "title"
-msgstr ""
-
-#: lib/memex_web/live/step_live/form_component.html.heex:24
-#: lib/memex_web/live/step_live/form_component.html.heex:25
-#, elixir-autogen, elixir-format
-msgid "use [[context-slug]] to link to a context"
 msgstr ""
 
 #: lib/memex_web/live/faq_live.html.heex:65
@@ -710,4 +690,24 @@ msgstr ""
 #: lib/memex_web/controllers/user_reset_password_controller.ex:35
 #, elixir-autogen, elixir-format, fuzzy
 msgid "reset your password"
+msgstr ""
+
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:25
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:29
+#: lib/memex_web/live/step_live/form_component.html.heex:25
+#: lib/memex_web/live/step_live/form_component.html.heex:29
+#, elixir-autogen, elixir-format
+msgid "use [[[note-slug]]] to link to a note or use [[context-slug]] to link to a context or [pipeline-slug] to link to a pipeline"
+msgstr ""
+
+#: lib/memex_web/live/context_live/form_component.html.heex:25
+#: lib/memex_web/live/context_live/form_component.html.heex:27
+#, elixir-autogen, elixir-format, fuzzy
+msgid "use [[note-slug]] to link to a note or [context-slug] to link to a context"
+msgstr ""
+
+#: lib/memex_web/live/note_live/form_component.html.heex:24
+#: lib/memex_web/live/note_live/form_component.html.heex:25
+#, elixir-autogen, elixir-format, fuzzy
+msgid "use [note-slug] to link to a note"
 msgstr ""

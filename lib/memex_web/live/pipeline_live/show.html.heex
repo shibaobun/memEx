@@ -9,14 +9,7 @@
     </.link>
   </div>
 
-  <textarea
-    :if={@pipeline.description}
-    id="show-pipeline-description"
-    class="input input-primary h-32 min-h-32"
-    phx-update="ignore"
-    readonly
-    phx-no-format
-  ><%= @pipeline.description %></textarea>
+  <.pipeline_content pipeline={@pipeline} />
 
   <p class="self-end">
     <%= gettext("Visibility: %{visibility}", visibility: @pipeline.visibility) %>

@@ -8,6 +8,8 @@
 - Fix live flashes not dismissable by click
 - Fix disconnection modal not displaying
 - Submit items with ctrl-enter
+- Display backlinks in pipeline description
+- Modify backlink format
 
 # v0.1.12
 - Code quality fixes

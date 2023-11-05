@@ -8,7 +8,7 @@ defmodule MemexWeb.CoreComponents do
   alias Memex.{Accounts, Accounts.Invite, Accounts.User}
   alias Memex.Contexts.Context
   alias Memex.Notes.Note
-  alias Memex.Pipelines.Steps.Step
+  alias Memex.Pipelines.{Pipeline, Steps.Step}
   alias Phoenix.HTML
   alias Phoenix.LiveView.JS
 
@@ -130,53 +130,118 @@ defmodule MemexWeb.CoreComponents do
 
   def step_content(assigns)
 
-  defp add_links_to_content(content, data_qa_prefix) do
-    # replace links
+  attr :pipeline, Pipeline, required: true
 
-    # link regex from
-    # https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
-    # and modified with additional schemes from
-    # https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
+  def pipeline_content(assigns)
 
-    content =
-      Regex.replace(
-        ~r<((file|git|https?|ipfs|ipns|irc|jabber|magnet|mailto|mumble|tel|udp|xmpp):\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))>,
-        content,
-        fn _whole_match, link ->
-          link =
-            HTML.Link.link(
-              link,
-              to: link,
-              class: "link inline",
-              target: "_blank",
-              rel: "noopener noreferrer"
-            )
-            |> HTML.Safe.to_iodata()
-            |> IO.iodata_to_binary()
+  defp display_backlinks(record) do
+    record
+    |> get_text()
+    |> replace_links(record)
+    |> replace_triple_backlinks(record)
+    |> replace_double_backlinks(record)
+    |> replace_single_backlinks(record)
+    |> HTML.raw()
+  end
 
-          "</p>#{link}<p class=\"inline\">"
-        end
-      )
+  defp get_text(%{content: content}), do: content
+  defp get_text(%{description: description}), do: description
+  defp get_text(_fallthrough), do: ""
 
-    content =
-      Regex.replace(
-        ~r/\[\[([\p{L}\p{N}\-]+)\]\]/,
-        content,
-        fn _whole_match, slug ->
-          link =
-            HTML.Link.link(
-              "[[#{slug}]]",
-              to: ~p"/note/#{slug}",
-              class: "link inline",
-              data: [qa: "#{data_qa_prefix}-#{slug}"]
-            )
-            |> HTML.Safe.to_iodata()
-            |> IO.iodata_to_binary()
+  # link regex from
+  # https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
+  # and modified with additional schemes from
+  # https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
+  defp replace_links(content, _record) do
+    Regex.replace(
+      ~r<((file|git|https?|ipfs|ipns|irc|jabber|magnet|mailto|mumble|tel|udp|xmpp):\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))>,
+      content,
+      fn _whole_match, link ->
+        link =
+          HTML.Link.link(
+            link,
+            to: link,
+            class: "link inline",
+            target: "_blank",
+            rel: "noopener noreferrer"
+          )
+          |> HTML.Safe.to_iodata()
+          |> IO.iodata_to_binary()
 
-          "</p>#{link}<p class=\"inline\">"
-        end
-      )
+        "</p>#{link}<p class=\"inline\">"
+      end
+    )
+  end
 
-    content |> HTML.raw()
+  defp replace_triple_backlinks(content, _record) do
+    Regex.replace(
+      ~r/(^|[^\[])\[\[\[([\p{L}\p{N}\-]+)\]\]\]($|[^\]])/,
+      content,
+      fn _whole_match, prefix, slug, suffix ->
+        link =
+          HTML.Link.link(
+            "[[[#{slug}]]]",
+            to: ~p"/note/#{slug}",
+            class: "link inline"
+          )
+          |> HTML.Safe.to_iodata()
+          |> IO.iodata_to_binary()
+
+        "#{prefix}</p>#{link}<p class=\"inline\">#{suffix}"
+      end
+    )
+  end
+
+  defp replace_double_backlinks(content, record) do
+    Regex.replace(
+      ~r/(^|[^\[])\[\[([\p{L}\p{N}\-]+)\]\]($|[^\]])/,
+      content,
+      fn _whole_match, prefix, slug, suffix ->
+        target =
+          case record do
+            %Pipeline{} -> ~p"/context/#{slug}"
+            %Step{} -> ~p"/context/#{slug}"
+            _context -> ~p"/note/#{slug}"
+          end
+
+        link =
+          HTML.Link.link(
+            "[[#{slug}]]",
+            to: target,
+            class: "link inline"
+          )
+          |> HTML.Safe.to_iodata()
+          |> IO.iodata_to_binary()
+
+        "#{prefix}</p>#{link}<p class=\"inline\">#{suffix}"
+      end
+    )
+  end
+
+  defp replace_single_backlinks(content, record) do
+    Regex.replace(
+      ~r/(^|[^\[])\[([\p{L}\p{N}\-]+)\]($|[^\]])/,
+      content,
+      fn _whole_match, prefix, slug, suffix ->
+        target =
+          case record do
+            %Pipeline{} -> ~p"/pipeline/#{slug}"
+            %Step{} -> ~p"/pipeline/#{slug}"
+            %Context{} -> ~p"/context/#{slug}"
+            _note -> ~p"/note/#{slug}"
+          end
+
+        link =
+          HTML.Link.link(
+            "[#{slug}]",
+            to: target,
+            class: "link inline"
+          )
+          |> HTML.Safe.to_iodata()
+          |> IO.iodata_to_binary()
+
+        "#{prefix}</p>#{link}<p class=\"inline\">#{suffix}"
+      end
+    )
   end
 end

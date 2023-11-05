@@ -21,8 +21,10 @@
       id: "context-form-content",
       class: "input input-primary h-64 min-h-64",
       phx_update: "ignore",
-      placeholder: gettext("use [[note-slug]] to link to a note"),
-      aria_label: gettext("use [[note-slug]] to link to a note"),
+      placeholder:
+        gettext("use [[note-slug]] to link to a note or [context-slug] to link to a context"),
+      aria_label:
+        gettext("use [[note-slug]] to link to a note or [context-slug] to link to a context"),
       phx_debounce: 300
     ) %>
     <%= error_tag(f, :content) %>

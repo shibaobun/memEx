@@ -45,8 +45,8 @@ msgstr ""
 #: lib/memex_web/live/note_live/index.html.heex:50
 #: lib/memex_web/live/note_live/show.html.heex:34
 #: lib/memex_web/live/pipeline_live/index.html.heex:52
-#: lib/memex_web/live/pipeline_live/show.html.heex:41
-#: lib/memex_web/live/pipeline_live/show.html.heex:112
+#: lib/memex_web/live/pipeline_live/show.html.heex:34
+#: lib/memex_web/live/pipeline_live/show.html.heex:105
 #, elixir-autogen, elixir-format
 msgid "delete"
 msgstr ""
@@ -61,8 +61,8 @@ msgstr ""
 #: lib/memex_web/live/note_live/index.html.heex:40
 #: lib/memex_web/live/note_live/show.html.heex:24
 #: lib/memex_web/live/pipeline_live/index.html.heex:40
-#: lib/memex_web/live/pipeline_live/show.html.heex:31
-#: lib/memex_web/live/pipeline_live/show.html.heex:101
+#: lib/memex_web/live/pipeline_live/show.html.heex:24
+#: lib/memex_web/live/pipeline_live/show.html.heex:94
 #, elixir-autogen, elixir-format
 msgid "edit"
 msgstr ""
@@ -109,16 +109,16 @@ msgstr ""
 msgid "register"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:47
+#: lib/memex_web/live/context_live/form_component.html.heex:49
 #: lib/memex_web/live/invite_live/form_component.html.heex:47
 #: lib/memex_web/live/note_live/form_component.html.heex:47
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:47
-#: lib/memex_web/live/step_live/form_component.html.heex:31
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:53
+#: lib/memex_web/live/step_live/form_component.html.heex:37
 #, elixir-autogen, elixir-format
 msgid "save"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:127
+#: lib/memex_web/live/pipeline_live/show.html.heex:120
 #, elixir-autogen, elixir-format
 msgid "add step"
 msgstr ""
@@ -163,12 +163,12 @@ msgid "delete %{note_slug}"
 msgstr ""
 
 #: lib/memex_web/live/pipeline_live/index.html.heex:49
-#: lib/memex_web/live/pipeline_live/show.html.heex:39
+#: lib/memex_web/live/pipeline_live/show.html.heex:32
 #, elixir-autogen, elixir-format
 msgid "delete %{pipeline_slug}"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:110
+#: lib/memex_web/live/pipeline_live/show.html.heex:103
 #, elixir-autogen, elixir-format
 msgid "delete %{step_title}"
 msgstr ""
@@ -193,7 +193,7 @@ msgstr ""
 msgid "edit %{pipeline_slug}"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:99
+#: lib/memex_web/live/pipeline_live/show.html.heex:92
 #, elixir-autogen, elixir-format
 msgid "edit %{step_title}"
 msgstr ""
@@ -203,12 +203,12 @@ msgstr ""
 msgid "edit invite for %{invite_name}"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:89
+#: lib/memex_web/live/pipeline_live/show.html.heex:82
 #, elixir-autogen, elixir-format
 msgid "move %{step_title} down"
 msgstr ""
 
-#: lib/memex_web/live/pipeline_live/show.html.heex:73
+#: lib/memex_web/live/pipeline_live/show.html.heex:66
 #, elixir-autogen, elixir-format
 msgid "move %{step_title} up"
 msgstr ""

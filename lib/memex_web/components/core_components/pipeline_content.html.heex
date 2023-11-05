@@ -1,7 +1,7 @@
 <div
-  id={"show-step-content-#{@step.id}"}
+  id={"show-pipeline-description-#{@pipeline.id}"}
   class="input input-primary h-32 min-h-32 inline-block whitespace-pre-wrap overflow-x-hidden overflow-y-auto resize-y"
   phx-update="ignore"
   readonly
   phx-no-format
-><p class="inline"><%= display_backlinks(@step) %></p></div>
+><p class="inline"><%= display_backlinks(@pipeline) %></p></div>

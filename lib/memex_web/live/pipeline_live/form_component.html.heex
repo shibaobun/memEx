@@ -21,8 +21,14 @@
       id: "pipeline-form-description",
       class: "input input-primary h-64 min-h-64",
       phx_update: "ignore",
-      placeholder: gettext("description"),
-      aria_label: gettext("description"),
+      placeholder:
+        gettext(
+          "use [[[note-slug]]] to link to a note or use [[context-slug]] to link to a context or [pipeline-slug] to link to a pipeline"
+        ),
+      aria_label:
+        gettext(
+          "use [[[note-slug]]] to link to a note or use [[context-slug]] to link to a context or [pipeline-slug] to link to a pipeline"
+        ),
       phx_debounce: 300
     ) %>
     <%= error_tag(f, :description) %>
