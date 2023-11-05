@@ -4,6 +4,7 @@
 - Allow space as delimiter for tags
 - Add bottom padding to page
 - Make pipeline step not require content
+- Make content previews resizable
 
 # v0.1.12
 - Code quality fixes
