@@ -78,11 +78,11 @@ defmodule Memex.Notes.Note do
     changeset
     |> put_change(:tags_string, changeset |> get_field(:tags) |> get_tags_string())
     |> cast(attrs, [:tags_string])
-    |> validate_format(:tags_string, ~r/^[\p{L}\p{N}\-\,]+$/,
+    |> validate_format(:tags_string, ~r/^[\p{L}\p{N}\-\, ]+$/,
       message:
         dgettext(
           "errors",
-          "invalid format: only numbers, letters and hyphen are accepted. tags must be comma-delimited"
+          "invalid format: only numbers, letters and hyphen are accepted. tags must be comma or space delimited"
         )
     )
     |> cast_tags()
@@ -97,9 +97,9 @@ defmodule Memex.Notes.Note do
 
   defp process_tags(tags_string) when tags_string |> is_binary() do
     tags_string
-    |> String.split(",", trim: true)
+    |> String.split([",", " "], trim: true)
     |> Enum.map(fn str -> str |> String.trim() end)
-    |> Enum.reject(fn str -> str |> is_nil() end)
+    |> Enum.reject(fn str -> str in [nil, ""] end)
     |> Enum.sort()
   end
 

@@ -1,6 +1,7 @@
 # v0.1.13
 - Update dependencies
 - Fix debounces
+- Allow space as delimiter for tags
 
 # v0.1.12
 - Code quality fixes

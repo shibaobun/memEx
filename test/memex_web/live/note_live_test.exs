@@ -17,7 +17,7 @@ defmodule MemexWeb.NoteLiveTest do
   }
   @invalid_attrs %{
     content: nil,
-    tags_string: "invalid tags",
+    tags_string: "invalid_tag or_tags",
     slug: nil,
     visibility: nil
   }
@@ -55,7 +55,7 @@ defmodule MemexWeb.NoteLiveTest do
         |> render_change(note: @invalid_attrs)
 
       assert html =~ "can&#39;t be blank"
-      assert html =~ "tags must be comma-delimited"
+      assert html =~ "tags must be comma or space delimited"
 
       {:ok, _live, html} =
         index_live
