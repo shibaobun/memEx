@@ -10,6 +10,7 @@
     phx-target={@myself}
     phx-change="validate"
     phx-submit="save"
+    phx-hook="CtrlEnter"
   >
     <div
       :if={@changeset.action && not @changeset.valid?()}
