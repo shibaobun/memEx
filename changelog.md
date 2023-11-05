@@ -1,5 +1,6 @@
 # v0.1.13
 - Update dependencies
+- Fix debounces
 
 # v0.1.12
 - Code quality fixes

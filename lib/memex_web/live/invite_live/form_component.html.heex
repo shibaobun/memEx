@@ -18,13 +18,27 @@
       <%= changeset_errors(@changeset) %>
     </div>
 
-    <%= label(f, :name, gettext("name"), class: "title text-lg text-primary-400") %>
-    <%= text_input(f, :name, class: "input input-primary col-span-2") %>
+    <%= label(f, :name, gettext("name"),
+      class: "title text-lg text-primary-400",
+      phx_debounce: 300
+    ) %>
+    <%= text_input(f, :name,
+      class: "input input-primary col-span-2",
+      phx_debounce: 300
+    ) %>
     <%= error_tag(f, :name, "col-span-3") %>
 
-    <%= label(f, :uses_left, gettext("uses left"), class: "title text-lg text-primary-400") %>
-    <%= number_input(f, :uses_left, min: 0, class: "input input-primary col-span-2") %>
+    <%= label(f, :uses_left, gettext("uses left"),
+      class: "title text-lg text-primary-400",
+      phx_debounce: 300
+    ) %>
+    <%= number_input(f, :uses_left,
+      min: 0,
+      class: "input input-primary col-span-2",
+      phx_debounce: 300
+    ) %>
     <%= error_tag(f, :uses_left, "col-span-3") %>
+
     <span class="col-span-3 text-primary-500 italic text-center">
       <%= gettext(~s/leave "uses left" blank to make invite unlimited/) %>
     </span>

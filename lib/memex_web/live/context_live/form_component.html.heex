@@ -6,13 +6,13 @@
     phx-target={@myself}
     phx-change="validate"
     phx-submit="save"
-    phx-debounce="300"
     class="flex flex-col justify-start items-stretch space-y-4"
   >
     <%= text_input(f, :slug,
       class: "input input-primary",
       placeholder: gettext("slug"),
-      aria_label: gettext("slug")
+      aria_label: gettext("slug"),
+      phx_debounce: 300
     ) %>
     <%= error_tag(f, :slug) %>
 
@@ -21,7 +21,8 @@
       class: "input input-primary h-64 min-h-64",
       phx_update: "ignore",
       placeholder: gettext("use [[note-slug]] to link to a note"),
-      aria_label: gettext("use [[note-slug]] to link to a note")
+      aria_label: gettext("use [[note-slug]] to link to a note"),
+      phx_debounce: 300
     ) %>
     <%= error_tag(f, :content) %>
 
@@ -29,7 +30,8 @@
       id: "tags-input",
       class: "input input-primary",
       placeholder: gettext("tag1,tag2"),
-      aria_label: gettext("tag1,tag2")
+      aria_label: gettext("tag1,tag2"),
+      phx_debounce: 300
     ) %>
     <%= error_tag(f, :tags_string) %>
 
@@ -37,7 +39,8 @@
       <%= select(f, :visibility, Ecto.Enum.values(Memex.Contexts.Context, :visibility),
         class: "grow input input-primary",
         prompt: gettext("select privacy"),
-        aria_label: gettext("select privacy")
+        aria_label: gettext("select privacy"),
+        phx_debounce: 300
       ) %>
 
       <%= submit(dgettext("actions", "save"),

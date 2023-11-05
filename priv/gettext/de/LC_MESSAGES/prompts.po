@@ -137,7 +137,7 @@ msgstr ""
 msgid "are you sure you want to delete %{email}? this action is permanent!"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.html.heex:34
+#: lib/memex_web/live/invite_live/form_component.html.heex:48
 #, elixir-autogen, elixir-format, fuzzy
 msgid "saving..."
 msgstr ""

@@ -6,13 +6,13 @@
     phx-target={@myself}
     phx-change="validate"
     phx-submit="save"
-    phx-debounce="300"
     class="flex flex-col justify-start items-stretch space-y-4"
   >
     <%= text_input(f, :title,
       class: "input input-primary",
       placeholder: gettext("title"),
-      aria_label: gettext("title")
+      aria_label: gettext("title"),
+      phx_debounce: 300
     ) %>
     <%= error_tag(f, :title) %>
 
@@ -21,7 +21,8 @@
       class: "input input-primary h-64 min-h-64",
       phx_update: "ignore",
       placeholder: gettext("use [[context-slug]] to link to a context"),
-      aria_label: gettext("use [[context-slug]] to link to a context")
+      aria_label: gettext("use [[context-slug]] to link to a context"),
+      phx_debounce: 300
     ) %>
     <%= error_tag(f, :content) %>
 

@@ -243,20 +243,20 @@ msgstr ""
 msgid "report bugs or request features"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:44
-#: lib/memex_web/live/note_live/form_component.html.heex:44
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:44
-#: lib/memex_web/live/step_live/form_component.html.heex:30
+#: lib/memex_web/live/context_live/form_component.html.heex:47
+#: lib/memex_web/live/note_live/form_component.html.heex:47
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:47
+#: lib/memex_web/live/step_live/form_component.html.heex:31
 #, elixir-autogen, elixir-format
 msgid "saving..."
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:39
-#: lib/memex_web/live/context_live/form_component.html.heex:40
-#: lib/memex_web/live/note_live/form_component.html.heex:39
-#: lib/memex_web/live/note_live/form_component.html.heex:40
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:39
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:40
+#: lib/memex_web/live/context_live/form_component.html.heex:41
+#: lib/memex_web/live/context_live/form_component.html.heex:42
+#: lib/memex_web/live/note_live/form_component.html.heex:41
+#: lib/memex_web/live/note_live/form_component.html.heex:42
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:41
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:42
 #, elixir-autogen, elixir-format
 msgid "select privacy"
 msgstr ""
@@ -272,12 +272,12 @@ msgstr ""
 msgid "settings"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:31
 #: lib/memex_web/live/context_live/form_component.html.heex:32
-#: lib/memex_web/live/note_live/form_component.html.heex:31
+#: lib/memex_web/live/context_live/form_component.html.heex:33
 #: lib/memex_web/live/note_live/form_component.html.heex:32
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:31
+#: lib/memex_web/live/note_live/form_component.html.heex:33
 #: lib/memex_web/live/pipeline_live/form_component.html.heex:32
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:33
 #, elixir-autogen, elixir-format
 msgid "tag1,tag2"
 msgstr ""
@@ -387,12 +387,12 @@ msgstr ""
 #: lib/memex_web/components/contexts_table_component.ex:47
 #: lib/memex_web/components/notes_table_component.ex:47
 #: lib/memex_web/components/pipelines_table_component.ex:47
+#: lib/memex_web/live/context_live/form_component.html.heex:13
 #: lib/memex_web/live/context_live/form_component.html.heex:14
-#: lib/memex_web/live/context_live/form_component.html.heex:15
+#: lib/memex_web/live/note_live/form_component.html.heex:13
 #: lib/memex_web/live/note_live/form_component.html.heex:14
-#: lib/memex_web/live/note_live/form_component.html.heex:15
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:13
 #: lib/memex_web/live/pipeline_live/form_component.html.heex:14
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:15
 #, elixir-autogen, elixir-format
 msgid "slug"
 msgstr ""
@@ -471,8 +471,8 @@ msgstr ""
 msgid "steps:"
 msgstr ""
 
+#: lib/memex_web/live/step_live/form_component.html.heex:13
 #: lib/memex_web/live/step_live/form_component.html.heex:14
-#: lib/memex_web/live/step_live/form_component.html.heex:15
 #, elixir-autogen, elixir-format
 msgid "title"
 msgstr ""
@@ -669,12 +669,12 @@ msgstr ""
 msgid "password"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.html.heex:25
+#: lib/memex_web/live/invite_live/form_component.html.heex:31
 #, elixir-autogen, elixir-format, fuzzy
 msgid "uses left"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/form_component.html.heex:29
+#: lib/memex_web/live/invite_live/form_component.html.heex:43
 #, elixir-autogen, elixir-format, fuzzy
 msgid "leave \"uses left\" blank to make invite unlimited"
 msgstr ""
