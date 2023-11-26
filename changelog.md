@@ -1,3 +1,6 @@
+# v0.1.14
+- Fix issue with item content not able to be displayed sometimes
+
 # v0.1.13
 - Update dependencies
 - Fix debounces

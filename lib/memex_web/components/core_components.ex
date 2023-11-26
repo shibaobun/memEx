@@ -134,25 +134,30 @@ defmodule MemexWeb.CoreComponents do
 
   def pipeline_content(assigns)
 
-  defp display_backlinks(record) do
+  defp display_links(record) do
     record
-    |> get_text()
-    |> replace_links(record)
-    |> replace_triple_backlinks(record)
-    |> replace_double_backlinks(record)
-    |> replace_single_backlinks(record)
+    |> get_content()
+    |> replace_hyperlinks(record)
+    |> replace_triple_links(record)
+    |> replace_double_links(record)
+    |> replace_single_links(record)
     |> HTML.raw()
   end
 
-  defp get_text(%{content: content}), do: content
-  defp get_text(%{description: description}), do: description
+  defp get_content(%{content: content}), do: content |> get_text()
+  defp get_content(%{description: description}), do: description |> get_text()
+  defp get_content(_fallthrough), do: nil |> get_text()
+
+  defp get_text(string) when is_binary(string), do: string
   defp get_text(_fallthrough), do: ""
 
+  # replaces hyperlinks like https://bubbletea.dev
+  #
   # link regex from
   # https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
   # and modified with additional schemes from
   # https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
-  defp replace_links(content, _record) do
+  defp replace_hyperlinks(content, _record) do
     Regex.replace(
       ~r<((file|git|https?|ipfs|ipns|irc|jabber|magnet|mailto|mumble|tel|udp|xmpp):\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))>,
       content,
@@ -173,7 +178,8 @@ defmodule MemexWeb.CoreComponents do
     )
   end
 
-  defp replace_triple_backlinks(content, _record) do
+  # replaces triple links like [[[slug-title]]]
+  defp replace_triple_links(content, _record) do
     Regex.replace(
       ~r/(^|[^\[])\[\[\[([\p{L}\p{N}\-]+)\]\]\]($|[^\]])/,
       content,
@@ -192,7 +198,8 @@ defmodule MemexWeb.CoreComponents do
     )
   end
 
-  defp replace_double_backlinks(content, record) do
+  # replaces double links like [[slug-title]]
+  defp replace_double_links(content, record) do
     Regex.replace(
       ~r/(^|[^\[])\[\[([\p{L}\p{N}\-]+)\]\]($|[^\]])/,
       content,
@@ -218,7 +225,8 @@ defmodule MemexWeb.CoreComponents do
     )
   end
 
-  defp replace_single_backlinks(content, record) do
+  # replaces single links like [slug-title]
+  defp replace_single_links(content, record) do
     Regex.replace(
       ~r/(^|[^\[])\[([\p{L}\p{N}\-]+)\]($|[^\]])/,
       content,
