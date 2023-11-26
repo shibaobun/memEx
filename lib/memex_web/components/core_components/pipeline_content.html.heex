@@ -1,4 +1,5 @@
 <div
+  :if={@pipeline.description}
   id={"show-pipeline-description-#{@pipeline.id}"}
   class="input input-primary h-32 min-h-32 inline-block whitespace-pre-wrap overflow-x-hidden overflow-y-auto resize-y"
   phx-update="ignore"

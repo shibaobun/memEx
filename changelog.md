@@ -1,3 +1,6 @@
+# v0.1.15
+- Fix content being displayed when blank
+
 # v0.1.14
 - Fix issue with item content not able to be displayed sometimes
 

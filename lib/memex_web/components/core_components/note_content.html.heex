@@ -1,4 +1,5 @@
 <div
+  :if={@note.content}
   id={"show-note-content-#{@note.id}"}
   class="input input-primary h-128 min-h-128 inline-block whitespace-pre-wrap overflow-x-hidden overflow-y-auto resize-y"
   phx-update="ignore"
