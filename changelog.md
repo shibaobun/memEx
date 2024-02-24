@@ -1,5 +1,6 @@
 # v0.1.15
 - Sanitize titles while they are being typed
+- Prevent possible additional submissions
 - Fix content being displayed when blank
 
 # v0.1.14

@@ -7,6 +7,5 @@ export default {
       }
     })
   },
-  mounted () { this.addFormSubmit(this) },
-  updated () { this.addFormSubmit(this) }
+  mounted () { this.addFormSubmit(this) }
 }
