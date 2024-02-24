@@ -1,5 +1,6 @@
 # v0.1.15
 - Sanitize titles while they are being typed
+- Remove requirement for note and content to have content
 - Prevent possible additional submissions
 - Fix content being displayed when blank
 

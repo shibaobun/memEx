@@ -56,7 +56,7 @@ defmodule Memex.Notes.Note do
     |> validate_format(:slug, ~r/^[\p{L}\p{N}\-]+$/,
       message: dgettext("errors", "invalid format: only numbers, letters and hyphen are accepted")
     )
-    |> validate_required([:slug, :content, :user_id, :visibility])
+    |> validate_required([:slug, :user_id, :visibility])
     |> unique_constraint(:slug)
     |> unsafe_validate_unique(:slug, Repo)
   end
@@ -69,7 +69,7 @@ defmodule Memex.Notes.Note do
     |> validate_format(:slug, ~r/^[\p{L}\p{N}\-]+$/,
       message: dgettext("errors", "invalid format: only numbers, letters and hyphen are accepted")
     )
-    |> validate_required([:slug, :content, :visibility])
+    |> validate_required([:slug, :visibility])
     |> unique_constraint(:slug)
     |> unsafe_validate_unique(:slug, Repo)
   end
