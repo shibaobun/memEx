@@ -10,10 +10,11 @@
     class="flex flex-col justify-start items-stretch space-y-4"
   >
     <%= text_input(f, :title,
-      class: "input input-primary",
-      placeholder: gettext("title"),
       aria_label: gettext("title"),
-      phx_debounce: 300
+      class: "input input-primary",
+      phx_debounce: 300,
+      phx_hook: "SanitizeTitles",
+      placeholder: gettext("title")
     ) %>
     <%= error_tag(f, :title) %>
 
