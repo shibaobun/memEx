@@ -40,7 +40,7 @@
           <%= dgettext("actions", "edit") %>
         </.link>
         <.link
-          :if={Pipelines.is_owner_or_admin?(pipeline, @current_user)}
+          :if={Pipelines.owner_or_admin?(pipeline, @current_user)}
           href="#"
           phx-click="delete"
           phx-value-id={pipeline.id}

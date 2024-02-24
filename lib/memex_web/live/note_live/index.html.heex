@@ -40,7 +40,7 @@
           <%= dgettext("actions", "edit") %>
         </.link>
         <.link
-          :if={Notes.is_owner_or_admin?(note, @current_user)}
+          :if={Notes.owner_or_admin?(note, @current_user)}
           href="#"
           phx-click="delete"
           phx-value-id={note.id}

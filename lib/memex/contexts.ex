@@ -229,10 +229,10 @@ defmodule Memex.Contexts do
     context |> Context.update_changeset(attrs, user)
   end
 
-  @spec is_owner_or_admin?(Context.t(), User.t()) :: boolean()
-  def is_owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true
-  def is_owner_or_admin?(_context, %{role: :admin}), do: true
-  def is_owner_or_admin?(_context, _other_user), do: false
+  @spec owner_or_admin?(Context.t(), User.t()) :: boolean()
+  def owner_or_admin?(%{user_id: user_id}, %{id: user_id}), do: true
+  def owner_or_admin?(_context, %{role: :admin}), do: true
+  def owner_or_admin?(_context, _other_user), do: false
 
   @spec is_owner?(Context.t(), User.t()) :: boolean()
   def is_owner?(%{user_id: user_id}, %{id: user_id}), do: true

@@ -24,7 +24,7 @@
       <%= dgettext("actions", "edit") %>
     </.link>
     <button
-      :if={Pipelines.is_owner_or_admin?(@pipeline, @current_user)}
+      :if={Pipelines.owner_or_admin?(@pipeline, @current_user)}
       type="button"
       class="btn btn-primary"
       phx-click="delete"
