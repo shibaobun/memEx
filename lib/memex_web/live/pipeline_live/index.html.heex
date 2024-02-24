@@ -33,7 +33,7 @@
     >
       <:actions :let={pipeline}>
         <.link
-          :if={Pipelines.is_owner?(pipeline, @current_user)}
+          :if={Pipelines.owner?(pipeline, @current_user)}
           patch={~p"/pipelines/#{pipeline}/edit"}
           aria-label={dgettext("actions", "edit %{pipeline_slug}", pipeline_slug: pipeline.slug)}
         >

@@ -17,7 +17,7 @@
 
   <div class="self-end flex space-x-4">
     <.link
-      :if={Contexts.is_owner?(@context, @current_user)}
+      :if={Contexts.owner?(@context, @current_user)}
       class="btn btn-primary"
       patch={~p"/context/#{@context}/edit"}
     >

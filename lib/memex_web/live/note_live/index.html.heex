@@ -33,7 +33,7 @@
     >
       <:actions :let={note}>
         <.link
-          :if={Notes.is_owner?(note, @current_user)}
+          :if={Notes.owner?(note, @current_user)}
           patch={~p"/notes/#{note}/edit"}
           aria-label={dgettext("actions", "edit %{note_slug}", note_slug: note.slug)}
         >

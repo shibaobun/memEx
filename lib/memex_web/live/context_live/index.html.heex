@@ -33,7 +33,7 @@
     >
       <:actions :let={context}>
         <.link
-          :if={Contexts.is_owner?(context, @current_user)}
+          :if={Contexts.owner?(context, @current_user)}
           patch={~p"/contexts/#{context}/edit"}
           aria-label={dgettext("actions", "edit %{context_slug}", context_slug: context.slug)}
         >

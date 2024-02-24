@@ -17,7 +17,7 @@
 
   <div class="pb-4 self-end flex space-x-4">
     <.link
-      :if={Pipelines.is_owner?(@pipeline, @current_user)}
+      :if={Pipelines.owner?(@pipeline, @current_user)}
       class="btn btn-primary"
       patch={~p"/pipeline/#{@pipeline}/edit"}
     >
@@ -52,7 +52,7 @@
           <%= gettext("%{position}. %{title}", position: position + 1, title: title) %>
         </h3>
 
-        <%= if Pipelines.is_owner?(@pipeline, @current_user) do %>
+        <%= if Pipelines.owner?(@pipeline, @current_user) do %>
           <div class="flex justify-between items-center space-x-4">
             <%= if position <= 0 do %>
               <i class="fas text-xl fa-chevron-up cursor-not-allowed opacity-25"></i>
@@ -113,7 +113,7 @@
   <% end %>
 
   <.link
-    :if={Pipelines.is_owner?(@pipeline, @current_user)}
+    :if={Pipelines.owner?(@pipeline, @current_user)}
     class="self-end btn btn-primary"
     patch={~p"/pipeline/#{@pipeline}/add_step"}
   >

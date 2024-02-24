@@ -17,7 +17,7 @@
 
   <div class="self-end flex space-x-4">
     <.link
-      :if={Notes.is_owner?(@note, @current_user)}
+      :if={Notes.owner?(@note, @current_user)}
       class="btn btn-primary"
       patch={~p"/note/#{@note}/edit"}
     >

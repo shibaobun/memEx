@@ -234,7 +234,7 @@ defmodule Memex.Contexts do
   def owner_or_admin?(_context, %{role: :admin}), do: true
   def owner_or_admin?(_context, _other_user), do: false
 
-  @spec is_owner?(Context.t(), User.t()) :: boolean()
-  def is_owner?(%{user_id: user_id}, %{id: user_id}), do: true
-  def is_owner?(_context, _other_user), do: false
+  @spec owner?(Context.t(), User.t()) :: boolean()
+  def owner?(%{user_id: user_id}, %{id: user_id}), do: true
+  def owner?(_context, _other_user), do: false
 end
