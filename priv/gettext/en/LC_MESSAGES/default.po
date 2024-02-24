@@ -467,16 +467,6 @@ msgstr ""
 msgid "finally, i wanted to externalize the processes for common situations that use these thought processes at discrete steps. these are pipelines!"
 msgstr ""
 
-#: lib/memex_web/live/faq_live.html.heex:91
-#, elixir-autogen, elixir-format
-msgid "for instance, a good context could be what makes some physical designs spark joy for you, and in that context you could backlink to the spoon note as an example of how it fits nicely into your hand."
-msgstr ""
-
-#: lib/memex_web/live/faq_live.html.heex:105
-#, elixir-autogen, elixir-format
-msgid "for instance, a pipeline for buying an object could have a step where you consider how much it sparks joy, and it could backlink to the physical designs context, maybe with some notes about how it applies in this case."
-msgstr ""
-
 #: lib/memex_web/live/faq_live.html.heex:59
 #, elixir-autogen, elixir-format
 msgid "i really admired the idea of a zettelkasten, especially with org-mode backlinks, however I felt like my notes would immediately become too messy by just putting everything into a single hierarchy."
@@ -495,11 +485,6 @@ msgstr ""
 #: lib/memex_web/live/faq_live.html.heex:76
 #, elixir-autogen, elixir-format
 msgid "in my opinion, notes should be written by any of the discrete objects or concepts that are meaningful to you in your life."
-msgstr ""
-
-#: lib/memex_web/live/faq_live.html.heex:102
-#, elixir-autogen, elixir-format
-msgid "in my opinion, pipelines should be pretty lightweight, and just backlink to contexts to provide most of the heavy lifting."
 msgstr ""
 
 #: lib/memex_web/live/faq_live.html.heex:28
@@ -565,11 +550,6 @@ msgstr ""
 #: lib/memex_web/live/faq_live.html.heex:113
 #, elixir-autogen, elixir-format
 msgid "how many people should i invite?"
-msgstr ""
-
-#: lib/memex_web/live/faq_live.html.heex:119
-#, elixir-autogen, elixir-format
-msgid "note, context and pipeline slugs must be unique, and you are free to backlink to notes not written by you."
 msgstr ""
 
 #: lib/memex_web/live/faq_live.html.heex:122
@@ -709,4 +689,24 @@ msgstr ""
 #: lib/memex_web/live/note_live/form_component.html.heex:26
 #, elixir-autogen, elixir-format, fuzzy
 msgid "use [note-slug] to link to a note"
+msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:91
+#, elixir-autogen, elixir-format, fuzzy
+msgid "for instance, a good context could be what makes some physical designs spark joy for you, and in that context you could link to the spoon note as an example of how it fits nicely into your hand."
+msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:105
+#, elixir-autogen, elixir-format, fuzzy
+msgid "for instance, a pipeline for buying an object could have a step where you consider how much it sparks joy, and it could link to the physical designs context, maybe with some notes about how it applies in this case."
+msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:102
+#, elixir-autogen, elixir-format, fuzzy
+msgid "in my opinion, pipelines should be pretty lightweight, and just link to contexts to provide most of the heavy lifting."
+msgstr ""
+
+#: lib/memex_web/live/faq_live.html.heex:119
+#, elixir-autogen, elixir-format, fuzzy
+msgid "note, context and pipeline slugs must be unique, and you are free to link to notes not written by you."
 msgstr ""

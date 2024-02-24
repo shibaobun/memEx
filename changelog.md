@@ -1,3 +1,6 @@
+# v0.1.16
+- Fix faq copy
+
 # v0.1.15
 - Sanitize titles while they are being typed
 - Sanitize tags while they are being typed
