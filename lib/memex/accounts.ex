@@ -422,16 +422,16 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> is_already_admin?(%User{role: :admin})
+      iex> already_admin?(%User{role: :admin})
       true
 
-      iex> is_already_admin?(%User{})
+      iex> already_admin?(%User{})
       false
 
   """
-  @spec is_already_admin?(User.t() | nil) :: boolean()
-  def is_already_admin?(%User{role: :admin}), do: true
-  def is_already_admin?(_invalid_user), do: false
+  @spec already_admin?(User.t() | nil) :: boolean()
+  def already_admin?(%User{role: :admin}), do: true
+  def already_admin?(_invalid_user), do: false
 
   ## Confirmation
 

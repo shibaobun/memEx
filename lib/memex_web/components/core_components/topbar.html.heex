@@ -38,7 +38,7 @@
       <li class="mx-2 my-1 border-left border border-primary-700">​</li>
 
       <%= if @current_user do %>
-        <li :if={@current_user |> Accounts.is_already_admin?()} class="mx-2 my-1">
+        <li :if={@current_user |> Accounts.already_admin?()} class="mx-2 my-1">
           <.link navigate={~p"/invites"} class="text-primary-400 hover:underline">
             <%= gettext("invites") %>
           </.link>
