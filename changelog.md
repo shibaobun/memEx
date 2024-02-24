@@ -1,4 +1,5 @@
 # v0.1.16
+- Fix empty invite index page
 - Fix faq copy
 
 # v0.1.15

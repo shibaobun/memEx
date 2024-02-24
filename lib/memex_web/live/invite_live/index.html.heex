@@ -4,12 +4,12 @@
   </h1>
 
   <%= if @invites |> Enum.empty?() do %>
-    <h1 class="title text-xl text-primary-400">
+    <h1 class="title text-xl text-primary-400 text-center">
       <%= gettext("no invites 😔") %>
     </h1>
 
-    <.link patch={~p"/invites"} class="btn btn-primary">
-      <%= dgettext("actions", "invite someone new!") %>
+    <.link patch={~p"/invites"} class="ml-auto btn btn-primary">
+      <%= dgettext("actions", "new invite") %>
     </.link>
   <% end %>
 

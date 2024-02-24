@@ -66,11 +66,6 @@ msgstr ""
 msgid "edit"
 msgstr ""
 
-#: lib/memex_web/live/invite_live/index.html.heex:12
-#, elixir-autogen, elixir-format
-msgid "invite someone new!"
-msgstr ""
-
 #: lib/memex_web/components/core_components/topbar.html.heex:85
 #: lib/memex_web/controllers/user_confirmation_html/new.html.heex:28
 #: lib/memex_web/controllers/user_registration_html/new.html.heex:44
@@ -216,4 +211,9 @@ msgstr ""
 #: lib/memex_web/controllers/user_reset_password_html/edit.html.heex:29
 #, elixir-autogen, elixir-format, fuzzy
 msgid "reset password"
+msgstr ""
+
+#: lib/memex_web/live/invite_live/index.html.heex:12
+#, elixir-autogen, elixir-format, fuzzy
+msgid "new invite"
 msgstr ""
