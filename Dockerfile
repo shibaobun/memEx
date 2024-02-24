@@ -37,7 +37,7 @@ RUN mix do compile, release
 FROM alpine:latest AS app
 
 RUN apk upgrade --no-cache && \
-    apk add --no-cache bash openssl libssl1.1 libcrypto1.1 libgcc libstdc++ ncurses-libs
+    apk add --no-cache bash openssl libssl3 libcrypto3 libgcc libstdc++ ncurses-libs
 
 WORKDIR /app
 
