@@ -2,6 +2,7 @@ defmodule MemexWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
   """
+  use PhoenixHTMLHelpers
   use Phoenix.Component
   use MemexWeb, :verified_routes
   import MemexWeb.{Gettext, HTMLHelpers}
@@ -163,7 +164,7 @@ defmodule MemexWeb.CoreComponents do
       content,
       fn _whole_match, link ->
         link =
-          HTML.Link.link(
+          link(
             link,
             to: link,
             class: "link inline",
@@ -185,7 +186,7 @@ defmodule MemexWeb.CoreComponents do
       content,
       fn _whole_match, prefix, slug, suffix ->
         link =
-          HTML.Link.link(
+          link(
             "[[[#{slug}]]]",
             to: ~p"/note/#{slug}",
             class: "link inline"
@@ -212,7 +213,7 @@ defmodule MemexWeb.CoreComponents do
           end
 
         link =
-          HTML.Link.link(
+          link(
             "[[#{slug}]]",
             to: target,
             class: "link inline"
@@ -240,7 +241,7 @@ defmodule MemexWeb.CoreComponents do
           end
 
         link =
-          HTML.Link.link(
+          link(
             "[#{slug}]",
             to: target,
             class: "link inline"

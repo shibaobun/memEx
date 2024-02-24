@@ -3,8 +3,8 @@ defmodule MemexWeb.ErrorHelpers do
   Conveniences for translating and building error messages.
   """
 
-  use Phoenix.HTML
-  import Phoenix.Component
+  use PhoenixHTMLHelpers
+  import Phoenix.{Component, HTML.Form}
   alias Ecto.Changeset
   alias Phoenix.{HTML.Form, LiveView.Rendered}
 
