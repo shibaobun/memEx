@@ -405,15 +405,15 @@ defmodule Memex.Accounts do
 
   ## Examples
 
-      iex> is_admin?(%User{role: :admin})
+      iex> admin?(%User{role: :admin})
       true
 
-      iex> is_admin?(%User{})
+      iex> admin?(%User{})
       false
 
   """
-  @spec is_admin?(User.t()) :: boolean()
-  def is_admin?(%User{id: user_id}) do
+  @spec admin?(User.t()) :: boolean()
+  def admin?(%User{id: user_id}) do
     Repo.exists?(from u in User, where: u.id == ^user_id, where: u.role == :admin)
   end
 
