@@ -30,6 +30,7 @@ import topbar from 'topbar'
 import CtrlEnter from './ctrlenter'
 import Date from './date'
 import DateTime from './datetime'
+import SanitizeTags from './sanitizetags'
 import SanitizeTitles from './sanitizetitles'
 
 const csrfTokenElement = document.querySelector("meta[name='csrf-token']")
@@ -37,7 +38,7 @@ let csrfToken
 if (csrfTokenElement) { csrfToken = csrfTokenElement.getAttribute('content') }
 const liveSocket = new LiveSocket('/live', Socket, {
   params: { _csrf_token: csrfToken },
-  hooks: { CtrlEnter, Date, DateTime, SanitizeTitles }
+  hooks: { CtrlEnter, Date, DateTime, SanitizeTags, SanitizeTitles }
 })
 
 // Show progress bar on live navigation and form submits

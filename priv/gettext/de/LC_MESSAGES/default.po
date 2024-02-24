@@ -237,20 +237,20 @@ msgstr ""
 msgid "report bugs or request features"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:51
-#: lib/memex_web/live/note_live/form_component.html.heex:49
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:55
+#: lib/memex_web/live/context_live/form_component.html.heex:52
+#: lib/memex_web/live/note_live/form_component.html.heex:50
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:56
 #: lib/memex_web/live/step_live/form_component.html.heex:39
 #, elixir-autogen, elixir-format
 msgid "saving..."
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:45
 #: lib/memex_web/live/context_live/form_component.html.heex:46
-#: lib/memex_web/live/note_live/form_component.html.heex:43
+#: lib/memex_web/live/context_live/form_component.html.heex:47
 #: lib/memex_web/live/note_live/form_component.html.heex:44
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:49
+#: lib/memex_web/live/note_live/form_component.html.heex:45
 #: lib/memex_web/live/pipeline_live/form_component.html.heex:50
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:51
 #, elixir-autogen, elixir-format
 msgid "select privacy"
 msgstr ""
@@ -266,12 +266,12 @@ msgstr ""
 msgid "settings"
 msgstr ""
 
-#: lib/memex_web/live/context_live/form_component.html.heex:36
-#: lib/memex_web/live/context_live/form_component.html.heex:37
-#: lib/memex_web/live/note_live/form_component.html.heex:34
-#: lib/memex_web/live/note_live/form_component.html.heex:35
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:40
-#: lib/memex_web/live/pipeline_live/form_component.html.heex:41
+#: lib/memex_web/live/context_live/form_component.html.heex:34
+#: lib/memex_web/live/context_live/form_component.html.heex:39
+#: lib/memex_web/live/note_live/form_component.html.heex:32
+#: lib/memex_web/live/note_live/form_component.html.heex:37
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:38
+#: lib/memex_web/live/pipeline_live/form_component.html.heex:43
 #, elixir-autogen, elixir-format
 msgid "tag1,tag2"
 msgstr ""

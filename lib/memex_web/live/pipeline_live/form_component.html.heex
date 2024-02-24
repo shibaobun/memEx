@@ -35,11 +35,12 @@
     <%= error_tag(f, :description) %>
 
     <%= text_input(f, :tags_string,
-      id: "tags-input",
-      class: "input input-primary",
-      placeholder: gettext("tag1,tag2"),
       aria_label: gettext("tag1,tag2"),
-      phx_debounce: 300
+      class: "input input-primary",
+      id: "tags-input",
+      phx_debounce: 300,
+      phx_hook: "SanitizeTags",
+      placeholder: gettext("tag1,tag2")
     ) %>
     <%= error_tag(f, :tags_string) %>
 
